@@ -46,7 +46,7 @@ table td {
   border-bottom: 1px solid #a8b7c5;
   border-top:none;
   box-shadow: 0px -3px 5px 1px #eee inset;
-  height: 60px;
+  /*height: 60px;*/
 }
 table tr {
   height: auto;
