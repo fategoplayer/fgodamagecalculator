@@ -73,6 +73,7 @@ input[type="number"] {
   padding: 0px;
   background-color:transparent;
   -webkit-appearance: none;
+  border-radius: 0;
 }
 input[type="number"]:focus {
   outline: solid 1px #3c6690;
@@ -90,6 +91,7 @@ select {
   width: 100%;
   text-align: center;
   background-color:transparent;
+  border-radius: 0;
 }
 select:focus {
   outline: solid 1px #3c6690;
