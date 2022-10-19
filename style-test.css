@@ -1,8 +1,5 @@
 @charset "UTF-8";
 
-body {
-  -webkit-appearance: none;
-}
 .col_copy img {
   object-fit: cover;
   width: 25px;
@@ -64,20 +61,21 @@ table tr:last-child td:last-child {
   border-radius: 0 0 5px 0;
 }
 
+input[type="number"]::-webkit-outer-spin-button, 
+input[type="number"]::-webkit-inner-spin-button { 
+  -webkit-appearance: none;
+  margin: 0;
+}
 input[type="number"] {
   width: 100%;
   text-align: right;
   border: none;
   padding: 0px;
   background-color:transparent;
+  -webkit-appearance: none;
 }
 input[type="number"]:focus {
   outline: solid 1px #3c6690;
-}
-input[type="number"]::-webkit-outer-spin-button, 
-input[type="number"]::-webkit-inner-spin-button { 
-  -webkit-appearance: none;
-  margin: 0;
 }
 output {
   height: 33%;
@@ -87,9 +85,10 @@ output {
   font-size: 14px;
 }
 select {
+  -webkit-appearance: none;
+  border: none;
   width: 100%;
   text-align: center;
-  border: none;
   background-color:transparent;
 }
 select:focus {
