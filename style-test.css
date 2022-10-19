@@ -34,7 +34,6 @@ table th {
   border-bottom: 1px solid #3c6690;
   box-shadow: 0px 1px 1px rgba(255,255,255,0.3) inset;
   padding: 10px 0;
-
 	top: 0;
 }
 table#calcTable th {
@@ -49,7 +48,7 @@ table td {
   height: 80px;
 }
 table tr {
-  height: auto;
+  height: 80px;
 }
 table td:last-child {
   border-right: 1px solid #a8b7c5;
@@ -73,7 +72,7 @@ input[type="number"] {
   outline: none;
   border-radius: 0;
   width: 100%;
-  text-align: left;
+  text-align: right;
   border: none;
   padding: 0px;
   background-color:transparent;
@@ -96,7 +95,6 @@ select {
   border: none;
   width: 100%;
   text-align: center;
-  text-align: -webkit-center;
   background-color:transparent;
   border-radius: 0;
 }
