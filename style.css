@@ -1,0 +1,473 @@
+@charset "UTF-8";
+
+body {
+  -webkit-appearance: none;
+}
+.col_copy img {
+  object-fit: cover;
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+}
+.col_prob img {
+  object-fit: cover;
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+}
+table {
+  width: 100%;
+  border-collapse:separate;
+  border-spacing: 0;
+}
+table th:first-child {
+  border-radius: 5px 0 0 0;
+}
+table th:last-child {
+  border-radius: 0 5px 0 0;
+  border-right: 1px solid #3c6690;
+}
+table th {
+  font-size: 10px;
+  text-align: center;
+  color:white;
+  background: linear-gradient(#829ebc,#225588);
+  border-left: 1px solid #3c6690;
+  border-top: 1px solid #3c6690;
+  border-bottom: 1px solid #3c6690;
+  box-shadow: 0px 1px 1px rgba(255,255,255,0.3) inset;
+  padding: 10px 0;
+
+	top: 0;
+}
+table#calcTable th {
+  position: sticky;
+}
+table td {
+  text-align: center;
+  border-left: 1px solid #a8b7c5;
+  border-bottom: 1px solid #a8b7c5;
+  border-top:none;
+  box-shadow: 0px -3px 5px 1px #eee inset;
+  height: 60px;
+}
+table tr {
+  height: 95px;
+}
+table td:last-child {
+  border-right: 1px solid #a8b7c5;
+}
+table tr:last-child td:first-child {
+  border-radius: 0 0 0 5px;
+}
+table tr:last-child td:last-child {
+  border-radius: 0 0 5px 0;
+}
+
+input[type="number"] {
+  width: 100%;
+  text-align: right;
+  border: none;
+  padding: 0px;
+  background-color:transparent;
+}
+input[type="number"]:focus {
+  outline: solid 1px #3c6690;
+}
+input[type="number"]::-webkit-outer-spin-button, 
+input[type="number"]::-webkit-inner-spin-button { 
+  -webkit-appearance: none;
+  margin: 0;
+}
+output {
+  height: 33%;
+  display:inline-block;
+  vertical-align: middle;
+  text-align:right;
+  font-size: 14px;
+}
+select {
+  width: 100%;
+  text-align: center;
+  border: none;
+  background-color:transparent;
+}
+select:focus {
+  outline: solid 1px #3c6690;
+}
+
+/*列調整*/
+.col_copy {
+  width: 2%;
+}
+.col_atk {
+  width: 3%;
+}
+.col_np {
+  width: 3%;
+}
+.col_atk_buff {
+  width: 2%;
+}
+.col_card_buff {
+  width: 2%;
+}
+.col_cri_buff {
+  width: 2%;
+}
+.col_np_buff {
+  width: 2%;
+}
+.col_ex_atk_buff {
+  width: 2%;
+}
+.col_supereffective_buff {
+  width: 2.5%;
+}
+.col_supereffective_np {
+  width: 2.5%;
+}
+.col_fixed_dmg {
+  width: 2%;
+}
+.col_footprints {
+  width: 2%;
+}
+.col_special_def {
+  width: 2%;
+}
+.col_class_affinity {
+  width: 3.5%;
+}
+.col_class_servant {
+  width: 3.5%;
+}
+.col_attribute_affinity {
+  width: 3.5%;
+}
+.col_card_sel {
+  width: 3%;
+}
+.col_dmg_result {
+  width: 6%;
+}
+.col_prob {
+  width: 2%;
+}
+
+.boundary_line {
+  margin-top: 0.5px;
+  margin-bottom: 0.5px;
+  width: 100%;
+  height: 1px;
+  background-color: #a8b7c5;
+  border: none;
+  color: #a8b7c5;
+}
+.calc {
+  width: 1400px;
+  padding-right: 10px;
+}
+
+.atk {
+  height: 100%;
+  width: 100%;
+}
+.np_dmg {
+  height: 49%;
+  width: 100%;
+}
+.np_kind {
+  height: 49%;
+  width: 100%;
+}
+.atk_buff {
+  height: 100%;
+  width: 100%;
+}
+.b_card_buff {
+  height: 49%;
+  width: 100%;
+  background-color: #FFEEEE !important;
+  box-shadow: 0px 3px 5px 1px #eee inset;
+}
+.b_card_cri_buff {
+  height: 49%;
+  width: 100%;
+  background-color: #FFEEEE !important;
+  box-shadow: 0px -3px 5px 1px #eee inset;
+}
+.a_card_buff {
+  height: 49%;
+  width: 100%;
+  background-color: #F0F8FF !important;
+  box-shadow: 0px 3px 5px 1px #eee inset;
+}
+.a_card_cri_buff {
+  height: 49%;
+  width: 100%;
+  background-color: #F0F8FF !important;
+  box-shadow: 0px -3px 5px 1px #eee inset;
+}
+.q_card_buff {
+  height: 49%;
+  width: 100%;
+  background-color: #EEFFEE !important;
+  box-shadow: 0px 3px 5px 1px #eee inset;
+}
+.q_card_cri_buff {
+  height: 49%;
+  width: 100%;
+  background-color: #EEFFEE !important;
+  box-shadow: 0px -3px 5px 1px #eee inset;
+}
+.cri_buff {
+  height: 100%;
+  width: 100%;
+}
+.np_buff {
+  height: 100%;
+  width: 100%;
+}
+.ex_atk_buff {
+  height: 100%;
+  width: 100%;
+}
+.supereffective_buff {
+  height: 100%;
+  width: 100%;
+}
+.supereffective_np {
+  height: 100%;
+  width: 100%;
+}
+.fixed_dmg {
+  height: 100%;
+  width: 100%;
+}
+.b_footprints {
+  height: 32%;
+  width: 100%;
+  background-color: #FFEEEE !important;
+  box-shadow: 0px 3px 5px 1px #eee inset;
+}
+.a_footprints {
+  height: 32%;
+  width: 100%;
+  background-color: #F0F8FF !important;
+}
+.q_footprints {
+  height: 32%;
+  width: 100%;
+  background-color: #EEFFEE !important;
+  box-shadow: 0px -3px 5px 1px #eee inset;
+}
+.special_def {
+  height: 100%;
+  width: 100%;
+}
+.class_affinity {
+  height: 100%;
+  width: 100%;
+}
+.class_servant {
+  height: 100%;
+  width: 100%;
+}
+.attribute_affinity {
+  height: 100%;
+  width: 100%;
+}
+.card_1st {
+  height: 49%;
+  width: 100%;
+}
+.card_1st_cri {
+  height: 49%;
+  width: 100%;
+}
+.card_2nd {
+  height: 49%;
+  width: 100%;
+}
+.card_2nd_cri {
+  height: 49%;
+  width: 100%;
+}
+.card_3rd {
+  height: 49%;
+  width: 100%;
+}
+.card_3rd_cri {
+  height: 49%;
+  width: 100%;
+}
+.ex_cri {
+  height: 100%;
+  width: 100%;
+}
+.wrap_dmg_result {
+  display:table;
+  text-align:right;
+  height: 33%;
+  width: 95%;
+}
+.wrap_dmg_result output{
+  display:table-cell;
+  vertical-align:middle;
+}
+
+
+#addRow, #clear {
+    width: 130px;
+    height: 40px;
+    font-size: 16px;
+    background: linear-gradient(#829ebc,#225588);
+    border-left: 1px solid #3c6690;
+    border-top: 1px solid #3c6690;
+    border-bottom: 1px solid #3c6690;
+    color: white;
+    border: none;
+    margin: 20px;
+    border-radius: 5px 5px 5px 5px;
+}
+button:hover {
+    cursor: pointer;
+}
+tr:hover {
+    cursor: move;
+}
+#prob_calc{
+  width: 540px;
+}
+.prob_result {
+  font-size: 25px;;
+}
+#prob_result {
+  width: 100px;
+  font-size: 25px;
+}
+#enemy_hp{
+    width: 100%;
+    height: 100%;
+}
+.prob_inp {
+  width: 100% !important;
+}
+#dmg_1st {
+  height: 49%;
+}
+#fixed_1st {
+  height: 49%;
+}
+#dmg_2nd {
+  height: 49%;
+}
+#fixed_2nd {
+  height: 49%;
+}
+#dmg_3rd {
+  height: 49%;
+}
+#fixed_3rd {
+  height: 49%;
+}
+#dmg_Ex {
+  height: 49%;
+}
+#fixed_Ex {
+  height: 49%;
+}
+
+#dmg_total {
+  height: 49% !important;
+}
+#fixed_total {
+  height: 49% !important;
+}
+.col_prob_inp{
+  width: 12%;
+}
+.col_prob_out{
+  width: 17%;
+}
+.wrap_col_prob_out {
+  display:table;
+  text-align:right;
+  height: 49%;
+  width: 95%;
+}
+.col_prob_result {
+  width: 20%;
+}
+.wrap_col_prob_out output{
+  display:table-cell;
+  vertical-align:middle;
+}
+.wrap_prob_result {
+  display:table;
+  height: 100%;
+  width: 95%;
+}
+.wrap_prob_result output{
+  display:table-cell;
+  vertical-align:middle;
+}
+
+
+/*モーダル本体の指定 + モーダル外側の背景の指定*/
+.modal-container{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background: rgba(0,0,0,50%);
+  padding: 40px 20px;
+  overflow: auto;
+  opacity: 0;
+  visibility: hidden;
+  transition: .3s;
+  box-sizing: border-box;
+}
+/*モーダル本体の擬似要素の指定*/
+.modal-container:before{
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+}
+/*モーダル本体に「active」クラス付与した時のスタイル*/
+.modal-container.active{
+  opacity: 1;
+  visibility: visible;
+}
+/*モーダル枠の指定*/
+.modal-body{
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 600px;
+  width: 100%;
+}
+/*モーダルを閉じるボタンの指定*/
+.modal-close{
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: -40px;
+  right: -40px;
+  width: 40px;
+  height: 40px;
+  font-size: 40px;
+  color: #fff;
+  cursor: pointer;
+}
+/*モーダル内のコンテンツの指定*/
+.modal-content{
+  background: #fff;
+  text-align: left;
+  padding: 30px;
+}
