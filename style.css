@@ -1,8 +1,5 @@
 @charset "UTF-8";
 
-body {
-  -webkit-appearance: none;
-}
 .col_copy img {
   object-fit: cover;
   width: 25px;
@@ -37,7 +34,6 @@ table th {
   border-bottom: 1px solid #3c6690;
   box-shadow: 0px 1px 1px rgba(255,255,255,0.3) inset;
   padding: 10px 0;
-
 	top: 0;
 }
 table#calcTable th {
@@ -49,10 +45,10 @@ table td {
   border-bottom: 1px solid #a8b7c5;
   border-top:none;
   box-shadow: 0px -3px 5px 1px #eee inset;
-  height: 60px;
+  height: 80px;
 }
 table tr {
-  height: 95px;
+  height: 80px;
 }
 table td:last-child {
   border-right: 1px solid #a8b7c5;
@@ -64,7 +60,17 @@ table tr:last-child td:last-child {
   border-radius: 0 0 5px 0;
 }
 
+input[type="number"]::-webkit-outer-spin-button, 
+input[type="number"]::-webkit-inner-spin-button { 
+  -webkit-appearance: none;
+  margin: 0;
+}
 input[type="number"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  border-radius: 0;
   width: 100%;
   text-align: right;
   border: none;
@@ -74,11 +80,6 @@ input[type="number"] {
 input[type="number"]:focus {
   outline: solid 1px #3c6690;
 }
-input[type="number"]::-webkit-outer-spin-button, 
-input[type="number"]::-webkit-inner-spin-button { 
-  -webkit-appearance: none;
-  margin: 0;
-}
 output {
   height: 33%;
   display:inline-block;
@@ -87,10 +88,15 @@ output {
   font-size: 14px;
 }
 select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  border: none;
   width: 100%;
   text-align: center;
-  border: none;
   background-color:transparent;
+  border-radius: 0;
 }
 select:focus {
   outline: solid 1px #3c6690;
@@ -174,11 +180,11 @@ select:focus {
   width: 100%;
 }
 .np_dmg {
-  height: 49%;
+  height: 39px;
   width: 100%;
 }
 .np_kind {
-  height: 49%;
+  height: 39px;
   width: 100%;
 }
 .atk_buff {
@@ -186,37 +192,37 @@ select:focus {
   width: 100%;
 }
 .b_card_buff {
-  height: 49%;
+  height: 39px;
   width: 100%;
   background-color: #FFEEEE !important;
   box-shadow: 0px 3px 5px 1px #eee inset;
 }
 .b_card_cri_buff {
-  height: 49%;
+  height: 39px;
   width: 100%;
   background-color: #FFEEEE !important;
   box-shadow: 0px -3px 5px 1px #eee inset;
 }
 .a_card_buff {
-  height: 49%;
+  height: 39px;
   width: 100%;
   background-color: #F0F8FF !important;
   box-shadow: 0px 3px 5px 1px #eee inset;
 }
 .a_card_cri_buff {
-  height: 49%;
+  height: 39px;
   width: 100%;
   background-color: #F0F8FF !important;
   box-shadow: 0px -3px 5px 1px #eee inset;
 }
 .q_card_buff {
-  height: 49%;
+  height: 39px;
   width: 100%;
   background-color: #EEFFEE !important;
   box-shadow: 0px 3px 5px 1px #eee inset;
 }
 .q_card_cri_buff {
-  height: 49%;
+  height: 39px;
   width: 100%;
   background-color: #EEFFEE !important;
   box-shadow: 0px -3px 5px 1px #eee inset;
@@ -246,18 +252,18 @@ select:focus {
   width: 100%;
 }
 .b_footprints {
-  height: 32%;
+  height: 25.3px;
   width: 100%;
   background-color: #FFEEEE !important;
   box-shadow: 0px 3px 5px 1px #eee inset;
 }
 .a_footprints {
-  height: 32%;
+  height: 25.3px;
   width: 100%;
   background-color: #F0F8FF !important;
 }
 .q_footprints {
-  height: 32%;
+  height: 25.3px;
   width: 100%;
   background-color: #EEFFEE !important;
   box-shadow: 0px -3px 5px 1px #eee inset;
@@ -279,27 +285,27 @@ select:focus {
   width: 100%;
 }
 .card_1st {
-  height: 49%;
+  height: 39px;
   width: 100%;
 }
 .card_1st_cri {
-  height: 49%;
+  height: 39px;
   width: 100%;
 }
 .card_2nd {
-  height: 49%;
+  height: 39px;
   width: 100%;
 }
 .card_2nd_cri {
-  height: 49%;
+  height: 39px;
   width: 100%;
 }
 .card_3rd {
-  height: 49%;
+  height: 39px;
   width: 100%;
 }
 .card_3rd_cri {
-  height: 49%;
+  height: 39px;
   width: 100%;
 }
 .ex_cri {
@@ -341,7 +347,7 @@ tr:hover {
   width: 540px;
 }
 .prob_result {
-  font-size: 25px;;
+  font-size: 25px;
 }
 #prob_result {
   width: 100px;
@@ -355,28 +361,28 @@ tr:hover {
   width: 100% !important;
 }
 #dmg_1st {
-  height: 49%;
+  height: 39px;
 }
 #fixed_1st {
-  height: 49%;
+  height: 39px;
 }
 #dmg_2nd {
-  height: 49%;
+  height: 39px;
 }
 #fixed_2nd {
-  height: 49%;
+  height: 39px;
 }
 #dmg_3rd {
-  height: 49%;
+  height: 39px;
 }
 #fixed_3rd {
-  height: 49%;
+  height: 39px;
 }
 #dmg_Ex {
-  height: 49%;
+  height: 39px;
 }
 #fixed_Ex {
-  height: 49%;
+  height: 39px;
 }
 
 #dmg_total {
