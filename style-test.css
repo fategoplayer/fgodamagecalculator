@@ -46,7 +46,7 @@ table td {
   border-bottom: 1px solid #a8b7c5;
   border-top:none;
   box-shadow: 0px -3px 5px 1px #eee inset;
-  /*height: 60px;*/
+  height: 80px;
 }
 table tr {
   height: auto;
@@ -73,7 +73,7 @@ input[type="number"] {
   outline: none;
   border-radius: 0;
   width: 100%;
-  text-align: right;
+  text-align: left;
   border: none;
   padding: 0px;
   background-color:transparent;
@@ -96,6 +96,7 @@ select {
   border: none;
   width: 100%;
   text-align: center;
+  text-align: -webkit-center;
   background-color:transparent;
   border-radius: 0;
 }
