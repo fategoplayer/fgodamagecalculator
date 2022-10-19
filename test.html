@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Cache-Control" content="no-cache">
+        <meta http-equiv="Expires" content="0">
+        <title>FGO ダメージ計算表</title>
+        <link rel="stylesheet" type="text/css" href="style-test.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script charset="UTF-8" type="text/javascript" src="js/main.js"></script>
+        <base target="_blank">
+    </head>
+    <body>
+        <div id="main">
+            <div class="calc" id="buff_input">
+                <table id="calcTable">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>ATK</th>
+                            <th>宝具<br>倍率<br>/種類</th>
+                            <th>攻撃力<br>バフ</th>
+                            <th>Bバフ<br>/<br>クリ<br>バフ</th>
+                            <th>Aバフ<br>/<br>クリ<br>バフ</th>
+                            <th>Qバフ<br>/<br>クリ<br>バフ</th>
+                            <th>クリ<br>バフ</th>
+                            <th>宝具<br>威力<br>バフ</th>
+                            <th>EX<br>カード<br>バフ</th>
+                            <th>特攻<br>威力<br>バフ</th>
+                            <th>宝具<br>特攻<br>威力</th>
+                            <th>固定<br>ダメ<br>ージ</th>
+                            <th>足跡<br>/B<br>/A<br>/Q</th>
+                            <th>特殊<br>耐性</th>
+                            <th>クラス<br>相性</th>
+                            <th>クラス<br>補正</th>
+                            <th>属性<br>相性</th>
+                            <th>1st<br>/クリ</th>
+                            <th>2nd<br>/クリ</th>
+                            <th>3rd<br>/クリ</th>
+                            <th>EX</th>
+                            <th>1stダメージ<br>上段：最低<br>中段：平均<br>下段：最大</th>
+                            <th>2ndダメージ<br>上段：最低<br>中段：平均<br>下段：最大</th>
+                            <th>3rdダメージ<br>上段：最低<br>中段：平均<br>下段：最大</th>
+                            <th>EXダメージ<br>上段：最低<br>中段：平均<br>下段：最大</th>
+                            <th>トータル<br>上段：最低<br>中段：平均<br>下段：最大</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="calcItem">
+                        <tr>
+                            <td class="col_copy" id="copy_0"><img src="img/arrow.png"></td>
+                            <td class="col_atk"><input type="number" id="atk_0" value="0" max="99999" min="0" step="500" class="atk"></td>
+                            <td class="col_np">
+                                <input type="number" id="np_dmg_0" value="500" max="3000" min="0" step="50" class="np_dmg">
+                                <span><hr class="boundary_line"></span>
+                                <select id="np_kind_0" class="np_kind">
+                                    <option value="B" selected>B</option>
+                                    <option value="A">A</option>
+                                    <option value="Q">Q</option>
+                                </select>
+                            </td>
+                            <td class="col_atk_buff"><input type="number" id="atk_buff_0" value="0" max="500" min="-100" step="10" class="atk_buff"></td>
+                            <td class="col_card_buff">
+                                <input type="number" id="b_card_buff_0" value="0" max="500" min="-100" step="10" class="b_card_buff">
+                                <span><hr class="boundary_line"></span>
+                                <input type="number" id="b_card_cri_buff_0" value="0" max="500" min="-100" step="10" class="b_card_cri_buff">
+                            </td>
+                            <td class="col_card_buff">
+                                <input type="number" id="a_card_buff_0" value="0" max="500" min="-100" step="10" class="a_card_buff">
+                                <span><hr class="boundary_line"></span>
+                                <input type="number" id="a_card_cri_buff_0" value="0" max="500" min="-100" step="10" class="a_card_cri_buff">
+                            </td>
+                            <td class="col_card_buff">
+                                <input type="number" id="q_card_buff_0" value="0" max="500" min="-100" step="10" class="q_card_buff">
+                                <span><hr class="boundary_line"></span>
+                                <input type="number" id="q_card_cri_buff_0" value="0" max="500" min="-100" step="10" class="q_card_cri_buff">
+                            </td>
+                            <td class="col_cri_buff"><input type="number" id="cri_buff_0" value="0" max="500" min="0" step="1" class="cri_buff"></td>
+                            <td class="col_np_buff"><input type="number" id="np_buff_0" value="0" max="500" min="0" step="10" class="np_buff"></td>
+                            <td class="col_ex_atk_buff"><input type="number" id="ex_atk_buff_0" value="0" max="50" min="0" step="1" class="ex_atk_buff"></td>
+                            <td class="col_supereffective_buff"><input type="number" id="supereffective_buff_0" value="0" max="1000" min="0" step="10" class="supereffective_buff"></td>
+                            <td class="col_supereffective_np"><input type="number" id="supereffective_np_0" value="100" max="500" min="0" step="50" class="supereffective_np"></td>
+                            <td class="col_fixed_dmg"><input type="number" id="fixed_dmg_0" value="0" step="10" class="fixed_dmg"></td>
+                            <td class="col_footprints">
+                                <input type="number" id="b_footprints_0" value="0" max="500" min="0" step="25" class="b_footprints">
+                                <span><hr class="boundary_line"></span>
+                                <input type="number" id="a_footprints_0" value="0" max="500" min="0" step="25" class="a_footprints">
+                                <span><hr class="boundary_line"></span>
+                                <input type="number" id="q_footprints_0" value="0" max="500" min="0" step="25" class="q_footprints">
+                            </td>
+                            <td class="col_special_def"><input type="number" id="special_def_0" value="0" max="100" min="-100" step="10" class="special_def"></td>
+                            <td class="col_class_affinity">
+                                <select id="class_affinity_0" class="class_affinity">
+                                    <option value="0.5">0.5</option>
+                                    <option value="1.0">1.0</option>
+                                    <option value="1.2">1.2</option>
+                                    <option value="1.5">1.5</option>
+                                    <option value="2.0" selected>2.0</option>
+                                </select>
+                            </td>
+                            <td class="col_class_servant">
+                                <select id="class_servant_0" class="class_servant">
+                                    <option value="0.90">0.9</option>
+                                    <option value="0.95">0.95</option>
+                                    <option value="1.00" selected>1.0</option>
+                                    <option value="1.05">1.05</option>
+                                    <option value="1.10">1.1</option>
+                                </select>
+                            </td>
+                            <td class="col_attribute_affinity">
+                                <select id="attribute_affinity_0" class="attribute_affinity">
+                                    <option value="0.9">0.9</option>
+                                    <option value="1.0" selected>1.0</option>
+                                    <option value="1.1">1.1</option>
+                                </select>
+                            </td>
+                            <td class="col_card_sel">
+                                <select id="card_1st_0" class="card_1st">
+                                    <option value="NP" selected>N</option>
+                                    <option value="B">B</option>
+                                    <option value="A">A</option>
+                                    <option value="Q">Q</option>
+                                </select>
+                                <span><hr class="boundary_line"></span>
+                                <select id="card_1st_cri_0" class="card_1st_cri">
+                                    <option value="Y">有</option>
+                                    <option value="N">無</option>
+                                    <option value="zero">0</option>
+                                </select>
+                            </td>
+                            <td class="col_card_sel">
+                                <select id="card_2nd_0" class="card_2nd">
+                                    <option value="NP">N</option>
+                                    <option value="B" selected>B</option>
+                                    <option value="A">A</option>
+                                    <option value="Q">Q</option>
+                                </select>
+                                <span><hr class="boundary_line"></span>
+                                <select id="card_2nd_cri_0" class="card_2nd_cri">
+                                    <option value="Y">有</option>
+                                    <option value="N">無</option>
+                                    <option value="zero">0</option>
+                                </select>
+                            </td>
+                            <td  class="col_card_sel">
+                                <select id="card_3rd_0" class="card_3rd">
+                                    <option value="NP">N</option>
+                                    <option value="B" selected>B</option>
+                                    <option value="A">A</option>
+                                    <option value="Q">Q</option>
+                                </select>
+                                <span><hr class="boundary_line"></span>
+                                <select id="card_3rd_cri_0" class="card_3rd_cri">
+                                    <option value="Y">有</option>
+                                    <option value="N">無</option>
+                                    <option value="zero">0</option>
+                                </select>
+                            </td>
+                            <td  class="col_card_sel">
+                                <select id="ex_cri_0" class="ex_cri">
+                                    <option value="N">有</option>
+                                    <option value="zero">0</option>
+                                </select>
+                            </td>
+                            <td class="col_dmg_result">
+                                <div class="wrap_dmg_result"><output type="number" id="dmg_min_1st_0" class="dmg_result">0</output></div>
+                                <div class="wrap_dmg_result"><output type="number" id="dmg_ave_1st_0" class="dmg_result">0</output></div>
+                                <div class="wrap_dmg_result"><output type="number" id="dmg_max_1st_0" class="dmg_result">0</output></div>
+                            </td>
+                            <td class="col_dmg_result">
+                                <div class="wrap_dmg_result"><output type="number" id="dmg_min_2nd_0" class="dmg_result">0</output></div>
+                                <div class="wrap_dmg_result"><output type="number" id="dmg_ave_2nd_0" class="dmg_result">0</output></div>
+                                <div class="wrap_dmg_result"><output type="number" id="dmg_max_2nd_0" class="dmg_result">0</output></div>
+                            </td>
+                            <td class="col_dmg_result">
+                                <div class="wrap_dmg_result"><output type="number" id="dmg_min_3rd_0" class="dmg_result">0</output></div>
+                                <div class="wrap_dmg_result"><output type="number" id="dmg_ave_3rd_0" class="dmg_result">0</output></div>
+                                <div class="wrap_dmg_result"><output type="number" id="dmg_max_3rd_0" class="dmg_result">0</output></div>
+                            </td>
+                            <td class="col_dmg_result">
+                                <div class="wrap_dmg_result"><output type="number" id="dmg_min_ex_0" class="dmg_result">0</output></div>
+                                <div class="wrap_dmg_result"><output type="number" id="dmg_ave_ex_0" class="dmg_result">0</output></div>
+                                <div class="wrap_dmg_result"><output type="number" id="dmg_max_ex_0" class="dmg_result">0</output></div>
+                            </td>
+                            <td class="col_dmg_result">
+                                <div class="wrap_dmg_result"><output type="number" id="dmg_min_total_0" class="dmg_result">0</output></div>
+                                <div class="wrap_dmg_result"><output type="number" id="dmg_ave_total_0" class="dmg_result">0</output></div>
+                                <div class="wrap_dmg_result"><output type="number" id="dmg_max_total_0" class="dmg_result">0</output></div>
+                            </td>
+                            <td class="col_prob" id="prob_0">
+                                <img src="img/calculator.png">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <button id="addRow">行追加</button>
+                <button id="clear">クリア</button>
+            </div>
+            <div class="modal-container">
+                <div class="modal-body">
+                    <div class="modal-close">×</div>
+                    <div class="modal-content">
+                        <div id="prob_calc" class="prob">
+                            <table id="probTable">
+                                <tr>
+                                    <th>目標<br>ダメージ</th>
+                                    <th>1st<br>/固定</th>
+                                    <th>2nd<br>/固定</th>
+                                    <th>3rd<br>/固定</th>
+                                    <th>EX<br>/固定</th>
+                                    <th>トータル</th>
+                                    <th>撃破率</th>
+                                </tr>
+                                <tr>
+                                    <td class="col_prob_inp">
+                                        <input type="number" id="enemy_hp" value="0" min="0" step="1">
+                                    </td>
+                                    <td class="col_prob_inp">
+                                        <input type="number" id="dmg_1st" min=0 value=0 class="prob_inp"></input>
+                                        <span><hr class="boundary_line"></span>
+                                        <input type="number" id="fixed_1st" value=0 class="prob_inp"></input>
+                                    </td>
+                                    <td class="col_prob_inp">
+                                        <input type="number" id="dmg_2nd" min=0 value=0 class="prob_inp"></input>
+                                        <span><hr class="boundary_line"></span>
+                                        <input type="number" id="fixed_2nd" value=0 class="prob_inp"></input>
+                                    </td>
+                                    <td class="col_prob_inp">
+                                        <input type="number" id="dmg_3rd" min=0 value=0 class="prob_inp"></input>
+                                        <span><hr class="boundary_line"></span>
+                                        <input type="number" id="fixed_3rd" value=0 class="prob_inp"></input>
+                                    </td>
+                                    <td class="col_prob_inp">
+                                        <input type="number" id="dmg_Ex" min=0 value=0 class="prob_inp"></input>
+                                        <span><hr class="boundary_line"></span>
+                                        <input type="number" id="fixed_Ex" value=0 class="prob_inp"></input>
+                                    </td>
+                                    <td class="col_prob_out">
+                                        <div class="wrap_col_prob_out"><output type="number" id="dmg_total"></output></div>
+                                        <span><hr class="boundary_line"></span>
+                                        <div class="wrap_col_prob_out"><output type="number" id="fixed_total"></output></div>
+                                    </td>
+                                    <td class="col_prob_result">
+                                        <div class="wrap_col_prob_result">
+                                            <output type="number" id="prob_result"></output>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
