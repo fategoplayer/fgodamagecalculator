@@ -49,7 +49,7 @@ table td {
   height: 60px;
 }
 table tr {
-  height: 80px;
+  height: 85px;
 }
 table td:last-child {
   border-right: 1px solid #a8b7c5;
@@ -193,13 +193,13 @@ select:focus {
   width: 100%;
 }
 .b_card_buff {
-  height: 39px;
+  height: 40px;
   width: 100%;
   background-color: #FFEEEE !important;
   box-shadow: 0px 3px 5px 1px #eee inset;
 }
 .b_card_cri_buff {
-  height: 39px;
+  height: 40px;
   width: 100%;
   background-color: #FFEEEE !important;
   box-shadow: 0px -3px 5px 1px #eee inset;
