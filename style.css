@@ -45,10 +45,10 @@ table td {
   border-bottom: 1px solid #a8b7c5;
   border-top:none;
   box-shadow: 0px -3px 5px 1px #eee inset;
-  height: 92px;
+  height: 80px;
 }
 table tr {
-  height: 92px;
+  height: 80px;
 }
 table td:last-child {
   border-right: 1px solid #a8b7c5;
@@ -76,13 +76,14 @@ input[type="number"] {
   border: none;
   padding: 0px;
   background-color:transparent;
+  display: block;
 }
 input[type="number"]:focus {
   outline: solid 1px #3c6690;
 }
 output {
   height: 33%;
-  display:inline-block;
+  display:block;
   vertical-align: middle;
   text-align:right;
   font-size: 14px;
@@ -92,7 +93,8 @@ select {
   width: 100%;
   text-align: center;
   background-color:transparent;
-  border-radius: 0;
+  display: block;
+  /*border-radius: 0;*/
 }
 select:focus {
   outline: solid 1px #3c6690;
@@ -176,11 +178,11 @@ select:focus {
   width: 100%;
 }
 .np_dmg {
-  height: 45px;
+  height: 39px;
   width: 100%;
 }
 .np_kind {
-  height: 45px;
+  height: 39px;
   width: 100%;
 }
 .atk_buff {
@@ -188,37 +190,37 @@ select:focus {
   width: 100%;
 }
 .b_card_buff {
-  height: 45px;
+  height: 39px;
   width: 100%;
   background-color: #FFEEEE !important;
   box-shadow: 0px 3px 5px 1px #eee inset;
 }
 .b_card_cri_buff {
-  height: 45px;
+  height: 39px;
   width: 100%;
   background-color: #FFEEEE !important;
   box-shadow: 0px -3px 5px 1px #eee inset;
 }
 .a_card_buff {
-  height: 45px;
+  height: 39px;
   width: 100%;
   background-color: #F0F8FF !important;
   box-shadow: 0px 3px 5px 1px #eee inset;
 }
 .a_card_cri_buff {
-  height: 45px;
+  height: 39px;
   width: 100%;
   background-color: #F0F8FF !important;
   box-shadow: 0px -3px 5px 1px #eee inset;
 }
 .q_card_buff {
-  height: 45px;
+  height: 39px;
   width: 100%;
   background-color: #EEFFEE !important;
   box-shadow: 0px 3px 5px 1px #eee inset;
 }
 .q_card_cri_buff {
-  height: 45px;
+  height: 39px;
   width: 100%;
   background-color: #EEFFEE !important;
   box-shadow: 0px -3px 5px 1px #eee inset;
@@ -248,18 +250,18 @@ select:focus {
   width: 100%;
 }
 .b_footprints {
-  height: 29.4px;
+  height: 25.3px;
   width: 100%;
   background-color: #FFEEEE !important;
   box-shadow: 0px 3px 5px 1px #eee inset;
 }
 .a_footprints {
-  height: 29.4px;
+  height: 25.3px;
   width: 100%;
   background-color: #F0F8FF !important;
 }
 .q_footprints {
-  height: 29.4px;
+  height: 25.3px;
   width: 100%;
   background-color: #EEFFEE !important;
   box-shadow: 0px -3px 5px 1px #eee inset;
@@ -281,27 +283,27 @@ select:focus {
   width: 100%;
 }
 .card_1st {
-  height: 45px;
+  height: 39px;
   width: 100%;
 }
 .card_1st_cri {
-  height: 45px;
+  height: 39px;
   width: 100%;
 }
 .card_2nd {
-  height: 45px;
+  height: 39px;
   width: 100%;
 }
 .card_2nd_cri {
-  height: 45px;
+  height: 39px;
   width: 100%;
 }
 .card_3rd {
-  height: 45px;
+  height: 39px;
   width: 100%;
 }
 .card_3rd_cri {
-  height: 45px;
+  height: 39px;
   width: 100%;
 }
 .ex_cri {
@@ -357,28 +359,28 @@ tr:hover {
   width: 100% !important;
 }
 #dmg_1st {
-  height: 45px;
+  height: 39px;
 }
 #fixed_1st {
-  height: 45px;
+  height: 39px;
 }
 #dmg_2nd {
-  height: 45px;
+  height: 39px;
 }
 #fixed_2nd {
-  height: 45px;
+  height: 39px;
 }
 #dmg_3rd {
-  height: 45px;
+  height: 39px;
 }
 #fixed_3rd {
-  height: 45px;
+  height: 39px;
 }
 #dmg_Ex {
-  height: 45px;
+  height: 39px;
 }
 #fixed_Ex {
-  height: 45px;
+  height: 39px;
 }
 
 #dmg_total {

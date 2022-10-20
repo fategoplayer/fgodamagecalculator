@@ -130,12 +130,16 @@ $(function(){
 
     });
 
-    //閉じるボタンをクリックしたらモーダルを閉じる
+    /**
+     * ×でモーダルを閉じるイベント
+     */
     $(".modal-close").on("click",function(){  
         $(".modal-container").removeClass("active");
     });
 
-    //モーダルの外側をクリックしたらモーダルを閉じる
+    /**
+     * 画面外クリックでモーダルを閉じるイベント
+     */
     $(document).on("click",function(e) {
         if(!$(e.target).closest(".modal-body").length) {
             $(".modal-container").removeClass("active");
@@ -153,6 +157,269 @@ $(function(){
         calcProb();
 
     });
+
+    /**
+     * エンターキーでフォーカス移動
+     * メイン画面
+     */
+    $("#calcTable").keypress(function(e) { 
+        var c = e.which ? e.which : e.keyCode; // クロスブラウザ対応
+
+        // エンターキー
+        if (c == 13) {
+
+            var activeObj = $("#" + document.activeElement.id);
+            var splitStr = activeObj[0].id.split("_");
+            var recNumber = 0;
+            var nextIdStr = "";
+            var nextObj = null;
+
+            // 遷移先のIDを作成
+            for(cnt = 0; cnt < splitStr.length - 1; cnt++){
+                nextIdStr = nextIdStr + splitStr[cnt] + "_";
+            }
+
+            if (!e.shiftKey) {
+                // 下に進む
+                recNumber = Number(splitStr[splitStr.length - 1]) + 1;
+
+                 // 遷移先が別IDの場合の対応
+                switch (nextIdStr){
+                    case "b_card_cri_buff_" :
+                        nextIdStr = "b_card_buff_";
+                        if (Number(splitStr[splitStr.length - 1]) == (rowNumber + defaultRow - 1)) {
+                            // 最終行なら1行目に戻る
+                            recNumber = 0;
+                        }
+                        break;
+                    case "b_card_buff_" :
+                        nextIdStr = "b_card_cri_buff_";
+                        recNumber--;
+                        break;
+                    case "a_card_cri_buff_" :
+                        nextIdStr = "a_card_buff_";
+                        if (Number(splitStr[splitStr.length - 1]) == (rowNumber + defaultRow - 1)) {
+                            // 最終行なら1行目に戻る
+                            recNumber = 0;
+                        }
+                        break;
+                    case "a_card_buff_" :
+                        nextIdStr = "a_card_cri_buff_";
+                        recNumber--;
+                        break;
+                    case "q_card_cri_buff_" :
+                        nextIdStr = "q_card_buff_";
+                        if (Number(splitStr[splitStr.length - 1]) == (rowNumber + defaultRow - 1)) {
+                            // 最終行なら1行目に戻る
+                            recNumber = 0;
+                        }
+                        break;
+                    case "q_card_buff_" :
+                        nextIdStr = "q_card_cri_buff_";
+                        recNumber--;
+                        break;
+                    case "b_footprints_" :
+                        nextIdStr = "a_footprints_";
+                        recNumber--;
+                        break;
+                    case "a_footprints_" :
+                        nextIdStr = "q_footprints_";
+                        recNumber--;
+                        break;
+                    case "q_footprints_" :
+                        nextIdStr = "b_footprints_";
+                        if (Number(splitStr[splitStr.length - 1]) == (rowNumber + defaultRow - 1)) {
+                            // 最終行なら1行目に戻る
+                            recNumber = 0;
+                        }
+                        break;
+                    default :
+                        if (Number(splitStr[splitStr.length - 1]) == (rowNumber + defaultRow - 1)) {
+                            // 最終行なら1行目に戻る
+                            recNumber = 0;
+                        }
+                        break;
+                }
+            }
+            else {
+                // 上に戻る
+                recNumber = Number(splitStr[splitStr.length - 1]) - 1;
+                
+                // 遷移先が別IDの場合の対応
+               switch (nextIdStr){
+                    case "b_card_cri_buff_" :
+                            nextIdStr = "b_card_buff_";
+                            recNumber++;
+                            break;
+                    case "b_card_buff_" :
+                            nextIdStr = "b_card_cri_buff_";
+                            if (Number(splitStr[splitStr.length - 1]) == 0) {
+                                // 1行目なら最終行に進む
+                                recNumber = rowNumber + defaultRow - 1;
+                            }
+                            break;
+                    case "a_card_cri_buff_" :
+                            nextIdStr = "a_card_buff_";
+                            recNumber++;
+                            break;
+                    case "a_card_buff_" :
+                            nextIdStr = "a_card_cri_buff_";
+                            if (Number(splitStr[splitStr.length - 1]) == 0) {
+                                // 1行目なら最終行に進む
+                                recNumber = rowNumber + defaultRow - 1;
+                            }
+                            break;
+                    case "q_card_cri_buff_" :
+                            nextIdStr = "q_card_buff_";
+                            recNumber++;
+                            break;
+                    case "q_card_buff_" :
+                            nextIdStr = "q_card_cri_buff_";
+                            if (Number(splitStr[splitStr.length - 1]) == 0) {
+                                // 1行目なら最終行に進む
+                                recNumber = rowNumber + defaultRow - 1;
+                            }
+                            break;
+                    case "b_footprints_" :
+                            nextIdStr = "q_footprints_";
+                            if (Number(splitStr[splitStr.length - 1]) == 0) {
+                                // 1行目なら最終行に進む
+                                recNumber = rowNumber + defaultRow - 1;
+                            }
+                            break;
+                    case "a_footprints_" :
+                            nextIdStr = "b_footprints_";
+                            recNumber++;
+                            break;
+                    case "q_footprints_" :
+                            nextIdStr = "a_footprints_";
+                            recNumber++;
+                            break;
+                    default :
+                        if (Number(splitStr[splitStr.length - 1]) == 0) {
+                            // 1行目なら最終行に進む
+                            recNumber = rowNumber + defaultRow - 1;
+                        }
+                        break;
+               }
+            }
+
+            nextIdStr = nextIdStr + recNumber
+            nextObj = $("#" + nextIdStr);
+
+            // フォーカス設定
+            nextObj.focus();
+        }  
+      });
+
+    /**
+     * エンターキーでフォーカス移動
+     * 撃破率
+     */
+    $("#probTable").keypress(function(e) { 
+    var c = e.which ? e.which : e.keyCode; // クロスブラウザ対応
+
+    // エンターキー
+    if (c == 13) {
+
+        var activeObj = $("#" + document.activeElement.id);
+        var splitStr = activeObj[0].id.split("_");
+        var recNumber = 0;
+        var nextIdStr = "";
+        var nextObj = null;
+
+        // 遷移先のIDを作成
+        for(cnt = 0; cnt < splitStr.length - 1; cnt++){
+            nextIdStr = nextIdStr + splitStr[cnt] + "_";
+        }
+
+        if (!e.shiftKey) {
+            // 下に進む
+            recNumber =Number(splitStr[splitStr.length - 1]) + 1;
+
+                // 遷移先が別IDの場合の対応
+            switch (nextIdStr){
+                case "b_card_cri_buff_" :
+                    nextIdStr = "b_card_buff_";
+                    break;
+                case "b_card_buff_" :
+                    nextIdStr = "b_card_cri_buff_";
+                    recNumber--;
+                    break;
+                case "a_card_cri_buff_" :
+                    nextIdStr = "a_card_buff_";
+                    break;
+                case "a_card_buff_" :
+                    nextIdStr = "a_card_cri_buff_";
+                    recNumber--;
+                    break;
+                case "q_card_cri_buff_" :
+                    nextIdStr = "q_card_buff_";
+                    break;
+                case "q_card_buff_" :
+                    nextIdStr = "q_card_cri_buff_";
+                    recNumber--;
+                    break;
+                case "b_footprints_" :
+                    nextIdStr = "a_footprints_";
+                    recNumber--;
+                    break;
+                case "a_footprints_" :
+                    nextIdStr = "q_footprints_";
+                    recNumber--;
+                    break;
+                case "q_footprints_" :
+                    nextIdStr = "b_footprints_";
+                    break;
+            }
+        }
+        else {
+            // 上に戻る
+            recNumber =Number(splitStr[splitStr.length - 1]) - 1;
+
+            // 遷移先が別IDの場合の対応
+            switch (nextIdStr){
+                case "b_card_cri_buff_" :
+                    nextIdStr = "b_card_buff_";
+                    recNumber++;
+                    break;
+                case "b_card_buff_" :
+                    nextIdStr = "b_card_cri_buff_";
+                    break;
+                case "a_card_cri_buff_" :
+                    nextIdStr = "a_card_buff_";
+                    recNumber++;
+                    break;
+                case "a_card_buff_" :
+                    nextIdStr = "a_card_cri_buff_";
+                    break;
+                case "q_card_cri_buff_" :
+                    nextIdStr = "q_card_buff_";
+                    recNumber++;
+                    break;
+                case "q_card_buff_" :
+                    nextIdStr = "q_card_cri_buff_";
+                    break;
+                case "b_footprints_" :
+                    nextIdStr = "q_footprints_";
+                    break;
+                case "a_footprints_" :
+                    nextIdStr = "b_footprints_";
+                    recNumber++;
+                    break;
+                case "q_footprints_" :
+                    nextIdStr = "a_footprints_";
+                    recNumber++;
+                    break;
+            }
+        }
+        nextIdStr = nextIdStr + recNumber
+        nextObj = $("#" + nextIdStr);
+
+        // フォーカス設定
+        nextObj.focus();
+    }  
+    }); 
 });
 
 /**
