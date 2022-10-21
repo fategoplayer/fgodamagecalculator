@@ -76,9 +76,11 @@ $(function(){
 
         if ($(".col_advanced_setting").css("display") == "none"){
             $(".col_advanced_setting").css({"display":"table-cell"});
+            $(".calc").css({"width":"1533"});
         }
         else {
             $(".col_advanced_setting").css({"display":"none"});
+            $(".calc").css({"width":"1347"});
         }
         
         return false;
