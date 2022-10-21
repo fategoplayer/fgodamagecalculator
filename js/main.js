@@ -39,7 +39,7 @@ $(function(){
     /**
      * コピー
      */
-    $(document).on("click", ".col_copy", function() {
+    $(document).on("click", ".copy_link", function() {
         var recNumber = this.id.split("_")[this.id.split("_").length - 1];
         var recNext = Number(recNumber) + 1;
 
@@ -64,6 +64,24 @@ $(function(){
 
         // コピー先を再計算
         calcMain(recNext);
+
+        return false;
+
+    });
+
+    /**
+     * 詳細設定ボタン押下イベント
+     */
+    $(document).on("click", ".advanced_link", function() {
+
+        if ($(".col_advanced_setting").css("display") == "none"){
+            $(".col_advanced_setting").css({"display":"table-cell"});
+        }
+        else {
+            $(".col_advanced_setting").css({"display":"none"});
+        }
+        
+        return false;
 
     });
 
@@ -105,16 +123,18 @@ $(function(){
      */
     $(document).ready(function(){
 
+        /*
         // 設定数分行作成
         for (let cnt = 1; cnt < defaultRow; cnt++){
             // 行追加
             addRow(cnt);
         }
+        */
 
     });
 
     //開くボタンをクリックしたらモーダルを表示する
-    $(document).on("click", ".col_prob", function() {
+    $(document).on("click", ".prob_link", function() {
 
         var recNumber = this.id.split("_")[this.id.split("_").length - 1];
 
@@ -124,7 +144,7 @@ $(function(){
         // 撃破率計算
         calcProb();
 
-        $('.modal-container').addClass('active');
+        $(".modal-container").addClass("active");
 
         return false;
 
@@ -172,11 +192,12 @@ $(function(){
             var splitStr = activeObj[0].id.split("_");
             var recNumber = 0;
             var nextIdStr = "";
+            var activeIdStr ="";
             var nextObj = null;
 
             // 遷移先のIDを作成
             for(cnt = 0; cnt < splitStr.length - 1; cnt++){
-                nextIdStr = nextIdStr + splitStr[cnt] + "_";
+                activeIdStr = activeIdStr + splitStr[cnt] + "_";
             }
 
             if (!e.shiftKey) {
@@ -184,7 +205,7 @@ $(function(){
                 recNumber = Number(splitStr[splitStr.length - 1]) + 1;
 
                  // 遷移先が別IDの場合の対応
-                switch (nextIdStr){
+                switch (activeIdStr){
                     case "b_card_cri_buff_" :
                         nextIdStr = "b_card_buff_";
                         if (Number(splitStr[splitStr.length - 1]) == (rowNumber + defaultRow - 1)) {
@@ -233,7 +254,114 @@ $(function(){
                             recNumber = 0;
                         }
                         break;
+                    case "advanced_atk_buff_1st_" :
+                        nextIdStr = "advanced_atk_buff_2nd_";
+                        recNumber--;
+                        break;
+                    case "advanced_atk_buff_2nd_" :
+                        nextIdStr = "advanced_atk_buff_3rd_";
+                        recNumber--;
+                        break;
+                    case "advanced_atk_buff_3rd_" :
+                        nextIdStr = "advanced_atk_buff_Ex_";
+                        recNumber--;
+                        break;
+                    case "advanced_atk_buff_Ex_" :
+                        nextIdStr = "advanced_atk_buff_1st_";
+                        if (Number(splitStr[splitStr.length - 1]) == (rowNumber + defaultRow - 1)) {
+                            // 最終行なら1行目に戻る
+                            recNumber = 0;
+                        }
+                        break;
+                    case "advanced_card_buff_1st_" :
+                        nextIdStr = "advanced_card_buff_2nd_";
+                        recNumber--;
+                        break;
+                    case "advanced_card_buff_2nd_" :
+                        nextIdStr = "advanced_card_buff_3rd_";
+                        recNumber--;
+                        break;
+                    case "advanced_card_buff_3rd_" :
+                        nextIdStr = "advanced_card_buff_1st_";
+                        if (Number(splitStr[splitStr.length - 1]) == (rowNumber + defaultRow - 1)) {
+                            // 最終行なら1行目に戻る
+                            recNumber = 0;
+                        }
+                        break;
+                    case "advanced_cri_buff_1st_" :
+                        nextIdStr = "advanced_cri_buff_2nd_";
+                        recNumber--;
+                        break;
+                    case "advanced_cri_buff_2nd_" :
+                        nextIdStr = "advanced_cri_buff_3rd_";
+                        recNumber--;
+                        break;
+                    case "advanced_cri_buff_3rd_" :
+                        nextIdStr = "advanced_cri_buff_1st_";
+                        if (Number(splitStr[splitStr.length - 1]) == (rowNumber + defaultRow - 1)) {
+                            // 最終行なら1行目に戻る
+                            recNumber = 0;
+                        }
+                        break;
+                    case "advanced_supereffective_buff_1st_" :
+                        nextIdStr = "advanced_supereffective_buff_2nd_";
+                        recNumber--;
+                        break;
+                    case "advanced_supereffective_buff_2nd_" :
+                        nextIdStr = "advanced_supereffective_buff_3rd_";
+                        recNumber--;
+                        break;
+                    case "advanced_supereffective_buff_3rd_" :
+                        nextIdStr = "advanced_supereffective_buff_Ex_";
+                        recNumber--;
+                        break;
+                    case "advanced_supereffective_buff_Ex_" :
+                        nextIdStr = "advanced_supereffective_buff_1st_";
+                        if (Number(splitStr[splitStr.length - 1]) == (rowNumber + defaultRow - 1)) {
+                            // 最終行なら1行目に戻る
+                            recNumber = 0;
+                        }
+                        break;
+                    case "advanced_fixed_dmg_1st_" :
+                        nextIdStr = "advanced_fixed_dmg_2nd_";
+                        recNumber--;
+                        break;
+                    case "advanced_fixed_dmg_2nd_" :
+                        nextIdStr = "advanced_fixed_dmg_3rd_";
+                        recNumber--;
+                        break;
+                    case "advanced_fixed_dmg_3rd_" :
+                        nextIdStr = "advanced_fixed_dmg_Ex_";
+                        recNumber--;
+                        break;
+                    case "advanced_fixed_dmg_Ex_" :
+                        nextIdStr = "advanced_fixed_dmg_1st_";
+                        if (Number(splitStr[splitStr.length - 1]) == (rowNumber + defaultRow - 1)) {
+                            // 最終行なら1行目に戻る
+                            recNumber = 0;
+                        }
+                        break;
+                    case "advanced_special_def_1st_" :
+                        nextIdStr = "advanced_special_def_2nd_";
+                        recNumber--;
+                        break;
+                    case "advanced_special_def_2nd_" :
+                        nextIdStr = "advanced_special_def_3rd_";
+                        recNumber--;
+                        break;
+                    case "advanced_special_def_3rd_" :
+                        nextIdStr = "advanced_special_def_Ex_";
+                        recNumber--;
+                        break;
+                    case "advanced_special_def_Ex_" :
+                        nextIdStr = "advanced_special_def_1st_";
+                        if (Number(splitStr[splitStr.length - 1]) == (rowNumber + defaultRow - 1)) {
+                            // 最終行なら1行目に戻る
+                            recNumber = 0;
+                        }
+                        break;
                     default :
+                        nextIdStr = activeIdStr;
                         if (Number(splitStr[splitStr.length - 1]) == (rowNumber + defaultRow - 1)) {
                             // 最終行なら1行目に戻る
                             recNumber = 0;
@@ -246,56 +374,163 @@ $(function(){
                 recNumber = Number(splitStr[splitStr.length - 1]) - 1;
                 
                 // 遷移先が別IDの場合の対応
-               switch (nextIdStr){
+               switch (activeIdStr){
                     case "b_card_cri_buff_" :
-                            nextIdStr = "b_card_buff_";
-                            recNumber++;
-                            break;
+                        nextIdStr = "b_card_buff_";
+                        recNumber++;
+                        break;
                     case "b_card_buff_" :
-                            nextIdStr = "b_card_cri_buff_";
-                            if (Number(splitStr[splitStr.length - 1]) == 0) {
-                                // 1行目なら最終行に進む
-                                recNumber = rowNumber + defaultRow - 1;
-                            }
-                            break;
+                        nextIdStr = "b_card_cri_buff_";
+                        if (Number(splitStr[splitStr.length - 1]) == 0) {
+                            // 1行目なら最終行に進む
+                            recNumber = rowNumber + defaultRow - 1;
+                        }
+                        break;
                     case "a_card_cri_buff_" :
-                            nextIdStr = "a_card_buff_";
-                            recNumber++;
-                            break;
+                        nextIdStr = "a_card_buff_";
+                        recNumber++;
+                        break;
                     case "a_card_buff_" :
-                            nextIdStr = "a_card_cri_buff_";
-                            if (Number(splitStr[splitStr.length - 1]) == 0) {
-                                // 1行目なら最終行に進む
-                                recNumber = rowNumber + defaultRow - 1;
-                            }
-                            break;
+                        nextIdStr = "a_card_cri_buff_";
+                        if (Number(splitStr[splitStr.length - 1]) == 0) {
+                            // 1行目なら最終行に進む
+                            recNumber = rowNumber + defaultRow - 1;
+                        }
+                        break;
                     case "q_card_cri_buff_" :
-                            nextIdStr = "q_card_buff_";
-                            recNumber++;
-                            break;
+                        nextIdStr = "q_card_buff_";
+                        recNumber++;
+                        break;
                     case "q_card_buff_" :
-                            nextIdStr = "q_card_cri_buff_";
-                            if (Number(splitStr[splitStr.length - 1]) == 0) {
-                                // 1行目なら最終行に進む
-                                recNumber = rowNumber + defaultRow - 1;
-                            }
-                            break;
+                        nextIdStr = "q_card_cri_buff_";
+                        if (Number(splitStr[splitStr.length - 1]) == 0) {
+                            // 1行目なら最終行に進む
+                            recNumber = rowNumber + defaultRow - 1;
+                        }
+                        break;
                     case "b_footprints_" :
-                            nextIdStr = "q_footprints_";
-                            if (Number(splitStr[splitStr.length - 1]) == 0) {
-                                // 1行目なら最終行に進む
-                                recNumber = rowNumber + defaultRow - 1;
-                            }
-                            break;
+                        nextIdStr = "q_footprints_";
+                        if (Number(splitStr[splitStr.length - 1]) == 0) {
+                            // 1行目なら最終行に進む
+                            recNumber = rowNumber + defaultRow - 1;
+                        }
+                        break;
                     case "a_footprints_" :
-                            nextIdStr = "b_footprints_";
-                            recNumber++;
-                            break;
+                        nextIdStr = "b_footprints_";
+                        recNumber++;
+                        break;
                     case "q_footprints_" :
-                            nextIdStr = "a_footprints_";
-                            recNumber++;
-                            break;
+                        nextIdStr = "a_footprints_";
+                        recNumber++;
+                        break;
+                    case "advanced_atk_buff_2nd_" :
+                        nextIdStr = "advanced_atk_buff_1st_";
+                        recNumber++;
+                        break;
+                    case "advanced_atk_buff_3rd_" :
+                        nextIdStr = "advanced_atk_buff_2nd_";
+                        recNumber++;
+                        break;
+                    case "advanced_atk_buff_Ex_" :
+                        nextIdStr = "advanced_atk_buff_3rd_";
+                        recNumber++;
+                        break;
+                    case "advanced_atk_buff_1st_" :
+                        nextIdStr = "advanced_atk_buff_Ex_";
+                        if (Number(splitStr[splitStr.length - 1]) == 0) {
+                            // 1行目なら最終行に進む
+                            recNumber = rowNumber + defaultRow - 1;
+                        }
+                        break;
+                    case "advanced_card_buff_2nd_" :
+                        nextIdStr = "advanced_card_buff_1st_";
+                        recNumber++;
+                        break;
+                    case "advanced_card_buff_3rd_" :
+                        nextIdStr = "advanced_card_buff_2nd_";
+                        recNumber++;
+                        break;
+                    case "advanced_card_buff_1st_" :
+                        nextIdStr = "advanced_card_buff_3rd_";
+                        if (Number(splitStr[splitStr.length - 1]) == 0) {
+                            // 1行目なら最終行に進む
+                            recNumber = rowNumber + defaultRow - 1;
+                        }
+                        break;
+                    case "advanced_cri_buff_2nd_" :
+                        nextIdStr = "advanced_cri_buff_1st_";
+                        recNumber++;
+                        break;
+                    case "advanced_cri_buff_3rd_" :
+                        nextIdStr = "advanced_cri_buff_2nd_";
+                        recNumber++;
+                        break;
+                    case "advanced_cri_buff_1st_" :
+                        nextIdStr = "advanced_cri_buff_3rd_";
+                        if (Number(splitStr[splitStr.length - 1]) == 0) {
+                            // 1行目なら最終行に進む
+                            recNumber = rowNumber + defaultRow - 1;
+                        }
+                        break;
+                    case "advanced_supereffective_buff_2nd_" :
+                        nextIdStr = "advanced_supereffective_buff_1st_";
+                        recNumber++;
+                        break;
+                    case "advanced_supereffective_buff_3rd_" :
+                        nextIdStr = "advanced_supereffective_buff_2nd_";
+                        recNumber++;
+                        break;
+                    case "advanced_supereffective_buff_Ex_" :
+                        nextIdStr = "advanced_supereffective_buff_3rd_";
+                        recNumber++;
+                        break;
+                    case "advanced_supereffective_buff_1st_" :
+                        nextIdStr = "advanced_supereffective_buff_Ex_";
+                        if (Number(splitStr[splitStr.length - 1]) == 0) {
+                            // 1行目なら最終行に進む
+                            recNumber = rowNumber + defaultRow - 1;
+                        }
+                        break;
+                    case "advanced_fixed_dmg_2nd_" :
+                        nextIdStr = "advanced_fixed_dmg_1st_";
+                        recNumber++;
+                        break;
+                    case "advanced_fixed_dmg_3rd_" :
+                        nextIdStr = "advanced_fixed_dmg_2nd_";
+                        recNumber++;
+                        break;
+                    case "advanced_fixed_dmg_Ex_" :
+                        nextIdStr = "advanced_fixed_dmg_3rd_";
+                        recNumber++;
+                        break;
+                    case "advanced_fixed_dmg_1st_" :
+                        nextIdStr = "advanced_fixed_dmg_Ex_";
+                        if (Number(splitStr[splitStr.length - 1]) == 0) {
+                            // 1行目なら最終行に進む
+                            recNumber = rowNumber + defaultRow - 1;
+                        }
+                        break;
+                    case "advanced_special_def_2nd_" :
+                        nextIdStr = "advanced_special_def_1st_";
+                        recNumber++;
+                        break;
+                    case "advanced_special_def_3rd_" :
+                        nextIdStr = "advanced_special_def_2nd_";
+                        recNumber++;
+                        break;
+                    case "advanced_special_def_Ex_" :
+                        nextIdStr = "advanced_special_def_3rd_";
+                        recNumber++;
+                        break;
+                    case "advanced_special_def_1st_" :
+                        nextIdStr = "advanced_special_def_Ex_";
+                        if (Number(splitStr[splitStr.length - 1]) == 0) {
+                            // 1行目なら最終行に進む
+                            recNumber = rowNumber + defaultRow - 1;
+                        }
+                        break;
                     default :
+                        nextIdStr = activeIdStr;
                         if (Number(splitStr[splitStr.length - 1]) == 0) {
                             // 1行目なら最終行に進む
                             recNumber = rowNumber + defaultRow - 1;
@@ -304,122 +539,14 @@ $(function(){
                }
             }
 
-            nextIdStr = nextIdStr + recNumber
+            nextIdStr = nextIdStr + recNumber;
             nextObj = $("#" + nextIdStr);
 
             // フォーカス設定
             nextObj.focus();
         }  
-      });
+    });
 
-    /**
-     * エンターキーでフォーカス移動
-     * 撃破率
-     */
-    $("#probTable").keypress(function(e) { 
-    var c = e.which ? e.which : e.keyCode; // クロスブラウザ対応
-
-    // エンターキー
-    if (c == 13) {
-
-        var activeObj = $("#" + document.activeElement.id);
-        var splitStr = activeObj[0].id.split("_");
-        var recNumber = 0;
-        var nextIdStr = "";
-        var nextObj = null;
-
-        // 遷移先のIDを作成
-        for(cnt = 0; cnt < splitStr.length - 1; cnt++){
-            nextIdStr = nextIdStr + splitStr[cnt] + "_";
-        }
-
-        if (!e.shiftKey) {
-            // 下に進む
-            recNumber =Number(splitStr[splitStr.length - 1]) + 1;
-
-                // 遷移先が別IDの場合の対応
-            switch (nextIdStr){
-                case "b_card_cri_buff_" :
-                    nextIdStr = "b_card_buff_";
-                    break;
-                case "b_card_buff_" :
-                    nextIdStr = "b_card_cri_buff_";
-                    recNumber--;
-                    break;
-                case "a_card_cri_buff_" :
-                    nextIdStr = "a_card_buff_";
-                    break;
-                case "a_card_buff_" :
-                    nextIdStr = "a_card_cri_buff_";
-                    recNumber--;
-                    break;
-                case "q_card_cri_buff_" :
-                    nextIdStr = "q_card_buff_";
-                    break;
-                case "q_card_buff_" :
-                    nextIdStr = "q_card_cri_buff_";
-                    recNumber--;
-                    break;
-                case "b_footprints_" :
-                    nextIdStr = "a_footprints_";
-                    recNumber--;
-                    break;
-                case "a_footprints_" :
-                    nextIdStr = "q_footprints_";
-                    recNumber--;
-                    break;
-                case "q_footprints_" :
-                    nextIdStr = "b_footprints_";
-                    break;
-            }
-        }
-        else {
-            // 上に戻る
-            recNumber =Number(splitStr[splitStr.length - 1]) - 1;
-
-            // 遷移先が別IDの場合の対応
-            switch (nextIdStr){
-                case "b_card_cri_buff_" :
-                    nextIdStr = "b_card_buff_";
-                    recNumber++;
-                    break;
-                case "b_card_buff_" :
-                    nextIdStr = "b_card_cri_buff_";
-                    break;
-                case "a_card_cri_buff_" :
-                    nextIdStr = "a_card_buff_";
-                    recNumber++;
-                    break;
-                case "a_card_buff_" :
-                    nextIdStr = "a_card_cri_buff_";
-                    break;
-                case "q_card_cri_buff_" :
-                    nextIdStr = "q_card_buff_";
-                    recNumber++;
-                    break;
-                case "q_card_buff_" :
-                    nextIdStr = "q_card_cri_buff_";
-                    break;
-                case "b_footprints_" :
-                    nextIdStr = "q_footprints_";
-                    break;
-                case "a_footprints_" :
-                    nextIdStr = "b_footprints_";
-                    recNumber++;
-                    break;
-                case "q_footprints_" :
-                    nextIdStr = "a_footprints_";
-                    recNumber++;
-                    break;
-            }
-        }
-        nextIdStr = nextIdStr + recNumber
-        nextObj = $("#" + nextIdStr);
-
-        // フォーカス設定
-        nextObj.focus();
-    }  
-    }); 
 });
 
 /**
@@ -428,9 +555,16 @@ $(function(){
  */
 function addRow(row){
 
-    var rowHtml = '<tr><td class="col_copy" id="copy_' + row + '"><img src="img/arrow.png"></td><td class="col_atk"><input type="number" id="atk_' + row + '" value="0" max="99999" min="0" step="500" class="atk"></td><td class="col_np"><input type="number" id="np_dmg_' + row + '" value="500" max="3000" min="0" step="50" class="np_dmg"><span><hr class="boundary_line"></span><select id="np_kind_' + row + '" class="np_kind"><option value="B" selected>B</option><option value="A">A</option><option value="Q">Q</option></select></td><td class="col_atk_buff"><input type="number" id="atk_buff_' + row + '" value="0" max="500" min="-100" step="10" class="atk_buff"></td><td class="col_card_buff"><input type="number" id="b_card_buff_' + row + '" value="0" max="500" min="-100" step="10" class="b_card_buff"><span><hr class="boundary_line"></span><input type="number" id="b_card_cri_buff_' + row + '" value="0" max="500" min="-100" step="10" class="b_card_cri_buff"></td><td class="col_card_buff"><input type="number" id="a_card_buff_' + row + '" value="0" max="500" min="-100" step="10" class="a_card_buff"><span><hr class="boundary_line"></span><input type="number" id="a_card_cri_buff_' + row + '" value="0" max="500" min="-100" step="10" class="a_card_cri_buff"></td><td class="col_card_buff"><input type="number" id="q_card_buff_' + row + '" value="0" max="500" min="-100" step="10" class="q_card_buff"><span><hr class="boundary_line"></span><input type="number" id="q_card_cri_buff_' + row + '" value="0" max="500" min="-100" step="10" class="q_card_cri_buff"></td><td class="col_cri_buff"><input type="number" id="cri_buff_' + row + '" value="0" max="500" min="0" step="1" class="cri_buff"></td><td class="col_np_buff"><input type="number" id="np_buff_' + row + '" value="0" max="500" min="0" step="10" class="np_buff"></td><td class="col_ex_atk_buff"><input type="number" id="ex_atk_buff_' + row + '" value="0" max="50" min="0" step="1" class="ex_atk_buff"></td><td class="col_supereffective_buff"><input type="number" id="supereffective_buff_' + row + '" value="0" max="1000" min="0" step="10" class="supereffective_buff"></td><td class="col_supereffective_np"><input type="number" id="supereffective_np_' + row + '" value="100" max="500" min="0" step="50" class="supereffective_np"></td><td class="col_fixed_dmg"><input type="number" id="fixed_dmg_' + row + '" value="0" step="10" class="fixed_dmg"></td><td class="col_footprints"><input type="number" id="b_footprints_' + row + '" value="0" max="500" min="0" step="25" class="b_footprints"><span><hr class="boundary_line"></span><input type="number" id="a_footprints_' + row + '" value="0" max="500" min="0" step="25" class="a_footprints"><span><hr class="boundary_line"></span><input type="number" id="q_footprints_' + row + '" value="0" max="500" min="0" step="25" class="q_footprints"></td><td class="col_special_def"><input type="number" id="special_def_' + row + '" value="0" max="100" min="-100" step="10" class="special_def"></td><td class="col_class_affinity"><select id="class_affinity_' + row + '" class="class_affinity"><option value="0.5">0.5</option><option value="1.0">1.0</option><option value="1.2">1.2</option><option value="1.5">1.5</option><option value="2.0" selected>2.0</option></select></td><td class="col_class_servant"><select id="class_servant_' + row + '" class="class_servant"><option value="0.90">0.9</option><option value="0.95">0.95</option><option value="1.00" selected>1.0</option><option value="1.05">1.05</option><option value="1.10">1.1</option></select></td><td class="col_attribute_affinity"><select id="attribute_affinity_' + row + '" class="attribute_affinity"><option value="0.9">0.9</option><option value="1.0" selected>1.0</option><option value="1.1">1.1</option></select></td><td class="col_card_sel"><select id="card_1st_' + row + '" class="card_1st"><option value="NP" selected>N</option><option value="B">B</option><option value="A">A</option><option value="Q">Q</option></select><span><hr class="boundary_line"></span><select id="card_1st_cri_' + row + '" class="card_1st_cri"><option value="Y">有</option><option value="N">無</option><option value="zero">0</option></select></td><td class="col_card_sel"><select id="card_2nd_' + row + '" class="card_2nd"><option value="NP">N</option><option value="B" selected>B</option><option value="A">A</option><option value="Q">Q</option></select><span><hr class="boundary_line"></span><select id="card_2nd_cri_' + row + '" class="card_2nd_cri"><option value="Y">有</option><option value="N">無</option><option value="zero">0</option></select></td><td  class="col_card_sel"><select id="card_3rd_' + row + '" class="card_3rd"><option value="NP">N</option><option value="B" selected>B</option><option value="A">A</option><option value="Q">Q</option></select><span><hr class="boundary_line"></span><select id="card_3rd_cri_' + row + '" class="card_3rd_cri"><option value="Y">有</option><option value="N">無</option><option value="zero">0</option></select></td><td  class="col_card_sel"><select id="ex_cri_' + row + '" class="ex_cri"><option value="N">有</option><option value="zero">0</option></select></td><td class="col_dmg_result"><div class="wrap_dmg_result"><output type="number" id="dmg_min_1st_' + row + '" class="dmg_result">0</output></div><div class="wrap_dmg_result"><output type="number" id="dmg_ave_1st_' + row + '" class="dmg_result">0</output></div><div class="wrap_dmg_result"><output type="number" id="dmg_max_1st_' + row + '" class="dmg_result">0</output></div></td><td class="col_dmg_result"><div class="wrap_dmg_result"><output type="number" id="dmg_min_2nd_' + row + '" class="dmg_result">0</output></div><div class="wrap_dmg_result"><output type="number" id="dmg_ave_2nd_' + row + '" class="dmg_result">0</output></div><div class="wrap_dmg_result"><output type="number" id="dmg_max_2nd_' + row + '" class="dmg_result">0</output></div></td><td class="col_dmg_result"><div class="wrap_dmg_result"><output type="number" id="dmg_min_3rd_' + row + '" class="dmg_result">0</output></div><div class="wrap_dmg_result"><output type="number" id="dmg_ave_3rd_' + row + '" class="dmg_result">0</output></div><div class="wrap_dmg_result"><output type="number" id="dmg_max_3rd_' + row + '" class="dmg_result">0</output></div></td><td class="col_dmg_result"><div class="wrap_dmg_result"><output type="number" id="dmg_min_ex_' + row + '" class="dmg_result">0</output></div><div class="wrap_dmg_result"><output type="number" id="dmg_ave_ex_' + row + '" class="dmg_result">0</output></div><div class="wrap_dmg_result"><output type="number" id="dmg_max_ex_' + row + '" class="dmg_result">0</output></div></td><td class="col_dmg_result"><div class="wrap_dmg_result"><output type="number" id="dmg_min_total_' + row + '" class="dmg_result">0</output></div><div class="wrap_dmg_result"><output type="number" id="dmg_ave_total_' + row + '" class="dmg_result">0</output></div><div class="wrap_dmg_result"><output type="number" id="dmg_max_total_' + row + '" class="dmg_result">0</output></div></td><td class="col_prob" id="prob_' + row + '"><img src="img/calculator.png"></td></tr>';
+    var rowHtml = '<tr><td class="col_copy"><a href="#" id="copy_' + row + '" class="copy_link"><img src="img/arrow.png"></a></td><td class="col_atk"><input type="number" id="atk_' + row + '" value="0" max="99999" min="0" step="500" class="atk"></td><td class="col_np"><input type="number" id="np_dmg_' + row + '" value="500" max="3000" min="0" step="50" class="np_dmg"><div class="boundary_line"></div><select id="np_kind_' + row + '" class="np_kind"><option value="B" selected>B</option><option value="A">A</option><option value="Q">Q</option></select></td><td class="col_atk_buff"><input type="number" id="atk_buff_' + row + '" value="0" max="500" min="-100" step="10" class="atk_buff"></td><td class="col_card_buff"><input type="number" id="b_card_buff_' + row + '" value="0" max="500" min="-100" step="10" class="b_card_buff"><div class="boundary_line"></div><input type="number" id="b_card_cri_buff_' + row + '" value="0" max="500" min="-100" step="10" class="b_card_cri_buff"></td><td class="col_card_buff"><input type="number" id="a_card_buff_' + row + '" value="0" max="500" min="-100" step="10" class="a_card_buff"><div class="boundary_line"></div><input type="number" id="a_card_cri_buff_' + row + '" value="0" max="500" min="-100" step="10" class="a_card_cri_buff"></td><td class="col_card_buff"><input type="number" id="q_card_buff_' + row + '" value="0" max="500" min="-100" step="10" class="q_card_buff"><div class="boundary_line"></div><input type="number" id="q_card_cri_buff_' + row + '" value="0" max="500" min="-100" step="10" class="q_card_cri_buff"></td><td class="col_cri_buff"><input type="number" id="cri_buff_' + row + '" value="0" max="500" min="0" step="1" class="cri_buff"></td><td class="col_np_buff"><input type="number" id="np_buff_' + row + '" value="0" max="500" min="-100" step="10" class="np_buff"></td><td class="col_ex_atk_buff"><input type="number" id="ex_atk_buff_' + row + '" value="0" max="50" min="0" step="1" class="ex_atk_buff"></td><td class="col_supereffective_buff"><input type="number" id="supereffective_buff_' + row + '" value="0" max="1000" min="0" step="10" class="supereffective_buff"></td><td class="col_supereffective_np"><input type="number" id="supereffective_np_' + row + '" value="100" max="500" min="0" step="50" class="supereffective_np"></td><td class="col_fixed_dmg"><input type="number" id="fixed_dmg_' + row + '" value="0" step="10" class="fixed_dmg"></td><td class="col_footprints"><input type="number" id="b_footprints_' + row + '" value="0" max="500" min="0" step="25" class="b_footprints"><div class="boundary_line"></div><input type="number" id="a_footprints_' + row + '" value="0" max="500" min="0" step="25" class="a_footprints"><div class="boundary_line"></div><input type="number" id="q_footprints_' + row + '" value="0" max="500" min="0" step="25" class="q_footprints"></td><td class="col_special_def"><input type="number" id="special_def_' + row + '" value="0" max="100" min="-100" step="10" class="special_def"></td><td class="col_advanced"><a href="#" class="advanced_link"><img src="img/setting.png"></a></td><td class="col_advanced_setting"><input type="number" id="advanced_atk_buff_1st_' + row + '" value="0" max="500" min="0" step="10" class="advanced_atk_buff_1st"><div class="boundary_line"></div><input type="number" id="advanced_atk_buff_2nd_' + row + '" value="0" max="500" min="0" step="10" class="advanced_atk_buff_2nd"><div class="boundary_line"></div><input type="number" id="advanced_atk_buff_3rd_' + row + '" value="0" max="500" min="0" step="10" class="advanced_atk_buff_3rd"><div class="boundary_line"></div><input type="number" id="advanced_atk_buff_Ex_' + row + '" value="0" max="500" min="0" step="10" class="advanced_atk_buff_Ex"></td><td class="col_advanced_setting"><input type="number" id="advanced_card_buff_1st_' + row + '" value="0" max="500" min="0" step="10" class="advanced_card_buff_1st"><div class="boundary_line"></div><input type="number" id="advanced_card_buff_2nd_' + row + '" value="0" max="500" min="0" step="10" class="advanced_card_buff_2nd"><div class="boundary_line"></div><input type="number" id="advanced_card_buff_3rd_' + row + '" value="0" max="500" min="0" step="10" class="advanced_card_buff_3rd"></td><td class="col_advanced_setting"><input type="number" id="advanced_cri_buff_1st_' + row + '" value="0" max="500" min="0" step="10" class="advanced_cri_buff_1st"><div class="boundary_line"></div><input type="number" id="advanced_cri_buff_2nd_' + row + '" value="0" max="500" min="0" step="10" class="advanced_cri_buff_2nd"><div class="boundary_line"></div><input type="number" id="advanced_cri_buff_3rd_' + row + '" value="0" max="500" min="0" step="10" class="advanced_cri_buff_3rd"></td><td class="col_advanced_setting"><input type="number" id="advanced_supereffective_buff_1st_' + row + '" value="0" max="1000" min="0" step="10" class="advanced_supereffective_buff_1st"><div class="boundary_line"></div><input type="number" id="advanced_supereffective_buff_2nd_' + row + '" value="0" max="1000" min="0" step="10" class="advanced_supereffective_buff_2nd"><div class="boundary_line"></div><input type="number" id="advanced_supereffective_buff_3rd_' + row + '" value="0" max="1000" min="0" step="10" class="advanced_supereffective_buff_3rd"><div class="boundary_line"></div><input type="number" id="advanced_supereffective_buff_Ex_' + row + '" value="0" max="1000" min="0" step="10" class="advanced_supereffective_buff_Ex"></td><td class="col_advanced_setting"><input type="number" id="advanced_fixed_dmg_1st_' + row + '" value="0" step="10" class="advanced_fixed_dmg_1st"><div class="boundary_line"></div><input type="number" id="advanced_fixed_dmg_2nd_' + row + '" value="0" step="10" class="advanced_fixed_dmg_2nd"><div class="boundary_line"></div><input type="number" id="advanced_fixed_dmg_3rd_' + row + '" value="0" step="10" class="advanced_fixed_dmg_3rd"><div class="boundary_line"></div><input type="number" id="advanced_fixed_dmg_Ex_' + row + '" value="0" step="10" class="advanced_fixed_dmg_Ex"></td><td class="col_advanced_setting"><input type="number" id="advanced_special_def_1st_' + row + '" value="0" max="100" min="-100" step="10" class="advanced_special_def_1st"><div class="boundary_line"></div><input type="number" id="advanced_special_def_2nd_' + row + '" value="0" max="100" min="-100" step="10" class="advanced_special_def_2nd"><div class="boundary_line"></div><input type="number" id="advanced_special_def_3rd_' + row + '" value="0" max="100" min="-100" step="10" class="advanced_special_def_3rd"><div class="boundary_line"></div><input type="number" id="advanced_special_def_Ex_' + row + '" value="0" max="100" min="-100" step="10" class="advanced_special_def_Ex"></td><td class="col_class_affinity"><select id="class_affinity_' + row + '" class="class_affinity"><option value="0.5">0.5</option><option value="1.0">1.0</option><option value="1.2">1.2</option><option value="1.5">1.5</option><option value="2.0" selected>2.0</option></select></td><td class="col_class_servant"><select id="class_servant_' + row + '" class="class_servant"><option value="0.90">0.9</option><option value="0.95">0.95</option><option value="1.00" selected>1.0</option><option value="1.05">1.05</option><option value="1.10">1.1</option></select></td><td class="col_attribute_affinity"><select id="attribute_affinity_' + row + '" class="attribute_affinity"><option value="0.9">0.9</option><option value="1.0" selected>1.0</option><option value="1.1">1.1</option></select></td><td class="col_card_sel"><select id="card_1st_' + row + '" class="card_1st"><option value="NP" selected>N</option><option value="B">B</option><option value="A">A</option><option value="Q">Q</option></select><div class="boundary_line"></div><select id="card_1st_cri_' + row + '" class="card_1st_cri"><option value="Y">有</option><option value="N">無</option><option value="zero">0</option></select></td><td class="col_card_sel"><select id="card_2nd_' + row + '" class="card_2nd"><option value="NP">N</option><option value="B" selected>B</option><option value="A">A</option><option value="Q">Q</option></select><div class="boundary_line"></div><select id="card_2nd_cri_' + row + '" class="card_2nd_cri"><option value="Y">有</option><option value="N">無</option><option value="zero">0</option></select></td><td  class="col_card_sel"><select id="card_3rd_' + row + '" class="card_3rd"><option value="NP">N</option><option value="B" selected>B</option><option value="A">A</option><option value="Q">Q</option></select><div class="boundary_line"></div><select id="card_3rd_cri_' + row + '" class="card_3rd_cri"><option value="Y">有</option><option value="N">無</option><option value="zero">0</option></select></td><td  class="col_card_sel"><select id="ex_cri_' + row + '" class="ex_cri"><option value="N">有</option><option value="zero">0</option></select></td><td class="col_dmg_result"><div class="wrap_dmg_result"><output type="number" id="dmg_min_1st_' + row + '" class="dmg_result">0</output></div><div class="wrap_dmg_result"><output type="number" id="dmg_ave_1st_' + row + '" class="dmg_result">0</output></div><div class="wrap_dmg_result"><output type="number" id="dmg_max_1st_' + row + '" class="dmg_result">0</output></div></td><td class="col_dmg_result"><div class="wrap_dmg_result"><output type="number" id="dmg_min_2nd_' + row + '" class="dmg_result">0</output></div><div class="wrap_dmg_result"><output type="number" id="dmg_ave_2nd_' + row + '" class="dmg_result">0</output></div><div class="wrap_dmg_result"><output type="number" id="dmg_max_2nd_' + row + '" class="dmg_result">0</output></div></td><td class="col_dmg_result"><div class="wrap_dmg_result"><output type="number" id="dmg_min_3rd_' + row + '" class="dmg_result">0</output></div><div class="wrap_dmg_result"><output type="number" id="dmg_ave_3rd_' + row + '" class="dmg_result">0</output></div><div class="wrap_dmg_result"><output type="number" id="dmg_max_3rd_' + row + '" class="dmg_result">0</output></div></td><td class="col_dmg_result"><div class="wrap_dmg_result"><output type="number" id="dmg_min_ex_' + row + '" class="dmg_result">0</output></div><div class="wrap_dmg_result"><output type="number" id="dmg_ave_ex_' + row + '" class="dmg_result">0</output></div><div class="wrap_dmg_result"><output type="number" id="dmg_max_ex_' + row + '" class="dmg_result">0</output></div></td><td class="col_dmg_result"><div class="wrap_dmg_result"><output type="number" id="dmg_min_total_' + row + '" class="dmg_result">0</output></div><div class="wrap_dmg_result"><output type="number" id="dmg_ave_total_' + row + '" class="dmg_result">0</output></div><div class="wrap_dmg_result"><output type="number" id="dmg_max_total_' + row + '" class="dmg_result">0</output></div></td><td class="col_prob"><a href="#" id="prob_' + row + '" class="prob_link"><img src="img/calculator.png"></a></td></tr>';
 
     $("#calcItem").append(rowHtml);
+
+    if ($(".col_advanced_setting").css("display") == "none"){
+        $(".col_advanced_setting").css({"display":"none"});
+    }
+    else {
+        $(".col_advanced_setting").css({"display":"table-cell"});
+    }
 
 }
 
@@ -460,6 +594,28 @@ function clearParam(row) {
     $("#a_footprints_" + row).val("0");
     $("#q_footprints_" + row).val("0");
     $("#special_def_" + row).val("0");
+    $("#advanced_atk_buff_1st_" + row).val("0");
+    $("#advanced_atk_buff_2nd_" + row).val("0");
+    $("#advanced_atk_buff_3rd_" + row).val("0");
+    $("#advanced_atk_buff_Ex_" + row).val("0");
+    $("#advanced_card_buff_1st_" + row).val("0");
+    $("#advanced_card_buff_2nd_" + row).val("0");
+    $("#advanced_card_buff_3rd_" + row).val("0");
+    $("#advanced_cri_buff_1st_" + row).val("0");
+    $("#advanced_cri_buff_2nd_" + row).val("0");
+    $("#advanced_cri_buff_3rd_" + row).val("0");
+    $("#advanced_supereffective_buff_1st_" + row).val("0");
+    $("#advanced_supereffective_buff_2nd_" + row).val("0");
+    $("#advanced_supereffective_buff_3rd_" + row).val("0");
+    $("#advanced_supereffective_buff_Ex_" + row).val("0");
+    $("#advanced_fixed_dmg_1st_" + row).val("0");
+    $("#advanced_fixed_dmg_2nd_" + row).val("0");
+    $("#advanced_fixed_dmg_3rd_" + row).val("0");
+    $("#advanced_fixed_dmg_Ex_" + row).val("0");
+    $("#advanced_special_def_1st_" + row).val("0");
+    $("#advanced_special_def_2nd_" + row).val("0");
+    $("#advanced_special_def_3rd_" + row).val("0");
+    $("#advanced_special_def_Ex_" + row).val("0");
     $("#class_affinity_" + row).val("2.0");
     $("#attribute_affinity_" + row).val("1.0");
     $("#class_servant_" + row).val("1.00");
@@ -485,6 +641,7 @@ function clearParam(row) {
     $("#dmg_min_total_" + row).val("0");
     $("#dmg_ave_total_" + row).val("0");
     $("#dmg_max_total_" + row).val("0");
+    $("#enemy_hp").val("0");
 
 }
 
@@ -514,6 +671,28 @@ function copyParam(recNumber, recNext){
     $("#a_footprints_" + recNext).val($("#a_footprints_" + recNumber).val());
     $("#q_footprints_" + recNext).val($("#q_footprints_" + recNumber).val());
     $("#special_def_" + recNext).val($("#special_def_" + recNumber).val());
+    $("#advanced_atk_buff_1st_" + recNext).val($("#advanced_atk_buff_1st_" + recNumber).val());
+    $("#advanced_atk_buff_2nd_" + recNext).val($("#advanced_atk_buff_2nd_" + recNumber).val());
+    $("#advanced_atk_buff_3rd_" + recNext).val($("#advanced_atk_buff_3rd_" + recNumber).val());
+    $("#advanced_atk_buff_Ex_" + recNext).val($("#advanced_atk_buff_Ex_" + recNumber).val());
+    $("#advanced_card_buff_1st_" + recNext).val($("#advanced_card_buff_1st_" + recNumber).val());
+    $("#advanced_card_buff_2nd_" + recNext).val($("#advanced_card_buff_2nd_" + recNumber).val());
+    $("#advanced_card_buff_3rd_" + recNext).val($("#advanced_card_buff_3rd_" + recNumber).val());
+    $("#advanced_cri_buff_1st_" + recNext).val($("#advanced_cri_buff_1st_" + recNumber).val());
+    $("#advanced_cri_buff_2nd_" + recNext).val($("#advanced_cri_buff_2nd_" + recNumber).val());
+    $("#advanced_cri_buff_3rd_" + recNext).val($("#advanced_cri_buff_3rd_" + recNumber).val());
+    $("#advanced_supereffective_buff_1st_" + recNext).val($("#advanced_supereffective_buff_1st_" + recNumber).val());
+    $("#advanced_supereffective_buff_2nd_" + recNext).val($("#advanced_supereffective_buff_2nd_" + recNumber).val());
+    $("#advanced_supereffective_buff_3rd_" + recNext).val($("#advanced_supereffective_buff_3rd_" + recNumber).val());
+    $("#advanced_supereffective_buff_Ex_" + recNext).val($("#advanced_supereffective_buff_Ex_" + recNumber).val());
+    $("#advanced_fixed_dmg_1st_" + recNext).val($("#advanced_fixed_dmg_1st_" + recNumber).val());
+    $("#advanced_fixed_dmg_2nd_" + recNext).val($("#advanced_fixed_dmg_2nd_" + recNumber).val());
+    $("#advanced_fixed_dmg_3rd_" + recNext).val($("#advanced_fixed_dmg_3rd_" + recNumber).val());
+    $("#advanced_fixed_dmg_Ex_" + recNext).val($("#advanced_fixed_dmg_Ex_" + recNumber).val());
+    $("#advanced_special_def_1st_" + recNext).val($("#advanced_special_def_1st_" + recNumber).val());
+    $("#advanced_special_def_2nd_" + recNext).val($("#advanced_special_def_2nd_" + recNumber).val());
+    $("#advanced_special_def_3rd_" + recNext).val($("#advanced_special_def_3rd_" + recNumber).val());
+    $("#advanced_special_def_Ex_" + recNext).val($("#advanced_special_def_Ex_" + recNumber).val());
     $("#class_affinity_" + recNext).val($("#class_affinity_" + recNumber).val());
     $("#attribute_affinity_" + recNext).val($("#attribute_affinity_" + recNumber).val());
     $("#class_servant_" + recNext).val($("#class_servant_" + recNumber).val());
@@ -533,8 +712,17 @@ function copyParam(recNumber, recNext){
 function calcMain(recNumber) {
     var atk, np_dmg, np_kind, atk_buff, b_card_buff, b_card_cri_buff, a_card_buff, a_card_cri_buff, q_card_buff, q_card_cri_buff,
     cri_buff, np_buff, ex_atk_buff, supereffective_buff, supereffective_np, fixed_dmg, b_footprints, a_footprints, q_footprints,
-    special_def, class_affinity, attribute_affinity, class_servant, card_1st, card_1st_cri, card_2nd, card_2nd_cri, card_3rd, card_3rd_cri, ex_cri,
+    special_def, advanced_atk_buff_1st, advanced_atk_buff_2nd, advanced_atk_buff_3rd, advanced_atk_buff_ex,
+    advanced_supereffective_buff_1st, advanced_supereffective_buff_2nd, advanced_supereffective_buff_3rd, advanced_supereffective_buff_ex,
+    advanced_fixed_dmg_1st, advanced_fixed_dmg_2nd, advanced_fixed_dmg_3rd, advanced_fixed_dmg_ex, 
+    advanced_special_def_1st, advanced_special_def_2nd, advanced_special_def_3rd, advanced_special_def_ex,
+    advanced_card_buff_1st, advanced_card_buff_2nd, advanced_card_buff_3rd,
+    advanced_cri_buff_1st, advanced_cri_buff_2nd, advanced_cri_buff_3rd,
+    class_affinity, attribute_affinity, class_servant, card_1st, card_1st_cri, card_2nd, card_2nd_cri, card_3rd, card_3rd_cri, ex_cri,
     bbonus_1st, bbonus_2nd, bbonus_3rd, exbonus, bbonus_all, bchain_bonus, atk_1st, atk_2nd, atk_3rd, card_buff_1st, card_buff_2nd, card_buff_3rd,
+    supereffective_buff_1st, supereffective_buff_2nd, supereffective_buff_3rd, supereffective_buff_ex,
+    fixed_dmg_1st, fixed_dmg_2nd, fixed_dmg_3rd, fixed_dmg_ex, special_def_1st, special_def_2nd, special_def_3rd, special_def_ex,
+    atk_buff_1st, atk_buff_2nd, atk_buff_3rd, atk_buff_ex,
     cri_buff_1st, cri_buff_2nd, cri_buff_3rd, np_card_buff,
     dmg_ave_1st, dmg_ave_2nd, dmg_ave_3rd, dmg_ave_EX,
     dmg_max_1st, dmg_max_2nd, dmg_max_3rd, dmg_max_EX,
@@ -564,6 +752,28 @@ function calcMain(recNumber) {
     a_footprints = parseFloat($("#a_footprints_" + recNumber).val());
     q_footprints = parseFloat($("#q_footprints_" + recNumber).val());
     special_def = parseFloat($("#special_def_" + recNumber).val());
+    advanced_atk_buff_1st = parseFloat($("#advanced_atk_buff_1st_" + recNumber).val());
+    advanced_atk_buff_2nd = parseFloat($("#advanced_atk_buff_2nd_" + recNumber).val());
+    advanced_atk_buff_3rd = parseFloat($("#advanced_atk_buff_3rd_" + recNumber).val());
+    advanced_atk_buff_ex = parseFloat($("#advanced_atk_buff_Ex_" + recNumber).val());
+    advanced_card_buff_1st = parseFloat($("#advanced_card_buff_1st_" + recNumber).val());
+    advanced_card_buff_2nd = parseFloat($("#advanced_card_buff_2nd_" + recNumber).val());
+    advanced_card_buff_3rd = parseFloat($("#advanced_card_buff_3rd_" + recNumber).val());
+    advanced_cri_buff_1st = parseFloat($("#advanced_cri_buff_1st_" + recNumber).val());
+    advanced_cri_buff_2nd = parseFloat($("#advanced_cri_buff_2nd_" + recNumber).val());
+    advanced_cri_buff_3rd = parseFloat($("#advanced_cri_buff_3rd_" + recNumber).val());
+    advanced_supereffective_buff_1st = parseFloat($("#advanced_supereffective_buff_1st_" + recNumber).val());
+    advanced_supereffective_buff_2nd = parseFloat($("#advanced_supereffective_buff_2nd_" + recNumber).val());
+    advanced_supereffective_buff_3rd = parseFloat($("#advanced_supereffective_buff_3rd_" + recNumber).val());
+    advanced_supereffective_buff_ex = parseFloat($("#advanced_supereffective_buff_Ex_" + recNumber).val());
+    advanced_fixed_dmg_1st = parseFloat($("#advanced_fixed_dmg_1st_" + recNumber).val());
+    advanced_fixed_dmg_2nd = parseFloat($("#advanced_fixed_dmg_2nd_" + recNumber).val());
+    advanced_fixed_dmg_3rd = parseFloat($("#advanced_fixed_dmg_3rd_" + recNumber).val());
+    advanced_fixed_dmg_ex = parseFloat($("#advanced_fixed_dmg_Ex_" + recNumber).val());
+    advanced_special_def_1st = parseFloat($("#advanced_special_def_1st_" + recNumber).val());
+    advanced_special_def_2nd = parseFloat($("#advanced_special_def_2nd_" + recNumber).val());
+    advanced_special_def_3rd = parseFloat($("#advanced_special_def_3rd_" + recNumber).val());
+    advanced_special_def_ex = parseFloat($("#advanced_special_def_Ex_" + recNumber).val());
     class_affinity = parseFloat($("#class_affinity_" + recNumber).val());
     attribute_affinity = parseFloat($("#attribute_affinity_" + recNumber).val());
     class_servant = parseFloat($("#class_servant_" + recNumber).val());
@@ -575,38 +785,145 @@ function calcMain(recNumber) {
     card_3rd_cri = $("#card_3rd_cri_" + recNumber).val();
     ex_cri = $("#ex_cri_" + recNumber).val();
 
-    // バフ上限加減チェック
-    if (q_card_buff > 400) { q_card_buff = 400 };
-    if (a_card_buff > 400) { a_card_buff = 400 };
-    if (b_card_buff > 400) { b_card_buff = 400 };
-    if (ex_atk_buff > 400) { ex_atk_buff = 400 };
-    if (atk_buff > 400) { atk_buff = 400 };
-    if (atk_buff < -100) { atk_buff = -100 };
-    if (supereffective_buff > 1000) { supereffective_buff = 1000 };
-    if (cri_buff > 500) { cri_buff = 500 };
-    if (np_buff > 500) { np_buff = 500 };
-
     bbonus_all = 0; bchain_bonus = 0; exbonus = 200;
 
     // カード選択ボーナスを設定
-    if (card_1st == "Q") { bbonus_1st = 80; card_buff_1st = q_card_buff; cri_buff_1st = cri_buff + q_card_cri_buff; atk_1st = atk + q_footprints; };
-    if (card_1st == "A") { bbonus_1st = 100; card_buff_1st = a_card_buff; cri_buff_1st = cri_buff + a_card_cri_buff; atk_1st = atk + a_footprints; };
-    if (card_1st == "B") { bbonus_all = 50; bbonus_1st = 150; card_buff_1st = b_card_buff; cri_buff_1st = cri_buff + b_card_cri_buff; atk_1st = atk + b_footprints; };
-    if (card_1st == "NP" && np_kind == "Q") { np_card_buff = q_card_buff; bbonus_1st = 80; card_buff_1st = q_card_buff; cri_buff_1st = cri_buff + q_card_cri_buff; };
-    if (card_1st == "NP" && np_kind == "A") { np_card_buff = a_card_buff; bbonus_1st = 100; card_buff_1st = a_card_buff; cri_buff_1st = cri_buff + a_card_cri_buff; };
-    if (card_1st == "NP" && np_kind == "B") { np_card_buff = b_card_buff; bbonus_all = 50; bbonus_1st = 150; card_buff_1st = b_card_buff; cri_buff_1st = cri_buff + b_card_cri_buff; };
-    if (card_2nd == "Q") { bbonus_2nd = 96; card_buff_2nd = q_card_buff; cri_buff_2nd = cri_buff + q_card_cri_buff; atk_2nd = atk + q_footprints; };
-    if (card_2nd == "A") { bbonus_2nd = 120; card_buff_2nd = a_card_buff; cri_buff_2nd = cri_buff + a_card_cri_buff; atk_2nd = atk + a_footprints; };
-    if (card_2nd == "B") { bbonus_2nd = 180; card_buff_2nd = b_card_buff; cri_buff_2nd = cri_buff + b_card_cri_buff; atk_2nd = atk + b_footprints; };
-    if (card_2nd == "NP" && np_kind == "Q") { np_card_buff = q_card_buff; bbonus_2nd = 96; card_buff_2nd = q_card_buff; cri_buff_2nd = cri_buff + q_card_cri_buff; };
-    if (card_2nd == "NP" && np_kind == "A") { np_card_buff = a_card_buff; bbonus_2nd = 120; card_buff_2nd = a_card_buff; cri_buff_2nd = cri_buff + a_card_cri_buff; };
-    if (card_2nd == "NP" && np_kind == "B") { np_card_buff = b_card_buff; bbonus_2nd = 180; card_buff_2nd = b_card_buff; cri_buff_2nd = cri_buff + b_card_cri_buff; };
-    if (card_3rd == "Q") { bbonus_3rd = 112; card_buff_3rd = q_card_buff; cri_buff_3rd = cri_buff + q_card_cri_buff; atk_3rd = atk + q_footprints; };
-    if (card_3rd == "A") { bbonus_3rd = 140; card_buff_3rd = a_card_buff; cri_buff_3rd = cri_buff + a_card_cri_buff; atk_3rd = atk + a_footprints; };
-    if (card_3rd == "B") { bbonus_3rd = 210; card_buff_3rd = b_card_buff; cri_buff_3rd = cri_buff + b_card_cri_buff; atk_3rd = atk + b_footprints; };
-    if (card_3rd == "NP" && np_kind == "Q") { np_card_buff = q_card_buff; bbonus_3rd = 112; card_buff_3rd = q_card_buff; cri_buff_3rd = cri_buff + q_card_cri_buff; };
-    if (card_3rd == "NP" && np_kind == "A") { np_card_buff = a_card_buff; bbonus_3rd = 140; card_buff_3rd = a_card_buff; cri_buff_3rd = cri_buff + a_card_cri_buff; };
-    if (card_3rd == "NP" && np_kind == "B") { np_card_buff = b_card_buff; bbonus_3rd = 210; card_buff_3rd = b_card_buff; cri_buff_3rd = cri_buff + b_card_cri_buff; };
+    // 1st
+    if (card_1st == "Q") {
+        bbonus_1st = 80;
+        card_buff_1st = q_card_buff + advanced_card_buff_1st;
+        cri_buff_1st = cri_buff + q_card_cri_buff + advanced_cri_buff_1st;
+        atk_1st = atk + q_footprints;
+    }
+    if (card_1st == "A") {
+        bbonus_1st = 100;
+        card_buff_1st = a_card_buff + advanced_card_buff_1st;
+        cri_buff_1st = cri_buff + a_card_cri_buff + advanced_cri_buff_1st;
+        atk_1st = atk + a_footprints;
+    }
+    if (card_1st == "B") {
+        bbonus_all = 50;
+        bbonus_1st = 150;
+        card_buff_1st = b_card_buff + advanced_card_buff_1st;
+        cri_buff_1st = cri_buff + b_card_cri_buff + advanced_cri_buff_1st;
+        atk_1st = atk + b_footprints;
+    }
+    if (card_1st == "NP" && np_kind == "Q") {
+        np_card_buff = q_card_buff + advanced_card_buff_1st;
+        bbonus_1st = 80;
+        card_buff_1st = q_card_buff + advanced_card_buff_1st;
+        cri_buff_1st = cri_buff + q_card_cri_buff + advanced_cri_buff_1st;
+    }
+    if (card_1st == "NP" && np_kind == "A") {
+        np_card_buff = a_card_buff + advanced_card_buff_1st;
+        bbonus_1st = 100;
+        card_buff_1st = a_card_buff + advanced_card_buff_1st;
+        cri_buff_1st = cri_buff + a_card_cri_buff + advanced_cri_buff_1st;
+    }
+    if (card_1st == "NP" && np_kind == "B") {
+        np_card_buff = b_card_buff + advanced_card_buff_1st;
+        bbonus_all = 50;
+        bbonus_1st = 150;
+        card_buff_1st = b_card_buff + advanced_card_buff_1st;
+        cri_buff_1st = cri_buff + b_card_cri_buff + advanced_cri_buff_1st;
+    }
+    // 2nd
+    if (card_2nd == "Q") {
+        bbonus_2nd = 96;
+        card_buff_2nd = q_card_buff + advanced_card_buff_2nd;
+        cri_buff_2nd = cri_buff + q_card_cri_buff + advanced_cri_buff_2nd;
+        atk_2nd = atk + q_footprints;
+    }
+    if (card_2nd == "A") {
+        bbonus_2nd = 120;
+        card_buff_2nd = a_card_buff + advanced_card_buff_2nd;
+        cri_buff_2nd = cri_buff + a_card_cri_buff + advanced_cri_buff_2nd;
+        atk_2nd = atk + a_footprints;
+    }
+    if (card_2nd == "B") {
+        bbonus_2nd = 180;
+        card_buff_2nd = b_card_buff + advanced_card_buff_2nd;
+        cri_buff_2nd = cri_buff + b_card_cri_buff + advanced_cri_buff_2nd;
+        atk_2nd = atk + b_footprints;
+    }
+    if (card_2nd == "NP" && np_kind == "Q") {
+        np_card_buff = q_card_buff + advanced_card_buff_2nd;
+        bbonus_2nd = 96;
+        card_buff_2nd = q_card_buff + advanced_card_buff_2nd;
+        cri_buff_2nd = cri_buff + q_card_cri_buff + advanced_cri_buff_2nd;
+    }
+    if (card_2nd == "NP" && np_kind == "A") {
+        np_card_buff = a_card_buff + advanced_card_buff_2nd;
+        bbonus_2nd = 120;
+        card_buff_2nd = a_card_buff + advanced_card_buff_2nd;
+        cri_buff_2nd = cri_buff + a_card_cri_buff + advanced_cri_buff_2nd;
+    }
+    if (card_2nd == "NP" && np_kind == "B") {
+        np_card_buff = b_card_buff + advanced_card_buff_2nd;
+        bbonus_2nd = 180;
+        card_buff_2nd = b_card_buff + advanced_card_buff_2nd;
+        cri_buff_2nd = cri_buff + b_card_cri_buff + advanced_cri_buff_2nd;
+    }
+    // 3rd
+    if (card_3rd == "Q") {
+        bbonus_3rd = 112;
+        card_buff_3rd = q_card_buff + advanced_card_buff_3rd;
+        cri_buff_3rd = cri_buff + q_card_cri_buff + advanced_cri_buff_3rd;
+        atk_3rd = atk + q_footprints;
+    }
+    if (card_3rd == "A") {
+        bbonus_3rd = 140;
+        card_buff_3rd = a_card_buff + advanced_card_buff_3rd;
+        cri_buff_3rd = cri_buff + a_card_cri_buff + advanced_cri_buff_3rd;
+        atk_3rd = atk + a_footprints;
+    }
+    if (card_3rd == "B") {
+        bbonus_3rd = 210;
+        card_buff_3rd = b_card_buff + advanced_card_buff_3rd;
+        cri_buff_3rd = cri_buff + b_card_cri_buff + advanced_cri_buff_3rd;
+        atk_3rd = atk + b_footprints;
+    }
+    if (card_3rd == "NP" && np_kind == "Q") {
+        np_card_buff = q_card_buff + advanced_card_buff_3rd;
+        bbonus_3rd = 112;
+        card_buff_3rd = q_card_buff + advanced_card_buff_3rd;
+        cri_buff_3rd = cri_buff + q_card_cri_buff + advanced_cri_buff_3rd;
+    }
+    if (card_3rd == "NP" && np_kind == "A") {
+        np_card_buff = a_card_buff + advanced_card_buff_3rd;
+        bbonus_3rd = 140;
+        card_buff_3rd = a_card_buff + advanced_card_buff_3rd;
+        cri_buff_3rd = cri_buff + a_card_cri_buff + advanced_cri_buff_3rd;
+    }
+    if (card_3rd == "NP" && np_kind == "B") {
+        np_card_buff = b_card_buff + advanced_card_buff_3rd;
+        bbonus_3rd = 210;
+        card_buff_3rd = b_card_buff + advanced_card_buff_3rd;
+        cri_buff_3rd = cri_buff + b_card_cri_buff + advanced_cri_buff_3rd;
+    }
+    // 1st共通
+    atk_buff_1st = atk_buff + advanced_atk_buff_1st;
+    supereffective_buff_1st = supereffective_buff + advanced_supereffective_buff_1st;
+    fixed_dmg_1st = fixed_dmg + advanced_fixed_dmg_1st;
+    special_def_1st = special_def + advanced_special_def_1st;
+    // 2nd共通
+    atk_buff_2nd = atk_buff + advanced_atk_buff_2nd;
+    supereffective_buff_2nd = supereffective_buff + advanced_supereffective_buff_2nd;
+    fixed_dmg_2nd = fixed_dmg + advanced_fixed_dmg_2nd;
+    special_def_2nd = special_def + advanced_special_def_2nd;
+    // 3rd共通
+    atk_buff_3rd = atk_buff + advanced_atk_buff_3rd;
+    supereffective_buff_3rd = supereffective_buff + advanced_supereffective_buff_3rd;
+    fixed_dmg_3rd = fixed_dmg + advanced_fixed_dmg_3rd;
+    special_def_3rd = special_def + advanced_special_def_3rd;
+    // EX共通
+    atk_buff_ex = atk_buff + advanced_atk_buff_ex;
+    supereffective_buff_ex = supereffective_buff + advanced_supereffective_buff_ex;
+    fixed_dmg_ex = fixed_dmg + advanced_fixed_dmg_ex;
+    special_def_ex = special_def + advanced_special_def_ex;
+    
+    
+    // 各種ボーナス
     if (card_1st == "NP") {
         if ((np_kind != card_2nd && card_2nd != card_3rd && card_3rd != np_kind) || np_kind == "B") { bbonus_all = 50; }
         if (np_kind == card_2nd && card_2nd == card_3rd && np_kind == "B") { exbonus = 350; bchain_bonus = 20; }
@@ -627,80 +944,80 @@ function calcMain(recNumber) {
 
     // 1st計算
     if (card_1st == "NP") {
-        dmg_ave_1st = calcNpDmg(atk, np_dmg, np_kind, np_card_buff, class_affinity, class_servant, attribute_affinity, atk_buff,
-            supereffective_buff, np_buff, supereffective_np, fixed_dmg, special_def, 1);
-        dmg_min_1st = calcNpDmg(atk, np_dmg, np_kind, np_card_buff, class_affinity, class_servant, attribute_affinity, atk_buff,
-            supereffective_buff, np_buff, supereffective_np, fixed_dmg, special_def, 0.9);
-        dmg_max_1st = calcNpDmg(atk, np_dmg, np_kind, np_card_buff, class_affinity, class_servant, attribute_affinity, atk_buff,
-            supereffective_buff, np_buff, supereffective_np, fixed_dmg, special_def, 1.099);
+        dmg_ave_1st = calcNpDmg(atk, np_dmg, np_kind, np_card_buff, class_affinity, class_servant, attribute_affinity, atk_buff_1st,
+            supereffective_buff_1st, np_buff, supereffective_np, fixed_dmg_1st, special_def_1st, 1);
+        dmg_min_1st = calcNpDmg(atk, np_dmg, np_kind, np_card_buff, class_affinity, class_servant, attribute_affinity, atk_buff_1st,
+            supereffective_buff_1st, np_buff, supereffective_np, fixed_dmg_1st, special_def_1st, 0.9);
+        dmg_max_1st = calcNpDmg(atk, np_dmg, np_kind, np_card_buff, class_affinity, class_servant, attribute_affinity, atk_buff_1st,
+            supereffective_buff_1st, np_buff, supereffective_np, fixed_dmg_1st, special_def_1st, 1.099);
     } else {
-        dmg_ave_1st = calcDmg(atk_1st, atk_buff, card_buff_1st, cri_buff_1st, bbonus_1st, bbonus_all, bchain_bonus, 100,
-            class_affinity, class_servant, attribute_affinity, 1, 0, supereffective_buff, special_def, fixed_dmg, 1);
-        dmg_min_1st = calcDmg(atk_1st, atk_buff, card_buff_1st, cri_buff_1st, bbonus_1st, bbonus_all, bchain_bonus, 100,
-            class_affinity, class_servant, attribute_affinity, 1, 0, supereffective_buff, special_def, fixed_dmg, 0.9);
-        dmg_max_1st = calcDmg(atk_1st, atk_buff, card_buff_1st, cri_buff_1st, bbonus_1st, bbonus_all, bchain_bonus, 100,
-            class_affinity, class_servant, attribute_affinity, 1, 0, supereffective_buff, special_def, fixed_dmg, 1.099);
-        dmg_cri_ave_1st = calcDmg(atk_1st, atk_buff, card_buff_1st, cri_buff_1st, bbonus_1st, bbonus_all, bchain_bonus, 100,
-            class_affinity, class_servant, attribute_affinity, 2, 1, supereffective_buff, special_def, fixed_dmg, 1);
-        dmg_cri_min_1st = calcDmg(atk_1st, atk_buff, card_buff_1st, cri_buff_1st, bbonus_1st, bbonus_all, bchain_bonus, 100,
-            class_affinity, class_servant, attribute_affinity, 2, 1, supereffective_buff, special_def, fixed_dmg, 0.9);
-        dmg_cri_max_1st = calcDmg(atk_1st, atk_buff, card_buff_1st, cri_buff_1st, bbonus_1st, bbonus_all, bchain_bonus, 100,
-            class_affinity, class_servant, attribute_affinity, 2, 1, supereffective_buff, special_def, fixed_dmg, 1.099);
+        dmg_ave_1st = calcDmg(atk_1st, atk_buff_1st, card_buff_1st, cri_buff_1st, bbonus_1st, bbonus_all, bchain_bonus, 100,
+            class_affinity, class_servant, attribute_affinity, 1, 0, supereffective_buff_1st, special_def_1st, fixed_dmg_1st, 1);
+        dmg_min_1st = calcDmg(atk_1st, atk_buff_1st, card_buff_1st, cri_buff_1st, bbonus_1st, bbonus_all, bchain_bonus, 100,
+            class_affinity, class_servant, attribute_affinity, 1, 0, supereffective_buff_1st, special_def_1st, fixed_dmg_1st, 0.9);
+        dmg_max_1st = calcDmg(atk_1st, atk_buff_1st, card_buff_1st, cri_buff_1st, bbonus_1st, bbonus_all, bchain_bonus, 100,
+            class_affinity, class_servant, attribute_affinity, 1, 0, supereffective_buff_1st, special_def_1st, fixed_dmg_1st, 1.099);
+        dmg_cri_ave_1st = calcDmg(atk_1st, atk_buff_1st, card_buff_1st, cri_buff_1st, bbonus_1st, bbonus_all, bchain_bonus, 100,
+            class_affinity, class_servant, attribute_affinity, 2, 1, supereffective_buff_1st, special_def_1st, fixed_dmg_1st, 1);
+        dmg_cri_min_1st = calcDmg(atk_1st, atk_buff_1st, card_buff_1st, cri_buff_1st, bbonus_1st, bbonus_all, bchain_bonus, 100,
+            class_affinity, class_servant, attribute_affinity, 2, 1, supereffective_buff_1st, special_def_1st, fixed_dmg_1st, 0.9);
+        dmg_cri_max_1st = calcDmg(atk_1st, atk_buff_1st, card_buff_1st, cri_buff_1st, bbonus_1st, bbonus_all, bchain_bonus, 100,
+            class_affinity, class_servant, attribute_affinity, 2, 1, supereffective_buff_1st, special_def_1st, fixed_dmg_1st, 1.099);
     };
 
     // 2nd計算
     if (card_2nd == "NP") {
-        dmg_ave_2nd = calcNpDmg(atk, np_dmg, np_kind, np_card_buff, class_affinity, class_servant, attribute_affinity, atk_buff,
-            supereffective_buff, np_buff, supereffective_np, fixed_dmg, special_def, 1);
-        dmg_min_2nd = calcNpDmg(atk, np_dmg, np_kind, np_card_buff, class_affinity, class_servant, attribute_affinity, atk_buff,
-            supereffective_buff, np_buff, supereffective_np, fixed_dmg, special_def, 0.9);
-        dmg_max_2nd = calcNpDmg(atk, np_dmg, np_kind, np_card_buff, class_affinity, class_servant, attribute_affinity, atk_buff,
-            supereffective_buff, np_buff, supereffective_np, fixed_dmg, special_def, 1.099);
+        dmg_ave_2nd = calcNpDmg(atk, np_dmg, np_kind, np_card_buff, class_affinity, class_servant, attribute_affinity, atk_buff_2nd,
+            supereffective_buff_2nd, np_buff, supereffective_np, fixed_dmg_2nd, special_def_2nd, 1);
+        dmg_min_2nd = calcNpDmg(atk, np_dmg, np_kind, np_card_buff, class_affinity, class_servant, attribute_affinity, atk_buff_2nd,
+            supereffective_buff_2nd, np_buff, supereffective_np, fixed_dmg_2nd, special_def_2nd, 0.9);
+        dmg_max_2nd = calcNpDmg(atk, np_dmg, np_kind, np_card_buff, class_affinity, class_servant, attribute_affinity, atk_buff_2nd,
+            supereffective_buff_2nd, np_buff, supereffective_np, fixed_dmg_2nd, special_def_2nd, 1.099);
     } else {
-        dmg_ave_2nd = calcDmg(atk_2nd, atk_buff, card_buff_2nd, cri_buff_2nd, bbonus_2nd, bbonus_all, bchain_bonus, 100,
-            class_affinity, class_servant, attribute_affinity, 1, 0, supereffective_buff, special_def, fixed_dmg, 1);
-        dmg_min_2nd = calcDmg(atk_2nd, atk_buff, card_buff_2nd, cri_buff_2nd, bbonus_2nd, bbonus_all, bchain_bonus, 100,
-            class_affinity, class_servant, attribute_affinity, 1, 0, supereffective_buff, special_def, fixed_dmg, 0.9);
-        dmg_max_2nd = calcDmg(atk_2nd, atk_buff, card_buff_2nd, cri_buff_2nd, bbonus_2nd, bbonus_all, bchain_bonus, 100,
-            class_affinity, class_servant, attribute_affinity, 1, 0, supereffective_buff, special_def, fixed_dmg, 1.099);
-        dmg_cri_ave_2nd = calcDmg(atk_2nd, atk_buff, card_buff_2nd, cri_buff_2nd, bbonus_2nd, bbonus_all, bchain_bonus, 100,
-            class_affinity, class_servant, attribute_affinity, 2, 1, supereffective_buff, special_def, fixed_dmg, 1);
-        dmg_cri_min_2nd = calcDmg(atk_2nd, atk_buff, card_buff_2nd, cri_buff_2nd, bbonus_2nd, bbonus_all, bchain_bonus, 100,
-            class_affinity, class_servant, attribute_affinity, 2, 1, supereffective_buff, special_def, fixed_dmg, 0.9);
-        dmg_cri_max_2nd = calcDmg(atk_2nd, atk_buff, card_buff_2nd, cri_buff_2nd, bbonus_2nd, bbonus_all, bchain_bonus, 100,
-            class_affinity, class_servant, attribute_affinity, 2, 1, supereffective_buff, special_def, fixed_dmg, 1.099);
+        dmg_ave_2nd = calcDmg(atk_2nd, atk_buff_2nd, card_buff_2nd, cri_buff_2nd, bbonus_2nd, bbonus_all, bchain_bonus, 100,
+            class_affinity, class_servant, attribute_affinity, 1, 0, supereffective_buff_2nd, special_def_2nd, fixed_dmg_2nd, 1);
+        dmg_min_2nd = calcDmg(atk_2nd, atk_buff_2nd, card_buff_2nd, cri_buff_2nd, bbonus_2nd, bbonus_all, bchain_bonus, 100,
+            class_affinity, class_servant, attribute_affinity, 1, 0, supereffective_buff_2nd, special_def_2nd, fixed_dmg_2nd, 0.9);
+        dmg_max_2nd = calcDmg(atk_2nd, atk_buff_2nd, card_buff_2nd, cri_buff_2nd, bbonus_2nd, bbonus_all, bchain_bonus, 100,
+            class_affinity, class_servant, attribute_affinity, 1, 0, supereffective_buff_2nd, special_def_2nd, fixed_dmg_2nd, 1.099);
+        dmg_cri_ave_2nd = calcDmg(atk_2nd, atk_buff_2nd, card_buff_2nd, cri_buff_2nd, bbonus_2nd, bbonus_all, bchain_bonus, 100,
+            class_affinity, class_servant, attribute_affinity, 2, 1, supereffective_buff_2nd, special_def_2nd, fixed_dmg_2nd, 1);
+        dmg_cri_min_2nd = calcDmg(atk_2nd, atk_buff_2nd, card_buff_2nd, cri_buff_2nd, bbonus_2nd, bbonus_all, bchain_bonus, 100,
+            class_affinity, class_servant, attribute_affinity, 2, 1, supereffective_buff_2nd, special_def_2nd, fixed_dmg_2nd, 0.9);
+        dmg_cri_max_2nd = calcDmg(atk_2nd, atk_buff_2nd, card_buff_2nd, cri_buff_2nd, bbonus_2nd, bbonus_all, bchain_bonus, 100,
+            class_affinity, class_servant, attribute_affinity, 2, 1, supereffective_buff_2nd, special_def_2nd, fixed_dmg_2nd, 1.099);
     }
 
     // 3rd計算
     if (card_3rd == "NP") {
-        dmg_ave_3rd = calcNpDmg(atk, np_dmg, np_kind, np_card_buff, class_affinity, class_servant, attribute_affinity, atk_buff,
-            supereffective_buff, np_buff, supereffective_np, fixed_dmg, special_def, 1);
-        dmg_min_3rd = calcNpDmg(atk, np_dmg, np_kind, np_card_buff, class_affinity, class_servant, attribute_affinity, atk_buff,
-            supereffective_buff, np_buff, supereffective_np, fixed_dmg, special_def, 0.9);
-        dmg_max_3rd = calcNpDmg(atk, np_dmg, np_kind, np_card_buff, class_affinity, class_servant, attribute_affinity, atk_buff,
-            supereffective_buff, np_buff, supereffective_np, fixed_dmg, special_def, 1.099);
+        dmg_ave_3rd = calcNpDmg(atk, np_dmg, np_kind, np_card_buff, class_affinity, class_servant, attribute_affinity, atk_buff_3rd,
+            supereffective_buff_3rd, np_buff, supereffective_np, fixed_dmg_3rd, special_def_3rd, 1);
+        dmg_min_3rd = calcNpDmg(atk, np_dmg, np_kind, np_card_buff, class_affinity, class_servant, attribute_affinity, atk_buff_3rd,
+            supereffective_buff_3rd, np_buff, supereffective_np, fixed_dmg_3rd, special_def_3rd, 0.9);
+        dmg_max_3rd = calcNpDmg(atk, np_dmg, np_kind, np_card_buff, class_affinity, class_servant, attribute_affinity, atk_buff_3rd,
+            supereffective_buff_3rd, np_buff, supereffective_np, fixed_dmg_3rd, special_def_3rd, 1.099);
     } else {
-        dmg_ave_3rd = calcDmg(atk_3rd, atk_buff, card_buff_3rd, cri_buff_3rd, bbonus_3rd, bbonus_all, bchain_bonus, 100,
-            class_affinity, class_servant, attribute_affinity, 1, 0, supereffective_buff, special_def, fixed_dmg, 1);
-        dmg_min_3rd = calcDmg(atk_3rd, atk_buff, card_buff_3rd, cri_buff_3rd, bbonus_3rd, bbonus_all, bchain_bonus, 100,
-            class_affinity, class_servant, attribute_affinity, 1, 0, supereffective_buff, special_def, fixed_dmg, 0.9);
-        dmg_max_3rd = calcDmg(atk_3rd, atk_buff, card_buff_3rd, cri_buff_3rd, bbonus_3rd, bbonus_all, bchain_bonus, 100,
-            class_affinity, class_servant, attribute_affinity, 1, 0, supereffective_buff, special_def, fixed_dmg, 1.099);
-        dmg_cri_ave_3rd = calcDmg(atk_3rd, atk_buff, card_buff_3rd, cri_buff_3rd, bbonus_3rd, bbonus_all, bchain_bonus, 100,
-            class_affinity, class_servant, attribute_affinity, 2, 1, supereffective_buff, special_def, fixed_dmg, 1);
-        dmg_cri_min_3rd = calcDmg(atk_3rd, atk_buff, card_buff_3rd, cri_buff_3rd, bbonus_3rd, bbonus_all, bchain_bonus, 100,
-            class_affinity, class_servant, attribute_affinity, 2, 1, supereffective_buff, special_def, fixed_dmg, 0.9);
-        dmg_cri_max_3rd = calcDmg(atk_3rd, atk_buff, card_buff_3rd, cri_buff_3rd, bbonus_3rd, bbonus_all, bchain_bonus, 100,
-            class_affinity, class_servant, attribute_affinity, 2, 1, supereffective_buff, special_def, fixed_dmg, 1.099);
+        dmg_ave_3rd = calcDmg(atk_3rd, atk_buff_3rd, card_buff_3rd, cri_buff_3rd, bbonus_3rd, bbonus_all, bchain_bonus, 100,
+            class_affinity, class_servant, attribute_affinity, 1, 0, supereffective_buff_3rd, special_def_3rd, fixed_dmg_3rd, 1);
+        dmg_min_3rd = calcDmg(atk_3rd, atk_buff_3rd, card_buff_3rd, cri_buff_3rd, bbonus_3rd, bbonus_all, bchain_bonus, 100,
+            class_affinity, class_servant, attribute_affinity, 1, 0, supereffective_buff_3rd, special_def_3rd, fixed_dmg_3rd, 0.9);
+        dmg_max_3rd = calcDmg(atk_3rd, atk_buff_3rd, card_buff_3rd, cri_buff_3rd, bbonus_3rd, bbonus_all, bchain_bonus, 100,
+            class_affinity, class_servant, attribute_affinity, 1, 0, supereffective_buff_3rd, special_def_3rd, fixed_dmg_3rd, 1.099);
+        dmg_cri_ave_3rd = calcDmg(atk_3rd, atk_buff_3rd, card_buff_3rd, cri_buff_3rd, bbonus_3rd, bbonus_all, bchain_bonus, 100,
+            class_affinity, class_servant, attribute_affinity, 2, 1, supereffective_buff_3rd, special_def_3rd, fixed_dmg_3rd, 1);
+        dmg_cri_min_3rd = calcDmg(atk_3rd, atk_buff_3rd, card_buff_3rd, cri_buff_3rd, bbonus_3rd, bbonus_all, bchain_bonus, 100,
+            class_affinity, class_servant, attribute_affinity, 2, 1, supereffective_buff_3rd, special_def_3rd, fixed_dmg_3rd, 0.9);
+        dmg_cri_max_3rd = calcDmg(atk_3rd, atk_buff_3rd, card_buff_3rd, cri_buff_3rd, bbonus_3rd, bbonus_all, bchain_bonus, 100,
+            class_affinity, class_servant, attribute_affinity, 2, 1, supereffective_buff_3rd, special_def_3rd, fixed_dmg_3rd, 1.099);
     }
 
     // EX計算
-    dmg_ave_EX = calcDmg(atk, atk_buff, ex_atk_buff, cri_buff, 100, bbonus_all, 0, exbonus,
-        class_affinity, class_servant, attribute_affinity, 1, 0, supereffective_buff, special_def, fixed_dmg, 1);
-    dmg_min_EX = calcDmg(atk, atk_buff, ex_atk_buff, cri_buff, 100, bbonus_all, 0, exbonus,
-        class_affinity, class_servant, attribute_affinity, 1, 0, supereffective_buff, special_def, fixed_dmg, 0.9);
-    dmg_max_EX = calcDmg(atk, atk_buff, ex_atk_buff, cri_buff, 100, bbonus_all, 0, exbonus,
-        class_affinity, class_servant, attribute_affinity, 1, 0, supereffective_buff, special_def, fixed_dmg, 1.099);
+    dmg_ave_EX = calcDmg(atk, atk_buff_ex, ex_atk_buff, cri_buff, 100, bbonus_all, 0, exbonus,
+        class_affinity, class_servant, attribute_affinity, 1, 0, supereffective_buff_ex, special_def_ex, fixed_dmg_ex, 1);
+    dmg_min_EX = calcDmg(atk, atk_buff_ex, ex_atk_buff, cri_buff, 100, bbonus_all, 0, exbonus,
+        class_affinity, class_servant, attribute_affinity, 1, 0, supereffective_buff_ex, special_def_ex, fixed_dmg_ex, 0.9);
+    dmg_max_EX = calcDmg(atk, atk_buff_ex, ex_atk_buff, cri_buff, 100, bbonus_all, 0, exbonus,
+        class_affinity, class_servant, attribute_affinity, 1, 0, supereffective_buff_ex, special_def_ex, fixed_dmg_ex, 1.099);
     
     // 1stダメージ有無・クリティカル有無を設定
     if (card_1st != "NP" && card_1st_cri == "Y") {
@@ -784,6 +1101,13 @@ function calcNpDmg(atk, np_dmg, np_kind, card_buff, class_affinity, class_servan
 
     var dmg;
 
+    // バフ上限下限チェック
+    if (card_buff > 400) { card_buff = 400 };
+    if (atk_buff > 400) { atk_buff = 400 };
+    if (atk_buff < -100) { atk_buff = -100 };
+    if (supereffective_buff > 1000) { supereffective_buff = 1000 };
+    if (np_buff > 500) { np_buff = 500 };
+
     dmg = (atk * np_dmg / 100
         * 0.23 * card_list[np_kind] //宝具色補正
         * (100 + card_buff) / 100
@@ -829,6 +1153,11 @@ function calcDmg(atk, atk_buff, card_buff, cri_buff, bbonus, bbonus_all, bchain_
     
     var dmg;
 
+    // バフ上限下限チェック
+    if (card_buff > 400) { card_buff = 400 };
+    if (atk_buff > 400) { atk_buff = 400 };
+    if (atk_buff < -100) { atk_buff = -100 };
+    if (supereffective_buff > 1000) { supereffective_buff = 1000 };
     if (cri_buff > 500) { cri_buff = 500 };
 
     dmg = (atk * 0.23 *
@@ -892,7 +1221,7 @@ function copyProbInput(recNumber) {
     } else {
         $("#dmg_1st").val(Number($("#dmg_ave_1st_" + recNumber).val().replace(/,/g, "")));
         if (card_1st != "NP") {
-            $("#fixed_1st").val(parseFloat($("#fixed_dmg_" + recNumber).val()) + atk * bchain_bonus / 100);
+            $("#fixed_1st").val(parseFloat($("#fixed_dmg_" + recNumber).val()) + parseFloat($("#advanced_fixed_dmg_1st_" + recNumber).val()) + atk * bchain_bonus / 100);
         } else {
             $("#fixed_1st").val("0");
         }
@@ -904,7 +1233,7 @@ function copyProbInput(recNumber) {
     } else {
         $("#dmg_2nd").val(Number($("#dmg_ave_2nd_" + recNumber).val().replace(/,/g, "")));
         if (card_2nd != "NP") {
-            $("#fixed_2nd").val(parseFloat($("#fixed_dmg_" + recNumber).val()) + atk * bchain_bonus / 100);
+            $("#fixed_2nd").val(parseFloat($("#fixed_dmg_" + recNumber).val()) + parseFloat($("#advanced_fixed_dmg_2nd_" + recNumber).val()) + atk * bchain_bonus / 100);
         } else {
             $("#fixed_2nd").val("0");
         }
@@ -916,7 +1245,7 @@ function copyProbInput(recNumber) {
     } else {
         $("#dmg_3rd").val(Number($("#dmg_ave_3rd_" + recNumber).val().replace(/,/g, "")));
         if (card_3rd != "NP") {
-            $("#fixed_3rd").val(parseFloat($("#fixed_dmg_" + recNumber).val()) + atk * bchain_bonus / 100);
+            $("#fixed_3rd").val(parseFloat($("#fixed_dmg_" + recNumber).val()) + parseFloat($("#advanced_fixed_dmg_3rd_" + recNumber).val()) + atk * bchain_bonus / 100);
         } else {
             $("#fixed_3rd").val("0");
         }
@@ -927,7 +1256,7 @@ function copyProbInput(recNumber) {
         $("#fixed_Ex").val("0");
     } else {
         $("#dmg_Ex").val($("#dmg_ave_ex_" + recNumber).val().replace(/,/g, ""));
-        $("#fixed_Ex").val(parseFloat($("#fixed_dmg_" + recNumber).val()));
+        $("#fixed_Ex").val(parseFloat($("#fixed_dmg_" + recNumber).val()) +  + parseFloat($("#advanced_fixed_dmg_Ex_" + recNumber).val()));
     };
 
     $("#dmg_total").val(parseFloat($("#dmg_1st").val()) + parseFloat($("#dmg_2nd").val()) + parseFloat($("#dmg_3rd").val()) + parseFloat($("#dmg_Ex").val()));

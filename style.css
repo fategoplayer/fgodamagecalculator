@@ -1,19 +1,7 @@
 @charset "UTF-8";
 
-.col_copy img {
-  object-fit: cover;
-  width: 25px;
-  height: 25px;
-  vertical-align: middle;
-}
-.col_prob img {
-  object-fit: cover;
-  width: 25px;
-  height: 25px;
-  vertical-align: middle;
-}
 table {
-  width: 100%;
+  width: auto;
   border-collapse:separate;
   border-spacing: 0;
 }
@@ -33,7 +21,7 @@ table th {
   border-top: 1px solid #3c6690;
   border-bottom: 1px solid #3c6690;
   box-shadow: 0px 1px 1px rgba(255,255,255,0.3) inset;
-  padding: 10px 0;
+  padding: 1px 0;
 	top: 0;
 }
 table#calcTable th {
@@ -84,7 +72,6 @@ input[type="number"]:focus {
 output {
   height: 33%;
   display:block;
-  vertical-align: middle;
   text-align:right;
   font-size: 14px;
 }
@@ -94,71 +81,47 @@ select {
   text-align: center;
   background-color:transparent;
   display: block;
-  /*border-radius: 0;*/
 }
 select:focus {
   outline: solid 1px #3c6690;
 }
-
+a {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
 /*列調整*/
-.col_copy {
-  width: 2%;
+.col_copy, .col_atk_buff, .col_card_buff, .col_np_buff, .col_ex_atk_buff, .col_fixed_dmg, 
+.col_footprints, .col_advanced, .col_advanced_setting, .col_special_def, .col_prob {
+  width: 28px;
 }
 .col_atk {
-  width: 3%;
+  width: 40px;
 }
-.col_np {
-  width: 3%;
+.col_np, .col_card_sel, .col_cri_buff, .col_supereffective_buff, .col_supereffective_np {
+  width: 35px;
 }
-.col_atk_buff {
-  width: 2%;
-}
-.col_card_buff {
-  width: 2%;
-}
-.col_cri_buff {
-  width: 2%;
-}
-.col_np_buff {
-  width: 2%;
-}
-.col_ex_atk_buff {
-  width: 2%;
-}
-.col_supereffective_buff {
-  width: 2.5%;
-}
-.col_supereffective_np {
-  width: 2.5%;
-}
-.col_fixed_dmg {
-  width: 2%;
-}
-.col_footprints {
-  width: 2%;
+.col_advanced_setting {
+  display: none;
 }
 .col_special_def {
-  width: 2%;
+  width: 31px;
 }
-.col_class_affinity {
-  width: 3.5%;
-}
-.col_class_servant {
-  width: 3.5%;
-}
-.col_attribute_affinity {
-  width: 3.5%;
-}
-.col_card_sel {
-  width: 3%;
+.col_class_affinity, .col_class_servant, .col_attribute_affinity {
+  width: 50px;
 }
 .col_dmg_result {
-  width: 6%;
+  width: 90px;
 }
-.col_prob {
-  width: 2%;
+img {
+  object-fit: cover;
+  width: 25px;
+  height: 25px;
+  display: block;
+  margin: auto;
 }
 
+/*罫線*/
 .boundary_line {
   margin-top: 0.5px;
   margin-bottom: 0.5px;
@@ -168,147 +131,73 @@ select:focus {
   border: none;
   color: #a8b7c5;
 }
+/*テーブルラッパー*/
 .calc {
-  width: 1400px;
+  width: 1622px;
   padding-right: 10px;
 }
 
-.atk {
+/*INPUT,SELECT高さ*/
+.atk, .atk_buff, .cri_buff, .np_buff, .ex_atk_buff, .supereffective_buff, .supereffective_np, .fixed_dmg, .special_def,
+.class_affinity, .class_servant, .attribute_affinity, .ex_cri {
   height: 100%;
-  width: 100%;
 }
-.np_dmg {
+.np_dmg, .np_kind, .card_1st, .card_1st_cri, .card_2nd, .card_2nd_cri, .card_3rd, .card_3rd_cri {
   height: 39px;
-  width: 100%;
-}
-.np_kind {
-  height: 39px;
-  width: 100%;
-}
-.atk_buff {
-  height: 100%;
-  width: 100%;
 }
 .b_card_buff {
   height: 39px;
-  width: 100%;
   background-color: #FFEEEE !important;
   box-shadow: 0px 3px 5px 1px #eee inset;
 }
 .b_card_cri_buff {
   height: 39px;
-  width: 100%;
   background-color: #FFEEEE !important;
   box-shadow: 0px -3px 5px 1px #eee inset;
 }
 .a_card_buff {
   height: 39px;
-  width: 100%;
   background-color: #F0F8FF !important;
   box-shadow: 0px 3px 5px 1px #eee inset;
 }
 .a_card_cri_buff {
   height: 39px;
-  width: 100%;
   background-color: #F0F8FF !important;
   box-shadow: 0px -3px 5px 1px #eee inset;
 }
 .q_card_buff {
   height: 39px;
-  width: 100%;
   background-color: #EEFFEE !important;
   box-shadow: 0px 3px 5px 1px #eee inset;
 }
 .q_card_cri_buff {
   height: 39px;
-  width: 100%;
   background-color: #EEFFEE !important;
   box-shadow: 0px -3px 5px 1px #eee inset;
 }
-.cri_buff {
-  height: 100%;
-  width: 100%;
-}
-.np_buff {
-  height: 100%;
-  width: 100%;
-}
-.ex_atk_buff {
-  height: 100%;
-  width: 100%;
-}
-.supereffective_buff {
-  height: 100%;
-  width: 100%;
-}
-.supereffective_np {
-  height: 100%;
-  width: 100%;
-}
-.fixed_dmg {
-  height: 100%;
-  width: 100%;
-}
 .b_footprints {
   height: 25.3px;
-  width: 100%;
   background-color: #FFEEEE !important;
   box-shadow: 0px 3px 5px 1px #eee inset;
 }
 .a_footprints {
   height: 25.3px;
-  width: 100%;
   background-color: #F0F8FF !important;
 }
 .q_footprints {
   height: 25.3px;
-  width: 100%;
   background-color: #EEFFEE !important;
   box-shadow: 0px -3px 5px 1px #eee inset;
 }
-.special_def {
-  height: 100%;
-  width: 100%;
+.advanced_atk_buff_1st, .advanced_atk_buff_2nd, .advanced_atk_buff_3rd, .advanced_atk_buff_Ex,
+.advanced_supereffective_buff_1st, .advanced_supereffective_buff_2nd, .advanced_supereffective_buff_3rd, .advanced_supereffective_buff_Ex,
+.advanced_fixed_dmg_1st, .advanced_fixed_dmg_2nd, .advanced_fixed_dmg_3rd, .advanced_fixed_dmg_Ex, 
+.advanced_special_def_1st, .advanced_special_def_2nd, .advanced_special_def_3rd, .advanced_special_def_Ex {
+  height: 18.5px;
 }
-.class_affinity {
-  height: 100%;
-  width: 100%;
-}
-.class_servant {
-  height: 100%;
-  width: 100%;
-}
-.attribute_affinity {
-  height: 100%;
-  width: 100%;
-}
-.card_1st {
-  height: 39px;
-  width: 100%;
-}
-.card_1st_cri {
-  height: 39px;
-  width: 100%;
-}
-.card_2nd {
-  height: 39px;
-  width: 100%;
-}
-.card_2nd_cri {
-  height: 39px;
-  width: 100%;
-}
-.card_3rd {
-  height: 39px;
-  width: 100%;
-}
-.card_3rd_cri {
-  height: 39px;
-  width: 100%;
-}
-.ex_cri {
-  height: 100%;
-  width: 100%;
+.advanced_card_buff_1st, .advanced_card_buff_2nd, .advanced_card_buff_3rd,
+.advanced_cri_buff_1st, .advanced_cri_buff_2nd, .advanced_cri_buff_3rd {
+  height: 25.3px;
 }
 .wrap_dmg_result {
   display:table;
@@ -320,7 +209,6 @@ select:focus {
   display:table-cell;
   vertical-align:middle;
 }
-
 
 #addRow, #clear {
     width: 130px;
@@ -338,9 +226,8 @@ select:focus {
 button:hover {
     cursor: pointer;
 }
-tr:hover {
-    cursor: move;
-}
+
+/*撃破率計算*/
 #prob_calc{
   width: 540px;
 }
@@ -352,41 +239,12 @@ tr:hover {
   font-size: 25px;
 }
 #enemy_hp{
-    width: 100%;
-    height: 100%;
+  height: 100%;
 }
-.prob_inp {
-  width: 100% !important;
-}
-#dmg_1st {
+#dmg_1st, #fixed_1st, #dmg_2nd, #fixed_2nd, #dmg_3rd, #fixed_3rd, #dmg_Ex, #fixed_Ex {
   height: 39px;
 }
-#fixed_1st {
-  height: 39px;
-}
-#dmg_2nd {
-  height: 39px;
-}
-#fixed_2nd {
-  height: 39px;
-}
-#dmg_3rd {
-  height: 39px;
-}
-#fixed_3rd {
-  height: 39px;
-}
-#dmg_Ex {
-  height: 39px;
-}
-#fixed_Ex {
-  height: 39px;
-}
-
-#dmg_total {
-  height: 49% !important;
-}
-#fixed_total {
+#dmg_total, #fixed_total {
   height: 49% !important;
 }
 .col_prob_inp{
