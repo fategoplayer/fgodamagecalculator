@@ -194,10 +194,14 @@ img {
 .advanced_fixed_dmg_1st, .advanced_fixed_dmg_2nd, .advanced_fixed_dmg_3rd, .advanced_fixed_dmg_Ex, 
 .advanced_special_def_1st, .advanced_special_def_2nd, .advanced_special_def_3rd, .advanced_special_def_Ex {
   height: 18.5px;
+  background-color: #F4F4F4 !important;
+  box-shadow: 0px -3px 5px 1px #eee inset;
 }
 .advanced_card_buff_1st, .advanced_card_buff_2nd, .advanced_card_buff_3rd,
 .advanced_cri_buff_1st, .advanced_cri_buff_2nd, .advanced_cri_buff_3rd {
   height: 25.3px;
+  background-color: #F4F4F4 !important;
+  box-shadow: 0px -3px 5px 1px #eee inset;
 }
 .wrap_dmg_result {
   display:table;
