@@ -19,7 +19,16 @@ $(function(){
     $("#calcTable").on("blur", "input", function () {
         var recNumber = this.id.split("_")[this.id.split("_").length - 1];
 
-        if (this.value == "") {this.value = "0";};
+        // ブランクなら0を入れる
+        if (this.value == "") {
+            if (this.id = "atk_" + recNumber) {
+                // atkがブランクなら初期化
+                clearParam(recNumber);
+            }
+            else {
+                this.value = "0";
+            }
+        }
 
         // 対象行を計算
         calcMain(recNumber);
@@ -76,11 +85,11 @@ $(function(){
 
         if ($(".col_advanced_setting").css("display") == "none"){
             $(".col_advanced_setting").css({"display":"table-cell"});
-            $(".calc").css({"width":"1533"});
+            $(".calc").css({"width":"1547"});
         }
         else {
             $(".col_advanced_setting").css({"display":"none"});
-            $(".calc").css({"width":"1347"});
+            $(".calc").css({"width":"1354"});
         }
         
         return false;
@@ -117,6 +126,9 @@ $(function(){
             // 行のパラメーターを初期化
             clearParam(cnt);
         }
+
+        // クリアボタンの場合は目標ダメージも初期化
+        $("#enemy_hp").val("0");
 
     });
 
@@ -643,7 +655,6 @@ function clearParam(row) {
     $("#dmg_min_total_" + row).val("0");
     $("#dmg_ave_total_" + row).val("0");
     $("#dmg_max_total_" + row).val("0");
-    $("#enemy_hp").val("0");
 
 }
 
@@ -1103,13 +1114,6 @@ function calcNpDmg(atk, np_dmg, np_kind, card_buff, class_affinity, class_servan
 
     var dmg;
 
-    // バフ上限下限チェック
-    if (card_buff > 400) { card_buff = 400 };
-    if (atk_buff > 400) { atk_buff = 400 };
-    if (atk_buff < -100) { atk_buff = -100 };
-    if (supereffective_buff > 1000) { supereffective_buff = 1000 };
-    if (np_buff > 500) { np_buff = 500 };
-
     dmg = (atk * np_dmg / 100
         * 0.23 * card_list[np_kind] //宝具色補正
         * (100 + card_buff) / 100
@@ -1154,13 +1158,6 @@ function calcDmg(atk, atk_buff, card_buff, cri_buff, bbonus, bbonus_all, bchain_
     supereffective_buff, special_def, fixed_dmg, random) {
     
     var dmg;
-
-    // バフ上限下限チェック
-    if (card_buff > 400) { card_buff = 400 };
-    if (atk_buff > 400) { atk_buff = 400 };
-    if (atk_buff < -100) { atk_buff = -100 };
-    if (supereffective_buff > 1000) { supereffective_buff = 1000 };
-    if (cri_buff > 500) { cri_buff = 500 };
 
     dmg = (atk * 0.23 *
         (bbonus / 100 * (100 + card_buff) / 100 + bbonus_all / 100)

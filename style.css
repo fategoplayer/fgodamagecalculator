@@ -91,14 +91,14 @@ a {
   align-items: center;
 }
 /*列調整*/
-.col_copy, .col_atk_buff, .col_card_buff, .col_np_buff, .col_ex_atk_buff, .col_fixed_dmg, 
+.col_copy, .col_atk_buff, .col_card_buff, .col_np_buff, .col_ex_atk_buff, 
 .col_footprints, .col_advanced, .col_advanced_setting, .col_special_def, .col_prob {
   width: 28px;
 }
 .col_atk {
   width: 40px;
 }
-.col_np, .col_card_sel, .col_cri_buff, .col_supereffective_buff, .col_supereffective_np {
+.col_np, .col_card_sel, .col_cri_buff, .col_supereffective_buff, .col_supereffective_np, .col_fixed_dmg {
   width: 35px;
 }
 .col_advanced_setting {
@@ -133,7 +133,7 @@ img {
 }
 /*テーブルラッパー*/
 .calc {
-  width: 1347px;
+  width: 1354px;
   padding-right: 10px;
 }
 
