@@ -21,7 +21,7 @@ $(function(){
 
         // ブランクなら0を入れる
         if (this.value == "") {
-            if (this.id = "atk_" + recNumber) {
+            if (this.id == "atk_" + recNumber) {
                 // atkがブランクなら初期化
                 clearParam(recNumber);
             }
