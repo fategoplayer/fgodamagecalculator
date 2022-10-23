@@ -4,10 +4,11 @@
 /* タブ */
 #tab {
   /*position: relative;*/
+  position: -webkit-fixed;
   position: fixed; /* バナーを追従させる */
   z-index: 99999; /* 他の要素の下に隠れないように */
   top: 0; /* バナーの上下の位置 */
-  right: 0; /* バナーの左右の位置 */
+  left: 0; /* バナーの左右の位置 */
   width: 100vw; /* バナーの横幅 */
   display: flex;
   height: 48px;
@@ -112,6 +113,7 @@ output {
 
 
 .floating-result {
+  position: -webkit-fixed;
   position: fixed; /* バナーを追従させる */
   z-index: 99999; /* 他の要素の下に隠れないように */
   bottom: 0; /* バナーの上下の位置 */
@@ -123,4 +125,3 @@ output {
   border-color: #DDD;
   border-width: 1px;
 }
-
