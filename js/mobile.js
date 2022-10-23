@@ -72,18 +72,25 @@ $(function(){
      */
     $(document).on("blur", "input", function () {
     
-        $(".floating-result").css({"display":""});
+        setTimeout(function() {
+            $(".floating-result").style.position = "";
+            $(".floating-result").style.top = "";
+        }, 200);
 
     });
 
     /**
      * 表計算フォーカス遷移イベント
      */
-    /*
     $(document).on("focus", "input", function () {
 
-        $(".floating-result").css({"display":"none"});
 
-    });*/
+        $(".floating-result").style.position = "absolute";
+        $(".floating-result").style.top = (window.scrollY + 20) + "px";
+        /*
+        $(".floating-result").css({"display":"none"});
+        */
+
+    });
 
 });
