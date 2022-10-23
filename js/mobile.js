@@ -74,8 +74,12 @@ $(function(){
      $("#calc-inp-tbl").on("blur", "input", function () {
         var recNumber = this.id.split("_")[this.id.split("_").length - 1];
 
+        /*
         window.scrollBy(0,1);
         setTimeout(function(){window.scrollBy(0,-1)},100);
+        */
+        requestAnimationFrame(function(){return true;});
+        requestAnimationFrame(function(){return true;});
 
         //$(".floating-result").css({"display":""});
         /*
