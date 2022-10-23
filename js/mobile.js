@@ -78,14 +78,18 @@ $(function(){
         window.scrollBy(0,1);
         setTimeout(function(){window.scrollBy(0,-1)},100);
         */
+       /*
         requestAnimationFrame(function(){return true;});
         requestAnimationFrame(function(){return true;});
+        */
 
         //$(".floating-result").css({"display":""});
-        /*
-        $(".floating-result").css({"position":""});
+        $(".floating-result").css({"position":"absolute"});
         $(".floating-result").css({"bottom":""});
-        */
+        setTimeout(function(){
+            $(".floating-result").css({"position":""});
+            $(".floating-result").css({"bottom":""});
+        },100);
 
         // ブランクなら0を入れる
         if (this.value == "") {
