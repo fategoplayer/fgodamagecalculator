@@ -48,7 +48,7 @@ $(function(){
     contents.onscroll = (e) => {
         // アンダーバーを連動して動かす。
         coverX = 100 * e.target.scrollLeft / contents.offsetWidth;
-        cover.style.transform = "translateX(" + coverX + "%)";
+        /*cover.style.transform = "translateX(" + coverX + "%)";*/
     
         // スクロール量を取得してラジオボタンに反映させる
         if (e.target.scrollLeft < contents.offsetWidth / 2) {
