@@ -85,10 +85,10 @@ $(function(){
 
         //$(".floating-result").css({"display":""});
         $(".floating-result").css({"position":"absolute"});
-        $(".floating-result").css({"bottom":""});
+        //$(".floating-result").css({"bottom":""});
         setTimeout(function(){
             $(".floating-result").css({"position":""});
-            $(".floating-result").css({"bottom":""});
+            //$(".floating-result").css({"bottom":""});
         },100);
 
         // ブランクなら0を入れる
@@ -106,8 +106,21 @@ $(function(){
         calcMain(recNumber);
     });
 
+    /**
+     * セレクトボックス変更イベント
+     */
+     $(document).on("change", "select", function () {
+        var recNumber = this.id.split("_")[this.id.split("_").length - 1];
+
+        // 対象行を計算
+        calcMain(recNumber);
+
+    });
+
     
     $("#calc-inp-tbl").on("focus", "input", function () {
+
+        this.select();
 
         /*
         $(".floating-result").css({"position":"absolute"});
@@ -120,6 +133,84 @@ $(".floating-result").css({"display":"none"});
     
 
 });
+
+/**
+ * パラメーター初期化
+ * @param row 行番号
+ */
+ function clearParam(row) {
+
+    $("#atk_" + row).val("0");
+    $("#np_dmg_" + row).val("500");
+    $("#np_kind_" + row).val("B");
+    $("#atk_buff_" + row).val("0");
+    $("#b_card_buff_" + row).val("0");
+    $("#b_card_cri_buff_" + row).val("0");
+    $("#a_card_buff_" + row).val("0");
+    $("#a_card_cri_buff_" + row).val("0");
+    $("#q_card_buff_" + row).val("0");
+    $("#q_card_cri_buff_" + row).val("0");
+    $("#cri_buff_" + row).val("0");
+    $("#np_buff_" + row).val("0");
+    $("#ex_atk_buff_" + row).val("0");
+    $("#supereffective_buff_" + row).val("0");
+    $("#supereffective_np_" + row).val("100");
+    $("#fixed_dmg_" + row).val("0");
+    $("#b_footprints_" + row).val("0");
+    $("#a_footprints_" + row).val("0");
+    $("#q_footprints_" + row).val("0");
+    $("#special_def_" + row).val("0");
+    /*
+    $("#advanced_atk_buff_1st_" + row).val("0");
+    $("#advanced_atk_buff_2nd_" + row).val("0");
+    $("#advanced_atk_buff_3rd_" + row).val("0");
+    $("#advanced_atk_buff_Ex_" + row).val("0");
+    $("#advanced_card_buff_1st_" + row).val("0");
+    $("#advanced_card_buff_2nd_" + row).val("0");
+    $("#advanced_card_buff_3rd_" + row).val("0");
+    $("#advanced_cri_buff_1st_" + row).val("0");
+    $("#advanced_cri_buff_2nd_" + row).val("0");
+    $("#advanced_cri_buff_3rd_" + row).val("0");
+    $("#advanced_supereffective_buff_1st_" + row).val("0");
+    $("#advanced_supereffective_buff_2nd_" + row).val("0");
+    $("#advanced_supereffective_buff_3rd_" + row).val("0");
+    $("#advanced_supereffective_buff_Ex_" + row).val("0");
+    $("#advanced_fixed_dmg_1st_" + row).val("0");
+    $("#advanced_fixed_dmg_2nd_" + row).val("0");
+    $("#advanced_fixed_dmg_3rd_" + row).val("0");
+    $("#advanced_fixed_dmg_Ex_" + row).val("0");
+    $("#advanced_special_def_1st_" + row).val("0");
+    $("#advanced_special_def_2nd_" + row).val("0");
+    $("#advanced_special_def_3rd_" + row).val("0");
+    $("#advanced_special_def_Ex_" + row).val("0");
+    */
+    $("#class_affinity_" + row).val("2.0");
+    $("#attribute_affinity_" + row).val("1.0");
+    $("#class_servant_" + row).val("1.00");
+    $("#card_1st_" + row).val("NP");
+    $("#card_1st_cri_" + row).val("Y");
+    $("#card_2nd_" + row).val("B");
+    $("#card_2nd_cri_" + row).val("Y");
+    $("#card_3rd_" + row).val("B");
+    $("#card_3rd_cri_" + row).val("Y");
+    $("#ex_cri_" + row).val("N");
+    $("#dmg_min_1st_" + row).val("0");
+    $("#dmg_ave_1st_" + row).val("0");
+    $("#dmg_max_1st_" + row).val("0");
+    $("#dmg_min_2nd_" + row).val("0");
+    $("#dmg_ave_2nd_" + row).val("0");
+    $("#dmg_max_2nd_" + row).val("0");
+    $("#dmg_min_3rd_" + row).val("0");
+    $("#dmg_ave_3rd_" + row).val("0");
+    $("#dmg_max_3rd_" + row).val("0");
+    $("#dmg_min_ex_" + row).val("0");
+    $("#dmg_ave_ex_" + row).val("0");
+    $("#dmg_max_ex_" + row).val("0");
+    $("#dmg_min_total_" + row).val("0");
+    $("#dmg_ave_total_" + row).val("0");
+    $("#dmg_max_total_" + row).val("0");
+
+}
 
 /**
  * 計算メイン処理
