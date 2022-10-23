@@ -73,8 +73,8 @@ $(function(){
     $(document).on("blur", "input", function () {
     
         setTimeout(function() {
-            $(".floating-result").style.position = "";
-            $(".floating-result").style.top = "";
+            $(".floating-result").css({"position":""});
+            $(".floating-result").css({"bottom":""});
         }, 200);
 
     });
@@ -84,9 +84,8 @@ $(function(){
      */
     $(document).on("focus", "input", function () {
 
-
-        $(".floating-result").style.position = "absolute";
-        $(".floating-result").style.top = (window.scrollY + 20) + "px";
+        /*$(".floating-result").css({"position":"absolute"});*/
+        /*$(".floating-result").css({"top":(window.scrollY + 20) + "px"});*/
         /*
         $(".floating-result").css({"display":"none"});
         */
