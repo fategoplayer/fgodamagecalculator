@@ -67,4 +67,23 @@ $(function(){
         }
     }
 
+    /**
+     * 表計算フォーカス遷移イベント
+     */
+    $(document).on("blur", "input", function () {
+    
+        $(".floating-result").css({"display":""});
+
+    });
+
+    /**
+     * 表計算フォーカス遷移イベント
+     */
+    /*
+    $(document).on("focus", "input", function () {
+
+        $(".floating-result").css({"display":"none"});
+
+    });*/
+
 });
