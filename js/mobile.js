@@ -48,7 +48,7 @@ $(function(){
     contents.onscroll = (e) => {
         // アンダーバーを連動して動かす。
         coverX = 100 * e.target.scrollLeft / contents.offsetWidth;
-        /*cover.style.transform = "translateX(" + coverX + "%)";*/
+        cover.style.transform = "translateX(" + coverX + "%)";
     
         // スクロール量を取得してラジオボタンに反映させる
         if (e.target.scrollLeft < contents.offsetWidth / 2) {
@@ -74,7 +74,7 @@ $(function(){
      $("#calc-inp-tbl").on("blur", "input", function () {
         var recNumber = this.id.split("_")[this.id.split("_").length - 1];
 
-        $(".floating-result").css({"display":""});
+        //$(".floating-result").css({"display":""});
         /*
         $(".floating-result").css({"position":""});
         $(".floating-result").css({"bottom":""});
