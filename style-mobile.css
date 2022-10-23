@@ -74,12 +74,21 @@ input[name="tab-radio"]:checked+.tab-label {
 table {
   width: 100%;
 }
-td {
+tr {
+  
+}
+.calc-inp-tbl td {
+  padding-top: 5px;
   width: auto;
   height: 30px;
 }
-th {
+.calc-inp-tbl th {
+  padding-top: 5px;
   /*width: 12.5%;*/
+}
+
+.clac-result-tbl td {
+  width:16.6%;
 }
 
 input[type="number"] {
@@ -107,7 +116,7 @@ body {
 output {
   width: 100%;
   text-align:right;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 
@@ -115,10 +124,11 @@ output {
 .floating-result {
   position: -webkit-fixed;
   position: fixed; /* バナーを追従させる */
-  z-index: 99999; /* 他の要素の下に隠れないように */
+  z-index: 99; /* 他の要素の下に隠れないように */
   bottom: 0; /* バナーの上下の位置 */
   right: 0; /* バナーの左右の位置 */
-  width: 100vw; /* バナーの横幅 */
+  /*width: 100vw;*/ /* バナーの横幅 */
+  width: 100%;
   height: 100px;
   background-color: white;
   border-style: solid none none none;
