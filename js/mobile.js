@@ -74,6 +74,9 @@ $(function(){
      $("#calc-inp-tbl").on("blur", "input", function () {
         var recNumber = this.id.split("_")[this.id.split("_").length - 1];
 
+        window.scrollBy(0,1);
+        setTimeout(function(){window.scrollBy(0,-0.1)},200);
+
         //$(".floating-result").css({"display":""});
         /*
         $(".floating-result").css({"position":""});
@@ -102,8 +105,9 @@ $(function(){
         $(".floating-result").css({"position":"absolute"});
         $(".floating-result").css({"bottom":(window.scrollY) + "px"});
 */
+/*
 $(".floating-result").css({"display":"none"});
-
+*/
     });
     
 
