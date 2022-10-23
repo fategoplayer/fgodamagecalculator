@@ -56,7 +56,7 @@ input[name="tab-radio"]:checked+.tab-label {
   -ms-overflow-style: none;
   scrollbar-width: none;
   padding-top: 49px;
-  /*padding-bottom: 100px;*/
+  padding-bottom: 100px;
 }
 
 #contents::-webkit-scrollbar {
@@ -135,3 +135,9 @@ output {
   border-color: #DDD;
   border-width: 1px;
 }
+/*
+.dummy {
+  background-color: red;
+  height:93px;
+}
+*/
