@@ -5,14 +5,14 @@
         <meta http-equiv="Pragma" content="no-cache">
         <meta http-equiv="Cache-Control" content="no-cache">
         <meta http-equiv="Expires" content="0">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <title>FGO ダメージ計算表</title>
         <!--<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />-->
         <link rel="stylesheet" type="text/css" href="style-mobile.css" />
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-        <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">-->
+        <!--<link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">-->
+        <!--<link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script async charset="UTF-8" type="text/javascript" src="js/mobile.js"></script>
         <!--<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>-->
@@ -113,8 +113,7 @@
                             <td><input type="number" id="a_footprints_0" value="0" max="500" min="0" step="25" class="a_footprints"></td>
                             <th>足跡Q</th>
                             <td><input type="number" id="q_footprints_0" value="0" max="500" min="0" step="25" class="q_footprints"></td>
-                            <td></td>
-                            <td></td>
+                            <td colspan="2"></td>
                         </tr>
                         <tr>
                             <th>特殊<br>耐性</th>
@@ -149,11 +148,10 @@
                                     <option value="1.1">1.1</option>
                                 </select>
                             </td>
-                            <td></td>
-                            <td></td>
+                            <td colspan="2"></td>
                         </tr>
                         <tr>
-                            <th>1st</th>
+                            <th rowspan="2">1st</th>
                             <td>
                                 <select id="card_1st_0" class="card_1st">
                                     <option value="NP" selected>N</option>
@@ -162,7 +160,7 @@
                                     <option value="Q">Q</option>
                                 </select>
                             </td>
-                            <th>2nd</th>
+                            <th rowspan="2">2nd</th>
                             <td>
                                 <select id="card_2nd_0" class="card_2nd">
                                     <option value="NP">N</option>
@@ -171,7 +169,7 @@
                                     <option value="Q">Q</option>
                                 </select>
                             </td>
-                            <th>3rd</th>
+                            <th rowspan="2">3rd</th>
                             <td>
                                 <select id="card_3rd_0" class="card_3rd">
                                     <option value="NP">N</option>
@@ -180,11 +178,9 @@
                                     <option value="Q">Q</option>
                                 </select>
                             </td>
-                            <td></td>
-                            <td></td>
+                            <td colspan="2"></td>
                         </tr>
                         <tr>
-                            <th>1st<br>クリ</th>
                             <td>
                                 <select id="card_1st_cri_0" class="card_1st_cri">
                                     <option value="Y">有</option>
@@ -192,7 +188,6 @@
                                     <option value="zero">0</option>
                                 </select>
                             </td>
-                            <th>2nd<br>クリ</th>
                             <td>
                                 <select id="card_2nd_cri_0" class="card_2nd_cri">
                                     <option value="Y">有</option>
@@ -200,7 +195,6 @@
                                     <option value="zero">0</option>
                                 </select>
                             </td>
-                            <th>3rd<br>クリ</th>
                             <td>
                                 <select id="card_3rd_cri_0" class="card_3rd_cri">
                                     <option value="Y">有</option>

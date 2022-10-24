@@ -84,11 +84,13 @@ $(function(){
         */
 
         //$(".floating-result").css({"display":""});
-        $(".floating-result").css({"position":"absolute"});
+        //$(".floating-result").css({"position":"absolute"});
         //$(".floating-result").css({"bottom":""});
         setTimeout(function(){
-            $(".floating-result").css({"position":""});
+            //$(".floating-result").css({"position":""});
             //$(".floating-result").css({"bottom":""});
+            console.log($(".floating-result")[0].offsetHeight);
+            $(".floating-result").hide().show();
         },100);
 
         // ブランクなら0を入れる
