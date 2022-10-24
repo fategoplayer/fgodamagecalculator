@@ -90,7 +90,7 @@ $(function(){
             //$(".floating-result").css({"position":""});
             //$(".floating-result").css({"bottom":""});
             console.log($(".floating-result")[0].offsetHeight);
-            $(".floating-result").hide().show();
+            /*$(".floating-result").hide().show();*/
         },100);
 
         // ブランクなら0を入れる
