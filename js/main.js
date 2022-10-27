@@ -1222,7 +1222,7 @@ function copyProbInput(recNumber) {
         if (card_1st != "NP") {
             $("#fixed_1st").val(parseFloat($("#fixed_dmg_" + recNumber).val()) + parseFloat($("#advanced_fixed_dmg_1st_" + recNumber).val()) + atk * bchain_bonus / 100);
         } else {
-            $("#fixed_1st").val("0");
+            $("#fixed_1st").val(parseFloat($("#fixed_dmg_" + recNumber).val()));
         }
     };
 
@@ -1234,7 +1234,7 @@ function copyProbInput(recNumber) {
         if (card_2nd != "NP") {
             $("#fixed_2nd").val(parseFloat($("#fixed_dmg_" + recNumber).val()) + parseFloat($("#advanced_fixed_dmg_2nd_" + recNumber).val()) + atk * bchain_bonus / 100);
         } else {
-            $("#fixed_2nd").val("0");
+            $("#fixed_2nd").val(parseFloat($("#fixed_dmg_" + recNumber).val()));
         }
     };
 
@@ -1246,7 +1246,7 @@ function copyProbInput(recNumber) {
         if (card_3rd != "NP") {
             $("#fixed_3rd").val(parseFloat($("#fixed_dmg_" + recNumber).val()) + parseFloat($("#advanced_fixed_dmg_3rd_" + recNumber).val()) + atk * bchain_bonus / 100);
         } else {
-            $("#fixed_3rd").val("0");
+            $("#fixed_3rd").val(parseFloat($("#fixed_dmg_" + recNumber).val()));
         }
     };
     
