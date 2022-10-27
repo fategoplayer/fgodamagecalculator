@@ -1255,7 +1255,7 @@ function copyProbInput(recNumber) {
         $("#fixed_Ex").val("0");
     } else {
         $("#dmg_Ex").val($("#dmg_ave_ex_" + recNumber).val().replace(/,/g, ""));
-        $("#fixed_Ex").val(parseFloat($("#fixed_dmg_" + recNumber).val()) +  + parseFloat($("#advanced_fixed_dmg_Ex_" + recNumber).val()));
+        $("#fixed_Ex").val(parseFloat($("#fixed_dmg_" + recNumber).val()) + parseFloat($("#advanced_fixed_dmg_Ex_" + recNumber).val()));
     };
 
     $("#dmg_total").val(parseFloat($("#dmg_1st").val()) + parseFloat($("#dmg_2nd").val()) + parseFloat($("#dmg_3rd").val()) + parseFloat($("#dmg_Ex").val()));
