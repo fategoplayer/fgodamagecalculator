@@ -209,11 +209,13 @@ img {
   display:table;
   text-align:right;
   height: 33%;
-  width: 95%;
+  width: 100%;
+  cursor: pointer;
 }
 .wrap_dmg_result output{
   display:table-cell;
   vertical-align:middle;
+  padding-right: 5px;
 }
 
 #addRow, #clear {
@@ -263,7 +265,7 @@ button:hover {
   display:table;
   text-align:right;
   height: 49%;
-  width: 95%;
+  width: 100%;
 }
 .col_prob_result {
   width: 20%;
@@ -271,15 +273,17 @@ button:hover {
 .wrap_col_prob_out output{
   display:table-cell;
   vertical-align:middle;
+  padding-right: 5px;
 }
 .wrap_prob_result {
   display:table;
   height: 100%;
-  width: 95%;
+  width: 100%;
 }
 .wrap_prob_result output{
   display:table-cell;
   vertical-align:middle;
+  padding-right: 5px;
 }
 
 
@@ -338,4 +342,42 @@ button:hover {
   background: #fff;
   text-align: left;
   padding: 30px;
+}
+.selTotal {
+  display: none;
+  width: 210px;
+  height: 40px;
+  background-color: #fff;
+  position: fixed;
+  left:auto;
+  bottom: 0;
+  margin: 0 0 0 900px;
+  margin-bottom:40px;
+  padding:0;
+  border-radius: 5px 5px 5px 5px;
+  border: 1px solid #a8b7c5;
+  box-shadow: 0px -3px 5px 1px #eee inset;
+}
+.wrap_out_sel_total {
+  display:flex;
+  height: 50%;
+  width: 90%;
+  vertical-align: middle;
+  border-bottom: 1px solid #3c6690;
+  margin-left: 10px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+.wrap_out_sel_total #out_sel_total {
+  padding-right: 5px;
+  text-align: right;
+  font-size: 16px;
+  height: 100%;
+  width: 110px;
+}
+.wrap_out_sel_total label{
+  font-size: 16px;
+  height: 100%;
+  width: 100px;
 }

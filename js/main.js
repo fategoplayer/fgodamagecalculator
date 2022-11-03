@@ -1,6 +1,8 @@
 const card_list = { "B": 1.5, "A": 1.0, "Q": 0.8 }; //宝具色補正
 const defaultRow = 8; // 初期行数
 var rowNumber = 0; // 現在行数
+var selDamageTotal = 0;
+var selDamageNum = 0;
 
 $(function(){
     /**
@@ -32,6 +34,9 @@ $(function(){
 
         // 対象行を計算
         calcMain(recNumber);
+        
+        // 選択トータルを初期化
+        clearSelTotal(recNumber);
     });
 
     /**
@@ -42,6 +47,9 @@ $(function(){
 
         // 対象行を計算
         calcMain(recNumber);
+
+        // 選択トータル初期化
+        clearSelTotal();
 
     });
 
@@ -129,6 +137,36 @@ $(function(){
 
         // クリアボタンの場合は目標ダメージも初期化
         $("#enemy_hp").val("0");
+
+        // 選択トータル初期化
+        clearSelTotal();
+
+    });
+
+    /**
+     * 計算結果押下イベント
+     */
+    $(document).on("click", ".wrap_dmg_result", function() {
+
+        if ($(this).css("background-color") == "rgb(255, 255, 197)") {
+            $(this).css({"background":""});
+            selDamageTotal = selDamageTotal - Number($(this).children("output").val().replace(/,/g, ""));
+            selDamageNum -= 1;
+        }
+        else {
+            $(this).css({"background":"#FFFFC5"});
+            selDamageTotal = selDamageTotal + Number($(this).children("output").val().replace(/,/g, ""));
+            selDamageNum += 1;
+        }
+        
+        $("#out_sel_total").val(Number(selDamageTotal).toLocaleString());
+
+        if (selDamageNum > 0) {
+            $(".selTotal").css({"display":"flex"})
+        }
+        else {
+            $(".selTotal").css({"display":""})
+        }
 
     });
 
@@ -657,6 +695,18 @@ function clearParam(row) {
     $("#dmg_max_total_" + row).val("0");
 
 }
+
+/**
+ * 選択トータル初期化
+ */
+ function clearSelTotal() {
+
+    selDamageTotal = 0;
+    selDamageNum = 0;
+    $(".selTotal").css({"display":""})
+    $("#out_sel_total").val("0");
+    $(".wrap_dmg_result").css({"background":""});
+ }
 
 /**
  * 行コピー

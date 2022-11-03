@@ -5,12 +5,14 @@
         <meta http-equiv="Pragma" content="no-cache">
         <meta http-equiv="Cache-Control" content="no-cache">
         <meta http-equiv="Expires" content="0">
+        <meta name="viewport" content="width=device-width">
         <title>FGO ダメージ計算表</title>
         <link rel="stylesheet" type="text/css" href="style.css" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script charset="UTF-8" type="text/javascript" src="js/main.js"></script>
     </head>
@@ -1684,11 +1686,18 @@
                         </tr>
                     </tbody>
                 </table>
+                <div class="selTotal">
+                    <div class="wrap_out_sel_total">
+                        <label>トータル：</label>
+                        <output id="out_sel_total">0</output>
+                    </div>
+                </div>
             </div>
             <div>
                 <button id="addRow">行追加</button>
                 <button id="clear">クリア</button>
             </div>
+
             <div class="modal-container">
                 <div class="modal-body">
                     <div class="modal-close">×</div>
