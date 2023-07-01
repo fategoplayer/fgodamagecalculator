@@ -1,0 +1,199 @@
+@charset "UTF-8";
+
+table th {
+  padding: 1px 0;
+  text-align: center;
+  vertical-align: middle;
+}
+
+table tr,td {
+  height: 80px;
+}
+
+output {
+  height: 33%;
+  display:block;
+  text-align:right;
+  font-size: .8rem;
+  font-weight: 500;
+  padding: 0rem 0.25rem;
+}
+
+.wrap_dmg_result {
+  display:table;
+  text-align:right;
+  height: 33%;
+  width: 100%;
+  cursor: pointer;
+}
+.wrap_dmg_result output{
+  display:table-cell;
+  vertical-align:middle;
+}
+
+#out_sel_total {
+  width: 80px;
+  min-width: 80px;
+  height: 23px;
+}
+
+.sel_total {
+  display: none;
+}
+
+input[type="number"]:focus {
+  outline: solid 1px #afc0b8 !important;
+}
+select:focus {
+  outline: solid 1px #afc0b8 !important;
+}
+
+/*列調整*/
+.col_copy, .col_atk_buff, .col_card_buff, .col_np_buff, .col_ex_atk_buff, 
+.col_footprints, .col_advanced_setting, .col_special_def, .col_prob {
+  min-width: 28px;
+  max-width: 28px;
+}
+.col_atk {
+  min-width: 42px;
+  max-width: 42px;
+}
+.col_np, .col_card_sel, .col_cri_buff, .col_supereffective_buff, .col_supereffective_np, .col_fixed_dmg {
+  min-width: 35px;
+  max-width: 35px;
+}
+.col_advanced_setting {
+  display: none;
+}
+.col_special_def {
+  min-width: 31px;
+  max-width: 31px;
+}
+.col_class_affinity, .col_class_servant, .col_attribute_affinity {
+  min-width: 50px;
+  max-width: 50px;
+}
+.col_dmg_result {
+  min-width: 80px;
+  max-width: 80px;
+}
+#brand_img {
+  margin-right: 8px;
+  width: 29px;
+  height: 29px;
+}
+
+/*罫線*/
+.boundary_line {
+  margin-top: 0.5px;
+  margin-bottom: 0.5px;
+  width: 100%;
+  height: 1px;
+  background-color: #dee2e6;;
+  border: none;
+  color: #dee2e6;;
+}
+
+/*テーブルラッパー*/
+.calc {
+  max-width: 1195.5px;
+  margin: .4rem;
+}
+
+/*INPUT,SELECT高さ*/
+.atk, .atk_buff, .cri_buff, .np_buff, .ex_atk_buff, .supereffective_buff, .supereffective_np, .fixed_dmg, .special_def,
+.class_affinity, .class_servant, .attribute_affinity, .ex_cri {
+  height: 100% !important;
+}
+.np_dmg, .np_kind, .card_1st, .card_1st_cri, .card_2nd, .card_2nd_cri, .card_3rd, .card_3rd_cri {
+  height: 39px !important;
+}
+.b_card_buff {
+  height: 39px !important;
+  background-color: #FFEEEE !important;
+}
+.b_card_cri_buff {
+  height: 39px !important;
+  background-color: #FFEEEE !important;
+}
+.a_card_buff {
+  height: 39px !important;
+  background-color: #F0F8FF !important;
+}
+.a_card_cri_buff {
+  height: 39px !important;
+  background-color: #F0F8FF !important;
+}
+.q_card_buff {
+  height: 39px !important;
+  background-color: #EEFFEE !important;
+}
+.q_card_cri_buff {
+  height: 39px !important;
+  background-color: #EEFFEE !important;
+}
+.b_footprints {
+  height: 25.3px !important;
+  background-color: #FFEEEE !important;
+}
+.a_footprints {
+  height: 25.3px !important;
+  background-color: #F0F8FF !important;
+}
+.q_footprints {
+  height: 25.3px !important;
+  background-color: #EEFFEE !important;
+}
+.advanced_atk_buff_1st, .advanced_atk_buff_2nd, .advanced_atk_buff_3rd, .advanced_atk_buff_Ex,
+.advanced_supereffective_buff_1st, .advanced_supereffective_buff_2nd, .advanced_supereffective_buff_3rd, .advanced_supereffective_buff_Ex,
+.advanced_fixed_dmg_1st, .advanced_fixed_dmg_2nd, .advanced_fixed_dmg_3rd, .advanced_fixed_dmg_Ex, 
+.advanced_special_def_1st, .advanced_special_def_2nd, .advanced_special_def_3rd, .advanced_special_def_Ex,
+.advanced_card_buff_1st, .advanced_card_buff_2nd, .advanced_card_buff_3rd,
+.advanced_cri_buff_1st, .advanced_cri_buff_2nd, .advanced_cri_buff_3rd, .advanced_blank {
+  height: 18.5px !important;
+}
+
+/*撃破率計算*/
+#prob_result {
+  font-size: 1.1rem;
+}
+#enemy_hp{
+  height: 100%;
+}
+#dmg_1st, #fixed_1st, #dmg_2nd, #fixed_2nd, #dmg_3rd, #fixed_3rd, #dmg_Ex, #fixed_Ex {
+  height: 39px;
+}
+#dmg_total, #fixed_total {
+  height: 49% !important;
+}
+.col_prob_inp{
+  width: 13.5%;
+  min-width: 62.77px;
+}
+.col_prob_out{
+  width: 16.25%;
+  min-width: 75.56px;
+}
+.wrap_col_prob_out {
+  display:table;
+  text-align:right;
+  height: 49%;
+  width: 100%;
+}
+.col_prob_result {
+  width: 16.25%;
+  min-width: 75.61px;
+}
+.wrap_col_prob_out output{
+  display:table-cell;
+  vertical-align:middle;
+}
+.wrap_col_prob_result {
+  display:table;
+  height: 100%;
+  width: 100%;
+}
+.wrap_col_prob_result output{
+  display:table-cell;
+  vertical-align:middle;
+}
