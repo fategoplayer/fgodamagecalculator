@@ -246,8 +246,14 @@ $(function(){
         // パラメーターを撃破率画面にコピー
         copyProbInput(recNumber);
 
+        // パラメーターをNPスター計算画面にコピー
+        copyNpStarInput(recNumber);
+
         // 撃破率計算
         calcProb();
+
+        // NPスター計算
+        calcRate();
 
         return false;
 
@@ -266,6 +272,31 @@ $(function(){
         calcProb();
 
     });
+
+    /**
+     * NPスターフォーカス遷移イベント
+     */
+    $("#npStarTable").on("blur", "input", function () {
+
+        if (this.value == "") {this.value = "0";};
+
+        this.value = parseFloat(this.value);
+
+        // NPスター計算
+        calcRate();
+
+    });
+
+    /**
+     * セレクトボックス変更イベント
+     */
+    $(document).on("change", ".select_np_star", function () {
+
+        // NPスター計算
+        calcRate();
+
+    });
+
 
     /**
      * エンターキーでフォーカス移動
@@ -1389,9 +1420,9 @@ function rounddown(num, digit) {
 function copyProbInput(recNumber) {
     var card_1st, card_2nd, card_3rd, np_kind, atk, atk_b_buff, bchain_bonus;
     // Bチェインボーナス分の反映
-    card_1st = $("#card_1st_" + recNumber).val()
-    card_2nd = $("#card_2nd_" + recNumber).val()
-    card_3rd = $("#card_3rd_" + recNumber).val()
+    card_1st = $("#card_1st_" + recNumber).val();
+    card_2nd = $("#card_2nd_" + recNumber).val();
+    card_3rd = $("#card_3rd_" + recNumber).val();
     np_kind = $("#np_kind_" + recNumber).val();
     atk = parseFloat($("#atk_" + recNumber).val());
     atk_b_buff = parseFloat($("#b_footprints_" + recNumber).val());
@@ -1534,126 +1565,229 @@ function binarySearch(arr, target) {
 
 };
 
-function calcNp(hit, N_A, Abonus, card_buff, Abonus_all, card_NP, enemy_rate, getNP_buff, Cri, OK, card_debuff) {
-    var NP;
-    NP = 100 * (N_A * (Abonus / 100 * (100 + card_buff + card_debuff) / 100 + Abonus_all * card_NP / 100) * enemy_rate / 100 * (100 + getNP_buff) / 100) * Cri;
-    // NP = Math.round(NP * 10);
-    // NP = Math.floor(NP / 10);
-    NP = Math.floor(NP)
-    NP = (NP * (hit - OK) + Math.floor(1.5 * NP) * OK) / 100;
-    if (Cri == 2 && card_NP == 0) { NP = "" };
-    return NP;
-};
+/**
+ * パラメーターをNPスター計算にコピー
+ * @param recNumber コピー対象行
+ */
+function copyNpStarInput(recNumber) {
 
-function calcStar(hit, Star_rate, Qbonus, card_buff, Qbonus_all, card_NP, getStar_buff, Cri, OK, card_debuff) {
-    var Star, Star_num;
-    Star = 100 * (Star_rate / 100 + Qbonus / 100 * (100 + card_buff + card_debuff) / 100 + Qbonus_all * card_NP / 100 + getStar_buff / 100 + Cri / 100);
-    Star_OK = 100 * (Star_rate / 100 + Qbonus / 100 * (100 + card_buff + card_debuff) / 100 + Qbonus_all * card_NP / 100 + getStar_buff / 100 + Cri / 100 + 30 / 100);
-    Star = Math.floor(Star * 100);
-    Star = Math.floor(Star / 100) * 10;
-    if (Star > 3000) { Star = 3000 };
-    Star_num = Math.floor(Star / 1000);
-    Star_OK = Math.floor(Star_OK * 100);
-    Star_OK = Math.floor(Star_OK / 100) * 10;
-    if (Star_OK > 3000) { Star_OK = 3000 };
-    Star_OK_num = Math.floor(Star_OK / 1000);
-    Star = (Star_num * (hit - OK) + Star_OK_num * OK) + "個" + "+" + "(" + ((Star - 1000 * Star_num) / 10) + "%×" + (hit - OK) + ", " + ((Star_OK - 1000 * Star_OK_num) / 10) + "%×" + OK + ")";
-    if (Cri == 20 && card_NP == 0) { Star = "" };
-    return Star;
-};
+    $("#np_kind_np_star").val($("#np_kind_" + recNumber).val());
+    $("#b_card_buff_np_star").val($("#b_card_buff_" + recNumber).val());
+    $("#a_card_buff_np_star").val($("#a_card_buff_" + recNumber).val());
+    $("#q_card_buff_np_star").val($("#q_card_buff_" + recNumber).val());
+    $("#ex_atk_buff_np_star").val($("#ex_atk_buff_" + recNumber).val());
+    $("#card_1st_np_star").val($("#card_1st_" + recNumber).val());
+    $("#card_2nd_np_star").val($("#card_2nd_" + recNumber).val());
+    $("#card_3rd_np_star").val($("#card_3rd_" + recNumber).val());
+    if ($("#card_1st_cri_" + recNumber).val() != "zero") {
+        $("#card_1st_cri_np_star").val($("#card_1st_cri_" + recNumber).val());
+    }
+    if ($("#card_2nd_cri_" + recNumber).val() != "zero") {
+        $("#card_2nd_cri_np_star").val($("#card_2nd_cri_" + recNumber).val());
+    }
+    if ($("#card_3rd_cri_" + recNumber).val() != "zero") {
+        $("#card_3rd_cri_np_star").val($("#card_3rd_cri_" + recNumber).val());
+    }
 
+}
+
+/**
+ * NPスター獲得量計算メイン処理
+ */
 function calcRate() {
-    var card_1st, card_2nd, card_3rd, N_A, Q_hit, A_hit, B_hit, EX_hit, Qbonus_1st, Abonus_1st, Bbonus_1st, Q_CARDbuff, A_CARDbuff, B_CARDbuff, EX_CARDbuff, NPcard, NP_hit,
-        Qbonus_all, Abonus_all, Qbonus_2nd, Abonus_2nd, Bbonus_2nd, Qbonus_3rd, Abonus_3rd, Bbonus_3rd, EXbonus,
-        buff_1st, buff_2nd, buff_3rd, getNP_buff, hit_1st, hit_2nd, hit_3rd, NPcard_1st, NPcard_2nd, NPcard_3rd, card1st_NP, card2nd_NP, card3rd_NP,
-        Star_rate, getStar_buff, enemy_rate_NP, enemy_rate_Star, Q_CARDdebuff, A_CARDdebuff, B_CARDdebuff, debuff_1st, debuff_2nd, debuff_3rd,
-        OK_1st, OK_2nd, OK_3rd, OK_EX;
-    N_A = parseFloat(document.rate.N_A.value);
-    card_1st = document.rate.card_1st.value;
-    card_2nd = document.rate.card_2nd.value;
-    card_3rd = document.rate.card_3rd.value;
-    Qbonus_all = 0; Abonus_all = 0;
-    Q_hit = parseFloat(document.rate.Q_hit.value);
-    A_hit = parseFloat(document.rate.A_hit.value);
-    B_hit = parseFloat(document.rate.B_hit.value);
-    EX_hit = parseFloat(document.rate.EX_hit.value);
-    NP_hit = parseFloat(document.rate.NP_hit.value);
-    Q_CARDbuff = parseFloat(document.rate.Q_CARDbuff.value);
-    A_CARDbuff = parseFloat(document.rate.A_CARDbuff.value);
-    B_CARDbuff = parseFloat(document.rate.B_CARDbuff.value);
-    EX_CARDbuff = parseFloat(document.rate.EX_CARDbuff.value);
-    getNP_buff = parseFloat(document.rate.getNP_buff.value);
-    NPcard = document.rate.NPcard.value;
-    Star_rate = parseFloat(document.rate.Star_rate.value);
-    getStar_buff = parseFloat(document.rate.getStar_buff.value);
-    enemy_rate_NP = parseFloat(document.rate.enemy_rate_NP.value);
-    enemy_rate_Star = parseFloat(document.rate.enemy_rate_Star.value);
-    Q_CARDdebuff = parseFloat(document.rate.Q_CARDdebuff.value);
-    A_CARDdebuff = parseFloat(document.rate.A_CARDdebuff.value);
-    B_CARDdebuff = parseFloat(document.rate.B_CARDdebuff.value);
-    card1st_NP = 1;
-    card2nd_NP = 1;
-    card3rd_NP = 1;
-    OK_1st = parseFloat(document.rate.OK_1st.value);
-    OK_2nd = parseFloat(document.rate.OK_2nd.value);
-    OK_3rd = parseFloat(document.rate.OK_3rd.value);
-    OK_EX = parseFloat(document.rate.OK_EX.value);
+    var card_1st, card_2nd, card_3rd, na, q_hit, a_hit, b_hit, ex_hit, qBonus_1st, aBonus_1st, q_card_buff, a_card_buff, b_card_buff, ex_card_buff, np_card, np_hit,
+        qBonus_all, aBonus_all, qBonus_2nd, aBonus_2nd, qBonus_3rd, aBonus_3rd,buff_1st, buff_2nd, buff_3rd, na_buff, hit_1st, hit_2nd, hit_3rd,
+        card_1st_np, card_2nd_np, card_3rd_np, sr, sr_buff, np_enemy, sr_enemy, 
+        ok_1st, ok_2nd, ok_3rd, ok_ex, card_1st_np_cri, card_2nd_np_cri, card_3rd_np_cri, card_1st_star_cri, card_2nd_star_cri, card_3rd_star_cri,
+        result_1st_np, result_2nd_np, result_3rd_np, result_ex_np, result_1st_np_ovk, result_2nd_np_ovk, result_3rd_np_ovk, result_ex_np_ovk,
+        result_1st_star, result_2nd_star, result_3rd_star, result_ex_star, result_1st_star_ovk, result_2nd_star_ovk, result_3rd_star_ovk, result_ex_star_ovk;
 
-    if (Q_CARDbuff > 400) { Q_CARDbuff = 400 };
-    if (A_CARDbuff > 400) { A_CARDbuff = 400 };
-    if (B_CARDbuff > 400) { B_CARDbuff = 400 };
-    if (EX_CARDbuff > 400) { EX_CARDbuff = 400 };
-    if (getNP_buff > 400) { getNP_buff = 400 };
-    if (getStar_buff > 500) { getStar_buff = 500 };
+    na = parseFloat($("#NA").val());
+    card_1st = $("#card_1st_np_star").val();
+    card_2nd = $("#card_2nd_np_star").val();
+    card_3rd = $("#card_3rd_np_star").val();
+    if ($("#card_1st_cri_np_star").val() == "Y") {
+        card_1st_np_cri = 2;
+        card_1st_star_cri = 20;
+    }
+    else {
+        card_1st_np_cri = 1;
+        card_1st_star_cri = 0;
+    };
+    if ($("#card_2nd_cri_np_star").val() == "Y") {
+        card_2nd_np_cri = 2;
+        card_2nd_star_cri = 20;
+    }
+    else {
+        card_2nd_np_cri = 1;
+        card_2nd_star_cri = 0;
+    };
+    if ($("#card_3rd_cri_np_star").val() == "Y") {
+        card_3rd_np_cri = 2;
+        card_3rd_star_cri = 20;
+    }
+    else {
+        card_3rd_np_cri = 1;
+        card_3rd_star_cri = 0;
+    };
+    qBonus_all = 0;
+    aBonus_all = 0;
+    b_hit = parseFloat($("#b_hit").val());
+    a_hit = parseFloat($("#a_hit").val());
+    q_hit = parseFloat($("#q_hit").val());
+    ex_hit = parseFloat($("#ex_hit").val());
+    np_hit = parseFloat($("#np_hit").val());
+    b_card_buff = parseFloat($("#b_card_buff_np_star").val());
+    a_card_buff = parseFloat($("#a_card_buff_np_star").val());
+    q_card_buff = parseFloat($("#q_card_buff_np_star").val());
+    ex_card_buff = parseFloat($("#ex_atk_buff_np_star").val());
+    na_buff = parseFloat($("#NA_buff").val());
+    np_card = $("#np_kind_np_star").val();
+    sr = parseFloat($("#SR").val());
+    sr_buff = parseFloat($("#SR_buff").val());
+    np_enemy = parseFloat($("#NA_enemy").val());
+    sr_enemy = parseFloat($("#SR_enemy").val());
+    card_1st_np = 1;
+    card_2nd_np = 1;
+    card_3rd_np = 1;
+    ok_ex = ex_hit;
 
-    if (card_1st == "T") { card_1st = NPcard; card1st_NP = 0; };
-    if (card_2nd == "T") { card_2nd = NPcard; card2nd_NP = 0; };
-    if (card_3rd == "T") { card_3rd = NPcard; card3rd_NP = 0; };
+    if (card_1st == "NP") { card_1st = np_card; card_1st_np = 0; card_1st_np_cri = 1; card_1st_star_cri = 0; };
+    if (card_2nd == "NP") { card_2nd = np_card; card_2nd_np = 0; card_2nd_np_cri = 1; card_2nd_star_cri = 0; };
+    if (card_3rd == "NP") { card_3rd = np_card; card_3rd_np = 0; card_3rd_np_cri = 1; card_3rd_star_cri = 0; };
 
-    if (card_1st == "Q") { Qbonus_all = 20; Qbonus_1st = 80; Abonus_1st = 100; buff_1st = Q_CARDbuff; hit_1st = Q_hit; debuff_1st = Q_CARDdebuff; };
-    if (card_1st == "A") { Abonus_all = 100; Qbonus_1st = 0; Abonus_1st = 300; buff_1st = A_CARDbuff; hit_1st = A_hit; debuff_1st = A_CARDdebuff; };
-    if (card_1st == "B") { Qbonus_1st = 10; Abonus_1st = 0; buff_1st = B_CARDbuff; hit_1st = B_hit; debuff_1st = B_CARDdebuff; };
+    if ((card_1st != card_2nd && card_2nd != card_3rd && card_3rd != card_1st) || card_1st == "Q") { qBonus_all = 20; }
+    if ((card_1st != card_2nd && card_2nd != card_3rd && card_3rd != card_1st) || card_1st == "A") { aBonus_all = 100; }
 
-    if (card_2nd == "Q") { Qbonus_2nd = 130; Abonus_2nd = 150; buff_2nd = Q_CARDbuff; hit_2nd = Q_hit; debuff_2nd = Q_CARDdebuff; };
-    if (card_2nd == "A") { Qbonus_2nd = 0; Abonus_2nd = 450; buff_2nd = A_CARDbuff; hit_2nd = A_hit; debuff_2nd = A_CARDdebuff; };
-    if (card_2nd == "B") { Qbonus_2nd = 15; Abonus_2nd = 0; buff_2nd = B_CARDbuff; hit_2nd = B_hit; debuff_2nd = B_CARDdebuff; };
+    if (card_1st == "B") { qBonus_1st = 10; aBonus_1st = 0; buff_1st = b_card_buff; hit_1st = b_hit; ok_1st = b_hit; };
+    if (card_1st == "A") { qBonus_1st = 0; aBonus_1st = 300; buff_1st = a_card_buff; hit_1st = a_hit; ok_1st = a_hit; };
+    if (card_1st == "Q") { qBonus_1st = 80; aBonus_1st = 100; buff_1st = q_card_buff; hit_1st = q_hit; ok_1st = q_hit; };
 
-    if (card_3rd == "Q") { Qbonus_3rd = 180; Abonus_3rd = 200; buff_3rd = Q_CARDbuff; hit_3rd = Q_hit; debuff_3rd = Q_CARDdebuff; };
-    if (card_3rd == "A") { Qbonus_3rd = 0; Abonus_3rd = 600; buff_3rd = A_CARDbuff; hit_3rd = A_hit; debuff_3rd = A_CARDdebuff; };
-    if (card_3rd == "B") { Qbonus_3rd = 20; Abonus_3rd = 0; buff_3rd = B_CARDbuff; hit_3rd = B_hit; debuff_3rd = B_CARDdebuff; };
+    if (card_2nd == "B") { qBonus_2nd = 15; aBonus_2nd = 0; buff_2nd = b_card_buff; hit_2nd = b_hit; ok_2nd = b_hit; };
+    if (card_2nd == "A") { qBonus_2nd = 0; aBonus_2nd = 450; buff_2nd = a_card_buff; hit_2nd = a_hit; ok_2nd = a_hit; };
+    if (card_2nd == "Q") { qBonus_2nd = 130; aBonus_2nd = 150; buff_2nd = q_card_buff; hit_2nd = q_hit; ok_2nd = q_hit; };
 
-    if (card1st_NP == 0 && card_1st == "Q") { Qbonus_1st = 80; Abonus_1st = 100; };
-    if (card1st_NP == 0 && card_1st == "A") { Qbonus_1st = 0; Abonus_1st = 300; };
-    if (card1st_NP == 0 && card_1st == "B") { Qbonus_1st = 10; Abonus_1st = 0; };
+    if (card_3rd == "B") { qBonus_3rd = 20; aBonus_3rd = 0; buff_3rd = b_card_buff; hit_3rd = b_hit; ok_3rd = b_hit; };
+    if (card_3rd == "A") { qBonus_3rd = 0; aBonus_3rd = 600; buff_3rd = a_card_buff; hit_3rd = a_hit; ok_3rd = a_hit; };
+    if (card_3rd == "Q") { qBonus_3rd = 180; aBonus_3rd = 200; buff_3rd = q_card_buff; hit_3rd = q_hit; ok_3rd = q_hit; };
 
-    if (card2nd_NP == 0 && card_2nd == "Q") { Qbonus_2nd = 80; Abonus_2nd = 100; };
-    if (card2nd_NP == 0 && card_2nd == "A") { Qbonus_2nd = 0; Abonus_2nd = 300; };
-    if (card2nd_NP == 0 && card_2nd == "B") { Qbonus_2nd = 10; Abonus_2nd = 0; };
+    if (card_1st_np == 0 && card_1st == "B") { qBonus_1st = 10; aBonus_1st = 0; };
+    if (card_1st_np == 0 && card_1st == "A") { qBonus_1st = 0; aBonus_1st = 300; };
+    if (card_1st_np == 0 && card_1st == "Q") { qBonus_1st = 80; aBonus_1st = 100; };
 
-    if (card3rd_NP == 0 && card_3rd == "Q") { Qbonus_3rd = 80; Abonus_3rd = 100; };
-    if (card3rd_NP == 0 && card_3rd == "A") { Qbonus_3rd = 0; Abonus_3rd = 300; };
-    if (card3rd_NP == 0 && card_3rd == "B") { Qbonus_3rd = 10; Abonus_3rd = 0; };
+    if (card_2nd_np == 0 && card_2nd == "B") { qBonus_2nd = 10; aBonus_2nd = 0; };
+    if (card_2nd_np == 0 && card_2nd == "A") { qBonus_2nd = 0; aBonus_2nd = 300; };
+    if (card_2nd_np == 0 && card_2nd == "Q") { qBonus_2nd = 80; aBonus_2nd = 100; };
 
-    if (card1st_NP == 0) { hit_1st = NP_hit };
-    if (card2nd_NP == 0) { hit_2nd = NP_hit };
-    if (card3rd_NP == 0) { hit_3rd = NP_hit };
+    if (card_3rd_np == 0 && card_3rd == "B") { qBonus_3rd = 10; aBonus_3rd = 0; };
+    if (card_3rd_np == 0 && card_3rd == "A") { qBonus_3rd = 0; aBonus_3rd = 300; };
+    if (card_3rd_np == 0 && card_3rd == "Q") { qBonus_3rd = 80; aBonus_3rd = 100; };
 
-    document.rate.NP_1st.value = keisan_NP(hit_1st, N_A, Abonus_1st, buff_1st, Abonus_all, card1st_NP, enemy_rate_NP, getNP_buff, 1, OK_1st, debuff_1st);
-    document.rate.NP_2nd.value = keisan_NP(hit_2nd, N_A, Abonus_2nd, buff_2nd, Abonus_all, card2nd_NP, enemy_rate_NP, getNP_buff, 1, OK_2nd, debuff_2nd);
-    document.rate.NP_3rd.value = keisan_NP(hit_3rd, N_A, Abonus_3rd, buff_3rd, Abonus_all, card3rd_NP, enemy_rate_NP, getNP_buff, 1, OK_3rd, debuff_3rd);
-    document.rate.NP_EX.value = keisan_NP(EX_hit, N_A, 100, EX_CARDbuff, Abonus_all, 1, enemy_rate_NP, getNP_buff, 1, OK_EX, 0);
+    if (card_1st_np == 0) { hit_1st = np_hit; ok_1st = np_hit; };
+    if (card_2nd_np == 0) { hit_2nd = np_hit; ok_2nd = np_hit; };
+    if (card_3rd_np == 0) { hit_3rd = np_hit; ok_3rd = np_hit; };
 
-    document.rate.NP_1st_Cri.value = keisan_NP(hit_1st, N_A, Abonus_1st, buff_1st, Abonus_all, card1st_NP, enemy_rate_NP, getNP_buff, 2, OK_1st, debuff_1st);
-    document.rate.NP_2nd_Cri.value = keisan_NP(hit_2nd, N_A, Abonus_2nd, buff_2nd, Abonus_all, card2nd_NP, enemy_rate_NP, getNP_buff, 2, OK_2nd, debuff_2nd);
-    document.rate.NP_3rd_Cri.value = keisan_NP(hit_3rd, N_A, Abonus_3rd, buff_3rd, Abonus_all, card3rd_NP, enemy_rate_NP, getNP_buff, 2, OK_3rd, debuff_3rd);
+    result_1st_np = calcNp(hit_1st, na, aBonus_1st, buff_1st, aBonus_all, card_1st_np, np_enemy, na_buff, card_1st_np_cri, 0);
+    result_2nd_np = calcNp(hit_2nd, na, aBonus_2nd, buff_2nd, aBonus_all, card_2nd_np, np_enemy, na_buff, card_2nd_np_cri, 0);
+    result_3rd_np = calcNp(hit_3rd, na, aBonus_3rd, buff_3rd, aBonus_all, card_3rd_np, np_enemy, na_buff, card_3rd_np_cri, 0);
+    result_ex_np = calcNp(ex_hit, na, 100, ex_card_buff, aBonus_all, 1, np_enemy, na_buff, 1, 0, 0);
 
-    document.rate.Star_1st.value = keisan_Star(hit_1st, Star_rate + enemy_rate_Star, Qbonus_1st, buff_1st, Qbonus_all, card1st_NP, getStar_buff, 0, OK_1st, debuff_1st);
-    document.rate.Star_2nd.value = keisan_Star(hit_2nd, Star_rate + enemy_rate_Star, Qbonus_2nd, buff_2nd, Qbonus_all, card2nd_NP, getStar_buff, 0, OK_2nd, debuff_2nd);
-    document.rate.Star_3rd.value = keisan_Star(hit_3rd, Star_rate + enemy_rate_Star, Qbonus_3rd, buff_3rd, Qbonus_all, card3rd_NP, getStar_buff, 0, OK_3rd, debuff_3rd);
-    document.rate.Star_EX.value = keisan_Star(EX_hit, Star_rate + enemy_rate_Star, 100, EX_CARDbuff, Qbonus_all, 1, getStar_buff, 0, OK_EX, 0);
+    result_1st_star = calcStar(hit_1st, sr + sr_enemy, qBonus_1st, buff_1st, qBonus_all, card_1st_np, sr_buff, card_1st_star_cri, 0);
+    result_2nd_star = calcStar(hit_2nd, sr + sr_enemy, qBonus_2nd, buff_2nd, qBonus_all, card_2nd_np, sr_buff, card_2nd_star_cri, 0);
+    result_3rd_star = calcStar(hit_3rd, sr + sr_enemy, qBonus_3rd, buff_3rd, qBonus_all, card_3rd_np, sr_buff, card_3rd_star_cri, 0);
+    result_ex_star = calcStar(ex_hit, sr + sr_enemy, 100, ex_card_buff, qBonus_all, 1, sr_buff, 0, 0);
 
-    document.rate.Star_1st_Cri.value = keisan_Star(hit_1st, Star_rate + enemy_rate_Star, Qbonus_1st, buff_1st, Qbonus_all, card1st_NP, getStar_buff, 20, OK_1st, debuff_1st);
-    document.rate.Star_2nd_Cri.value = keisan_Star(hit_2nd, Star_rate + enemy_rate_Star, Qbonus_2nd, buff_2nd, Qbonus_all, card2nd_NP, getStar_buff, 20, OK_2nd, debuff_2nd);
-    document.rate.Star_3rd_Cri.value = keisan_Star(hit_3rd, Star_rate + enemy_rate_Star, Qbonus_3rd, buff_3rd, Qbonus_all, card3rd_NP, getStar_buff, 20, OK_3rd, debuff_3rd);
+    result_1st_np_ovk = calcNp(hit_1st, na, aBonus_1st, buff_1st, aBonus_all, card_1st_np, np_enemy, na_buff, card_1st_np_cri, ok_1st);
+    result_2nd_np_ovk = calcNp(hit_2nd, na, aBonus_2nd, buff_2nd, aBonus_all, card_2nd_np, np_enemy, na_buff, card_2nd_np_cri, ok_2nd);
+    result_3rd_np_ovk = calcNp(hit_3rd, na, aBonus_3rd, buff_3rd, aBonus_all, card_3rd_np, np_enemy, na_buff, card_3rd_np_cri, ok_3rd);
+    result_ex_np_ovk = calcNp(ex_hit, na, 100, ex_card_buff, aBonus_all, 1, np_enemy, na_buff, 1, ok_ex, 0);
 
+    result_1st_star_ovk = calcStar(hit_1st, sr + sr_enemy, qBonus_1st, buff_1st, qBonus_all, card_1st_np, sr_buff, card_1st_star_cri, ok_1st);
+    result_2nd_star_ovk = calcStar(hit_2nd, sr + sr_enemy, qBonus_2nd, buff_2nd, qBonus_all, card_2nd_np, sr_buff, card_2nd_star_cri, ok_2nd);
+    result_3rd_star_ovk = calcStar(hit_3rd, sr + sr_enemy, qBonus_3rd, buff_3rd, qBonus_all, card_3rd_np, sr_buff, card_3rd_star_cri, ok_3rd);
+    result_ex_star_ovk = calcStar(ex_hit, sr + sr_enemy, 100, ex_card_buff, qBonus_all, 1, sr_buff, 0, ok_ex);
+
+    $("#np_result_1st_np").val(result_1st_np + "%");
+    $("#np_result_2nd_np").val(result_2nd_np + "%");
+    $("#np_result_3rd_np").val(result_3rd_np + "%");
+    $("#np_result_EX_np").val(result_ex_np + "%");
+    $("#np_result_total_np").val(Number((result_1st_np * 100 + result_2nd_np * 100 + result_3rd_np * 100 + result_ex_np * 100) / 100) + "%");
+
+    $("#np_result_1st_star").val(result_1st_star[0] + "(+" + result_1st_star[1] + ")個");
+    $("#np_result_2nd_star").val(result_2nd_star[0] + "(+" + result_2nd_star[1] + ")個");
+    $("#np_result_3rd_star").val(result_3rd_star[0] + "(+" + result_3rd_star[1] + ")個");
+    $("#np_result_EX_star").val(result_ex_star[0] + "(+" + result_ex_star[1] + ")個");
+    $("#np_result_total_star").val((result_1st_star[0] + result_2nd_star[0] + result_3rd_star[0] + result_ex_star[0]) + "(+" + (result_1st_star[1] + result_2nd_star[1] + result_3rd_star[1] + result_ex_star[1]) + "個)");
+
+    $("#np_result_1st_np_ovk").val(result_1st_np_ovk + "%");
+    $("#np_result_2nd_np_ovk").val(result_2nd_np_ovk + "%");
+    $("#np_result_3rd_np_ovk").val(result_3rd_np_ovk + "%");
+    $("#np_result_EX_np_ovk").val(result_ex_np_ovk + "%");
+    $("#np_result_total_np_ovk").val(((result_1st_np_ovk * 100 + result_2nd_np_ovk * 100 + result_3rd_np_ovk * 100 + result_ex_np_ovk * 100) / 100) + "%");
+
+    $("#np_result_1st_star_ovk").val(result_1st_star_ovk[0] + "(+" + result_1st_star_ovk[1] + ")個");
+    $("#np_result_2nd_star_ovk").val(result_2nd_star_ovk[0] + "(+" + result_2nd_star_ovk[1] + ")個");
+    $("#np_result_3rd_star_ovk").val(result_3rd_star_ovk[0] + "(+" + result_3rd_star_ovk[1] + ")個");
+    $("#np_result_EX_star_ovk").val(result_ex_star_ovk[0] + "(+" + result_ex_star_ovk[1] + ")個");
+    $("#np_result_total_star_ovk").val((result_1st_star_ovk[0] + result_2nd_star_ovk[0] + result_3rd_star_ovk[0] + result_ex_star_ovk[0]) + "(+" + (result_1st_star_ovk[1] + result_2nd_star_ovk[1] + result_3rd_star_ovk[1] + result_ex_star_ovk[1]) + "個)");
+
+};
+
+/**
+ * NP獲得量計算
+ * @param hit ヒット数
+ * @param na N/A
+ * @param aBonus Aボーナス
+ * @param card_buff カードバフ
+ * @param aBonus_all 全体Aボーナス
+ * @param card_NP NPカード
+ * @param enemy_rate 敵補正
+ * @param na_buff N/Aバフ
+ * @param cri クリティカル
+ * @param ok オーバーキル
+ */
+function calcNp(hit, na, aBonus, card_buff, aBonus_all, card_NP, enemy_rate, na_buff, cri, ok) {
+    var np;
+
+    np = 100 * (na * (aBonus / 100 * (100 + card_buff) / 100 + aBonus_all * card_NP / 100) * enemy_rate / 100 * (100 + na_buff) / 100) * cri;
+    np = Math.floor(np)
+    np = (np * (hit - ok) + Math.floor(1.5 * np) * ok) / 100;
+
+    return np;
+};
+
+/**
+ * スター獲得量計算
+ * @param hit ヒット数
+ * @param sr SR
+ * @param qBonus qボーナス
+ * @param card_buff カードバフ
+ * @param qBonus_all 全体Qボーナス
+ * @param card_NP NPカード
+ * @param sr_buff SRバフ
+ * @param cri クリティカル
+ * @param ok オーバーキル
+ */
+function calcStar(hit, sr, qBonus, card_buff, qBonus_all, card_NP, sr_buff, cri, ok) {
+    var star, star_num, star_ok, star_ok_num;
+    var result = [];
+    
+    star = 100 * (sr / 100 + qBonus / 100 * (100 + card_buff) / 100 + qBonus_all * card_NP / 100 + sr_buff / 100 + cri / 100);
+    star_ok = 100 * (sr / 100 + qBonus / 100 * (100 + card_buff) / 100 + qBonus_all * card_NP / 100 + sr_buff / 100 + cri / 100 + 30 / 100);
+    star = Math.floor(star * 100);
+    star = Math.floor(star / 10.0);
+    if (star > 3000) { star = 3000 };
+    star_num = Math.floor(star / 1000);
+    star_ok = Math.floor(star_ok * 100);
+    star_ok = Math.floor(star_ok / 10.0);
+    if (star_ok > 3000) { star_ok = 3000 };
+    star_ok_num = Math.floor(star_ok / 1000);
+    star_num = Math.max(star_num, 0);
+    star_ok_num = Math.max(star_ok_num, 0);
+    //star = star_num * hit + "個" + "+" + "(" + rounddown(Math.max((star - 1000 * star_num) / 10.0, 0.0), 1) + "%×" + (hit - ok) + ", " + rounddown(Math.max((star_ok - 1000 * star_num) / 10.0, 0.0), 1) + "%×" + ok + ")";
+    //star = star_num * hit + "個" + "+" + "(" + Number(parseFloat(hit - ok) + parseFloat(ok)) + ")";
+    result.push(star_num * hit);
+    result.push((parseFloat(hit - ok) + parseFloat(ok)));
+
+    return result;
 };

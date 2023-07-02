@@ -8,6 +8,10 @@ body {
   font-family: 'Noto Sans JP', sans-serif !important;
 }
 
+*:focus {
+  box-shadow:none !important;
+ }
+
 table th {
   padding: 1px 0;
   text-align: center;
@@ -162,35 +166,27 @@ select:focus {
 }
 
 /*撃破率計算*/
+#probTable tr {
+  height: 35px;
+}
 #prob_result {
   font-size: 1.1rem;
-}
-#enemy_hp{
-  height: 100%;
-}
-#dmg_1st, #fixed_1st, #dmg_2nd, #fixed_2nd, #dmg_3rd, #fixed_3rd, #dmg_Ex, #fixed_Ex {
-  height: 39px;
-}
-#dmg_total, #fixed_total {
-  height: 49% !important;
+  text-align: center;
 }
 .col_prob_inp{
-  width: 13.5%;
-  min-width: 62.77px;
+  width: 25%;
 }
 .col_prob_out{
-  width: 16.25%;
-  min-width: 75.56px;
+  width: 25%;
 }
 .wrap_col_prob_out {
   display:table;
   text-align:right;
-  height: 49%;
+  height: 100%;
   width: 100%;
 }
 .col_prob_result {
-  width: 16.25%;
-  min-width: 75.61px;
+  width: 100%;
 }
 .wrap_col_prob_out output{
   display:table-cell;
@@ -204,4 +200,29 @@ select:focus {
 .wrap_col_prob_result output{
   display:table-cell;
   vertical-align:middle;
+}
+
+/*NPスター計算*/
+.row_npstar, td {
+  height: 35px;
+}
+
+.col_npstar_head {
+  width: 25%;
+}
+
+.col_npstar_inp {
+  width: 25%;
+}
+
+.col_npstar_head_result {
+  width: 16.6%;
+}
+
+.col_npstar_result {
+  width: 16.6%;
+}
+
+.col_npstar_result {
+  text-align: center;
 }
