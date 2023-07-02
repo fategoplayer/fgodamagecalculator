@@ -1,5 +1,7 @@
 const card_list = { "B": 1.5, "A": 1.0, "Q": 0.8 }; //宝具色補正
 const defaultRow = 15; // 初期行数
+const maxWidthOpen = "1369px";
+const maxWidthClose = "1194px";
 const localStorageKey_InputData = "fgodamagecalculator_input"
 const localStorageKey_Setting = "fgodamagecalculator_setting"
 var rowNumber = 0; // 現在行数
@@ -94,11 +96,11 @@ $(function(){
         // 高度なバフ設定表示
         if ($("#advanced_setting")[0].checked){
             $(".col_advanced_setting").css({"display":"table-cell"});
-            $(".calc").css({"max-width":"1370.5px"});
+            $(".calc").css({"max-width":maxWidthOpen});
         }
         else {
             $(".col_advanced_setting").css({"display":"none"});
-            $(".calc").css({"max-width":"1195.5px"});
+            $(".calc").css({"max-width":maxWidthClose});
         }
 
         // スイッチを保持
@@ -133,6 +135,8 @@ $(function(){
             localStorage.setItem(localStorageKey_InputData, json);
         }
 
+        return false;
+
     });
 
     /**
@@ -153,6 +157,8 @@ $(function(){
                 }
             }
         }
+
+        return false;
 
     });
 
@@ -219,11 +225,11 @@ $(function(){
                 $("#advanced_setting")[0].checked = advancedSettingFlag
                 if ($("#advanced_setting")[0].checked){
                     $(".col_advanced_setting").css({"display":"table-cell"});
-                    $(".calc").css({"max-width":"1370.5px"});
+                    $(".calc").css({"max-width":maxWidthOpen});
                 }
                 else {
                     $(".col_advanced_setting").css({"display":"none"});
-                    $(".calc").css({"max-width":"1195.5px"});
+                    $(".calc").css({"max-width":maxWidthClose});
                 }
             }
         }
@@ -1526,4 +1532,128 @@ function binarySearch(arr, target) {
 
     return max;
 
-}
+};
+
+function calcNp(hit, N_A, Abonus, card_buff, Abonus_all, card_NP, enemy_rate, getNP_buff, Cri, OK, card_debuff) {
+    var NP;
+    NP = 100 * (N_A * (Abonus / 100 * (100 + card_buff + card_debuff) / 100 + Abonus_all * card_NP / 100) * enemy_rate / 100 * (100 + getNP_buff) / 100) * Cri;
+    // NP = Math.round(NP * 10);
+    // NP = Math.floor(NP / 10);
+    NP = Math.floor(NP)
+    NP = (NP * (hit - OK) + Math.floor(1.5 * NP) * OK) / 100;
+    if (Cri == 2 && card_NP == 0) { NP = "" };
+    return NP;
+};
+
+function calcStar(hit, Star_rate, Qbonus, card_buff, Qbonus_all, card_NP, getStar_buff, Cri, OK, card_debuff) {
+    var Star, Star_num;
+    Star = 100 * (Star_rate / 100 + Qbonus / 100 * (100 + card_buff + card_debuff) / 100 + Qbonus_all * card_NP / 100 + getStar_buff / 100 + Cri / 100);
+    Star_OK = 100 * (Star_rate / 100 + Qbonus / 100 * (100 + card_buff + card_debuff) / 100 + Qbonus_all * card_NP / 100 + getStar_buff / 100 + Cri / 100 + 30 / 100);
+    Star = Math.floor(Star * 100);
+    Star = Math.floor(Star / 100) * 10;
+    if (Star > 3000) { Star = 3000 };
+    Star_num = Math.floor(Star / 1000);
+    Star_OK = Math.floor(Star_OK * 100);
+    Star_OK = Math.floor(Star_OK / 100) * 10;
+    if (Star_OK > 3000) { Star_OK = 3000 };
+    Star_OK_num = Math.floor(Star_OK / 1000);
+    Star = (Star_num * (hit - OK) + Star_OK_num * OK) + "個" + "+" + "(" + ((Star - 1000 * Star_num) / 10) + "%×" + (hit - OK) + ", " + ((Star_OK - 1000 * Star_OK_num) / 10) + "%×" + OK + ")";
+    if (Cri == 20 && card_NP == 0) { Star = "" };
+    return Star;
+};
+
+function calcRate() {
+    var card_1st, card_2nd, card_3rd, N_A, Q_hit, A_hit, B_hit, EX_hit, Qbonus_1st, Abonus_1st, Bbonus_1st, Q_CARDbuff, A_CARDbuff, B_CARDbuff, EX_CARDbuff, NPcard, NP_hit,
+        Qbonus_all, Abonus_all, Qbonus_2nd, Abonus_2nd, Bbonus_2nd, Qbonus_3rd, Abonus_3rd, Bbonus_3rd, EXbonus,
+        buff_1st, buff_2nd, buff_3rd, getNP_buff, hit_1st, hit_2nd, hit_3rd, NPcard_1st, NPcard_2nd, NPcard_3rd, card1st_NP, card2nd_NP, card3rd_NP,
+        Star_rate, getStar_buff, enemy_rate_NP, enemy_rate_Star, Q_CARDdebuff, A_CARDdebuff, B_CARDdebuff, debuff_1st, debuff_2nd, debuff_3rd,
+        OK_1st, OK_2nd, OK_3rd, OK_EX;
+    N_A = parseFloat(document.rate.N_A.value);
+    card_1st = document.rate.card_1st.value;
+    card_2nd = document.rate.card_2nd.value;
+    card_3rd = document.rate.card_3rd.value;
+    Qbonus_all = 0; Abonus_all = 0;
+    Q_hit = parseFloat(document.rate.Q_hit.value);
+    A_hit = parseFloat(document.rate.A_hit.value);
+    B_hit = parseFloat(document.rate.B_hit.value);
+    EX_hit = parseFloat(document.rate.EX_hit.value);
+    NP_hit = parseFloat(document.rate.NP_hit.value);
+    Q_CARDbuff = parseFloat(document.rate.Q_CARDbuff.value);
+    A_CARDbuff = parseFloat(document.rate.A_CARDbuff.value);
+    B_CARDbuff = parseFloat(document.rate.B_CARDbuff.value);
+    EX_CARDbuff = parseFloat(document.rate.EX_CARDbuff.value);
+    getNP_buff = parseFloat(document.rate.getNP_buff.value);
+    NPcard = document.rate.NPcard.value;
+    Star_rate = parseFloat(document.rate.Star_rate.value);
+    getStar_buff = parseFloat(document.rate.getStar_buff.value);
+    enemy_rate_NP = parseFloat(document.rate.enemy_rate_NP.value);
+    enemy_rate_Star = parseFloat(document.rate.enemy_rate_Star.value);
+    Q_CARDdebuff = parseFloat(document.rate.Q_CARDdebuff.value);
+    A_CARDdebuff = parseFloat(document.rate.A_CARDdebuff.value);
+    B_CARDdebuff = parseFloat(document.rate.B_CARDdebuff.value);
+    card1st_NP = 1;
+    card2nd_NP = 1;
+    card3rd_NP = 1;
+    OK_1st = parseFloat(document.rate.OK_1st.value);
+    OK_2nd = parseFloat(document.rate.OK_2nd.value);
+    OK_3rd = parseFloat(document.rate.OK_3rd.value);
+    OK_EX = parseFloat(document.rate.OK_EX.value);
+
+    if (Q_CARDbuff > 400) { Q_CARDbuff = 400 };
+    if (A_CARDbuff > 400) { A_CARDbuff = 400 };
+    if (B_CARDbuff > 400) { B_CARDbuff = 400 };
+    if (EX_CARDbuff > 400) { EX_CARDbuff = 400 };
+    if (getNP_buff > 400) { getNP_buff = 400 };
+    if (getStar_buff > 500) { getStar_buff = 500 };
+
+    if (card_1st == "T") { card_1st = NPcard; card1st_NP = 0; };
+    if (card_2nd == "T") { card_2nd = NPcard; card2nd_NP = 0; };
+    if (card_3rd == "T") { card_3rd = NPcard; card3rd_NP = 0; };
+
+    if (card_1st == "Q") { Qbonus_all = 20; Qbonus_1st = 80; Abonus_1st = 100; buff_1st = Q_CARDbuff; hit_1st = Q_hit; debuff_1st = Q_CARDdebuff; };
+    if (card_1st == "A") { Abonus_all = 100; Qbonus_1st = 0; Abonus_1st = 300; buff_1st = A_CARDbuff; hit_1st = A_hit; debuff_1st = A_CARDdebuff; };
+    if (card_1st == "B") { Qbonus_1st = 10; Abonus_1st = 0; buff_1st = B_CARDbuff; hit_1st = B_hit; debuff_1st = B_CARDdebuff; };
+
+    if (card_2nd == "Q") { Qbonus_2nd = 130; Abonus_2nd = 150; buff_2nd = Q_CARDbuff; hit_2nd = Q_hit; debuff_2nd = Q_CARDdebuff; };
+    if (card_2nd == "A") { Qbonus_2nd = 0; Abonus_2nd = 450; buff_2nd = A_CARDbuff; hit_2nd = A_hit; debuff_2nd = A_CARDdebuff; };
+    if (card_2nd == "B") { Qbonus_2nd = 15; Abonus_2nd = 0; buff_2nd = B_CARDbuff; hit_2nd = B_hit; debuff_2nd = B_CARDdebuff; };
+
+    if (card_3rd == "Q") { Qbonus_3rd = 180; Abonus_3rd = 200; buff_3rd = Q_CARDbuff; hit_3rd = Q_hit; debuff_3rd = Q_CARDdebuff; };
+    if (card_3rd == "A") { Qbonus_3rd = 0; Abonus_3rd = 600; buff_3rd = A_CARDbuff; hit_3rd = A_hit; debuff_3rd = A_CARDdebuff; };
+    if (card_3rd == "B") { Qbonus_3rd = 20; Abonus_3rd = 0; buff_3rd = B_CARDbuff; hit_3rd = B_hit; debuff_3rd = B_CARDdebuff; };
+
+    if (card1st_NP == 0 && card_1st == "Q") { Qbonus_1st = 80; Abonus_1st = 100; };
+    if (card1st_NP == 0 && card_1st == "A") { Qbonus_1st = 0; Abonus_1st = 300; };
+    if (card1st_NP == 0 && card_1st == "B") { Qbonus_1st = 10; Abonus_1st = 0; };
+
+    if (card2nd_NP == 0 && card_2nd == "Q") { Qbonus_2nd = 80; Abonus_2nd = 100; };
+    if (card2nd_NP == 0 && card_2nd == "A") { Qbonus_2nd = 0; Abonus_2nd = 300; };
+    if (card2nd_NP == 0 && card_2nd == "B") { Qbonus_2nd = 10; Abonus_2nd = 0; };
+
+    if (card3rd_NP == 0 && card_3rd == "Q") { Qbonus_3rd = 80; Abonus_3rd = 100; };
+    if (card3rd_NP == 0 && card_3rd == "A") { Qbonus_3rd = 0; Abonus_3rd = 300; };
+    if (card3rd_NP == 0 && card_3rd == "B") { Qbonus_3rd = 10; Abonus_3rd = 0; };
+
+    if (card1st_NP == 0) { hit_1st = NP_hit };
+    if (card2nd_NP == 0) { hit_2nd = NP_hit };
+    if (card3rd_NP == 0) { hit_3rd = NP_hit };
+
+    document.rate.NP_1st.value = keisan_NP(hit_1st, N_A, Abonus_1st, buff_1st, Abonus_all, card1st_NP, enemy_rate_NP, getNP_buff, 1, OK_1st, debuff_1st);
+    document.rate.NP_2nd.value = keisan_NP(hit_2nd, N_A, Abonus_2nd, buff_2nd, Abonus_all, card2nd_NP, enemy_rate_NP, getNP_buff, 1, OK_2nd, debuff_2nd);
+    document.rate.NP_3rd.value = keisan_NP(hit_3rd, N_A, Abonus_3rd, buff_3rd, Abonus_all, card3rd_NP, enemy_rate_NP, getNP_buff, 1, OK_3rd, debuff_3rd);
+    document.rate.NP_EX.value = keisan_NP(EX_hit, N_A, 100, EX_CARDbuff, Abonus_all, 1, enemy_rate_NP, getNP_buff, 1, OK_EX, 0);
+
+    document.rate.NP_1st_Cri.value = keisan_NP(hit_1st, N_A, Abonus_1st, buff_1st, Abonus_all, card1st_NP, enemy_rate_NP, getNP_buff, 2, OK_1st, debuff_1st);
+    document.rate.NP_2nd_Cri.value = keisan_NP(hit_2nd, N_A, Abonus_2nd, buff_2nd, Abonus_all, card2nd_NP, enemy_rate_NP, getNP_buff, 2, OK_2nd, debuff_2nd);
+    document.rate.NP_3rd_Cri.value = keisan_NP(hit_3rd, N_A, Abonus_3rd, buff_3rd, Abonus_all, card3rd_NP, enemy_rate_NP, getNP_buff, 2, OK_3rd, debuff_3rd);
+
+    document.rate.Star_1st.value = keisan_Star(hit_1st, Star_rate + enemy_rate_Star, Qbonus_1st, buff_1st, Qbonus_all, card1st_NP, getStar_buff, 0, OK_1st, debuff_1st);
+    document.rate.Star_2nd.value = keisan_Star(hit_2nd, Star_rate + enemy_rate_Star, Qbonus_2nd, buff_2nd, Qbonus_all, card2nd_NP, getStar_buff, 0, OK_2nd, debuff_2nd);
+    document.rate.Star_3rd.value = keisan_Star(hit_3rd, Star_rate + enemy_rate_Star, Qbonus_3rd, buff_3rd, Qbonus_all, card3rd_NP, getStar_buff, 0, OK_3rd, debuff_3rd);
+    document.rate.Star_EX.value = keisan_Star(EX_hit, Star_rate + enemy_rate_Star, 100, EX_CARDbuff, Qbonus_all, 1, getStar_buff, 0, OK_EX, 0);
+
+    document.rate.Star_1st_Cri.value = keisan_Star(hit_1st, Star_rate + enemy_rate_Star, Qbonus_1st, buff_1st, Qbonus_all, card1st_NP, getStar_buff, 20, OK_1st, debuff_1st);
+    document.rate.Star_2nd_Cri.value = keisan_Star(hit_2nd, Star_rate + enemy_rate_Star, Qbonus_2nd, buff_2nd, Qbonus_all, card2nd_NP, getStar_buff, 20, OK_2nd, debuff_2nd);
+    document.rate.Star_3rd_Cri.value = keisan_Star(hit_3rd, Star_rate + enemy_rate_Star, Qbonus_3rd, buff_3rd, Qbonus_all, card3rd_NP, getStar_buff, 20, OK_3rd, debuff_3rd);
+
+};

@@ -2,8 +2,11 @@
 <html lang="ja">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1.0">
         <title>FGO ダメージ計算</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
@@ -17,9 +20,9 @@
         <header>
             <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-light bg-dark">
                 <div class="container-fluid">
-                    <a class="navbar-brand text-white" href="index.html"><img src="img/Fragarach.png" class="d-inline-block align-text-top" id="brand_img">FGO Damage Calculator</a>
+                    <a class="navbar-brand text-white" href=""><img src="img/Fragarach.png" class="d-inline-block align-text-top" id="brand_img">FGO Damage Calculator</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
+                        <span class="navbar-toggler-icon text-white"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -47,13 +50,13 @@
                             <th></th>
                             <th><p class="small">ATK</p></th>
                             <th><p class="small">宝具<br>倍率<br>/種類</p></th>
-                            <th><p class="small">攻撃力<br>バフ</p></th>
+                            <th><p class="small">攻撃<br>バフ</p></th>
                             <th><p class="small">Bバフ<br>/<br>クリ<br>バフ</p></th>
                             <th><p class="small">Aバフ<br>/<br>クリ<br>バフ</p></th>
                             <th><p class="small">Qバフ<br>/<br>クリ<br>バフ</p></th>
                             <th><p class="small">クリ<br>バフ</p></th>
                             <th><p class="small">宝具<br>威力<br>バフ</p></th>
-                            <th><p class="small">EX<br>カード<br>バフ</p></th>
+                            <th><p class="small">EX<br>バフ</p></th>
                             <th><p class="small">特攻<br>威力<br>バフ</p></th>
                             <th><p class="small">宝具<br>特攻<br>威力</p></th>
                             <th><p class="small">固定<br>ダメ<br>ージ</p></th>
@@ -3530,6 +3533,84 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
+                            <!--<button class="btn btn-primary" data-bs-target="#npStarCalcModal" data-bs-toggle="modal">NP・スター計算</button>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="npStarCalcModal" aria-hidden="true" aria-labelledby="npStarCalcLabel" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="npStarCalcLabel">NP・スター計算</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div id="np_star_calc" class="np_star table-responsive">
+                                <table class="table table-bordered table-sm text-nowrap" id="npStarTable">
+                                    <tr>
+                                        <th><p class="small">NP獲得率<br>/NP獲得量バフ</p></th>
+                                        <th><p class="small">スター発生率<br>/スター発生率バフ</p></th>
+                                        <th><p class="small">ヒット数<br>/B/A/Q</p></th>
+                                        <th><p class="small">ヒット数<br>EX</p></th>
+                                        <th><p class="small">ヒット数<br>宝具<br>/種類</p></th>
+                                        <th><p class="small">カードバフ<br>/B/A/Q</p></th>  
+                                        <th><p class="small">NP<br>敵補正</p></th>
+                                        <th><p class="small">スター<br>敵補正</p></th>
+                                    </tr>
+                                    <tr>
+                                        <td class="col_npstar_inp">
+                                            <input type="number" id="NA" value="0" min="0" step="1" class="form-control bg-transparent">
+                                            <div class="boundary_line"></div>
+                                            <input type="number" id="NA_buff" value="0" min="0" step="1" class="form-control bg-transparent">
+                                        </td>
+                                        <td class="col_npstar_inp">
+                                            <input type="number" id="SR" min=0 value=0 class="form-control bg-transparent"></input>
+                                            <div class="boundary_line"></div>
+                                            <input type="number" id="SR_buff" value=0 class="form-control bg-transparent"></input>
+                                        </td>
+                                        <td class="col_npstar_inp">
+                                            <input type="number" id="b_hit" min=0 value=0 class="form-control bg-transparent"></input>
+                                            <div class="boundary_line"></div>
+                                            <input type="number" id="a_hit" value=0 class="form-control bg-transparent"></input>
+                                            <div class="boundary_line"></div>
+                                            <input type="number" id="q_hit" value=0 class="form-control bg-transparent"></input>
+                                        </td>
+                                        <td class="col_npstar_inp">
+                                            <input type="number" id="ex_hit" min=0 value=0 class="form-control bg-transparent"></input>
+                                        </td>
+                                        <td class="col_npstar_inp">
+                                            <input type="number" id="np_hit" min=0 value=0 class="form-control bg-transparent"></input>
+                                            <div class="boundary_line"></div>
+                                            <select id="np_kind" class="form-select bg-transparent">
+                                                <option value="B" selected>B</option>
+                                                <option value="A">A</option>
+                                                <option value="Q">Q</option>
+                                            </select>
+                                        </td>
+                                        <td class="col_npstar_inp">
+                                            <input type="number" id="b_card_buff_np_star" min=0 value=0 class="form-control bg-transparent"></input>
+                                            <div class="boundary_line"></div>
+                                            <input type="number" id="a_card_buff_np_star" min=0 value=0 class="form-control bg-transparent"></input>
+                                            <div class="boundary_line"></div>
+                                            <input type="number" id="q_card_buff_np_star" min=0 value=0 class="form-control bg-transparent"></input>
+                                            <div class="boundary_line"></div>
+                                            <input type="number" id="ex_card_buff_np_star" min=0 value=0 class="form-control bg-transparent"></input>
+                                        </td>
+                                        <td class="col_npstar_inp">
+                                            <input type="number" id="enemy_star" min=0 value=0 class="form-control bg-transparent"></input>
+                                        </td>
+                                        <td class="col_npstar_inp">
+                                            <input type="number" id="enemy_star" min=0 value=0 class="form-control bg-transparent"></input>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
+                            <button class="btn btn-primary" data-bs-target="#excalcModal" data-bs-toggle="modal">撃破率計算</button>
                         </div>
                     </div>
                 </div>
