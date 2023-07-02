@@ -1,7 +1,7 @@
 const card_list = { "B": 1.5, "A": 1.0, "Q": 0.8 }; //宝具色補正
 const defaultRow = 15; // 初期行数
-const maxWidthOpen = "1369px";
-const maxWidthClose = "1194px";
+const maxWidthOpen = "1354px";
+const maxWidthClose = "1178px";
 const localStorageKey_InputData = "fgodamagecalculator_input"
 const localStorageKey_Setting = "fgodamagecalculator_setting"
 var rowNumber = 0; // 現在行数

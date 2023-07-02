@@ -63,8 +63,8 @@ select:focus {
   max-width: 42px;
 }
 .col_np, .col_card_sel, .col_cri_buff, .col_supereffective_buff, .col_supereffective_np, .col_fixed_dmg {
-  min-width: 35px;
-  max-width: 35px;
+  min-width: 36px;
+  max-width: 36px;
 }
 .col_advanced_setting {
   display: none;
@@ -78,8 +78,8 @@ select:focus {
   max-width: 50px;
 }
 .col_dmg_result {
-  min-width: 80px;
-  max-width: 80px;
+  min-width: 75px;
+  max-width: 75px;
 }
 #brand_img {
   margin-right: 8px;
@@ -100,7 +100,7 @@ select:focus {
 
 /*テーブルラッパー*/
 .calc {
-  max-width: 1194px;
+  max-width: 1178px;
   margin: .4rem;
 }
 
