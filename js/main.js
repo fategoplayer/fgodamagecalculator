@@ -1771,6 +1771,7 @@ function calcNp(hit, na, aBonus, card_buff, aBonus_all, card_NP, enemy_rate, na_
 function calcStar(hit, sr, qBonus, card_buff, qBonus_all, card_NP, sr_buff, cri, ok) {
     var star, star_num, star_ok, star_ok_num;
     var result = [];
+    var star_tmp = 0;
     
     star = 100 * (sr / 100 + qBonus / 100 * (100 + card_buff) / 100 + qBonus_all * card_NP / 100 + sr_buff / 100 + cri / 100);
     star_ok = 100 * (sr / 100 + qBonus / 100 * (100 + card_buff) / 100 + qBonus_all * card_NP / 100 + sr_buff / 100 + cri / 100 + 30 / 100);
@@ -1787,7 +1788,13 @@ function calcStar(hit, sr, qBonus, card_buff, qBonus_all, card_NP, sr_buff, cri,
     //star = star_num * hit + "個" + "+" + "(" + rounddown(Math.max((star - 1000 * star_num) / 10.0, 0.0), 1) + "%×" + (hit - ok) + ", " + rounddown(Math.max((star_ok - 1000 * star_num) / 10.0, 0.0), 1) + "%×" + ok + ")";
     //star = star_num * hit + "個" + "+" + "(" + Number(parseFloat(hit - ok) + parseFloat(ok)) + ")";
     result.push(star_num * hit);
-    result.push((parseFloat(hit - ok) + parseFloat(ok)));
+    if (rounddown(Math.max((star - 1000 * star_num) / 10.0, 0.0), 1) > 0) {
+        star_tmp += parseFloat(hit - ok);
+    }
+    if (rounddown(Math.max((star_ok - 1000 * star_num) / 10.0, 0.0), 1) > 0) {
+        star_tmp += parseFloat(ok)
+    }
+    result.push(star_tmp);
 
     return result;
 };

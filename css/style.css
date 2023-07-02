@@ -226,3 +226,15 @@ select:focus {
 .col_npstar_result {
   text-align: center;
 }
+
+#b_hit, #b_card_buff_np_star {
+  background-color: #FFEEEE !important;
+}
+
+#a_hit, #a_card_buff_np_star {
+  background-color: #F0F8FF !important;
+}
+
+#q_hit, #q_card_buff_np_star {
+  background-color: #EEFFEE !important;
+}
