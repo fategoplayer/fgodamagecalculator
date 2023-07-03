@@ -223,7 +223,15 @@ select:focus {
   width: 16.6%;
 }
 
-.col_npstar_result {
+.wrap_col_npstar_result {
+  display:table;
+  height: 100%;
+  width: 100%;
+}
+
+.wrap_col_npstar_result output{
+  display:table-cell;
+  vertical-align:middle;
   text-align: center;
 }
 
