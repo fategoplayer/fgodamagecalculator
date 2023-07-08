@@ -8,6 +8,7 @@ var rowNumber = 0; // 現在行数
 var selDamageTotal = 0;
 var selDamageNum = 0;
 var advancedSettingFlag = false;
+var servantList = null;
 
 $(function(){
     /**
@@ -234,8 +235,6 @@ $(function(){
             }
         }
 
-
-
     });
 
     //開くボタンをクリックしたらモーダルを表示する
@@ -296,7 +295,6 @@ $(function(){
         calcRate();
 
     });
-
 
     /**
      * エンターキーでフォーカス移動
@@ -667,7 +665,192 @@ $(function(){
         }  
     });
 
+    /**
+     * サーヴァント検索―クラス・レアリティ変更イベント
+     */
+    $(document).on("change", ".servarnt-search-select", function () {
+
+        // サーヴァントセレクトボックスを再作成
+        remakeServantSelectBox();
+
+    });
+
+    //開くボタンをクリックしたらモーダルを表示する
+    $(document).on("click", "#btn-apply", function() {
+
+        if ($("#servant-name").val() != null) {
+
+            $(servantList).each(function() {
+                
+                if ($("#servant-name").val() == this["No"]) {
+
+                    $("#NA").val(this["N_N/A"]);
+                    $("#NA_buff").val(this["クラススキル_NP獲得バフ"]);
+                    $("#SR").val(this["SR"]);
+                    $("#SR_buff").val(this["クラススキル_スター獲得バフ"]);
+                    $("#b_hit").val(this["BHIT"]);
+                    $("#a_hit").val(this["AHIT"]);
+                    $("#q_hit").val(this["QHIT"]);
+                    $("#ex_hit").val(this["EXHIT"]);
+                    $("#np_hit").val(this["宝具HIT"]);
+                    $("#np_kind_np_star").val(this["宝具カード"]);
+
+                }
+
+            });
+
+            // NPスター計算
+            calcRate();
+
+        }
+
+        return false;
+
+    });
+
+    // CSVの読み込み
+    $.get("https://fategoplayer.github.io/fgodamagecalculator/data/servant_data.csv", parseCsv, "text");
+
 });
+
+/**
+ * CSV読込
+ * @param data csvパス
+ */
+function parseCsv(data) {
+    // CSVを配列で読み込む
+    var csv = $.csv.toArrays(data);
+
+    servantList = new Array();
+
+    $(csv).each(function() {
+        
+        var option = document.createElement("option");  
+        var servant = {};
+
+        servant["No"] = this[0];
+        servant["サーヴァント名"] = this[1];
+        servant["クラス"] = this[2];
+        servant["レアリティ"] = this[3];
+        servant["BaseHP"] = this[4];
+        servant["MaxHP"] = this[5];
+        servant["BaseAtk"] = this[6];
+        servant["MaxAtk"] = this[7];
+        servant["天地人"] = this[8];
+        servant["A_N/A"] = this[9];
+        servant["B_N/A"] = this[10];
+        servant["Q_N/A"] = this[11];
+        servant["EX_N/A"] = this[12];
+        servant["N_N/A"] = this[13];
+        servant["N/D"] = this[14];
+        servant["SR"] = this[15];
+        servant["SW"] = this[16];
+        servant["DR"] = this[17];
+        servant["AHIT"] = this[18];
+        servant["BHIT"] = this[19];
+        servant["QHIT"] = this[20];
+        servant["EXHIT"] = this[21];
+        servant["宝具HIT"] = this[22];
+        servant["カード"] = this[23];
+        servant["宝具カード"] = this[24];
+        servant["宝具Lv1"] = this[25];
+        servant["宝具Lv2"] = this[26];
+        servant["宝具Lv3"] = this[27];
+        servant["宝具Lv4"] = this[28];
+        servant["宝具Lv5"] = this[29];
+        servant["クラススキル_固定ダメージ"] = this[30];
+        servant["クラススキル_Aバフ"] = this[31];
+        servant["クラススキル_Bバフ"] = this[32];
+        servant["クラススキル_Qバフ"] = this[33];
+        servant["クラススキル_宝具バフ"] = this[34];
+        servant["クラススキル_クリバフ"] = this[35];
+        servant["クラススキル_Aクリバフ"] = this[36];
+        servant["クラススキル_Bクリバフ"] = this[37];
+        servant["クラススキル_Qクリバフ"] = this[38];
+        servant["クラススキル_NP獲得バフ"] = this[39];
+        servant["クラススキル_NP獲得Aバフ"] = this[40];
+        servant["クラススキル_NP獲得Bバフ"] = this[41];
+        servant["クラススキル_NP獲得Qバフ"] = this[42];
+        servant["クラススキル_スター獲得バフ"] = this[43];
+        servant["クラススキル_スター獲得Aバフ"] = this[44];
+        servant["クラススキル_スター獲得Bバフ"] = this[45];
+        servant["クラススキル_スター獲得Qバフ"] = this[46];
+        servant["性別"] = this[47];
+        servant["属性"] = this[48];
+        servant["性格"] = this[49];
+        servant["特性"] = this[50];
+
+        servantList.push(servant);
+
+        option.value = servant["No"];
+        option.textContent = servant["サーヴァント名"];
+        $("#servant-name")[0].appendChild(option);
+
+    });
+
+    // サーヴァントセレクトボックスを作成
+    remakeServantSelectBox();
+    
+}
+
+/**
+ * サーヴァントセレクトボックス再作成
+ */
+function remakeServantSelectBox() {
+    let className = $("#servant-class").val();
+    let rarity = $("#servant-rare").val();
+
+    if (className != "" || rarity != "") {
+        // サーヴァントセレクトボックスを削除
+        while ($("#servant-name")[0].lastChild) {
+            $("#servant-name")[0].removeChild($("#servant-name")[0].lastChild);
+        }
+
+        // 指定されたクラスのみで再作成
+        $(servantList).each(function() {
+            var option = document.createElement("option");
+
+            if (className != "" && rarity != "") {
+                if (this["クラス"] == className && this["レアリティ"] == rarity) {
+                    option.value = this["No"];
+                    option.textContent = this["サーヴァント名"];
+                    $("#servant-name")[0].appendChild(option);
+                }
+            }
+            else if (className != "" && rarity == "") {
+                if (this["クラス"] == className) {
+                    option.value = this["No"];
+                    option.textContent = this["サーヴァント名"];
+                    $("#servant-name")[0].appendChild(option);
+                }
+            }
+            else if (className == "" && rarity != "") {
+                if (this["レアリティ"] == rarity) {
+                    option.value = this["No"];
+                    option.textContent = this["サーヴァント名"];
+                    $("#servant-name")[0].appendChild(option);
+                }
+            }
+
+        });
+    }
+    else {
+
+        // サーヴァントセレクトボックスを削除
+        while ($("#servant-name")[0].lastChild) {
+            $("#servant-name")[0].removeChild($("#servant-name")[0].lastChild);
+        }
+
+        // 全てのサーヴァントで再作成
+        $(servantList).each(function() {
+            var option = document.createElement("option");  
+            option.value = this["No"];
+            option.textContent = this["サーヴァント名"];
+            $("#servant-name")[0].appendChild(option);
+        });
+
+    }
+}
 
 /**
  * パラメーター初期化

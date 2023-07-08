@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
         <link rel="shortcut icon" href="img/favicon.ico">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.0.11/jquery.csv.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
         <script src="js/main.js"></script>
@@ -3567,6 +3568,41 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
                         </div>
                         <div class="modal-body">
+                            <div class="input-group input-group-sm mb-3">
+                                <span class="input-group-text bg-light">クラス</span>
+                                <select class="form-select servarnt-search-select bg-transparent" tabindex="-1" id="servant-class">
+                                    <option value="剣" selected>剣</option>
+                                    <option value="弓">弓</option>
+                                    <option value="槍">槍</option>
+                                    <option value="騎">騎</option>
+                                    <option value="術">術</option>
+                                    <option value="殺">殺</option>
+                                    <option value="狂">狂</option>
+                                    <option value="盾">盾</option>
+                                    <option value="裁">裁</option>
+                                    <option value="讐">讐</option>
+                                    <option value="月">月</option>
+                                    <option value="分">分</option>
+                                    <option value="降">降</option>
+                                    <option value="詐">詐</option>
+                                    <option value="獣">獣</option>
+                                </select>
+                                <span class="input-group-text bg-light">レア</span>
+                                <select class="form-select servarnt-search-select bg-transparent" tabindex="-1" id="servant-rare">
+                                    <option value="5" selected>5</option>
+                                    <option value="4">4</option>
+                                    <option value="3">3</option>
+                                    <option value="2">2</option>
+                                    <option value="1">1</option>
+                                    <option value="0">0</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm mb-3">
+                                <span class="input-group-text bg-light">サーヴァント</span>
+                                <select class="form-select bg-transparent" tabindex="-1" id="servant-name">
+                                </select>
+                                <button class="btn btn-primary" tbindex="-1" id="btn-apply">反映</button>
+                            </div>
                             <div id="np_star_calc" class="np_star table-responsive">
                                 <table class="table table-bordered table-sm text-nowrap" id="npStarTable">
                                     <tr class="row_npstar">
