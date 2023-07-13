@@ -1894,7 +1894,7 @@ function calcRate() {
     $("#np_result_2nd_np").val(result_2nd_np + "%");
     $("#np_result_3rd_np").val(result_3rd_np + "%");
     $("#np_result_EX_np").val(result_ex_np + "%");
-    $("#np_result_total_np").val(Number((result_1st_np * 100 + result_2nd_np * 100 + result_3rd_np * 100 + result_ex_np * 100) / 100) + "%");
+    $("#np_result_total_np").val(BigNumber(result_1st_np).plus(result_2nd_np).plus(result_3rd_np).plus(result_ex_np) + "%");
 
     $("#np_result_1st_star").val(result_1st_star[0] + "(+" + result_1st_star[1] + ")個");
     $("#np_result_2nd_star").val(result_2nd_star[0] + "(+" + result_2nd_star[1] + ")個");
@@ -1906,7 +1906,7 @@ function calcRate() {
     $("#np_result_2nd_np_ovk").val(result_2nd_np_ovk + "%");
     $("#np_result_3rd_np_ovk").val(result_3rd_np_ovk + "%");
     $("#np_result_EX_np_ovk").val(result_ex_np_ovk + "%");
-    $("#np_result_total_np_ovk").val(((result_1st_np_ovk * 100 + result_2nd_np_ovk * 100 + result_3rd_np_ovk * 100 + result_ex_np_ovk * 100) / 100) + "%");
+    $("#np_result_total_np_ovk").val(BigNumber(result_1st_np_ovk).plus(result_2nd_np_ovk).plus(result_3rd_np_ovk).plus(result_ex_np_ovk) + "%");
 
     $("#np_result_1st_star_ovk").val(result_1st_star_ovk[0] + "(+" + result_1st_star_ovk[1] + ")個");
     $("#np_result_2nd_star_ovk").val(result_2nd_star_ovk[0] + "(+" + result_2nd_star_ovk[1] + ")個");
