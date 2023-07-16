@@ -1,0 +1,288 @@
+@charset "UTF-8";
+
+.navbar-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+#buff_input, #buff_output {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+}
+
+body {
+  font-family: 'Noto Sans JP', sans-serif !important;
+}
+
+main {
+  margin-bottom: 124px;
+}
+
+*:focus {
+  box-shadow:none !important;
+ }
+
+table th {
+  padding: 1px 0;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.input-group-sm {
+  border: 1px solid #ced4da;
+}
+.input-group-text {
+  border: none !important;
+}
+.input-group-sm>.btn, .input-group-sm>.form-control, .input-group-sm>.form-select, .input-group-sm>.input-group-text {
+  font-size: .75rem !important;
+}
+
+table tr, table td {
+  height: 35px;
+}
+
+output {
+  height: 100%;
+  display:block;
+  text-align:right;
+  font-size: .75rem;
+  font-weight: 500;
+  padding: 0rem 0.25rem;
+}
+
+.wrap_dmg_result {
+  display:table;
+  text-align:right;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+}
+.wrap_dmg_result output{
+  display:table-cell;
+  vertical-align:middle;
+}
+
+#out_sel_total {
+  width: 80px;
+  min-width: 80px;
+  height: 23px;
+}
+
+.sel_total {
+  display: none;
+}
+
+input[type="number"]:focus {
+  outline: solid 1px #afc0b8 !important;
+}
+select:focus {
+  outline: solid 1px #afc0b8 !important;
+}
+input[type="number"] { 
+  -moz-appearance:textfield !important; 
+} 
+
+/*列調整*/
+/*
+.col_copy, .col_atk_buff, .col_card_buff, .col_np_buff, .col_ex_atk_buff, 
+.col_footprints, .col_advanced_setting, .col_special_def, .col_prob {
+  min-width: 28px;
+  max-width: 28px;
+}
+.col_atk {
+  min-width: 42px;
+  max-width: 42px;
+}
+.col_np, .col_card_sel, .col_cri_buff, .col_supereffective_buff, .col_supereffective_np, .col_fixed_dmg {
+  min-width: 36px;
+  max-width: 36px;
+}
+.col_advanced_setting {
+  display: none;
+}
+.col_special_def {
+  min-width: 31px;
+  max-width: 31px;
+}
+.col_class_affinity, .col_class_servant, .col_attribute_affinity {
+  min-width: 50px;
+  max-width: 50px;
+}
+.col_dmg_result {
+  min-width: 75px;
+  max-width: 75px;
+}
+*/
+#brand_img {
+  margin-right: 8px;
+  width: 29px;
+  height: 29px;
+}
+
+.calc td {
+  width: 25%;
+}
+
+.calc-output td {
+  width: 16.66%;
+}
+
+footer a {
+  text-decoration: none !important;
+}
+
+/*テーブルラッパー*/
+.calc {
+  max-width: 800px;
+  margin: .4rem;
+}
+
+.calc-output {
+  max-width: 800px;
+  margin: 0;
+}
+
+#calc-output {
+  margin-bottom: 0;
+}
+
+/*INPUT,SELECT高さ*/
+.atk, .atk_buff, .cri_buff, .np_buff, .ex_atk_buff, .supereffective_buff, .supereffective_np, .fixed_dmg, .special_def,
+.class_affinity, .class_servant, .attribute_affinity, .ex_cri {
+  height: 100% !important;
+}
+.np_dmg, .np_kind, .card_1st, .card_1st_cri, .card_2nd, .card_2nd_cri, .card_3rd, .card_3rd_cri {
+  height: 100% !important;
+}
+.b_card_buff, .b_card_debuff {
+  height: 100% !important;
+  background-color: #FFEEEE !important;
+}
+.b_card_cri_buff {
+  height: 100% !important;
+  background-color: #FFEEEE !important;
+}
+.a_card_buff, .a_card_debuff {
+  height: 100% !important;
+  background-color: #F0F8FF !important;
+}
+.a_card_cri_buff {
+  height: 100% !important;
+  background-color: #F0F8FF !important;
+}
+.q_card_buff, .q_card_debuff {
+  height: 100% !important;
+  background-color: #EEFFEE !important;
+}
+.q_card_cri_buff {
+  height: 100% !important;
+  background-color: #EEFFEE !important;
+}
+.b_footprints {
+  height: 100% !important;
+  background-color: #FFEEEE !important;
+}
+.a_footprints {
+  height: 100% !important;
+  background-color: #F0F8FF !important;
+}
+.q_footprints {
+  height: 100% !important;
+  background-color: #EEFFEE !important;
+}
+.advanced_atk_buff_1st, .advanced_atk_buff_2nd, .advanced_atk_buff_3rd, .advanced_atk_buff_Ex,
+.advanced_supereffective_buff_1st, .advanced_supereffective_buff_2nd, .advanced_supereffective_buff_3rd, .advanced_supereffective_buff_Ex,
+.advanced_fixed_dmg_1st, .advanced_fixed_dmg_2nd, .advanced_fixed_dmg_3rd, .advanced_fixed_dmg_Ex, 
+.advanced_special_def_1st, .advanced_special_def_2nd, .advanced_special_def_3rd, .advanced_special_def_Ex,
+.advanced_card_buff_1st, .advanced_card_buff_2nd, .advanced_card_buff_3rd,
+.advanced_cri_buff_1st, .advanced_cri_buff_2nd, .advanced_cri_buff_3rd, .advanced_blank {
+  height: 100% !important;
+}
+
+/*撃破率計算*/
+#probTable tr, #probTable td {
+  height: 35px !important;
+}
+#prob_result {
+  font-size: 1.1rem;
+  text-align: center;
+}
+.col_prob_inp{
+  width: 25%;
+}
+.col_prob_out{
+  width: 25%;
+}
+.wrap_col_prob_out {
+  display:table;
+  text-align:right;
+  height: 100%;
+  width: 100%;
+}
+.col_prob_result {
+  width: 100%;
+}
+.wrap_col_prob_out output{
+  display:table-cell;
+  vertical-align:middle;
+}
+.wrap_col_prob_result {
+  display:table;
+  height: 100%;
+  width: 100%;
+}
+.wrap_col_prob_result output{
+  display:table-cell;
+  vertical-align:middle;
+}
+
+/*NPスター計算*/
+#servant-class, #servant-rare, #servant-name {
+  padding: 0.375rem 2.25rem 0.375rem 0.75rem;
+}
+#servant-class:focus, #servant-rare:focus, #servant-name:focus{  outline: solid 0.5px #afc0b8 !important;}
+.row_npstar, .row_npstar td {
+  height: 35px !important;
+}
+
+.col_npstar_head {
+  width: 25%;
+}
+
+.col_npstar_inp {
+  width: 25%;
+}
+
+.col_npstar_head_result {
+  width: 16.6%;
+}
+
+.col_npstar_result {
+  width: 16.6%;
+}
+
+.wrap_col_npstar_result {
+  display:table;
+  height: 100%;
+  width: 100%;
+}
+
+.wrap_col_npstar_result output{
+  display:table-cell;
+  vertical-align:middle;
+  text-align: center;
+}
+
+#b_hit, #b_card_buff_np_star, #b_card_debuff_np_star {
+  background-color: #FFEEEE !important;
+}
+
+#a_hit, #a_card_buff_np_star, #a_card_debuff_np_star {
+  background-color: #F0F8FF !important;
+}
+
+#q_hit, #q_card_buff_np_star, #q_card_debuff_np_star {
+  background-color: #EEFFEE !important;
+}
