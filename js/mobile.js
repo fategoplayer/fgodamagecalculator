@@ -242,9 +242,6 @@ $(function(){
             clearParam(cnt);
         }
 
-        // クリアボタンの場合は目標ダメージも初期化
-        $("#enemy_hp").val("0");
-
     });
 
     /**
@@ -277,6 +274,9 @@ $(function(){
 
         var tabNumber = getTabNumber();
 
+        // タブの目標ダメージを復元
+        $("#enemy_hp").val($("#prob_hp_" + tabNumber).val());
+
         // パラメーターを撃破率画面にコピー
         copyProbInput(tabNumber);
 
@@ -288,6 +288,9 @@ $(function(){
 
         // NPスター計算
         calcRate();
+
+        // 行番号を保持
+        $("#prob_tabNumber").val(tabNumber);
 
         return false;
 
@@ -304,6 +307,9 @@ $(function(){
 
         // 撃破率計算
         calcProb();
+
+        // 目標ダメージを保持
+        $("#prob_hp_" + $("#prob_tabNumber").val()).val($("#enemy_hp").val());
 
     });
 
@@ -612,6 +618,10 @@ function clearParam(tab) {
     $("#dmg_min_total").val("0");
     $("#dmg_ave_total").val("0");
     $("#dmg_max_total").val("0");
+
+    $("#prob_hp_" + row).val("0");
+    $("#enemy_hp").val("0");
+    $("#prob_tabNumber").val("");
 
 }
 
