@@ -619,7 +619,7 @@ function clearParam(tab) {
     $("#dmg_ave_total").val("0");
     $("#dmg_max_total").val("0");
 
-    $("#prob_hp_" + row).val("0");
+    $("#prob_hp_" + tab).val("0");
     $("#enemy_hp").val("0");
     $("#prob_tabNumber").val("");
 
