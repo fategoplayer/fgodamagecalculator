@@ -263,3 +263,40 @@ input[type="number"] {
 #q_hit, #q_card_buff_np_star {
   background-color: #EEFFEE !important;
 }
+
+/*スリップダメージ計算*/
+#slipTable tr, #slipTable td {
+  height: 35px !important;
+}
+#slip_result {
+  font-size: 1.1rem;
+  text-align: center;
+}
+.col_slip_inp{
+  width: 25%;
+}
+.col_slip_out{
+  width: 25%;
+}
+.wrap_col_slip_out {
+  display:table;
+  text-align:right;
+  height: 100%;
+  width: 100%;
+}
+.col_slip_result {
+  width: 100%;
+}
+.wrap_col_slip_out output{
+  display:table-cell;
+  vertical-align:middle;
+}
+.wrap_col_slip_result {
+  display:table;
+  height: 100%;
+  width: 100%;
+}
+.wrap_col_slip_result output{
+  display:table-cell;
+  vertical-align:middle;
+}
