@@ -283,6 +283,7 @@ $(function(){
         $("#burn_buff").val($("#burn_buff_" + tabNumber).val());
         $("#curse").val($("#curse_" + tabNumber).val());
         $("#curse_buff").val($("#curse_buff_" + tabNumber).val());
+        $("#other_slip").val($("#other_slip_" + tabNumber).val());
 
         // パラメーターを撃破率画面にコピー
         copyProbInput(tabNumber);
@@ -356,6 +357,7 @@ $(function(){
         $("#burn_buff_" + $("#prob_tabNumber").val()).val($("#burn_buff").val());
         $("#curse_" + $("#prob_tabNumber").val()).val($("#curse").val());
         $("#curse_buff_" + $("#prob_tabNumber").val()).val($("#curse_buff").val());
+        $("#other_slip_" + $("#prob_tabNumber").val()).val($("#other_slip").val());
 
     });
 
@@ -661,12 +663,14 @@ function clearParam(tab) {
     $("#burn_buff_" + tab).val("0");
     $("#curse_" + tab).val("0");
     $("#curse_buff_" + tab).val("0");
+    $("#other_slip_" + tab).val("0");
     $("#poison").val("0");
     $("#poison_buff").val("0");
     $("#burn").val("0");
     $("#burn_buff").val("0");
     $("#curse").val("0");
     $("#curse_buff").val("0");
+    $("#other_slip").val("0");
 
 }
 
@@ -739,6 +743,7 @@ function copyParam(tabNumber, tabNext){
     $("#burn_buff_" + tabNext).val($("#burn_buff_" + tabNumber).val());
     $("#curse_" + tabNext).val($("#curse_" + tabNumber).val());
     $("#curse_buff_" + tabNext).val($("#curse_buff_" + tabNumber).val());
+    $("#other_slip_" + tabNext).val($("#other_slip_" + tabNumber).val());
 }
 
 /**
@@ -1713,7 +1718,7 @@ function calcNp(hit, na, aBonus, card_buff, aBonus_all, card_NP, enemy_rate, na_
     var np;
 
     np = 100 * (na * (aBonus / 100 * (100 + card_buff) / 100 + aBonus_all * card_NP / 100) * enemy_rate / 100 * (100 + na_buff) / 100) * cri;
-    np = Math.floor(np)
+    np = Math.floor(np);
     np = (np * (hit - ok) + Math.floor(1.5 * np) * ok) / 100;
 
     return np;
@@ -1755,7 +1760,7 @@ function calcStar(hit, sr, qBonus, card_buff, qBonus_all, card_NP, sr_buff, cri,
         star_tmp += parseFloat(hit - ok);
     }
     if (rounddown(Math.max((star_ok - 1000 * star_num) / 10.0, 0.0), 1) > 0) {
-        star_tmp += parseFloat(ok)
+        star_tmp += parseFloat(ok);
     }
     result.push(star_tmp);
 
@@ -1766,7 +1771,7 @@ function calcStar(hit, sr, qBonus, card_buff, qBonus_all, card_NP, sr_buff, cri,
  * スリップダメージ計算メイン処理
  */
 function calcSlip() {
-    var poison, poison_buff, burn, burn_buff, curse, curse_buff, poison_result, burn_result, curse_result;
+    var poison, poison_buff, burn, burn_buff, curse, curse_buff, other_slip, poison_result, burn_result, curse_result, result;
     
     poison_result = 0;
     burn_result = 0;
@@ -1777,11 +1782,13 @@ function calcSlip() {
     burn_buff = parseFloat($("#burn_buff").val());
     curse = parseFloat($("#curse").val());
     curse_buff = parseFloat($("#curse_buff").val());
+    other_slip = parseFloat($("#other_slip").val());
 
-    poison_result = poison * poison_buff / 100 + poison
-    burn_result = burn * burn_buff / 100 + burn
-    curse_result = curse * curse_buff / 100 + curse
+    poison_result = poison * poison_buff / 100 + poison;
+    burn_result = burn * burn_buff / 100 + burn;
+    curse_result = curse * curse_buff / 100 + curse;
+    result = Number(rounddown(poison_result,0)) + Number(rounddown(burn_result,0)) + Number(rounddown(curse_result,0)) + Number(rounddown(other_slip,0));
     
-    $("#slip_result").val(Number(rounddown(poison_result,0)) + Number(rounddown(burn_result,0)) + Number(rounddown(curse_result,0)));
+    $("#slip_result").val(result.toLocaleString());
  
 };
