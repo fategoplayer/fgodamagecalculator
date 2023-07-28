@@ -241,6 +241,13 @@ $(function(){
 
         // 行の目標ダメージを復元
         $("#enemy_hp").val($("#prob_hp_" + recNumber).val());
+        // スリップダメージを復元
+        $("#poison").val($("#poison_" + recNumber).val());
+        $("#poison_buff").val($("#poison_buff_" + recNumber).val());
+        $("#burn").val($("#burn_" + recNumber).val());
+        $("#burn_buff").val($("#burn_buff_" + recNumber).val());
+        $("#curse").val($("#curse_" + recNumber).val());
+        $("#curse_buff").val($("#curse_buff_" + recNumber).val());
 
         // パラメーターを撃破率画面にコピー
         copyProbInput(recNumber);
@@ -253,6 +260,9 @@ $(function(){
 
         // NPスター計算
         calcRate();
+
+        // スリップダメージ計算
+        calcSlip();
 
         // 行番号を保持
         $("#prob_recNumber").val(recNumber);
@@ -289,6 +299,28 @@ $(function(){
 
         // NPスター計算
         calcRate();
+
+    });
+
+    /**
+     * スリップダメージ計算フォーカス遷移イベント
+     */
+    $("#slipTable").on("blur", "input", function () {
+
+        if (this.value == "") {this.value = "0";};
+
+        this.value = parseFloat(this.value);
+
+        // スリップダメージ計算
+        calcSlip();
+
+        // スリップダメージを保持
+        $("#poison_" + $("#prob_recNumber").val()).val($("#poison").val());
+        $("#poison_buff_" + $("#prob_recNumber").val()).val($("#poison_buff").val());
+        $("#burn_" + $("#prob_recNumber").val()).val($("#burn").val());
+        $("#burn_buff_" + $("#prob_recNumber").val()).val($("#burn_buff").val());
+        $("#curse_" + $("#prob_recNumber").val()).val($("#curse").val());
+        $("#curse_buff_" + $("#prob_recNumber").val()).val($("#curse_buff").val());
 
     });
 
@@ -936,6 +968,19 @@ function clearParam(row) {
     $("#enemy_hp").val("0");
     $("#prob_recNumber").val("");
 
+    $("#poison_" + row).val("0");
+    $("#poison_buff_" + row).val("0");
+    $("#burn_" + row).val("0");
+    $("#burn_buff_" + row).val("0");
+    $("#curse_" + row).val("0");
+    $("#curse_buff_" + row).val("0");
+    $("#poison").val("0");
+    $("#poison_buff").val("0");
+    $("#burn").val("0");
+    $("#burn_buff").val("0");
+    $("#curse").val("0");
+    $("#curse_buff").val("0");
+
 }
 
 /**
@@ -1008,6 +1053,13 @@ function copyParam(recNumber, recNext){
     $("#card_3rd_" + recNext).val($("#card_3rd_" + recNumber).val());
     $("#card_3rd_cri_" + recNext).val($("#card_3rd_cri_" + recNumber).val());
     $("#ex_cri_" + recNext).val($("#ex_cri_" + recNumber).val());
+
+    $("#poison_" + recNext).val($("#poison_" + recNumber).val());
+    $("#poison_buff_" + recNext).val($("#poison_buff_" + recNumber).val());
+    $("#burn_" + recNext).val($("#burn_" + recNumber).val());
+    $("#burn_buff_" + recNext).val($("#burn_buff_" + recNumber).val());
+    $("#curse_" + recNext).val($("#curse_" + recNumber).val());
+    $("#curse_buff_" + recNext).val($("#curse_buff_" + recNumber).val());
 }
 
 /**
@@ -1997,4 +2049,28 @@ function calcStar(hit, sr, qBonus, card_buff, qBonus_all, card_NP, sr_buff, cri,
     result.push(star_tmp);
 
     return result;
+};
+
+/**
+ * スリップダメージ計算メイン処理
+ */
+function calcSlip() {
+    var poison, poison_buff, burn, burn_buff, curse, curse_buff, poison_result, burn_result, curse_result;
+    
+    poison_result = 0;
+    burn_result = 0;
+    curse_result = 0;
+    poison = parseFloat($("#poison").val());
+    poison_buff = parseFloat($("#poison_buff").val());
+    burn = parseFloat($("#burn").val());
+    burn_buff = parseFloat($("#burn_buff").val());
+    curse = parseFloat($("#curse").val());
+    curse_buff = parseFloat($("#curse_buff").val());
+
+    poison_result = poison * poison_buff / 100 + poison
+    burn_result = burn * burn_buff / 100 + burn
+    curse_result = curse * curse_buff / 100 + curse
+    
+    $("#slip_result").val(Number(rounddown(poison_result,0)) + Number(rounddown(burn_result,0)) + Number(rounddown(curse_result,0)));
+ 
 };
