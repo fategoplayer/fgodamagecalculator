@@ -53,6 +53,17 @@ output {
   vertical-align:middle;
 }
 
+.wrap_link_icon {
+  display:table;
+  height: 50%;
+  width: 100%;
+}
+
+.wrap_link_icon a {
+  display:table-cell;
+  vertical-align:middle;
+}
+
 #out_sel_total {
   width: 80px;
   min-width: 80px;

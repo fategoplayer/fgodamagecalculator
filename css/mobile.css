@@ -85,6 +85,10 @@ input[type="number"] {
 } 
 
 /*列調整*/
+.search_link, .tool_link {
+  margin-left: 30px;
+  margin-right: 30px;
+}
 /*
 .col_copy, .col_atk_buff, .col_card_buff, .col_np_buff, .col_ex_atk_buff, 
 .col_footprints, .col_advanced_setting, .col_special_def, .col_prob {

@@ -62,6 +62,13 @@
 
                 <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="tab_0" role="tabpanel" aria-labelledby="nav-tab-0" tabindex="0">
+                        <input type="hidden" id="search_servant_no_0" value="">
+                        <input type="hidden" id="search_servant_class_0" value="">
+                        <input type="hidden" id="search_servant_rare_0" value="">
+                        <input type="hidden" id="search_servant_lvl_0" value="">
+                        <input type="hidden" id="search_servant_nplvl_0" value="">
+                        <input type="hidden" id="search_servant_fou_0" value="">
+                        <input type="hidden" id="search_servant_ce_0" value="">
                         <input type="hidden" id="prob_hp_0" value="0">
                         <input type="hidden" id="poison_0" value="0">
                         <input type="hidden" id="poison_buff_0" value="0">
@@ -74,11 +81,20 @@
                             <tbody>
                                 <tr>
                                     <td class="col_copy align-middle text-center bg-light" colspan="4">
-                                        <a class="text-body" href="#" tabindex="-1" data-bs-toggle="modal" data-bs-target="#toolModal">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-tools text-secondary" viewBox="0 0 16 16">
-                                                <path d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.356 3.356a1 1 0 0 0 1.414 0l1.586-1.586a1 1 0 0 0 0-1.414l-3.356-3.356a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3c0-.269-.035-.53-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814L1 0zm9.646 10.646a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708zM3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026L3 11z"/>
-                                            </svg>
-                                        </a>
+                                        <div class="d-inline-block">
+                                            <a href="#" id="search_0" class="text-body search_link" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-search text-secondary" viewBox="0 0 16 16">
+                                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                        <div class="d-inline-block">
+                                            <a class="text-body tool_link" href="#" tabindex="-1" data-bs-toggle="modal" data-bs-target="#toolModal">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-tools text-secondary" viewBox="0 0 16 16">
+                                                    <path d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.356 3.356a1 1 0 0 0 1.414 0l1.586-1.586a1 1 0 0 0 0-1.414l-3.356-3.356a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3c0-.269-.035-.53-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814L1 0zm9.646 10.646a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708zM3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026L3 11z"/>
+                                                </svg>
+                                            </a>
+                                        </div>
                                     </td>
                                 </tr>
                                 <tr>
@@ -416,6 +432,13 @@
                         </table>
                     </div>
                     <div class="tab-pane fade" id="tab_1" role="tabpanel" aria-labelledby="nav-tab-1" tabindex="0">
+                        <input type="hidden" id="search_servant_no_1" value="">
+                        <input type="hidden" id="search_servant_class_1" value="">
+                        <input type="hidden" id="search_servant_rare_1" value="">
+                        <input type="hidden" id="search_servant_lvl_1" value="">
+                        <input type="hidden" id="search_servant_nplvl_1" value="">
+                        <input type="hidden" id="search_servant_fou_1" value="">
+                        <input type="hidden" id="search_servant_ce_1" value="">
                         <input type="hidden" id="prob_hp_1" value="0">
                         <input type="hidden" id="poison_1" value="0">
                         <input type="hidden" id="poison_buff_1" value="0">
@@ -428,11 +451,20 @@
                             <tbody>
                                 <tr>
                                     <td class="col_copy align-middle text-center bg-light" colspan="4">
-                                        <a class="text-body" href="#" tabindex="-1" data-bs-toggle="modal" data-bs-target="#toolModal">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-tools text-secondary" viewBox="0 0 16 16">
-                                                <path d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.356 3.356a1 1 0 0 0 1.414 0l1.586-1.586a1 1 0 0 0 0-1.414l-3.356-3.356a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3c0-.269-.035-.53-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814L1 0zm9.646 10.646a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708zM3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026L3 11z"/>
-                                            </svg>
-                                        </a>
+                                        <div class="d-inline-block">
+                                            <a href="#" id="search_1" class="text-body search_link" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-search text-secondary" viewBox="0 0 16 16">
+                                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                        <div class="d-inline-block">
+                                            <a class="text-body tool_link" href="#" tabindex="-1" data-bs-toggle="modal" data-bs-target="#toolModal">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-tools text-secondary" viewBox="0 0 16 16">
+                                                    <path d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.356 3.356a1 1 0 0 0 1.414 0l1.586-1.586a1 1 0 0 0 0-1.414l-3.356-3.356a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3c0-.269-.035-.53-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814L1 0zm9.646 10.646a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708zM3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026L3 11z"/>
+                                                </svg>
+                                            </a>
+                                        </div>
                                     </td>
                                 </tr>
                                 <tr>
@@ -770,6 +802,13 @@
                         </table>
                     </div>
                     <div class="tab-pane fade" id="tab_2" role="tabpanel" aria-labelledby="nav-tab-2" tabindex="0">
+                        <input type="hidden" id="search_servant_no_2" value="">
+                        <input type="hidden" id="search_servant_class_2" value="">
+                        <input type="hidden" id="search_servant_rare_2" value="">
+                        <input type="hidden" id="search_servant_lvl_2" value="">
+                        <input type="hidden" id="search_servant_nplvl_2" value="">
+                        <input type="hidden" id="search_servant_fou_2" value="">
+                        <input type="hidden" id="search_servant_ce_2" value="">
                         <input type="hidden" id="prob_hp_2" value="0">
                         <input type="hidden" id="poison_2" value="0">
                         <input type="hidden" id="poison_buff_2" value="0">
@@ -782,11 +821,20 @@
                             <tbody>
                                 <tr>
                                     <td class="col_copy align-middle text-center bg-light" colspan="4">
-                                        <a class="text-body" href="#" tabindex="-1" data-bs-toggle="modal" data-bs-target="#toolModal">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-tools text-secondary" viewBox="0 0 16 16">
-                                                <path d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.356 3.356a1 1 0 0 0 1.414 0l1.586-1.586a1 1 0 0 0 0-1.414l-3.356-3.356a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3c0-.269-.035-.53-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814L1 0zm9.646 10.646a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708zM3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026L3 11z"/>
-                                            </svg>
-                                        </a>
+                                        <div class="d-inline-block">
+                                            <a href="#" id="search_2" class="text-body search_link" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-search text-secondary" viewBox="0 0 16 16">
+                                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                        <div class="d-inline-block">
+                                            <a class="text-body tool_link" href="#" tabindex="-1" data-bs-toggle="modal" data-bs-target="#toolModal">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-tools text-secondary" viewBox="0 0 16 16">
+                                                    <path d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.356 3.356a1 1 0 0 0 1.414 0l1.586-1.586a1 1 0 0 0 0-1.414l-3.356-3.356a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3c0-.269-.035-.53-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814L1 0zm9.646 10.646a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708zM3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026L3 11z"/>
+                                                </svg>
+                                            </a>
+                                        </div>
                                     </td>
                                 </tr>
                                 <tr>
@@ -1124,6 +1172,13 @@
                         </table>
                     </div>
                     <div class="tab-pane fade" id="tab_3" role="tabpanel" aria-labelledby="nav-tab-3" tabindex="0">
+                        <input type="hidden" id="search_servant_no_3" value="">
+                        <input type="hidden" id="search_servant_class_3" value="">
+                        <input type="hidden" id="search_servant_rare_3" value="">
+                        <input type="hidden" id="search_servant_lvl_3" value="">
+                        <input type="hidden" id="search_servant_nplvl_3" value="">
+                        <input type="hidden" id="search_servant_fou_3" value="">
+                        <input type="hidden" id="search_servant_ce_3" value="">
                         <input type="hidden" id="prob_hp_3" value="0">
                         <input type="hidden" id="poison_3" value="0">
                         <input type="hidden" id="poison_buff_3" value="0">
@@ -1136,11 +1191,20 @@
                             <tbody>
                                 <tr>
                                     <td class="col_copy align-middle text-center bg-light" colspan="4">
-                                        <a class="text-body" href="#" tabindex="-1" data-bs-toggle="modal" data-bs-target="#toolModal">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-tools text-secondary" viewBox="0 0 16 16">
-                                                <path d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.356 3.356a1 1 0 0 0 1.414 0l1.586-1.586a1 1 0 0 0 0-1.414l-3.356-3.356a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3c0-.269-.035-.53-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814L1 0zm9.646 10.646a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708zM3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026L3 11z"/>
-                                            </svg>
-                                        </a>
+                                        <div class="d-inline-block">
+                                            <a href="#" id="search_3" class="text-body search_link" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-search text-secondary" viewBox="0 0 16 16">
+                                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                        <div class="d-inline-block">
+                                            <a class="text-body tool_link" href="#" tabindex="-1" data-bs-toggle="modal" data-bs-target="#toolModal">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-tools text-secondary" viewBox="0 0 16 16">
+                                                    <path d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.356 3.356a1 1 0 0 0 1.414 0l1.586-1.586a1 1 0 0 0 0-1.414l-3.356-3.356a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3c0-.269-.035-.53-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814L1 0zm9.646 10.646a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708zM3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026L3 11z"/>
+                                                </svg>
+                                            </a>
+                                        </div>
                                     </td>
                                 </tr>
                                 <tr>
@@ -1478,6 +1542,13 @@
                         </table>
                     </div>
                     <div class="tab-pane fade" id="tab_4" role="tabpanel" aria-labelledby="nav-tab-4" tabindex="0">
+                        <input type="hidden" id="search_servant_no_4" value="">
+                        <input type="hidden" id="search_servant_class_4" value="">
+                        <input type="hidden" id="search_servant_rare_4" value="">
+                        <input type="hidden" id="search_servant_lvl_4" value="">
+                        <input type="hidden" id="search_servant_nplvl_4" value="">
+                        <input type="hidden" id="search_servant_fou_4" value="">
+                        <input type="hidden" id="search_servant_ce_4" value="">
                         <input type="hidden" id="prob_hp_4" value="0">
                         <input type="hidden" id="poison_4" value="0">
                         <input type="hidden" id="poison_buff_4" value="0">
@@ -1490,11 +1561,20 @@
                             <tbody>
                                 <tr>
                                     <td class="col_copy align-middle text-center bg-light" colspan="4">
-                                        <a class="text-body" href="#" tabindex="-1" data-bs-toggle="modal" data-bs-target="#toolModal">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-tools text-secondary" viewBox="0 0 16 16">
-                                                <path d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.356 3.356a1 1 0 0 0 1.414 0l1.586-1.586a1 1 0 0 0 0-1.414l-3.356-3.356a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3c0-.269-.035-.53-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814L1 0zm9.646 10.646a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708zM3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026L3 11z"/>
-                                            </svg>
-                                        </a>
+                                        <div class="d-inline-block">
+                                            <a href="#" id="search_4" class="text-body search_link" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-search text-secondary" viewBox="0 0 16 16">
+                                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                        <div class="d-inline-block">
+                                            <a class="text-body tool_link" href="#" tabindex="-1" data-bs-toggle="modal" data-bs-target="#toolModal">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-tools text-secondary" viewBox="0 0 16 16">
+                                                    <path d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.356 3.356a1 1 0 0 0 1.414 0l1.586-1.586a1 1 0 0 0 0-1.414l-3.356-3.356a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3c0-.269-.035-.53-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814L1 0zm9.646 10.646a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708zM3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026L3 11z"/>
+                                                </svg>
+                                            </a>
+                                        </div>
                                     </td>
                                 </tr>
                                 <tr>
@@ -1832,6 +1912,13 @@
                         </table>
                     </div>
                     <div class="tab-pane fade" id="tab_5" role="tabpanel" aria-labelledby="nav-tab-5" tabindex="0">
+                        <input type="hidden" id="search_servant_no_5" value="">
+                        <input type="hidden" id="search_servant_class_5" value="">
+                        <input type="hidden" id="search_servant_rare_5" value="">
+                        <input type="hidden" id="search_servant_lvl_5" value="">
+                        <input type="hidden" id="search_servant_nplvl_5" value="">
+                        <input type="hidden" id="search_servant_fou_5" value="">
+                        <input type="hidden" id="search_servant_ce_5" value="">
                         <input type="hidden" id="prob_hp_5" value="0">
                         <input type="hidden" id="poison_5" value="0">
                         <input type="hidden" id="poison_buff_5" value="0">
@@ -1844,11 +1931,20 @@
                             <tbody>
                                 <tr>
                                     <td class="col_copy align-middle text-center bg-light" colspan="4">
-                                        <a class="text-body" href="#" tabindex="-1" data-bs-toggle="modal" data-bs-target="#toolModal">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-tools text-secondary" viewBox="0 0 16 16">
-                                                <path d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.356 3.356a1 1 0 0 0 1.414 0l1.586-1.586a1 1 0 0 0 0-1.414l-3.356-3.356a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3c0-.269-.035-.53-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814L1 0zm9.646 10.646a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708zM3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026L3 11z"/>
-                                            </svg>
-                                        </a>
+                                        <div class="d-inline-block">
+                                            <a href="#" id="search_5" class="text-body search_link" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-search text-secondary" viewBox="0 0 16 16">
+                                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                        <div class="d-inline-block">
+                                            <a class="text-body tool_link" href="#" tabindex="-1" data-bs-toggle="modal" data-bs-target="#toolModal">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-tools text-secondary" viewBox="0 0 16 16">
+                                                    <path d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.356 3.356a1 1 0 0 0 1.414 0l1.586-1.586a1 1 0 0 0 0-1.414l-3.356-3.356a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3c0-.269-.035-.53-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814L1 0zm9.646 10.646a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708zM3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026L3 11z"/>
+                                                </svg>
+                                            </a>
+                                        </div>
                                     </td>
                                 </tr>
                                 <tr>
@@ -2339,6 +2435,9 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
                         </div>
                         <div class="modal-body">
+                            <input type="hidden" id="apply_servant_class" value="">
+                            <input type="hidden" id="apply_servant_rare" value="">
+                            <input type="hidden" id="apply_servant_no" value="">
                             <div class="input-group input-group-sm mb-3">
                                 <span class="input-group-text bg-light">クラス</span>
                                 <select class="form-select servarnt-search-select bg-transparent" tabindex="-1" id="servant-class">
@@ -2719,6 +2818,89 @@
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
                             <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="accept">適用</button>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="searchLabel">サーヴァント検索</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="input-group input-group-sm mb-3">
+                                <input type="hidden" id="search_tabNumber" value="">
+                                <span class="input-group-text bg-light">クラス</span>
+                                <select class="form-select search_sarvant_select bg-transparent" tabindex="-1" id="search_servant_class">
+                                    <option value="剣" selected>剣</option>
+                                    <option value="弓">弓</option>
+                                    <option value="槍">槍</option>
+                                    <option value="騎">騎</option>
+                                    <option value="術">術</option>
+                                    <option value="殺">殺</option>
+                                    <option value="狂">狂</option>
+                                    <option value="盾">盾</option>
+                                    <option value="裁">裁</option>
+                                    <option value="讐">讐</option>
+                                    <option value="月">月</option>
+                                    <option value="分">分</option>
+                                    <option value="降">降</option>
+                                    <option value="詐">詐</option>
+                                    <option value="獣">獣</option>
+                                </select>
+                                <span class="input-group-text bg-light">レア</span>
+                                <select class="form-select search_sarvant_select bg-transparent" tabindex="-1" id="search_servant_rare">
+                                    <option value="5" selected>5</option>
+                                    <option value="4">4</option>
+                                    <option value="3">3</option>
+                                    <option value="2">2</option>
+                                    <option value="1">1</option>
+                                    <option value="0">0</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm mb-3">
+                                <span class="input-group-text bg-light">サーヴァント</span>
+                                <select class="form-select bg-transparent" tabindex="-1" id="search_servant_name"></select>
+                            </div>
+                            <div class="input-group input-group-sm mb-3">
+                                <span class="input-group-text bg-light">レベル</span>
+                                <select class="form-select bg-transparent" tabindex="-1" id="search_servant_lvl">
+                                    <option value="MAX" selected>聖杯無し最大</option>
+                                    <option value="100">100</option>
+                                    <option value="110">110</option>
+                                    <option value="120">120</option>
+                                </select>
+                                <span class="input-group-text bg-light">宝具レベル</span>
+                                <select class="form-select bg-transparent" tabindex="-1" id="search_servant_nplvl">
+                                    <option value="5" selected>5</option>
+                                    <option value="4">4</option>
+                                    <option value="3">3</option>
+                                    <option value="2">2</option>
+                                    <option value="1">1</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm mb-3">
+                                <span class="input-group-text bg-light">フォウ君</span>
+                                <select class="form-select bg-transparent" tabindex="-1" id="search_servant_fou">
+                                    <option value="2000">2000</option>
+                                    <option value="1000" selected>1000</option>
+                                    <option value="0">0</option>
+                                </select>
+                                <span class="input-group-text bg-light">礼装ATK</span>
+                                <select class="form-select bg-transparent" tabindex="-1" id="search_servant_ceatk">
+                                    <option value="2400">2400</option>
+                                    <option value="2000" selected>2000</option>
+                                    <option value="1000">1000</option>
+                                    <option value="100">100</option>
+                                    <option value="0">0</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" id="btnSelected">選択</button>
+                          </div>
                     </div>
                 </div>
             </div>

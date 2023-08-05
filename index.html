@@ -90,6 +90,13 @@
                     </thead>
                     <tbody id="calcItem">
                         <tr>
+                            <input type="hidden" id="search_servant_no_0" value="">
+                            <input type="hidden" id="search_servant_class_0" value="">
+                            <input type="hidden" id="search_servant_rare_0" value="">
+                            <input type="hidden" id="search_servant_lvl_0" value="">
+                            <input type="hidden" id="search_servant_nplvl_0" value="">
+                            <input type="hidden" id="search_servant_fou_0" value="">
+                            <input type="hidden" id="search_servant_ce_0" value="">
                             <input type="hidden" id="prob_hp_0" value="0">
                             <input type="hidden" id="poison_0" value="0">
                             <input type="hidden" id="poison_buff_0" value="0">
@@ -99,11 +106,20 @@
                             <input type="hidden" id="curse_buff_0" value="0">
                             <input type="hidden" id="other_slip_0" value="0">
                             <td class="col_copy align-middle text-center">
-                                <a href="#" id="copy_0" class="copy_link" tabindex="-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-arrow-down-circle-fill text-secondary" viewBox="0 0 16 16">
-                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
-                                    </svg>
-                                </a>
+                                <div class="wrap_link_icon">
+                                    <a href="#" id="search_0" class="search_link" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-search text-secondary" viewBox="0 0 16 16">
+                                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                                <div class="wrap_link_icon">
+                                    <a href="#" id="copy_0" class="copy_link" tabindex="-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-arrow-down-circle-fill text-secondary" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                                        </svg>
+                                    </a>
+                                </div>
                             </td>
                             <td class="col_atk">
                                 <input type="number" id="atk_0" value="0" max="99999" min="0" step="500" class="atk form-control bg-transparent">
@@ -324,6 +340,13 @@
                             </td>
                         </tr>
                         <tr>
+                            <input type="hidden" id="search_servant_no_1" value="">
+                            <input type="hidden" id="search_servant_class_1" value="">
+                            <input type="hidden" id="search_servant_rare_1" value="">
+                            <input type="hidden" id="search_servant_lvl_1" value="">
+                            <input type="hidden" id="search_servant_nplvl_1" value="">
+                            <input type="hidden" id="search_servant_fou_1" value="">
+                            <input type="hidden" id="search_servant_ce_1" value="">
                             <input type="hidden" id="prob_hp_1" value="0">
                             <input type="hidden" id="poison_1" value="0">
                             <input type="hidden" id="poison_buff_1" value="0">
@@ -333,11 +356,20 @@
                             <input type="hidden" id="curse_buff_1" value="0">
                             <input type="hidden" id="other_slip_1" value="0">
                             <td class="col_copy align-middle text-center">
-                                <a href="#" id="copy_1" class="copy_link" tabindex="-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-arrow-down-circle-fill text-secondary" viewBox="0 0 16 16">
-                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
-                                    </svg>
-                                </a>
+                                <div class="wrap_link_icon">
+                                    <a href="#" id="search_1" class="search_link" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-search text-secondary" viewBox="0 0 16 16">
+                                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                                <div class="wrap_link_icon">
+                                    <a href="#" id="copy_1" class="copy_link" tabindex="-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-arrow-down-circle-fill text-secondary" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                                        </svg>
+                                    </a>
+                                </div>
                             </td>
                             <td class="col_atk">
                                 <input type="number" id="atk_1" value="0" max="99999" min="0" step="500" class="atk form-control bg-transparent">
@@ -558,6 +590,13 @@
                             </td>
                         </tr>
                         <tr>
+                            <input type="hidden" id="search_servant_no_2" value="">
+                            <input type="hidden" id="search_servant_class_2" value="">
+                            <input type="hidden" id="search_servant_rare_2" value="">
+                            <input type="hidden" id="search_servant_lvl_2" value="">
+                            <input type="hidden" id="search_servant_nplvl_2" value="">
+                            <input type="hidden" id="search_servant_fou_2" value="">
+                            <input type="hidden" id="search_servant_ce_2" value="">
                             <input type="hidden" id="prob_hp_2" value="0">
                             <input type="hidden" id="poison_2" value="0">
                             <input type="hidden" id="poison_buff_2" value="0">
@@ -567,11 +606,20 @@
                             <input type="hidden" id="curse_buff_2" value="0">
                             <input type="hidden" id="other_slip_2" value="0">
                             <td class="col_copy align-middle text-center">
-                                <a href="#" id="copy_2" class="copy_link" tabindex="-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-arrow-down-circle-fill text-secondary" viewBox="0 0 16 16">
-                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
-                                    </svg>
-                                </a>
+                                <div class="wrap_link_icon">
+                                    <a href="#" id="search_2" class="search_link" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-search text-secondary" viewBox="0 0 16 16">
+                                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                                <div class="wrap_link_icon">
+                                    <a href="#" id="copy_2" class="copy_link" tabindex="-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-arrow-down-circle-fill text-secondary" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                                        </svg>
+                                    </a>
+                                </div>
                             </td>
                             <td class="col_atk">
                                 <input type="number" id="atk_2" value="0" max="99999" min="0" step="500" class="atk form-control bg-transparent">
@@ -792,6 +840,13 @@
                             </td>
                         </tr>
                         <tr>
+                            <input type="hidden" id="search_servant_no_3" value="">
+                            <input type="hidden" id="search_servant_class_3" value="">
+                            <input type="hidden" id="search_servant_rare_3" value="">
+                            <input type="hidden" id="search_servant_lvl_3" value="">
+                            <input type="hidden" id="search_servant_nplvl_3" value="">
+                            <input type="hidden" id="search_servant_fou_3" value="">
+                            <input type="hidden" id="search_servant_ce_3" value="">
                             <input type="hidden" id="prob_hp_3" value="0">
                             <input type="hidden" id="poison_3" value="0">
                             <input type="hidden" id="poison_buff_3" value="0">
@@ -801,11 +856,20 @@
                             <input type="hidden" id="curse_buff_3" value="0">
                             <input type="hidden" id="other_slip_3" value="0">
                             <td class="col_copy align-middle text-center">
-                                <a href="#" id="copy_3" class="copy_link" tabindex="-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-arrow-down-circle-fill text-secondary" viewBox="0 0 16 16">
-                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
-                                    </svg>
-                                </a>
+                                <div class="wrap_link_icon">
+                                    <a href="#" id="search_3" class="search_link" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-search text-secondary" viewBox="0 0 16 16">
+                                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                                <div class="wrap_link_icon">
+                                    <a href="#" id="copy_3" class="copy_link" tabindex="-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-arrow-down-circle-fill text-secondary" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                                        </svg>
+                                    </a>
+                                </div>
                             </td>
                             <td class="col_atk">
                                 <input type="number" id="atk_3" value="0" max="99999" min="0" step="500" class="atk form-control bg-transparent">
@@ -1026,6 +1090,13 @@
                             </td>
                         </tr>
                         <tr>
+                            <input type="hidden" id="search_servant_no_4" value="">
+                            <input type="hidden" id="search_servant_class_4" value="">
+                            <input type="hidden" id="search_servant_rare_4" value="">
+                            <input type="hidden" id="search_servant_lvl_4" value="">
+                            <input type="hidden" id="search_servant_nplvl_4" value="">
+                            <input type="hidden" id="search_servant_fou_4" value="">
+                            <input type="hidden" id="search_servant_ce_4" value="">
                             <input type="hidden" id="prob_hp_4" value="0">
                             <input type="hidden" id="poison_4" value="0">
                             <input type="hidden" id="poison_buff_4" value="0">
@@ -1035,11 +1106,20 @@
                             <input type="hidden" id="curse_buff_4" value="0">
                             <input type="hidden" id="other_slip_4" value="0">
                             <td class="col_copy align-middle text-center">
-                                <a href="#" id="copy_4" class="copy_link" tabindex="-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-arrow-down-circle-fill text-secondary" viewBox="0 0 16 16">
-                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
-                                    </svg>
-                                </a>
+                                <div class="wrap_link_icon">
+                                    <a href="#" id="search_4" class="search_link" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-search text-secondary" viewBox="0 0 16 16">
+                                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                                <div class="wrap_link_icon">
+                                    <a href="#" id="copy_4" class="copy_link" tabindex="-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-arrow-down-circle-fill text-secondary" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                                        </svg>
+                                    </a>
+                                </div>
                             </td>
                             <td class="col_atk">
                                 <input type="number" id="atk_4" value="0" max="99999" min="0" step="500" class="atk form-control bg-transparent">
@@ -1260,6 +1340,13 @@
                             </td>
                         </tr>
                         <tr>
+                            <input type="hidden" id="search_servant_no_5" value="">
+                            <input type="hidden" id="search_servant_class_5" value="">
+                            <input type="hidden" id="search_servant_rare_5" value="">
+                            <input type="hidden" id="search_servant_lvl_5" value="">
+                            <input type="hidden" id="search_servant_nplvl_5" value="">
+                            <input type="hidden" id="search_servant_fou_5" value="">
+                            <input type="hidden" id="search_servant_ce_5" value="">
                             <input type="hidden" id="prob_hp_5" value="0">
                             <input type="hidden" id="poison_5" value="0">
                             <input type="hidden" id="poison_buff_5" value="0">
@@ -1269,11 +1356,20 @@
                             <input type="hidden" id="curse_buff_5" value="0">
                             <input type="hidden" id="other_slip_5" value="0">
                             <td class="col_copy align-middle text-center">
-                                <a href="#" id="copy_5" class="copy_link" tabindex="-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-arrow-down-circle-fill text-secondary" viewBox="0 0 16 16">
-                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
-                                    </svg>
-                                </a>
+                                <div class="wrap_link_icon">
+                                    <a href="#" id="search_5" class="search_link" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-search text-secondary" viewBox="0 0 16 16">
+                                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                                <div class="wrap_link_icon">
+                                    <a href="#" id="copy_5" class="copy_link" tabindex="-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-arrow-down-circle-fill text-secondary" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                                        </svg>
+                                    </a>
+                                </div>
                             </td>
                             <td class="col_atk">
                                 <input type="number" id="atk_5" value="0" max="99999" min="0" step="500" class="atk form-control bg-transparent">
@@ -1494,6 +1590,13 @@
                             </td>
                         </tr>
                         <tr>
+                            <input type="hidden" id="search_servant_no_6" value="">
+                            <input type="hidden" id="search_servant_class_6" value="">
+                            <input type="hidden" id="search_servant_rare_6" value="">
+                            <input type="hidden" id="search_servant_lvl_6" value="">
+                            <input type="hidden" id="search_servant_nplvl_6" value="">
+                            <input type="hidden" id="search_servant_fou_6" value="">
+                            <input type="hidden" id="search_servant_ce_6" value="">
                             <input type="hidden" id="prob_hp_6" value="0">
                             <input type="hidden" id="poison_6" value="0">
                             <input type="hidden" id="poison_buff_6" value="0">
@@ -1503,11 +1606,20 @@
                             <input type="hidden" id="curse_buff_6" value="0">
                             <input type="hidden" id="other_slip_6" value="0">
                             <td class="col_copy align-middle text-center">
-                                <a href="#" id="copy_6" class="copy_link" tabindex="-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-arrow-down-circle-fill text-secondary" viewBox="0 0 16 16">
-                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
-                                    </svg>
-                                </a>
+                                <div class="wrap_link_icon">
+                                    <a href="#" id="search_6" class="search_link" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-search text-secondary" viewBox="0 0 16 16">
+                                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                                <div class="wrap_link_icon">
+                                    <a href="#" id="copy_6" class="copy_link" tabindex="-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-arrow-down-circle-fill text-secondary" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                                        </svg>
+                                    </a>
+                                </div>
                             </td>
                             <td class="col_atk">
                                 <input type="number" id="atk_6" value="0" max="99999" min="0" step="500" class="atk form-control bg-transparent">
@@ -1728,6 +1840,13 @@
                             </td>
                         </tr>
                         <tr>
+                            <input type="hidden" id="search_servant_no_7" value="">
+                            <input type="hidden" id="search_servant_class_7" value="">
+                            <input type="hidden" id="search_servant_rare_7" value="">
+                            <input type="hidden" id="search_servant_lvl_7" value="">
+                            <input type="hidden" id="search_servant_nplvl_7" value="">
+                            <input type="hidden" id="search_servant_fou_7" value="">
+                            <input type="hidden" id="search_servant_ce_7" value="">
                             <input type="hidden" id="prob_hp_7" value="0">
                             <input type="hidden" id="poison_7" value="0">
                             <input type="hidden" id="poison_buff_7" value="0">
@@ -1737,11 +1856,20 @@
                             <input type="hidden" id="curse_buff_7" value="0">
                             <input type="hidden" id="other_slip_7" value="0">
                             <td class="col_copy align-middle text-center">
-                                <a href="#" id="copy_7" class="copy_link" tabindex="-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-arrow-down-circle-fill text-secondary" viewBox="0 0 16 16">
-                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
-                                    </svg>
-                                </a>
+                                <div class="wrap_link_icon">
+                                    <a href="#" id="search_7" class="search_link" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-search text-secondary" viewBox="0 0 16 16">
+                                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                                <div class="wrap_link_icon">
+                                    <a href="#" id="copy_7" class="copy_link" tabindex="-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-arrow-down-circle-fill text-secondary" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                                        </svg>
+                                    </a>
+                                </div>
                             </td>
                             <td class="col_atk">
                                 <input type="number" id="atk_7" value="0" max="99999" min="0" step="500" class="atk form-control bg-transparent">
@@ -1962,6 +2090,13 @@
                             </td>
                         </tr>
                         <tr>
+                            <input type="hidden" id="search_servant_no_8" value="">
+                            <input type="hidden" id="search_servant_class_8" value="">
+                            <input type="hidden" id="search_servant_rare_8" value="">
+                            <input type="hidden" id="search_servant_lvl_8" value="">
+                            <input type="hidden" id="search_servant_nplvl_8" value="">
+                            <input type="hidden" id="search_servant_fou_8" value="">
+                            <input type="hidden" id="search_servant_ce_8" value="">
                             <input type="hidden" id="prob_hp_8" value="0">
                             <input type="hidden" id="poison_8" value="0">
                             <input type="hidden" id="poison_buff_8" value="0">
@@ -1971,11 +2106,20 @@
                             <input type="hidden" id="curse_buff_8" value="0">
                             <input type="hidden" id="other_slip_8" value="0">
                             <td class="col_copy align-middle text-center">
-                                <a href="#" id="copy_8" class="copy_link" tabindex="-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-arrow-down-circle-fill text-secondary" viewBox="0 0 16 16">
-                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
-                                    </svg>
-                                </a>
+                                <div class="wrap_link_icon">
+                                    <a href="#" id="search_8" class="search_link" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-search text-secondary" viewBox="0 0 16 16">
+                                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                                <div class="wrap_link_icon">
+                                    <a href="#" id="copy_8" class="copy_link" tabindex="-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-arrow-down-circle-fill text-secondary" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                                        </svg>
+                                    </a>
+                                </div>
                             </td>
                             <td class="col_atk">
                                 <input type="number" id="atk_8" value="0" max="99999" min="0" step="500" class="atk form-control bg-transparent">
@@ -2196,6 +2340,13 @@
                             </td>
                         </tr>
                         <tr>
+                            <input type="hidden" id="search_servant_no_9" value="">
+                            <input type="hidden" id="search_servant_class_9" value="">
+                            <input type="hidden" id="search_servant_rare_9" value="">
+                            <input type="hidden" id="search_servant_lvl_9" value="">
+                            <input type="hidden" id="search_servant_nplvl_9" value="">
+                            <input type="hidden" id="search_servant_fou_9" value="">
+                            <input type="hidden" id="search_servant_ce_9" value="">
                             <input type="hidden" id="prob_hp_9" value="0">
                             <input type="hidden" id="poison_9" value="0">
                             <input type="hidden" id="poison_buff_9" value="0">
@@ -2205,11 +2356,20 @@
                             <input type="hidden" id="curse_buff_9" value="0">
                             <input type="hidden" id="other_slip_9" value="0">
                             <td class="col_copy align-middle text-center">
-                                <a href="#" id="copy_9" class="copy_link" tabindex="-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-arrow-down-circle-fill text-secondary" viewBox="0 0 16 16">
-                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
-                                    </svg>
-                                </a>
+                                <div class="wrap_link_icon">
+                                    <a href="#" id="search_9" class="search_link" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-search text-secondary" viewBox="0 0 16 16">
+                                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                                <div class="wrap_link_icon">
+                                    <a href="#" id="copy_9" class="copy_link" tabindex="-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-arrow-down-circle-fill text-secondary" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                                        </svg>
+                                    </a>
+                                </div>
                             </td>
                             <td class="col_atk">
                                 <input type="number" id="atk_9" value="0" max="99999" min="0" step="500" class="atk form-control bg-transparent">
@@ -2430,6 +2590,13 @@
                             </td>
                         </tr>
                         <tr>
+                            <input type="hidden" id="search_servant_no_10" value="">
+                            <input type="hidden" id="search_servant_class_10" value="">
+                            <input type="hidden" id="search_servant_rare_10" value="">
+                            <input type="hidden" id="search_servant_lvl_10" value="">
+                            <input type="hidden" id="search_servant_nplvl_10" value="">
+                            <input type="hidden" id="search_servant_fou_10" value="">
+                            <input type="hidden" id="search_servant_ce_10" value="">
                             <input type="hidden" id="prob_hp_10" value="0">
                             <input type="hidden" id="poison_10" value="0">
                             <input type="hidden" id="poison_buff_10" value="0">
@@ -2439,11 +2606,20 @@
                             <input type="hidden" id="curse_buff_10" value="0">
                             <input type="hidden" id="other_slip_10" value="0">
                             <td class="col_copy align-middle text-center">
-                                <a href="#" id="copy_10" class="copy_link" tabindex="-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-arrow-down-circle-fill text-secondary" viewBox="0 0 16 16">
-                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
-                                    </svg>
-                                </a>
+                                <div class="wrap_link_icon">
+                                    <a href="#" id="search_10" class="search_link" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-search text-secondary" viewBox="0 0 16 16">
+                                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                                <div class="wrap_link_icon">
+                                    <a href="#" id="copy_10" class="copy_link" tabindex="-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-arrow-down-circle-fill text-secondary" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                                        </svg>
+                                    </a>
+                                </div>
                             </td>
                             <td class="col_atk">
                                 <input type="number" id="atk_10" value="0" max="99999" min="0" step="500" class="atk form-control bg-transparent">
@@ -2664,6 +2840,13 @@
                             </td>
                         </tr>
                         <tr>
+                            <input type="hidden" id="search_servant_no_11" value="">
+                            <input type="hidden" id="search_servant_class_11" value="">
+                            <input type="hidden" id="search_servant_rare_11" value="">
+                            <input type="hidden" id="search_servant_lvl_11" value="">
+                            <input type="hidden" id="search_servant_nplvl_11" value="">
+                            <input type="hidden" id="search_servant_fou_11" value="">
+                            <input type="hidden" id="search_servant_ce_11" value="">
                             <input type="hidden" id="prob_hp_11" value="0">
                             <input type="hidden" id="poison_11" value="0">
                             <input type="hidden" id="poison_buff_11" value="0">
@@ -2673,11 +2856,20 @@
                             <input type="hidden" id="curse_buff_11" value="0">
                             <input type="hidden" id="other_slip_11" value="0">
                             <td class="col_copy align-middle text-center">
-                                <a href="#" id="copy_11" class="copy_link" tabindex="-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-arrow-down-circle-fill text-secondary" viewBox="0 0 16 16">
-                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
-                                    </svg>
-                                </a>
+                                <div class="wrap_link_icon">
+                                    <a href="#" id="search_11" class="search_link" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-search text-secondary" viewBox="0 0 16 16">
+                                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                                <div class="wrap_link_icon">
+                                    <a href="#" id="copy_11" class="copy_link" tabindex="-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-arrow-down-circle-fill text-secondary" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                                        </svg>
+                                    </a>
+                                </div>
                             </td>
                             <td class="col_atk">
                                 <input type="number" id="atk_11" value="0" max="99999" min="0" step="500" class="atk form-control bg-transparent">
@@ -2898,6 +3090,13 @@
                             </td>
                         </tr>
                         <tr>
+                            <input type="hidden" id="search_servant_no_12" value="">
+                            <input type="hidden" id="search_servant_class_12" value="">
+                            <input type="hidden" id="search_servant_rare_12" value="">
+                            <input type="hidden" id="search_servant_lvl_12" value="">
+                            <input type="hidden" id="search_servant_nplvl_12" value="">
+                            <input type="hidden" id="search_servant_fou_12" value="">
+                            <input type="hidden" id="search_servant_ce_12" value="">
                             <input type="hidden" id="prob_hp_12" value="0">
                             <input type="hidden" id="poison_12" value="0">
                             <input type="hidden" id="poison_buff_12" value="0">
@@ -2907,11 +3106,20 @@
                             <input type="hidden" id="curse_buff_12" value="0">
                             <input type="hidden" id="other_slip_12" value="0">
                             <td class="col_copy align-middle text-center">
-                                <a href="#" id="copy_12" class="copy_link" tabindex="-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-arrow-down-circle-fill text-secondary" viewBox="0 0 16 16">
-                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
-                                    </svg>
-                                </a>
+                                <div class="wrap_link_icon">
+                                    <a href="#" id="search_12" class="search_link" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-search text-secondary" viewBox="0 0 16 16">
+                                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                                <div class="wrap_link_icon">
+                                    <a href="#" id="copy_12" class="copy_link" tabindex="-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-arrow-down-circle-fill text-secondary" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                                        </svg>
+                                    </a>
+                                </div>
                             </td>
                             <td class="col_atk">
                                 <input type="number" id="atk_12" value="0" max="99999" min="0" step="500" class="atk form-control bg-transparent">
@@ -3132,6 +3340,13 @@
                             </td>
                         </tr>
                         <tr>
+                            <input type="hidden" id="search_servant_no_13" value="">
+                            <input type="hidden" id="search_servant_class_13" value="">
+                            <input type="hidden" id="search_servant_rare_13" value="">
+                            <input type="hidden" id="search_servant_lvl_13" value="">
+                            <input type="hidden" id="search_servant_nplvl_13" value="">
+                            <input type="hidden" id="search_servant_fou_13" value="">
+                            <input type="hidden" id="search_servant_ce_13" value="">
                             <input type="hidden" id="prob_hp_13" value="0">
                             <input type="hidden" id="poison_13" value="0">
                             <input type="hidden" id="poison_buff_13" value="0">
@@ -3141,11 +3356,20 @@
                             <input type="hidden" id="curse_buff_13" value="0">
                             <input type="hidden" id="other_slip_13" value="0">
                             <td class="col_copy align-middle text-center">
-                                <a href="#" id="copy_13" class="copy_link" tabindex="-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-arrow-down-circle-fill text-secondary" viewBox="0 0 16 16">
-                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
-                                    </svg>
-                                </a>
+                                <div class="wrap_link_icon">
+                                    <a href="#" id="search_13" class="search_link" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-search text-secondary" viewBox="0 0 16 16">
+                                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                                <div class="wrap_link_icon">
+                                    <a href="#" id="copy_13" class="copy_link" tabindex="-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-arrow-down-circle-fill text-secondary" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                                        </svg>
+                                    </a>
+                                </div>
                             </td>
                             <td class="col_atk">
                                 <input type="number" id="atk_13" value="0" max="99999" min="0" step="500" class="atk form-control bg-transparent">
@@ -3366,6 +3590,13 @@
                             </td>
                         </tr>
                         <tr>
+                            <input type="hidden" id="search_servant_no_14" value="">
+                            <input type="hidden" id="search_servant_class_14" value="">
+                            <input type="hidden" id="search_servant_rare_14" value="">
+                            <input type="hidden" id="search_servant_lvl_14" value="">
+                            <input type="hidden" id="search_servant_nplvl_14" value="">
+                            <input type="hidden" id="search_servant_fou_14" value="">
+                            <input type="hidden" id="search_servant_ce_14" value="">
                             <input type="hidden" id="prob_hp_14" value="0">
                             <input type="hidden" id="poison_14" value="0">
                             <input type="hidden" id="poison_buff_14" value="0">
@@ -3375,6 +3606,11 @@
                             <input type="hidden" id="curse_buff_14" value="0">
                             <input type="hidden" id="other_slip_14" value="0">
                             <td class="col_copy align-middle text-center">
+                                <a href="#" id="search_14" class="search_link" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-search text-secondary" viewBox="0 0 16 16">
+                                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                    </svg>
+                                </a>
                             </td>
                             <td class="col_atk">
                                 <input type="number" id="atk_14" value="0" max="99999" min="0" step="500" class="atk form-control bg-transparent">
@@ -3686,7 +3922,7 @@
                 </div>
             </div>
 
-            <div class="modal fade" id="npStarCalcModal" aria-hidden="true" aria-labelledby="npStarCalcLabel" tabindex="-1">
+            <div class="modal fade" id="npStarCalcModal" tabindex="-1" aria-labelledby="npStarCalcLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -3694,6 +3930,9 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
                         </div>
                         <div class="modal-body">
+                            <input type="hidden" id="apply_servant_class" value="">
+                            <input type="hidden" id="apply_servant_rare" value="">
+                            <input type="hidden" id="apply_servant_no" value="">
                             <div class="input-group input-group-sm mb-3">
                                 <span class="input-group-text bg-light">クラス</span>
                                 <select class="form-select servarnt-search-select bg-transparent" tabindex="-1" id="servant-class">
@@ -4062,6 +4301,89 @@
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
                             <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="accept">適用</button>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="searchLabel">サーヴァント検索</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="input-group input-group-sm mb-3">
+                                <input type="hidden" id="search_recNumber" value="">
+                                <span class="input-group-text bg-light">クラス</span>
+                                <select class="form-select search_sarvant_select bg-transparent" tabindex="-1" id="search_servant_class">
+                                    <option value="剣" selected>剣</option>
+                                    <option value="弓">弓</option>
+                                    <option value="槍">槍</option>
+                                    <option value="騎">騎</option>
+                                    <option value="術">術</option>
+                                    <option value="殺">殺</option>
+                                    <option value="狂">狂</option>
+                                    <option value="盾">盾</option>
+                                    <option value="裁">裁</option>
+                                    <option value="讐">讐</option>
+                                    <option value="月">月</option>
+                                    <option value="分">分</option>
+                                    <option value="降">降</option>
+                                    <option value="詐">詐</option>
+                                    <option value="獣">獣</option>
+                                </select>
+                                <span class="input-group-text bg-light">レア</span>
+                                <select class="form-select search_sarvant_select bg-transparent" tabindex="-1" id="search_servant_rare">
+                                    <option value="5" selected>5</option>
+                                    <option value="4">4</option>
+                                    <option value="3">3</option>
+                                    <option value="2">2</option>
+                                    <option value="1">1</option>
+                                    <option value="0">0</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm mb-3">
+                                <span class="input-group-text bg-light">サーヴァント</span>
+                                <select class="form-select bg-transparent" tabindex="-1" id="search_servant_name"></select>
+                            </div>
+                            <div class="input-group input-group-sm mb-3">
+                                <span class="input-group-text bg-light">レベル</span>
+                                <select class="form-select bg-transparent" tabindex="-1" id="search_servant_lvl">
+                                    <option value="MAX" selected>聖杯無し最大</option>
+                                    <option value="100">100</option>
+                                    <option value="110">110</option>
+                                    <option value="120">120</option>
+                                </select>
+                                <span class="input-group-text bg-light">宝具レベル</span>
+                                <select class="form-select bg-transparent" tabindex="-1" id="search_servant_nplvl">
+                                    <option value="5" selected>5</option>
+                                    <option value="4">4</option>
+                                    <option value="3">3</option>
+                                    <option value="2">2</option>
+                                    <option value="1">1</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm mb-3">
+                                <span class="input-group-text bg-light">フォウ君</span>
+                                <select class="form-select bg-transparent" tabindex="-1" id="search_servant_fou">
+                                    <option value="2000">2000</option>
+                                    <option value="1000" selected>1000</option>
+                                    <option value="0">0</option>
+                                </select>
+                                <span class="input-group-text bg-light">礼装ATK</span>
+                                <select class="form-select bg-transparent" tabindex="-1" id="search_servant_ceatk">
+                                    <option value="2400">2400</option>
+                                    <option value="2000" selected>2000</option>
+                                    <option value="1000">1000</option>
+                                    <option value="100">100</option>
+                                    <option value="0">0</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" id="btnSelected">選択</button>
+                          </div>
                     </div>
                 </div>
             </div>
