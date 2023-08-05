@@ -3813,52 +3813,72 @@
                                             <input type="number" id="SR_enemy" value="0" min="0" step="5" class="form-control bg-transparent">
                                         </td>
                                     </tr>
-                                    <tr class="row_npstar">
-                                        <th class="col_npstar_head bg-light"><p class="small">カード選択<br>1st/2nd/3rd</p></th>
-                                        <td>
-                                            <select id="card_1st_np_star" class="select_np_star form-select bg-transparent">
-                                                <option value="NP" selected>N</option>
-                                                <option value="B">B</option>
-                                                <option value="A">A</option>
-                                                <option value="Q">Q</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <select id="card_2nd_np_star" class="select_np_star form-select bg-transparent">
-                                                <option value="NP">N</option>
-                                                <option value="B" selected>B</option>
-                                                <option value="A">A</option>
-                                                <option value="Q">Q</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <select id="card_3rd_np_star" class="select_np_star form-select bg-transparent">
-                                                <option value="NP">N</option>
-                                                <option value="B" selected>B</option>
-                                                <option value="A">A</option>
-                                                <option value="Q">Q</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr class="row_npstar">
-                                        <th class="col_npstar_head bg-light"><p class="small">クリティカル<br>1st/2nd/3rd</p></th>
-                                        <td>
-                                            <select id="card_1st_cri_np_star" class="select_np_star form-select bg-transparent">
-                                                <option value="Y">有</option>
-                                                <option value="N">無</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <select id="card_2nd_cri_np_star" class="select_np_star form-select bg-transparent">
-                                                <option value="Y">有</option>
-                                                <option value="N">無</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <select id="card_3rd_cri_np_star" class="select_np_star form-select bg-transparent">
-                                                <option value="Y">有</option>
-                                                <option value="N">無</option>
-                                            </select>
+                                    <tr class="row_npstar_cardselect">
+                                        <td colspan="4" class="col_npstar_cardselect row_npstar_cardselect">
+                                            <table class="table table-bordered table-sm text-nowrap mb-0">
+                                                <tr class="row_npstar row_npstar_tr_top">
+                                                    <th class="col_npstar_head bg-light col_npstar_cardselect_left"><p class="small">カード選択<br>1st/2nd/3rd</p></th>
+                                                    <td class="col_npstar_cardselect">
+                                                        <select id="card_1st_np_star" class="select_np_star form-select bg-transparent">
+                                                            <option value="NP" selected>N</option>
+                                                            <option value="B">B</option>
+                                                            <option value="A">A</option>
+                                                            <option value="Q">Q</option>
+                                                        </select>
+                                                    </td>
+                                                    <td class="col_npstar_cardselect">
+                                                        <select id="card_2nd_np_star" class="select_np_star form-select bg-transparent">
+                                                            <option value="NP">N</option>
+                                                            <option value="B" selected>B</option>
+                                                            <option value="A">A</option>
+                                                            <option value="Q">Q</option>
+                                                        </select>
+                                                    </td>
+                                                    <td class="col_npstar_cardselect">
+                                                        <select id="card_3rd_np_star" class="select_np_star form-select bg-transparent">
+                                                            <option value="NP">N</option>
+                                                            <option value="B" selected>B</option>
+                                                            <option value="A">A</option>
+                                                            <option value="Q">Q</option>
+                                                        </select>
+                                                    </td>
+                                                    <td class="col_npstar_cardselect col_npstar_cardselect_right">
+                                                        <select id="card_Ex_np_star" class="select_np_star form-select bg-transparent" disabled>
+                                                            <option value="EX" selected>EX</option>
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                                <tr class="row_npstar row_npstar_tr_bottom">
+                                                    <th class="col_npstar_head bg-light col_npstar_cardselect_left"><p class="small">クリティカル<br>1st/2nd/3rd</p></th>
+                                                    <td class="col_npstar_cardselect">
+                                                        <select id="card_1st_cri_np_star" class="select_np_star form-select bg-transparent">
+                                                            <option value="Y">有</option>
+                                                            <option value="N">無</option>
+                                                            <option value="zero">0</option>
+                                                        </select>
+                                                    </td>
+                                                    <td class="col_npstar_cardselect">
+                                                        <select id="card_2nd_cri_np_star" class="select_np_star form-select bg-transparent">
+                                                            <option value="Y">有</option>
+                                                            <option value="N">無</option>
+                                                            <option value="zero">0</option>
+                                                        </select>
+                                                    </td>
+                                                    <td class="col_npstar_cardselect">
+                                                        <select id="card_3rd_cri_np_star" class="select_np_star form-select bg-transparent">
+                                                            <option value="Y">有</option>
+                                                            <option value="N">無</option>
+                                                            <option value="zero">0</option>
+                                                        </select>
+                                                    </td>
+                                                    <td class="col_npstar_cardselect col_npstar_cardselect_right">
+                                                        <select id="card_Ex_cri_np_star" class="select_np_star form-select bg-transparent">
+                                                            <option value="Y">有</option>
+                                                            <option value="zero">0</option>
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                            </table>
                                         </td>
                                     </tr>
                                     <tr>

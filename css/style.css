@@ -224,6 +224,10 @@ input[type="number"] {
   height: 35px !important;
 }
 
+.row_npstar_cardselect {
+  height: 70px;
+}
+
 .col_npstar_head {
   width: 25%;
 }
@@ -232,12 +236,32 @@ input[type="number"] {
   width: 25%;
 }
 
+.col_npstar_cardselect {
+  width: 18.75%;
+}
+
 .col_npstar_head_result {
   width: 16.6%;
 }
 
 .col_npstar_result {
   width: 16.6%;
+}
+
+.row_npstar_tr_top {
+  border-top-width: 0 !important;
+}
+
+.row_npstar_tr_bottom {
+  border-bottom-width: 0 !important;
+}
+
+.col_npstar_cardselect_left {
+  border-left-width: 0 !important;
+}
+
+.col_npstar_cardselect_right {
+  border-right-width: 0 !important;
 }
 
 .wrap_col_npstar_result {

@@ -1537,15 +1537,10 @@ function copyNpStarInput(tabNumber) {
     $("#card_1st_np_star").val($("#card_1st_" + tabNumber).val());
     $("#card_2nd_np_star").val($("#card_2nd_" + tabNumber).val());
     $("#card_3rd_np_star").val($("#card_3rd_" + tabNumber).val());
-    if ($("#card_1st_cri_" + tabNumber).val() != "zero") {
-        $("#card_1st_cri_np_star").val($("#card_1st_cri_" + tabNumber).val());
-    }
-    if ($("#card_2nd_cri_" + tabNumber).val() != "zero") {
-        $("#card_2nd_cri_np_star").val($("#card_2nd_cri_" + tabNumber).val());
-    }
-    if ($("#card_3rd_cri_" + tabNumber).val() != "zero") {
-        $("#card_3rd_cri_np_star").val($("#card_3rd_cri_" + tabNumber).val());
-    }
+    $("#card_1st_cri_np_star").val($("#card_1st_cri_" + tabNumber).val());
+    $("#card_2nd_cri_np_star").val($("#card_2nd_cri_" + tabNumber).val());
+    $("#card_3rd_cri_np_star").val($("#card_3rd_cri_" + tabNumber).val());
+    $("#card_Ex_cri_np_star").val($("#ex_cri_" + tabNumber).val());
 
 }
 
@@ -1654,6 +1649,11 @@ function calcRate() {
     if (card_1st_np == 0) { hit_1st = np_hit; ok_1st = np_hit; };
     if (card_2nd_np == 0) { hit_2nd = np_hit; ok_2nd = np_hit; };
     if (card_3rd_np == 0) { hit_3rd = np_hit; ok_3rd = np_hit; };
+
+    if ($("#card_1st_cri_np_star").val() == "zero") { hit_1st = 0; ok_1st = 0; };
+    if ($("#card_2nd_cri_np_star").val() == "zero") { hit_2nd = 0; ok_2nd = 0; };
+    if ($("#card_3rd_cri_np_star").val() == "zero") { hit_3rd = 0; ok_3rd = 0; };
+    if ($("#card_Ex_cri_np_star").val() == "zero") { ex_hit = 0; ok_ex = 0; };
 
     result_1st_np = calcNp(hit_1st, na, aBonus_1st, buff_1st, aBonus_all, card_1st_np, np_enemy, na_buff, card_1st_np_cri, 0);
     result_2nd_np = calcNp(hit_2nd, na, aBonus_2nd, buff_2nd, aBonus_all, card_2nd_np, np_enemy, na_buff, card_2nd_np_cri, 0);
