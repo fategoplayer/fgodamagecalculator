@@ -70,6 +70,8 @@
                         <input type="hidden" id="search_servant_fou_0" value="">
                         <input type="hidden" id="search_servant_ce_0" value="">
                         <input type="hidden" id="prob_hp_0" value="0">
+                        <input type="hidden" id="na_buff_0" value="">
+                        <input type="hidden" id="sr_buff_0" value="">
                         <input type="hidden" id="poison_0" value="0">
                         <input type="hidden" id="poison_buff_0" value="0">
                         <input type="hidden" id="burn_0" value="0">
@@ -440,6 +442,8 @@
                         <input type="hidden" id="search_servant_fou_1" value="">
                         <input type="hidden" id="search_servant_ce_1" value="">
                         <input type="hidden" id="prob_hp_1" value="0">
+                        <input type="hidden" id="na_buff_1" value="">
+                        <input type="hidden" id="sr_buff_1" value="">
                         <input type="hidden" id="poison_1" value="0">
                         <input type="hidden" id="poison_buff_1" value="0">
                         <input type="hidden" id="burn_1" value="0">
@@ -810,6 +814,8 @@
                         <input type="hidden" id="search_servant_fou_2" value="">
                         <input type="hidden" id="search_servant_ce_2" value="">
                         <input type="hidden" id="prob_hp_2" value="0">
+                        <input type="hidden" id="na_buff_2" value="">
+                        <input type="hidden" id="sr_buff_2" value="">
                         <input type="hidden" id="poison_2" value="0">
                         <input type="hidden" id="poison_buff_2" value="0">
                         <input type="hidden" id="burn_2" value="0">
@@ -1180,6 +1186,8 @@
                         <input type="hidden" id="search_servant_fou_3" value="">
                         <input type="hidden" id="search_servant_ce_3" value="">
                         <input type="hidden" id="prob_hp_3" value="0">
+                        <input type="hidden" id="na_buff_3" value="">
+                        <input type="hidden" id="sr_buff_3" value="">
                         <input type="hidden" id="poison_3" value="0">
                         <input type="hidden" id="poison_buff_3" value="0">
                         <input type="hidden" id="burn_3" value="0">
@@ -1550,6 +1558,8 @@
                         <input type="hidden" id="search_servant_fou_4" value="">
                         <input type="hidden" id="search_servant_ce_4" value="">
                         <input type="hidden" id="prob_hp_4" value="0">
+                        <input type="hidden" id="na_buff_4" value="">
+                        <input type="hidden" id="sr_buff_4" value="">
                         <input type="hidden" id="poison_4" value="0">
                         <input type="hidden" id="poison_buff_4" value="0">
                         <input type="hidden" id="burn_4" value="0">
@@ -1920,6 +1930,8 @@
                         <input type="hidden" id="search_servant_fou_5" value="">
                         <input type="hidden" id="search_servant_ce_5" value="">
                         <input type="hidden" id="prob_hp_5" value="0">
+                        <input type="hidden" id="na_buff_5" value="">
+                        <input type="hidden" id="sr_buff_5" value="">
                         <input type="hidden" id="poison_5" value="0">
                         <input type="hidden" id="poison_buff_5" value="0">
                         <input type="hidden" id="burn_5" value="0">
@@ -2441,21 +2453,21 @@
                             <div class="input-group input-group-sm mb-3">
                                 <span class="input-group-text bg-light">クラス</span>
                                 <select class="form-select servarnt-search-select bg-transparent" tabindex="-1" id="servant-class">
-                                    <option value="剣" selected>剣</option>
-                                    <option value="弓">弓</option>
-                                    <option value="槍">槍</option>
-                                    <option value="騎">騎</option>
-                                    <option value="術">術</option>
-                                    <option value="殺">殺</option>
-                                    <option value="狂">狂</option>
-                                    <option value="盾">盾</option>
-                                    <option value="裁">裁</option>
-                                    <option value="讐">讐</option>
-                                    <option value="月">月</option>
-                                    <option value="分">分</option>
-                                    <option value="降">降</option>
-                                    <option value="詐">詐</option>
-                                    <option value="獣">獣</option>
+                                    <option value="剣" selected>セイバー</option>
+                                    <option value="弓">アーチャー</option>
+                                    <option value="槍">ランサー</option>
+                                    <option value="騎">ライダー</option>
+                                    <option value="術">キャスター</option>
+                                    <option value="殺">アサシン</option>
+                                    <option value="狂">バーサーカー</option>
+                                    <option value="盾">シールダー</option>
+                                    <option value="裁">ルーラー</option>
+                                    <option value="讐">アヴェンジャー</option>
+                                    <option value="月">ムーンキャンサー</option>
+                                    <option value="分">アルターエゴ</option>
+                                    <option value="降">フォーリナー</option>
+                                    <option value="詐">プリテンダー</option>
+                                    <option value="獣">ビースト</option>
                                 </select>
                                 <span class="input-group-text bg-light">レア</span>
                                 <select class="form-select servarnt-search-select bg-transparent" tabindex="-1" id="servant-rare">
@@ -2830,25 +2842,25 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
                         </div>
                         <div class="modal-body">
+                            <input type="hidden" id="search_tabNumber" value="">
                             <div class="input-group input-group-sm mb-3">
-                                <input type="hidden" id="search_tabNumber" value="">
                                 <span class="input-group-text bg-light">クラス</span>
                                 <select class="form-select search_sarvant_select bg-transparent" tabindex="-1" id="search_servant_class">
-                                    <option value="剣" selected>剣</option>
-                                    <option value="弓">弓</option>
-                                    <option value="槍">槍</option>
-                                    <option value="騎">騎</option>
-                                    <option value="術">術</option>
-                                    <option value="殺">殺</option>
-                                    <option value="狂">狂</option>
-                                    <option value="盾">盾</option>
-                                    <option value="裁">裁</option>
-                                    <option value="讐">讐</option>
-                                    <option value="月">月</option>
-                                    <option value="分">分</option>
-                                    <option value="降">降</option>
-                                    <option value="詐">詐</option>
-                                    <option value="獣">獣</option>
+                                    <option value="剣" selected>セイバー</option>
+                                    <option value="弓">アーチャー</option>
+                                    <option value="槍">ランサー</option>
+                                    <option value="騎">ライダー</option>
+                                    <option value="術">キャスター</option>
+                                    <option value="殺">アサシン</option>
+                                    <option value="狂">バーサーカー</option>
+                                    <option value="盾">シールダー</option>
+                                    <option value="裁">ルーラー</option>
+                                    <option value="讐">アヴェンジャー</option>
+                                    <option value="月">ムーンキャンサー</option>
+                                    <option value="分">アルターエゴ</option>
+                                    <option value="降">フォーリナー</option>
+                                    <option value="詐">プリテンダー</option>
+                                    <option value="獣">ビースト</option>
                                 </select>
                                 <span class="input-group-text bg-light">レア</span>
                                 <select class="form-select search_sarvant_select bg-transparent" tabindex="-1" id="search_servant_rare">

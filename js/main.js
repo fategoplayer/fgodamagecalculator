@@ -254,7 +254,14 @@ $(function(){
             // サーヴァント情報を反映
             servantApply();
         }
-        else if ($("#apply_servant_no").val() != ""){
+        if ($("#na_buff_" + recNumber).val() != "") {
+            $("#NA_buff").val($("#na_buff_" + recNumber).val());
+        }
+        if ($("#sr_buff_" + recNumber).val() != "") {
+            $("#SR_buff").val($("#sr_buff_" + recNumber).val());
+        }
+        /*
+        else if ($("#apply_servant_no").val() != "") {
             $("#servant-class").val($("#apply_servant_class").val());
             $("#servant-rare").val($("#apply_servant_rare").val());
             // サーヴァントセレクトボックスを再作成
@@ -262,20 +269,15 @@ $(function(){
             $("#servant-name").val($("#apply_servant_no").val());
             // サーヴァント情報を反映
             servantApply();
+            if ($("#na_buff_" + recNumber).val() != "") {
+                $("#NA_buff").val($("#na_buff_" + recNumber).val());
+            }
+            if ($("#sr_buff_" + recNumber).val() != "") {
+                $("#SR_buff").val($("#sr_buff_" + recNumber).val());
+            }
         }
-        else {
-            // サーヴァントセレクトボックスを再作成
-            remakeServantSelectBox();
-            $("#NA").val("0");
-            $("#NA_buff").val("0");
-            $("#SR").val("0");
-            $("#SR_buff").val("0");
-            $("#b_hit").val("0");
-            $("#a_hit").val("0");
-            $("#q_hit").val("0");
-            $("#ex_hit").val("0");
-            $("#np_hit").val("0");
-        }
+        */
+
         // スリップダメージを復元
         $("#poison").val($("#poison_" + recNumber).val());
         $("#poison_buff").val($("#poison_buff_" + recNumber).val());
@@ -336,6 +338,10 @@ $(function(){
         // NPスター計算
         calcRate();
 
+        // バフを保持
+        $("#na_buff_" + $("#prob_recNumber").val()).val($("#NA_buff").val());
+        $("#sr_buff_" + $("#prob_recNumber").val()).val($("#SR_buff").val());
+
     });
 
     /**
@@ -368,6 +374,10 @@ $(function(){
 
         // NPスター計算
         calcRate();
+
+        // バフを保持
+        $("#na_buff_" + $("#prob_recNumber").val()).val($("#NA_buff").val());
+        $("#sr_buff_" + $("#prob_recNumber").val()).val($("#SR_buff").val());
 
     });
 
@@ -770,6 +780,8 @@ $(function(){
             $("#apply_servant_class").val($("#servant-class").val());
             $("#apply_servant_rare").val($("#servant-rare").val());
             $("#apply_servant_no").val($("#servant-name").val());
+            $("#na_buff_" + $("#prob_recNumber").val()).val($("#NA_buff").val());
+            $("#sr_buff_" + $("#prob_recNumber").val()).val($("#SR_buff").val());
         }
 
         return false;
@@ -961,6 +973,11 @@ $(function(){
                             break;
                         default :
                             break;
+                    }
+
+                    if ($("#search_servant_no_" + recNumber).val() != $("#search_servant_name").val()) {
+                        $("#na_buff_" + recNumber).val("");
+                        $("#sr_buff_" + recNumber).val("");
                     }
 
                     // hidden
@@ -1280,6 +1297,9 @@ function clearParam(row) {
     $("#enemy_hp").val("0");
     $("#prob_recNumber").val("");
 
+    $("#na_buff_" + row).val("");
+    $("#sr_buff_" + row).val("");
+
     $("#poison_" + row).val("0");
     $("#poison_buff_" + row).val("0");
     $("#burn_" + row).val("0");
@@ -1454,6 +1474,9 @@ function copyParam(recNumber, recNext){
     $("#search_servant_ce_" + recNext).val($("#search_servant_ce_" + recNumber).val());
 
     $("#prob_hp_" + recNext).val($("#prob_hp_" + recNumber).val());
+
+    $("#na_buff_" + recNext).val($("#na_buff_" + recNumber).val());
+    $("#sr_buff_" + recNext).val($("#sr_buff_" + recNumber).val());
     
     $("#poison_" + recNext).val($("#poison_" + recNumber).val());
     $("#poison_buff_" + recNext).val($("#poison_buff_" + recNumber).val());
