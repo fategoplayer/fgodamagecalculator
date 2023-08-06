@@ -82,26 +82,38 @@ $(function(){
             case "0":
                 $("#copy-from").val("0");
                 $("#copy-to").val("1");
+                $("#change-from").val("0");
+                $("#change-to").val("1");
                 break;
             case "1":
                 $("#copy-from").val("0");
                 $("#copy-to").val(tabNumber);
+                $("#change-from").val("0");
+                $("#change-to").val(tabNumber);
                 break;
             case "2":
                 $("#copy-from").val("1");
                 $("#copy-to").val(tabNumber);
+                $("#change-from").val("1");
+                $("#change-to").val(tabNumber);
                 break;
             case "3":
                 $("#copy-from").val("2");
                 $("#copy-to").val(tabNumber);
+                $("#change-from").val("2");
+                $("#change-to").val(tabNumber);
                 break;
             case "4":
                 $("#copy-from").val("3");
                 $("#copy-to").val(tabNumber);
+                $("#change-from").val("3");
+                $("#change-to").val(tabNumber);
                 break;
             case "5":
                 $("#copy-from").val("4");
                 $("#copy-to").val(tabNumber);
+                $("#change-from").val("4");
+                $("#change-to").val(tabNumber);
                 break;
             default :
                 break;
@@ -122,6 +134,28 @@ $(function(){
         
         // 入力値コピー
         copyParam(copy_from, copy_to);
+
+        // 対象タブを計算
+        calcMain(tabNumber);
+
+        // モーダルを閉じる
+        $("#toolModal").modal("hide");
+
+        return true;
+
+    });
+
+    /**
+     * 入れ替えボタン押下イベント
+     */
+    $("#change-param").on("click", function () {
+
+        var tabNumber = getTabNumber();
+        var copy_from = $("#change-from").val();
+        var copy_to = $("#change-to").val();
+        
+        // 入力値入れ替え
+        changeParam(copy_from, copy_to);
 
         // 対象タブを計算
         calcMain(tabNumber);
@@ -1163,6 +1197,175 @@ function copyParam(tabNumber, tabNext){
     $("#curse_" + tabNext).val($("#curse_" + tabNumber).val());
     $("#curse_buff_" + tabNext).val($("#curse_buff_" + tabNumber).val());
     $("#other_slip_" + tabNext).val($("#other_slip_" + tabNumber).val());
+}
+
+/**
+ * タブ入れ替え
+ * @param tabNumber 入れ替え元行
+ * @param tabNext 入れ替え先行
+ */
+function changeParam(tabNumber, tabNext){
+    var atk,np_dmg,np_kind,atk_buff,b_card_buff,b_card_cri_buff,a_card_buff,a_card_cri_buff,q_card_buff,q_card_cri_buff,cri_buff,
+    np_buff,ex_atk_buff,supereffective_buff,supereffective_np,fixed_dmg,b_footprints,a_footprints,q_footprints,special_def,
+    advanced_atk_buff_1st,advanced_atk_buff_2nd,advanced_atk_buff_3rd,advanced_atk_buff_Ex,advanced_card_buff_1st,advanced_card_buff_2nd,
+    advanced_card_buff_3rd,advanced_cri_buff_1st,advanced_cri_buff_2nd,advanced_cri_buff_3rd,advanced_supereffective_buff_1st,
+    advanced_supereffective_buff_2nd,advanced_supereffective_buff_3rd,advanced_supereffective_buff_Ex,advanced_fixed_dmg_1st,advanced_fixed_dmg_2nd,
+    advanced_fixed_dmg_3rd,advanced_fixed_dmg_Ex,advanced_special_def_1st,advanced_special_def_2nd,advanced_special_def_3rd,
+    advanced_special_def_Ex,class_affinity,attribute_affinity,class_servant,card_1st,card_1st_cri,card_2nd,card_2nd_cri,card_3rd,
+    card_3rd_cri,ex_cri,search_servant_no,search_servant_class,search_servant_rare,search_servant_lvl,search_servant_nplvl,
+    search_servant_fou,search_servant_ce,prob_hp,na_buff,sr_buff,poison,poison_buff,burn,burn_buff,curse,curse_buff,other_slip;
+
+    atk = $("#atk_" + tabNext).val();
+    np_dmg = $("#np_dmg_" + tabNext).val();
+    np_kind = $("#np_kind_" + tabNext).val();
+    atk_buff = $("#atk_buff_" + tabNext).val();
+    b_card_buff = $("#b_card_buff_" + tabNext).val();
+    b_card_cri_buff = $("#b_card_cri_buff_" + tabNext).val();
+    a_card_buff = $("#a_card_buff_" + tabNext).val();
+    a_card_cri_buff = $("#a_card_cri_buff_" + tabNext).val();
+    q_card_buff = $("#q_card_buff_" + tabNext).val();
+    q_card_cri_buff = $("#q_card_cri_buff_" + tabNext).val();
+    cri_buff = $("#cri_buff_" + tabNext).val();
+    np_buff = $("#np_buff_" + tabNext).val();
+    ex_atk_buff = $("#ex_atk_buff_" + tabNext).val();
+    supereffective_buff = $("#supereffective_buff_" + tabNext).val();
+    supereffective_np = $("#supereffective_np_" + tabNext).val();
+    fixed_dmg = $("#fixed_dmg_" + tabNext).val();
+    b_footprints = $("#b_footprints_" + tabNext).val();
+    a_footprints = $("#a_footprints_" + tabNext).val();
+    q_footprints = $("#q_footprints_" + tabNext).val();
+    special_def = $("#special_def_" + tabNext).val();
+    advanced_atk_buff_1st = $("#advanced_atk_buff_1st_" + tabNext).val();
+    advanced_atk_buff_2nd = $("#advanced_atk_buff_2nd_" + tabNext).val();
+    advanced_atk_buff_3rd = $("#advanced_atk_buff_3rd_" + tabNext).val();
+    advanced_atk_buff_Ex = $("#advanced_atk_buff_Ex_" + tabNext).val();
+    advanced_card_buff_1st = $("#advanced_card_buff_1st_" + tabNext).val();
+    advanced_card_buff_2nd = $("#advanced_card_buff_2nd_" + tabNext).val();
+    advanced_card_buff_3rd = $("#advanced_card_buff_3rd_" + tabNext).val();
+    advanced_cri_buff_1st = $("#advanced_cri_buff_1st_" + tabNext).val();
+    advanced_cri_buff_2nd = $("#advanced_cri_buff_2nd_" + tabNext).val();
+    advanced_cri_buff_3rd = $("#advanced_cri_buff_3rd_" + tabNext).val();
+    advanced_supereffective_buff_1st = $("#advanced_supereffective_buff_1st_" + tabNext).val();
+    advanced_supereffective_buff_2nd = $("#advanced_supereffective_buff_2nd_" + tabNext).val();
+    advanced_supereffective_buff_3rd = $("#advanced_supereffective_buff_3rd_" + tabNext).val();
+    advanced_supereffective_buff_Ex = $("#advanced_supereffective_buff_Ex_" + tabNext).val();
+    advanced_fixed_dmg_1st = $("#advanced_fixed_dmg_1st_" + tabNext).val();
+    advanced_fixed_dmg_2nd = $("#advanced_fixed_dmg_2nd_" + tabNext).val();
+    advanced_fixed_dmg_3rd = $("#advanced_fixed_dmg_3rd_" + tabNext).val();
+    advanced_fixed_dmg_Ex = $("#advanced_fixed_dmg_Ex_" + tabNext).val();
+    advanced_special_def_1st = $("#advanced_special_def_1st_" + tabNext).val();
+    advanced_special_def_2nd = $("#advanced_special_def_2nd_" + tabNext).val();
+    advanced_special_def_3rd = $("#advanced_special_def_3rd_" + tabNext).val();
+    advanced_special_def_Ex = $("#advanced_special_def_Ex_" + tabNext).val();
+    class_affinity = $("#class_affinity_" + tabNext).val();
+    attribute_affinity = $("#attribute_affinity_" + tabNext).val();
+    class_servant = $("#class_servant_" + tabNext).val();
+    card_1st = $("#card_1st_" + tabNext).val();
+    card_1st_cri = $("#card_1st_cri_" + tabNext).val();
+    card_2nd = $("#card_2nd_" + tabNext).val();
+    card_2nd_cri = $("#card_2nd_cri_" + tabNext).val();
+    card_3rd = $("#card_3rd_" + tabNext).val();
+    card_3rd_cri = $("#card_3rd_cri_" + tabNext).val();
+    ex_cri = $("#ex_cri_" + tabNext).val();
+
+    search_servant_no = $("#search_servant_no_" + tabNext).val();
+    search_servant_class = $("#search_servant_class_" + tabNext).val();
+    search_servant_rare = $("#search_servant_rare_" + tabNext).val();
+    search_servant_lvl = $("#search_servant_lvl_" + tabNext).val();
+    search_servant_nplvl = $("#search_servant_nplvl_" + tabNext).val();
+    search_servant_fou = $("#search_servant_fou_" + tabNext).val();
+    search_servant_ce = $("#search_servant_ce_" + tabNext).val();
+
+    prob_hp = $("#prob_hp_" + tabNext).val();
+
+    na_buff = $("#na_buff_" + tabNext).val();
+    sr_buff = $("#sr_buff_" + tabNext).val();
+
+    poison = $("#poison_" + tabNext).val();
+    poison_buff = $("#poison_buff_" + tabNext).val();
+    burn = $("#burn_" + tabNext).val();
+    burn_buff = $("#burn_buff_" + tabNext).val();
+    curse = $("#curse_" + tabNext).val();
+    curse_buff = $("#curse_buff_" + tabNext).val();
+    other_slip = $("#other_slip_" + tabNext).val();
+
+    // コピー
+    copyParam(tabNumber, tabNext);
+    
+    $("#atk_" + tabNumber).val(atk);
+    $("#np_dmg_" + tabNumber).val(np_dmg);
+    $("#np_kind_" + tabNumber).val(np_kind);
+    $("#atk_buff_" + tabNumber).val(atk_buff);
+    $("#b_card_buff_" + tabNumber).val(b_card_buff);
+    $("#b_card_cri_buff_" + tabNumber).val(b_card_cri_buff);
+    $("#a_card_buff_" + tabNumber).val(a_card_buff);
+    $("#a_card_cri_buff_" + tabNumber).val(a_card_cri_buff);
+    $("#q_card_buff_" + tabNumber).val(q_card_buff);
+    $("#q_card_cri_buff_" + tabNumber).val(q_card_cri_buff);
+    $("#cri_buff_" + tabNumber).val(cri_buff);
+    $("#np_buff_" + tabNumber).val(np_buff);
+    $("#ex_atk_buff_" + tabNumber).val(ex_atk_buff);
+    $("#supereffective_buff_" + tabNumber).val(supereffective_buff);
+    $("#supereffective_np_" + tabNumber).val(supereffective_np);
+    $("#fixed_dmg_" + tabNumber).val(fixed_dmg);
+    $("#b_footprints_" + tabNumber).val(b_footprints);
+    $("#a_footprints_" + tabNumber).val(a_footprints);
+    $("#q_footprints_" + tabNumber).val(q_footprints);
+    $("#special_def_" + tabNumber).val(special_def);
+    $("#advanced_atk_buff_1st_" + tabNumber).val(advanced_atk_buff_1st);
+    $("#advanced_atk_buff_2nd_" + tabNumber).val(advanced_atk_buff_2nd);
+    $("#advanced_atk_buff_3rd_" + tabNumber).val(advanced_atk_buff_3rd);
+    $("#advanced_atk_buff_Ex_" + tabNumber).val(advanced_atk_buff_Ex);
+    $("#advanced_card_buff_1st_" + tabNumber).val(advanced_card_buff_1st);
+    $("#advanced_card_buff_2nd_" + tabNumber).val(advanced_card_buff_2nd);
+    $("#advanced_card_buff_3rd_" + tabNumber).val(advanced_card_buff_3rd);
+    $("#advanced_cri_buff_1st_" + tabNumber).val(advanced_cri_buff_1st);
+    $("#advanced_cri_buff_2nd_" + tabNumber).val(advanced_cri_buff_2nd);
+    $("#advanced_cri_buff_3rd_" + tabNumber).val(advanced_cri_buff_3rd);
+    $("#advanced_supereffective_buff_1st_" + tabNumber).val(advanced_supereffective_buff_1st);
+    $("#advanced_supereffective_buff_2nd_" + tabNumber).val(advanced_supereffective_buff_2nd);
+    $("#advanced_supereffective_buff_3rd_" + tabNumber).val(advanced_supereffective_buff_3rd);
+    $("#advanced_supereffective_buff_Ex_" + tabNumber).val(advanced_supereffective_buff_Ex);
+    $("#advanced_fixed_dmg_1st_" + tabNumber).val(advanced_fixed_dmg_1st);
+    $("#advanced_fixed_dmg_2nd_" + tabNumber).val(advanced_fixed_dmg_2nd);
+    $("#advanced_fixed_dmg_3rd_" + tabNumber).val(advanced_fixed_dmg_3rd);
+    $("#advanced_fixed_dmg_Ex_" + tabNumber).val(advanced_fixed_dmg_Ex);
+    $("#advanced_special_def_1st_" + tabNumber).val(advanced_special_def_1st);
+    $("#advanced_special_def_2nd_" + tabNumber).val(advanced_special_def_2nd);
+    $("#advanced_special_def_3rd_" + tabNumber).val(advanced_special_def_3rd);
+    $("#advanced_special_def_Ex_" + tabNumber).val(advanced_special_def_Ex);
+    $("#class_affinity_" + tabNumber).val(class_affinity);
+    $("#attribute_affinity_" + tabNumber).val(attribute_affinity);
+    $("#class_servant_" + tabNumber).val(class_servant);
+    $("#card_1st_" + tabNumber).val(card_1st);
+    $("#card_1st_cri_" + tabNumber).val(card_1st_cri);
+    $("#card_2nd_" + tabNumber).val(card_2nd);
+    $("#card_2nd_cri_" + tabNumber).val(card_2nd_cri);
+    $("#card_3rd_" + tabNumber).val(card_3rd);
+    $("#card_3rd_cri_" + tabNumber).val(card_3rd_cri);
+    $("#ex_cri_" + tabNumber).val(ex_cri);
+    
+    $("#search_servant_no_" + tabNumber).val(search_servant_no);
+    $("#search_servant_class_" + tabNumber).val(search_servant_class);
+    $("#search_servant_rare_" + tabNumber).val(search_servant_rare);
+    $("#search_servant_lvl_" + tabNumber).val(search_servant_lvl);
+    $("#search_servant_nplvl_" + tabNumber).val(search_servant_nplvl);
+    $("#search_servant_fou_" + tabNumber).val(search_servant_fou);
+    $("#search_servant_ce_" + tabNumber).val(search_servant_ce);
+    
+    $("#prob_hp_" + tabNumber).val(prob_hp);
+    
+    $("#na_buff_" + tabNumber).val(na_buff);
+    $("#sr_buff_" + tabNumber).val(sr_buff);
+    
+    $("#poison_" + tabNumber).val(poison);
+    $("#poison_buff_" + tabNumber).val(poison_buff);
+    $("#burn_" + tabNumber).val(burn);
+    $("#burn_buff_" + tabNumber).val(burn_buff);
+    $("#curse_" + tabNumber).val(curse);
+    $("#curse_buff_" + tabNumber).val(curse_buff);
+    $("#other_slip_" + tabNumber).val(other_slip);
+    
 }
 
 /**

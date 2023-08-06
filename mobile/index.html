@@ -2317,8 +2317,8 @@
                                     <option value="5">＃6</option>
                                 </select>
                                 <span class="align-middle">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-right-square-fill mx-2 text-secondary" viewBox="0 0 16 16">
-                                        <path d="M0 14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v12zm4.5-6.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5a.5.5 0 0 1 0-1z"/>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-right mx-2 text-secondary" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
                                     </svg>
                                 </span>
                                 <select class="form-select" tabindex="-1" id="copy-to">
@@ -2330,6 +2330,32 @@
                                     <option value="5">＃6</option>
                                 </select>
                                 <input type="button" class="btn btn-primary ms-2" value="コピー" id="copy-param">
+                            </div>
+                            <hr>
+                            <h6>入力値入れ替え</h6>
+                            <div class="d-flex align-items-center">
+                                <select class="form-select" tabindex="-1" id="change-from">
+                                    <option value="0">＃1</option>
+                                    <option value="1">＃2</option>
+                                    <option value="2">＃3</option>
+                                    <option value="3">＃4</option>
+                                    <option value="4">＃5</option>
+                                    <option value="5">＃6</option>
+                                </select>
+                                <span class="align-middle">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-left-right mx-2 text-secondary" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z"/>
+                                    </svg>
+                                </span>
+                                <select class="form-select" tabindex="-1" id="change-to">
+                                    <option value="0">＃1</option>
+                                    <option value="1">＃2</option>
+                                    <option value="2">＃3</option>
+                                    <option value="3">＃4</option>
+                                    <option value="4">＃5</option>
+                                    <option value="5">＃6</option>
+                                </select>
+                                <input type="button" class="btn btn-primary ms-2" value="入れ替え" id="change-param">
                             </div>
                             <hr>
                             <h6>入力値クリア</h6>

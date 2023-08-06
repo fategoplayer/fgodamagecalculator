@@ -55,13 +55,7 @@ output {
 
 .wrap_link_icon {
   display:table;
-  height: 50%;
   width: 100%;
-}
-
-.wrap_link_icon a {
-  display:table-cell;
-  vertical-align:middle;
 }
 
 #out_sel_total {
@@ -85,7 +79,7 @@ input[type="number"] {
 } 
 
 /*列調整*/
-.col_copy, .col_atk_buff, .col_card_buff, .col_np_buff, .col_ex_atk_buff, 
+.col_menu, .col_atk_buff, .col_card_buff, .col_np_buff, .col_ex_atk_buff, 
 .col_footprints, .col_advanced_setting, .col_special_def, .col_prob {
   min-width: 28px;
   max-width: 28px;
