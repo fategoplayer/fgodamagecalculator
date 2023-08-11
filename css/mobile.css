@@ -160,7 +160,7 @@ footer a {
 .np_dmg, .np_kind, .card_1st, .card_1st_cri, .card_2nd, .card_2nd_cri, .card_3rd, .card_3rd_cri {
   height: 100% !important;
 }
-.b_card_buff, .b_card_debuff {
+.b_card_buff, .b_card_debuff, .b_card_power_buff {
   height: 100% !important;
   background-color: #FFEEEE !important;
 }
@@ -168,7 +168,7 @@ footer a {
   height: 100% !important;
   background-color: #FFEEEE !important;
 }
-.a_card_buff, .a_card_debuff {
+.a_card_buff, .a_card_debuff, .a_card_power_buff {
   height: 100% !important;
   background-color: #F0F8FF !important;
 }
@@ -176,7 +176,7 @@ footer a {
   height: 100% !important;
   background-color: #F0F8FF !important;
 }
-.q_card_buff, .q_card_debuff {
+.q_card_buff, .q_card_debuff, .q_card_power_buff {
   height: 100% !important;
   background-color: #EEFFEE !important;
 }

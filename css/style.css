@@ -66,6 +66,7 @@ output {
 
 .sel_total {
   display: none;
+  float: right;
 }
 
 input[type="number"]:focus {
@@ -79,7 +80,7 @@ input[type="number"] {
 } 
 
 /*列調整*/
-.col_menu, .col_atk_buff, .col_card_buff, .col_np_buff, .col_ex_atk_buff, 
+.col_menu, .col_atk_buff, .col_card_buff, .col_card_power_buff, .col_card_cri_buff, .col_np_buff, .col_ex_atk_buff, 
 .col_footprints, .col_advanced_setting, .col_special_def, .col_prob {
   min-width: 28px;
   max-width: 28px;
@@ -126,40 +127,40 @@ input[type="number"] {
 
 /*テーブルラッパー*/
 .calc {
-  max-width: 1178px;
+  max-width: 1234px;
   margin: .4rem;
 }
 
 /*INPUT,SELECT高さ*/
-.atk, .atk_buff, .cri_buff, .np_buff, .ex_atk_buff, .supereffective_buff, .supereffective_np, .fixed_dmg, .special_def,
+.atk, .cri_buff, .np_buff, .ex_atk_buff, .supereffective_buff, .supereffective_np, .fixed_dmg, .special_def,
 .class_affinity, .class_servant, .attribute_affinity, .ex_cri {
   height: 100% !important;
 }
-.np_dmg, .np_kind, .card_1st, .card_1st_cri, .card_2nd, .card_2nd_cri, .card_3rd, .card_3rd_cri {
+.np_dmg, .np_kind, .atk_buff, .def_debuff, .card_1st, .card_1st_cri, .card_2nd, .card_2nd_cri, .card_3rd, .card_3rd_cri {
   height: 39px !important;
 }
-.b_card_buff {
-  height: 39px !important;
-  background-color: #FFEEEE !important;
-}
-.b_card_cri_buff {
+.b_card_buff, .b_card_debuff {
   height: 39px !important;
   background-color: #FFEEEE !important;
 }
-.a_card_buff {
+.b_card_cri_buff, .b_card_power_buff {
+  height: 25.3px !important;
+  background-color: #FFEEEE !important;
+}
+.a_card_buff, .a_card_debuff {
   height: 39px !important;
   background-color: #F0F8FF !important;
 }
-.a_card_cri_buff {
-  height: 39px !important;
+.a_card_cri_buff, .a_card_power_buff {
+  height: 25.3px !important;
   background-color: #F0F8FF !important;
 }
-.q_card_buff {
+.q_card_buff, .q_card_debuff {
   height: 39px !important;
   background-color: #EEFFEE !important;
 }
-.q_card_cri_buff {
-  height: 39px !important;
+.q_card_cri_buff, .q_card_power_buff {
+  height: 25.3px !important;
   background-color: #EEFFEE !important;
 }
 .b_footprints {
@@ -175,10 +176,12 @@ input[type="number"] {
   background-color: #EEFFEE !important;
 }
 .advanced_atk_buff_1st, .advanced_atk_buff_2nd, .advanced_atk_buff_3rd, .advanced_atk_buff_Ex,
+.advanced_def_debuff_1st, .advanced_def_debuff_2nd, .advanced_def_debuff_3rd, .advanced_def_debuff_Ex,
 .advanced_supereffective_buff_1st, .advanced_supereffective_buff_2nd, .advanced_supereffective_buff_3rd, .advanced_supereffective_buff_Ex,
 .advanced_fixed_dmg_1st, .advanced_fixed_dmg_2nd, .advanced_fixed_dmg_3rd, .advanced_fixed_dmg_Ex, 
 .advanced_special_def_1st, .advanced_special_def_2nd, .advanced_special_def_3rd, .advanced_special_def_Ex,
 .advanced_card_buff_1st, .advanced_card_buff_2nd, .advanced_card_buff_3rd,
+.advanced_card_debuff_1st, .advanced_card_debuff_2nd, .advanced_card_debuff_3rd,
 .advanced_cri_buff_1st, .advanced_cri_buff_2nd, .advanced_cri_buff_3rd, .advanced_blank {
   height: 18.5px !important;
 }
@@ -281,15 +284,15 @@ input[type="number"] {
   text-align: center;
 }
 
-#b_hit, #b_card_buff_np_star {
+#b_hit, #b_card_buff_np_star, #b_card_debuff_np_star {
   background-color: #FFEEEE !important;
 }
 
-#a_hit, #a_card_buff_np_star {
+#a_hit, #a_card_buff_np_star, #a_card_debuff_np_star {
   background-color: #F0F8FF !important;
 }
 
-#q_hit, #q_card_buff_np_star {
+#q_hit, #q_card_buff_np_star, #q_card_debuff_np_star {
   background-color: #EEFFEE !important;
 }
 
