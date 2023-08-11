@@ -310,6 +310,8 @@ $(function(){
         // 選択トータル初期化
         clearSelTotal();
 
+        return false;
+
     });
 
     /**
