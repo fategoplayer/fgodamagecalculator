@@ -490,7 +490,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="tab-pane fade" id="tab_1" role="tabpanel" aria-labelledby="nav-tab-1" tabindex="0">
+                    <div class="tab-pane fade" id="tab_1" role="tabpanel" aria-labelledby="nav-tab-0" tabindex="0">
                         <input type="hidden" id="search_servant_no_1" value="">
                         <input type="hidden" id="search_servant_class_1" value="">
                         <input type="hidden" id="search_servant_rare_1" value="">
@@ -563,9 +563,9 @@
                                     <td class="col_card_buff">
                                         <input type="number" id="b_card_buff_1" value="0" max="400" min="-100" step="10" class="b_card_buff form-control">
                                     </td>
-                                    <th class="bg-light"><p class="small">Bクリバフ</p></th>
+                                    <th class="bg-light"><p class="small">Bカードデバフ</p></th>
                                     <td class="col_card_buff">
-                                        <input type="number" id="b_card_cri_buff_1" value="0" max="500" min="-100" step="10" class="b_card_cri_buff form-control">
+                                        <input type="number" id="b_card_debuff_1" value="0" max="9999" min="-100" step="10" class="b_card_debuff form-control">
                                     </td>
                                 </tr>
                                 <tr>
@@ -573,9 +573,9 @@
                                     <td class="col_card_buff">
                                         <input type="number" id="a_card_buff_1" value="0" max="400" min="-100" step="10" class="a_card_buff form-control">
                                     </td>
-                                    <th class="bg-light"><p class="small">Aクリバフ</p></th>
+                                    <th class="bg-light"><p class="small">Aカードデバフ</p></th>
                                     <td class="col_card_buff">
-                                        <input type="number" id="a_card_cri_buff_1" value="0" max="500" min="-100" step="10" class="a_card_cri_buff form-control">
+                                        <input type="number" id="a_card_debuff_1" value="0" max="9999" min="-100" step="10" class="a_card_debuff form-control">
                                     </td>
                                 </tr>
                                 <tr>
@@ -583,21 +583,33 @@
                                     <td class="col_card_buff">
                                         <input type="number" id="q_card_buff_1" value="0" max="400" min="-100" step="10" class="q_card_buff form-control">
                                     </td>
-                                    <th class="bg-light"><p class="small">Qクリバフ</p></th>
+                                    <th class="bg-light"><p class="small">Qカードデバフ</p></th>
                                     <td class="col_card_buff">
-                                        <input type="number" id="q_card_cri_buff_1" value="0" max="500" min="-100" step="10" class="q_card_cri_buff form-control">
+                                        <input type="number" id="q_card_debuff_1" value="0" max="9999" min="-100" step="10" class="q_card_debuff form-control">
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th class="bg-light"><p class="small">デバフ/B/A/Q</p></th>
+                                    <th class="bg-light"><p class="small">カード威力/B/A/Q</p></th>
                                     <td class="col_card_buff">
-                                        <input type="number" id="b_card_debuff_1" value="0" max="9999" min="-100" step="10" class="b_card_debuff form-control">
+                                        <input type="number" id="b_card_power_buff_1" value="0" max="400" min="-100" step="10" class="b_card_power_buff form-control">
                                     </td>
                                     <td class="col_card_buff">
-                                        <input type="number" id="a_card_debuff_1" value="0" max="9999" min="-100" step="10" class="a_card_debuff form-control">
+                                        <input type="number" id="a_card_power_buff_1" value="0" max="400" min="-100" step="10" class="a_card_power_buff form-control">
                                     </td>
                                     <td class="col_card_buff">
-                                        <input type="number" id="q_card_debuff_1" value="0" max="9999" min="-100" step="10" class="q_card_debuff form-control">
+                                        <input type="number" id="q_card_power_buff_1" value="0" max="400" min="-100" step="10" class="q_card_power_buff form-control">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="bg-light"><p class="small">クリバフ/B/A/Q</p></th>
+                                    <td class="col_card_buff">
+                                        <input type="number" id="b_card_cri_buff_1" value="0" max="500" min="-100" step="10" class="b_card_cri_buff form-control">
+                                    </td>
+                                    <td class="col_card_buff">
+                                        <input type="number" id="a_card_cri_buff_1" value="0" max="500" min="-100" step="10" class="a_card_cri_buff form-control">
+                                    </td>
+                                    <td class="col_card_buff">
+                                        <input type="number" id="q_card_cri_buff_1" value="0" max="500" min="-100" step="10" class="q_card_cri_buff form-control">
                                     </td>
                                 </tr>
                                 <tr>
@@ -754,9 +766,19 @@
                                     <td>
                                         <input type="number" id="advanced_atk_buff_1st_1" value="0" max="400" step="10" class="advanced_atk_buff_1st form-control bg-transparent">
                                     </td>
+                                    <th class="bg-light"><p class="small">防御デバフ1st</p></th>
+                                    <td>
+                                        <input type="number" id="advanced_def_debuff_1st_1" value="0" max="100" step="10" class="advanced_def_debuff_1st form-control bg-transparent">
+                                    </td>
+                                </tr>
+                                <tr class="advanced_setting d-none">
                                     <th class="bg-light"><p class="small">カードバフ1st</p></th>
                                     <td>
                                         <input type="number" id="advanced_card_buff_1st_1" value="0" max="400" step="10" class="advanced_card_buff_1st form-control bg-transparent">
+                                    </td>
+                                    <th class="bg-light"><p class="small">カードデバフ1st</p></th>
+                                    <td>
+                                        <input type="number" id="advanced_card_debuff_1st_1" value="0" step="10" class="advanced_card_debuff_1st form-control bg-transparent">
                                     </td>
                                 </tr>
                                 <tr class="advanced_setting d-none">
@@ -784,9 +806,19 @@
                                     <td>
                                         <input type="number" id="advanced_atk_buff_2nd_1" value="0" max="400" step="10" class="advanced_atk_buff_2nd form-control bg-transparent">
                                     </td>
+                                    <th class="bg-light"><p class="small">防御デバフ2nd</p></th>
+                                    <td>
+                                        <input type="number" id="advanced_def_debuff_2nd_1" value="0" max="100" step="10" class="advanced_def_debuff_2nd form-control bg-transparent">
+                                    </td>
+                                </tr>
+                                <tr class="advanced_setting d-none">
                                     <th class="bg-light"><p class="small">カードバフ2nd</p></th>
                                     <td>
                                         <input type="number" id="advanced_card_buff_2nd_1" value="0" max="400" step="10" class="advanced_card_buff_2nd form-control bg-transparent">
+                                    </td>
+                                    <th class="bg-light"><p class="small">カードデバフ2nd</p></th>
+                                    <td>
+                                        <input type="number" id="advanced_card_debuff_2nd_1" value="0" step="10" class="advanced_card_debuff_2nd form-control bg-transparent">
                                     </td>
                                 </tr>
                                 <tr class="advanced_setting d-none">
@@ -814,9 +846,19 @@
                                     <td>
                                         <input type="number" id="advanced_atk_buff_3rd_1" value="0" max="400" step="10" class="advanced_atk_buff_3rd form-control bg-transparent">
                                     </td>
+                                    <th class="bg-light"><p class="small">防御デバフ3rd</p></th>
+                                    <td>
+                                        <input type="number" id="advanced_def_debuff_3rd_1" value="0" max="100" step="10" class="advanced_def_debuff_3rd form-control bg-transparent">
+                                    </td>
+                                </tr>
+                                <tr class="advanced_setting d-none">
                                     <th class="bg-light"><p class="small">カードバフ3rd</p></th>
                                     <td>
                                         <input type="number" id="advanced_card_buff_3rd_1" value="0" max="400" step="10" class="advanced_card_buff_3rd form-control bg-transparent">
+                                    </td>
+                                    <th class="bg-light"><p class="small">カードデバフ3rd</p></th>
+                                    <td>
+                                        <input type="number" id="advanced_card_debuff_3rd_1" value="0" step="10" class="advanced_card_debuff_3rd form-control bg-transparent">
                                     </td>
                                 </tr>
                                 <tr class="advanced_setting d-none">
@@ -844,25 +886,32 @@
                                     <td>
                                         <input type="number" id="advanced_atk_buff_Ex_1" value="0" max="400" step="10" class="advanced_atk_buff_Ex form-control bg-transparent">
                                     </td>
+                                    <th class="bg-light"><p class="small">防御デバフEX</p></th>
+                                    <td>
+                                        <input type="number" id="advanced_def_debuff_Ex_1" value="0" max="100" step="10" class="advanced_def_debuff_Ex form-control bg-transparent">
+                                    </td>
+                                </tr>
+                                <tr class="advanced_setting d-none">
                                     <th class="bg-light"><p class="small">特攻バフEX</p></th>
                                     <td>
                                         <input type="number" id="advanced_supereffective_buff_Ex_1" value="0" max="1000" step="10" class="advanced_supereffective_buff_Ex form-control bg-transparent">
                                     </td>
-                                </tr>
-                                <tr class="advanced_setting d-none">
                                     <th class="bg-light"><p class="small">固定ダメージEX</th>
                                     <td>
                                         <input type="number" id="advanced_fixed_dmg_Ex_1" value="0" step="10" class="advanced_fixed_dmg_Ex form-control bg-transparent">
                                     </td>
+                                </tr>
+                                <tr class="advanced_setting d-none">
                                     <th class="bg-light"><p class="small">特殊耐性EX</p></th>
                                     <td>
                                         <input type="number" id="advanced_special_def_Ex_1" value="0" max="100" step="10" class="advanced_special_def_Ex form-control bg-transparent">
                                     </td>
+                                    <td colspan="2"></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                    <div class="tab-pane fade" id="tab_2" role="tabpanel" aria-labelledby="nav-tab-2" tabindex="0">
+                    <div class="tab-pane fade" id="tab_2" role="tabpanel" aria-labelledby="nav-tab-0" tabindex="0">
                         <input type="hidden" id="search_servant_no_2" value="">
                         <input type="hidden" id="search_servant_class_2" value="">
                         <input type="hidden" id="search_servant_rare_2" value="">
@@ -935,9 +984,9 @@
                                     <td class="col_card_buff">
                                         <input type="number" id="b_card_buff_2" value="0" max="400" min="-100" step="10" class="b_card_buff form-control">
                                     </td>
-                                    <th class="bg-light"><p class="small">Bクリバフ</p></th>
+                                    <th class="bg-light"><p class="small">Bカードデバフ</p></th>
                                     <td class="col_card_buff">
-                                        <input type="number" id="b_card_cri_buff_2" value="0" max="500" min="-100" step="10" class="b_card_cri_buff form-control">
+                                        <input type="number" id="b_card_debuff_2" value="0" max="9999" min="-100" step="10" class="b_card_debuff form-control">
                                     </td>
                                 </tr>
                                 <tr>
@@ -945,9 +994,9 @@
                                     <td class="col_card_buff">
                                         <input type="number" id="a_card_buff_2" value="0" max="400" min="-100" step="10" class="a_card_buff form-control">
                                     </td>
-                                    <th class="bg-light"><p class="small">Aクリバフ</p></th>
+                                    <th class="bg-light"><p class="small">Aカードデバフ</p></th>
                                     <td class="col_card_buff">
-                                        <input type="number" id="a_card_cri_buff_2" value="0" max="500" min="-100" step="10" class="a_card_cri_buff form-control">
+                                        <input type="number" id="a_card_debuff_2" value="0" max="9999" min="-100" step="10" class="a_card_debuff form-control">
                                     </td>
                                 </tr>
                                 <tr>
@@ -955,21 +1004,33 @@
                                     <td class="col_card_buff">
                                         <input type="number" id="q_card_buff_2" value="0" max="400" min="-100" step="10" class="q_card_buff form-control">
                                     </td>
-                                    <th class="bg-light"><p class="small">Qクリバフ</p></th>
+                                    <th class="bg-light"><p class="small">Qカードデバフ</p></th>
                                     <td class="col_card_buff">
-                                        <input type="number" id="q_card_cri_buff_2" value="0" max="500" min="-100" step="10" class="q_card_cri_buff form-control">
+                                        <input type="number" id="q_card_debuff_2" value="0" max="9999" min="-100" step="10" class="q_card_debuff form-control">
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th class="bg-light"><p class="small">デバフ/B/A/Q</p></th>
+                                    <th class="bg-light"><p class="small">カード威力/B/A/Q</p></th>
                                     <td class="col_card_buff">
-                                        <input type="number" id="b_card_debuff_2" value="0" max="9999" min="-100" step="10" class="b_card_debuff form-control">
+                                        <input type="number" id="b_card_power_buff_2" value="0" max="400" min="-100" step="10" class="b_card_power_buff form-control">
                                     </td>
                                     <td class="col_card_buff">
-                                        <input type="number" id="a_card_debuff_2" value="0" max="9999" min="-100" step="10" class="a_card_debuff form-control">
+                                        <input type="number" id="a_card_power_buff_2" value="0" max="400" min="-100" step="10" class="a_card_power_buff form-control">
                                     </td>
                                     <td class="col_card_buff">
-                                        <input type="number" id="q_card_debuff_2" value="0" max="9999" min="-100" step="10" class="q_card_debuff form-control">
+                                        <input type="number" id="q_card_power_buff_2" value="0" max="400" min="-100" step="10" class="q_card_power_buff form-control">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="bg-light"><p class="small">クリバフ/B/A/Q</p></th>
+                                    <td class="col_card_buff">
+                                        <input type="number" id="b_card_cri_buff_2" value="0" max="500" min="-100" step="10" class="b_card_cri_buff form-control">
+                                    </td>
+                                    <td class="col_card_buff">
+                                        <input type="number" id="a_card_cri_buff_2" value="0" max="500" min="-100" step="10" class="a_card_cri_buff form-control">
+                                    </td>
+                                    <td class="col_card_buff">
+                                        <input type="number" id="q_card_cri_buff_2" value="0" max="500" min="-100" step="10" class="q_card_cri_buff form-control">
                                     </td>
                                 </tr>
                                 <tr>
@@ -1126,9 +1187,19 @@
                                     <td>
                                         <input type="number" id="advanced_atk_buff_1st_2" value="0" max="400" step="10" class="advanced_atk_buff_1st form-control bg-transparent">
                                     </td>
+                                    <th class="bg-light"><p class="small">防御デバフ1st</p></th>
+                                    <td>
+                                        <input type="number" id="advanced_def_debuff_1st_2" value="0" max="100" step="10" class="advanced_def_debuff_1st form-control bg-transparent">
+                                    </td>
+                                </tr>
+                                <tr class="advanced_setting d-none">
                                     <th class="bg-light"><p class="small">カードバフ1st</p></th>
                                     <td>
                                         <input type="number" id="advanced_card_buff_1st_2" value="0" max="400" step="10" class="advanced_card_buff_1st form-control bg-transparent">
+                                    </td>
+                                    <th class="bg-light"><p class="small">カードデバフ1st</p></th>
+                                    <td>
+                                        <input type="number" id="advanced_card_debuff_1st_2" value="0" step="10" class="advanced_card_debuff_1st form-control bg-transparent">
                                     </td>
                                 </tr>
                                 <tr class="advanced_setting d-none">
@@ -1156,9 +1227,19 @@
                                     <td>
                                         <input type="number" id="advanced_atk_buff_2nd_2" value="0" max="400" step="10" class="advanced_atk_buff_2nd form-control bg-transparent">
                                     </td>
+                                    <th class="bg-light"><p class="small">防御デバフ2nd</p></th>
+                                    <td>
+                                        <input type="number" id="advanced_def_debuff_2nd_2" value="0" max="100" step="10" class="advanced_def_debuff_2nd form-control bg-transparent">
+                                    </td>
+                                </tr>
+                                <tr class="advanced_setting d-none">
                                     <th class="bg-light"><p class="small">カードバフ2nd</p></th>
                                     <td>
                                         <input type="number" id="advanced_card_buff_2nd_2" value="0" max="400" step="10" class="advanced_card_buff_2nd form-control bg-transparent">
+                                    </td>
+                                    <th class="bg-light"><p class="small">カードデバフ2nd</p></th>
+                                    <td>
+                                        <input type="number" id="advanced_card_debuff_2nd_2" value="0" step="10" class="advanced_card_debuff_2nd form-control bg-transparent">
                                     </td>
                                 </tr>
                                 <tr class="advanced_setting d-none">
@@ -1186,9 +1267,19 @@
                                     <td>
                                         <input type="number" id="advanced_atk_buff_3rd_2" value="0" max="400" step="10" class="advanced_atk_buff_3rd form-control bg-transparent">
                                     </td>
+                                    <th class="bg-light"><p class="small">防御デバフ3rd</p></th>
+                                    <td>
+                                        <input type="number" id="advanced_def_debuff_3rd_2" value="0" max="100" step="10" class="advanced_def_debuff_3rd form-control bg-transparent">
+                                    </td>
+                                </tr>
+                                <tr class="advanced_setting d-none">
                                     <th class="bg-light"><p class="small">カードバフ3rd</p></th>
                                     <td>
                                         <input type="number" id="advanced_card_buff_3rd_2" value="0" max="400" step="10" class="advanced_card_buff_3rd form-control bg-transparent">
+                                    </td>
+                                    <th class="bg-light"><p class="small">カードデバフ3rd</p></th>
+                                    <td>
+                                        <input type="number" id="advanced_card_debuff_3rd_2" value="0" step="10" class="advanced_card_debuff_3rd form-control bg-transparent">
                                     </td>
                                 </tr>
                                 <tr class="advanced_setting d-none">
@@ -1216,25 +1307,32 @@
                                     <td>
                                         <input type="number" id="advanced_atk_buff_Ex_2" value="0" max="400" step="10" class="advanced_atk_buff_Ex form-control bg-transparent">
                                     </td>
+                                    <th class="bg-light"><p class="small">防御デバフEX</p></th>
+                                    <td>
+                                        <input type="number" id="advanced_def_debuff_Ex_2" value="0" max="100" step="10" class="advanced_def_debuff_Ex form-control bg-transparent">
+                                    </td>
+                                </tr>
+                                <tr class="advanced_setting d-none">
                                     <th class="bg-light"><p class="small">特攻バフEX</p></th>
                                     <td>
                                         <input type="number" id="advanced_supereffective_buff_Ex_2" value="0" max="1000" step="10" class="advanced_supereffective_buff_Ex form-control bg-transparent">
                                     </td>
-                                </tr>
-                                <tr class="advanced_setting d-none">
                                     <th class="bg-light"><p class="small">固定ダメージEX</th>
                                     <td>
                                         <input type="number" id="advanced_fixed_dmg_Ex_2" value="0" step="10" class="advanced_fixed_dmg_Ex form-control bg-transparent">
                                     </td>
+                                </tr>
+                                <tr class="advanced_setting d-none">
                                     <th class="bg-light"><p class="small">特殊耐性EX</p></th>
                                     <td>
                                         <input type="number" id="advanced_special_def_Ex_2" value="0" max="100" step="10" class="advanced_special_def_Ex form-control bg-transparent">
                                     </td>
+                                    <td colspan="2"></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                    <div class="tab-pane fade" id="tab_3" role="tabpanel" aria-labelledby="nav-tab-3" tabindex="0">
+                    <div class="tab-pane fade" id="tab_3" role="tabpanel" aria-labelledby="nav-tab-0" tabindex="0">
                         <input type="hidden" id="search_servant_no_3" value="">
                         <input type="hidden" id="search_servant_class_3" value="">
                         <input type="hidden" id="search_servant_rare_3" value="">
@@ -1307,9 +1405,9 @@
                                     <td class="col_card_buff">
                                         <input type="number" id="b_card_buff_3" value="0" max="400" min="-100" step="10" class="b_card_buff form-control">
                                     </td>
-                                    <th class="bg-light"><p class="small">Bクリバフ</p></th>
+                                    <th class="bg-light"><p class="small">Bカードデバフ</p></th>
                                     <td class="col_card_buff">
-                                        <input type="number" id="b_card_cri_buff_3" value="0" max="500" min="-100" step="10" class="b_card_cri_buff form-control">
+                                        <input type="number" id="b_card_debuff_3" value="0" max="9999" min="-100" step="10" class="b_card_debuff form-control">
                                     </td>
                                 </tr>
                                 <tr>
@@ -1317,9 +1415,9 @@
                                     <td class="col_card_buff">
                                         <input type="number" id="a_card_buff_3" value="0" max="400" min="-100" step="10" class="a_card_buff form-control">
                                     </td>
-                                    <th class="bg-light"><p class="small">Aクリバフ</p></th>
+                                    <th class="bg-light"><p class="small">Aカードデバフ</p></th>
                                     <td class="col_card_buff">
-                                        <input type="number" id="a_card_cri_buff_3" value="0" max="500" min="-100" step="10" class="a_card_cri_buff form-control">
+                                        <input type="number" id="a_card_debuff_3" value="0" max="9999" min="-100" step="10" class="a_card_debuff form-control">
                                     </td>
                                 </tr>
                                 <tr>
@@ -1327,21 +1425,33 @@
                                     <td class="col_card_buff">
                                         <input type="number" id="q_card_buff_3" value="0" max="400" min="-100" step="10" class="q_card_buff form-control">
                                     </td>
-                                    <th class="bg-light"><p class="small">Qクリバフ</p></th>
+                                    <th class="bg-light"><p class="small">Qカードデバフ</p></th>
                                     <td class="col_card_buff">
-                                        <input type="number" id="q_card_cri_buff_3" value="0" max="500" min="-100" step="10" class="q_card_cri_buff form-control">
+                                        <input type="number" id="q_card_debuff_3" value="0" max="9999" min="-100" step="10" class="q_card_debuff form-control">
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th class="bg-light"><p class="small">デバフ/B/A/Q</p></th>
+                                    <th class="bg-light"><p class="small">カード威力/B/A/Q</p></th>
                                     <td class="col_card_buff">
-                                        <input type="number" id="b_card_debuff_3" value="0" max="9999" min="-100" step="10" class="b_card_debuff form-control">
+                                        <input type="number" id="b_card_power_buff_3" value="0" max="400" min="-100" step="10" class="b_card_power_buff form-control">
                                     </td>
                                     <td class="col_card_buff">
-                                        <input type="number" id="a_card_debuff_3" value="0" max="9999" min="-100" step="10" class="a_card_debuff form-control">
+                                        <input type="number" id="a_card_power_buff_3" value="0" max="400" min="-100" step="10" class="a_card_power_buff form-control">
                                     </td>
                                     <td class="col_card_buff">
-                                        <input type="number" id="q_card_debuff_3" value="0" max="9999" min="-100" step="10" class="q_card_debuff form-control">
+                                        <input type="number" id="q_card_power_buff_3" value="0" max="400" min="-100" step="10" class="q_card_power_buff form-control">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="bg-light"><p class="small">クリバフ/B/A/Q</p></th>
+                                    <td class="col_card_buff">
+                                        <input type="number" id="b_card_cri_buff_3" value="0" max="500" min="-100" step="10" class="b_card_cri_buff form-control">
+                                    </td>
+                                    <td class="col_card_buff">
+                                        <input type="number" id="a_card_cri_buff_3" value="0" max="500" min="-100" step="10" class="a_card_cri_buff form-control">
+                                    </td>
+                                    <td class="col_card_buff">
+                                        <input type="number" id="q_card_cri_buff_3" value="0" max="500" min="-100" step="10" class="q_card_cri_buff form-control">
                                     </td>
                                 </tr>
                                 <tr>
@@ -1498,9 +1608,19 @@
                                     <td>
                                         <input type="number" id="advanced_atk_buff_1st_3" value="0" max="400" step="10" class="advanced_atk_buff_1st form-control bg-transparent">
                                     </td>
+                                    <th class="bg-light"><p class="small">防御デバフ1st</p></th>
+                                    <td>
+                                        <input type="number" id="advanced_def_debuff_1st_3" value="0" max="100" step="10" class="advanced_def_debuff_1st form-control bg-transparent">
+                                    </td>
+                                </tr>
+                                <tr class="advanced_setting d-none">
                                     <th class="bg-light"><p class="small">カードバフ1st</p></th>
                                     <td>
                                         <input type="number" id="advanced_card_buff_1st_3" value="0" max="400" step="10" class="advanced_card_buff_1st form-control bg-transparent">
+                                    </td>
+                                    <th class="bg-light"><p class="small">カードデバフ1st</p></th>
+                                    <td>
+                                        <input type="number" id="advanced_card_debuff_1st_3" value="0" step="10" class="advanced_card_debuff_1st form-control bg-transparent">
                                     </td>
                                 </tr>
                                 <tr class="advanced_setting d-none">
@@ -1528,9 +1648,19 @@
                                     <td>
                                         <input type="number" id="advanced_atk_buff_2nd_3" value="0" max="400" step="10" class="advanced_atk_buff_2nd form-control bg-transparent">
                                     </td>
+                                    <th class="bg-light"><p class="small">防御デバフ2nd</p></th>
+                                    <td>
+                                        <input type="number" id="advanced_def_debuff_2nd_3" value="0" max="100" step="10" class="advanced_def_debuff_2nd form-control bg-transparent">
+                                    </td>
+                                </tr>
+                                <tr class="advanced_setting d-none">
                                     <th class="bg-light"><p class="small">カードバフ2nd</p></th>
                                     <td>
                                         <input type="number" id="advanced_card_buff_2nd_3" value="0" max="400" step="10" class="advanced_card_buff_2nd form-control bg-transparent">
+                                    </td>
+                                    <th class="bg-light"><p class="small">カードデバフ2nd</p></th>
+                                    <td>
+                                        <input type="number" id="advanced_card_debuff_2nd_3" value="0" step="10" class="advanced_card_debuff_2nd form-control bg-transparent">
                                     </td>
                                 </tr>
                                 <tr class="advanced_setting d-none">
@@ -1558,9 +1688,19 @@
                                     <td>
                                         <input type="number" id="advanced_atk_buff_3rd_3" value="0" max="400" step="10" class="advanced_atk_buff_3rd form-control bg-transparent">
                                     </td>
+                                    <th class="bg-light"><p class="small">防御デバフ3rd</p></th>
+                                    <td>
+                                        <input type="number" id="advanced_def_debuff_3rd_3" value="0" max="100" step="10" class="advanced_def_debuff_3rd form-control bg-transparent">
+                                    </td>
+                                </tr>
+                                <tr class="advanced_setting d-none">
                                     <th class="bg-light"><p class="small">カードバフ3rd</p></th>
                                     <td>
                                         <input type="number" id="advanced_card_buff_3rd_3" value="0" max="400" step="10" class="advanced_card_buff_3rd form-control bg-transparent">
+                                    </td>
+                                    <th class="bg-light"><p class="small">カードデバフ3rd</p></th>
+                                    <td>
+                                        <input type="number" id="advanced_card_debuff_3rd_3" value="0" step="10" class="advanced_card_debuff_3rd form-control bg-transparent">
                                     </td>
                                 </tr>
                                 <tr class="advanced_setting d-none">
@@ -1588,25 +1728,32 @@
                                     <td>
                                         <input type="number" id="advanced_atk_buff_Ex_3" value="0" max="400" step="10" class="advanced_atk_buff_Ex form-control bg-transparent">
                                     </td>
+                                    <th class="bg-light"><p class="small">防御デバフEX</p></th>
+                                    <td>
+                                        <input type="number" id="advanced_def_debuff_Ex_3" value="0" max="100" step="10" class="advanced_def_debuff_Ex form-control bg-transparent">
+                                    </td>
+                                </tr>
+                                <tr class="advanced_setting d-none">
                                     <th class="bg-light"><p class="small">特攻バフEX</p></th>
                                     <td>
                                         <input type="number" id="advanced_supereffective_buff_Ex_3" value="0" max="1000" step="10" class="advanced_supereffective_buff_Ex form-control bg-transparent">
                                     </td>
-                                </tr>
-                                <tr class="advanced_setting d-none">
                                     <th class="bg-light"><p class="small">固定ダメージEX</th>
                                     <td>
                                         <input type="number" id="advanced_fixed_dmg_Ex_3" value="0" step="10" class="advanced_fixed_dmg_Ex form-control bg-transparent">
                                     </td>
+                                </tr>
+                                <tr class="advanced_setting d-none">
                                     <th class="bg-light"><p class="small">特殊耐性EX</p></th>
                                     <td>
                                         <input type="number" id="advanced_special_def_Ex_3" value="0" max="100" step="10" class="advanced_special_def_Ex form-control bg-transparent">
                                     </td>
+                                    <td colspan="2"></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                    <div class="tab-pane fade" id="tab_4" role="tabpanel" aria-labelledby="nav-tab-4" tabindex="0">
+                    <div class="tab-pane fade" id="tab_4" role="tabpanel" aria-labelledby="nav-tab-0" tabindex="0">
                         <input type="hidden" id="search_servant_no_4" value="">
                         <input type="hidden" id="search_servant_class_4" value="">
                         <input type="hidden" id="search_servant_rare_4" value="">
@@ -1679,9 +1826,9 @@
                                     <td class="col_card_buff">
                                         <input type="number" id="b_card_buff_4" value="0" max="400" min="-100" step="10" class="b_card_buff form-control">
                                     </td>
-                                    <th class="bg-light"><p class="small">Bクリバフ</p></th>
+                                    <th class="bg-light"><p class="small">Bカードデバフ</p></th>
                                     <td class="col_card_buff">
-                                        <input type="number" id="b_card_cri_buff_4" value="0" max="500" min="-100" step="10" class="b_card_cri_buff form-control">
+                                        <input type="number" id="b_card_debuff_4" value="0" max="9999" min="-100" step="10" class="b_card_debuff form-control">
                                     </td>
                                 </tr>
                                 <tr>
@@ -1689,9 +1836,9 @@
                                     <td class="col_card_buff">
                                         <input type="number" id="a_card_buff_4" value="0" max="400" min="-100" step="10" class="a_card_buff form-control">
                                     </td>
-                                    <th class="bg-light"><p class="small">Aクリバフ</p></th>
+                                    <th class="bg-light"><p class="small">Aカードデバフ</p></th>
                                     <td class="col_card_buff">
-                                        <input type="number" id="a_card_cri_buff_4" value="0" max="500" min="-100" step="10" class="a_card_cri_buff form-control">
+                                        <input type="number" id="a_card_debuff_4" value="0" max="9999" min="-100" step="10" class="a_card_debuff form-control">
                                     </td>
                                 </tr>
                                 <tr>
@@ -1699,21 +1846,33 @@
                                     <td class="col_card_buff">
                                         <input type="number" id="q_card_buff_4" value="0" max="400" min="-100" step="10" class="q_card_buff form-control">
                                     </td>
-                                    <th class="bg-light"><p class="small">Qクリバフ</p></th>
+                                    <th class="bg-light"><p class="small">Qカードデバフ</p></th>
                                     <td class="col_card_buff">
-                                        <input type="number" id="q_card_cri_buff_4" value="0" max="500" min="-100" step="10" class="q_card_cri_buff form-control">
+                                        <input type="number" id="q_card_debuff_4" value="0" max="9999" min="-100" step="10" class="q_card_debuff form-control">
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th class="bg-light"><p class="small">デバフ/B/A/Q</p></th>
+                                    <th class="bg-light"><p class="small">カード威力/B/A/Q</p></th>
                                     <td class="col_card_buff">
-                                        <input type="number" id="b_card_debuff_4" value="0" max="9999" min="-100" step="10" class="b_card_debuff form-control">
+                                        <input type="number" id="b_card_power_buff_4" value="0" max="400" min="-100" step="10" class="b_card_power_buff form-control">
                                     </td>
                                     <td class="col_card_buff">
-                                        <input type="number" id="a_card_debuff_4" value="0" max="9999" min="-100" step="10" class="a_card_debuff form-control">
+                                        <input type="number" id="a_card_power_buff_4" value="0" max="400" min="-100" step="10" class="a_card_power_buff form-control">
                                     </td>
                                     <td class="col_card_buff">
-                                        <input type="number" id="q_card_debuff_4" value="0" max="9999" min="-100" step="10" class="q_card_debuff form-control">
+                                        <input type="number" id="q_card_power_buff_4" value="0" max="400" min="-100" step="10" class="q_card_power_buff form-control">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="bg-light"><p class="small">クリバフ/B/A/Q</p></th>
+                                    <td class="col_card_buff">
+                                        <input type="number" id="b_card_cri_buff_4" value="0" max="500" min="-100" step="10" class="b_card_cri_buff form-control">
+                                    </td>
+                                    <td class="col_card_buff">
+                                        <input type="number" id="a_card_cri_buff_4" value="0" max="500" min="-100" step="10" class="a_card_cri_buff form-control">
+                                    </td>
+                                    <td class="col_card_buff">
+                                        <input type="number" id="q_card_cri_buff_4" value="0" max="500" min="-100" step="10" class="q_card_cri_buff form-control">
                                     </td>
                                 </tr>
                                 <tr>
@@ -1870,9 +2029,19 @@
                                     <td>
                                         <input type="number" id="advanced_atk_buff_1st_4" value="0" max="400" step="10" class="advanced_atk_buff_1st form-control bg-transparent">
                                     </td>
+                                    <th class="bg-light"><p class="small">防御デバフ1st</p></th>
+                                    <td>
+                                        <input type="number" id="advanced_def_debuff_1st_4" value="0" max="100" step="10" class="advanced_def_debuff_1st form-control bg-transparent">
+                                    </td>
+                                </tr>
+                                <tr class="advanced_setting d-none">
                                     <th class="bg-light"><p class="small">カードバフ1st</p></th>
                                     <td>
                                         <input type="number" id="advanced_card_buff_1st_4" value="0" max="400" step="10" class="advanced_card_buff_1st form-control bg-transparent">
+                                    </td>
+                                    <th class="bg-light"><p class="small">カードデバフ1st</p></th>
+                                    <td>
+                                        <input type="number" id="advanced_card_debuff_1st_4" value="0" step="10" class="advanced_card_debuff_1st form-control bg-transparent">
                                     </td>
                                 </tr>
                                 <tr class="advanced_setting d-none">
@@ -1900,9 +2069,19 @@
                                     <td>
                                         <input type="number" id="advanced_atk_buff_2nd_4" value="0" max="400" step="10" class="advanced_atk_buff_2nd form-control bg-transparent">
                                     </td>
+                                    <th class="bg-light"><p class="small">防御デバフ2nd</p></th>
+                                    <td>
+                                        <input type="number" id="advanced_def_debuff_2nd_4" value="0" max="100" step="10" class="advanced_def_debuff_2nd form-control bg-transparent">
+                                    </td>
+                                </tr>
+                                <tr class="advanced_setting d-none">
                                     <th class="bg-light"><p class="small">カードバフ2nd</p></th>
                                     <td>
                                         <input type="number" id="advanced_card_buff_2nd_4" value="0" max="400" step="10" class="advanced_card_buff_2nd form-control bg-transparent">
+                                    </td>
+                                    <th class="bg-light"><p class="small">カードデバフ2nd</p></th>
+                                    <td>
+                                        <input type="number" id="advanced_card_debuff_2nd_4" value="0" step="10" class="advanced_card_debuff_2nd form-control bg-transparent">
                                     </td>
                                 </tr>
                                 <tr class="advanced_setting d-none">
@@ -1930,9 +2109,19 @@
                                     <td>
                                         <input type="number" id="advanced_atk_buff_3rd_4" value="0" max="400" step="10" class="advanced_atk_buff_3rd form-control bg-transparent">
                                     </td>
+                                    <th class="bg-light"><p class="small">防御デバフ3rd</p></th>
+                                    <td>
+                                        <input type="number" id="advanced_def_debuff_3rd_4" value="0" max="100" step="10" class="advanced_def_debuff_3rd form-control bg-transparent">
+                                    </td>
+                                </tr>
+                                <tr class="advanced_setting d-none">
                                     <th class="bg-light"><p class="small">カードバフ3rd</p></th>
                                     <td>
                                         <input type="number" id="advanced_card_buff_3rd_4" value="0" max="400" step="10" class="advanced_card_buff_3rd form-control bg-transparent">
+                                    </td>
+                                    <th class="bg-light"><p class="small">カードデバフ3rd</p></th>
+                                    <td>
+                                        <input type="number" id="advanced_card_debuff_3rd_4" value="0" step="10" class="advanced_card_debuff_3rd form-control bg-transparent">
                                     </td>
                                 </tr>
                                 <tr class="advanced_setting d-none">
@@ -1960,25 +2149,32 @@
                                     <td>
                                         <input type="number" id="advanced_atk_buff_Ex_4" value="0" max="400" step="10" class="advanced_atk_buff_Ex form-control bg-transparent">
                                     </td>
+                                    <th class="bg-light"><p class="small">防御デバフEX</p></th>
+                                    <td>
+                                        <input type="number" id="advanced_def_debuff_Ex_4" value="0" max="100" step="10" class="advanced_def_debuff_Ex form-control bg-transparent">
+                                    </td>
+                                </tr>
+                                <tr class="advanced_setting d-none">
                                     <th class="bg-light"><p class="small">特攻バフEX</p></th>
                                     <td>
                                         <input type="number" id="advanced_supereffective_buff_Ex_4" value="0" max="1000" step="10" class="advanced_supereffective_buff_Ex form-control bg-transparent">
                                     </td>
-                                </tr>
-                                <tr class="advanced_setting d-none">
                                     <th class="bg-light"><p class="small">固定ダメージEX</th>
                                     <td>
                                         <input type="number" id="advanced_fixed_dmg_Ex_4" value="0" step="10" class="advanced_fixed_dmg_Ex form-control bg-transparent">
                                     </td>
+                                </tr>
+                                <tr class="advanced_setting d-none">
                                     <th class="bg-light"><p class="small">特殊耐性EX</p></th>
                                     <td>
                                         <input type="number" id="advanced_special_def_Ex_4" value="0" max="100" step="10" class="advanced_special_def_Ex form-control bg-transparent">
                                     </td>
+                                    <td colspan="2"></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                    <div class="tab-pane fade" id="tab_5" role="tabpanel" aria-labelledby="nav-tab-5" tabindex="0">
+                    <div class="tab-pane fade" id="tab_5" role="tabpanel" aria-labelledby="nav-tab-0" tabindex="0">
                         <input type="hidden" id="search_servant_no_5" value="">
                         <input type="hidden" id="search_servant_class_5" value="">
                         <input type="hidden" id="search_servant_rare_5" value="">
@@ -2051,9 +2247,9 @@
                                     <td class="col_card_buff">
                                         <input type="number" id="b_card_buff_5" value="0" max="400" min="-100" step="10" class="b_card_buff form-control">
                                     </td>
-                                    <th class="bg-light"><p class="small">Bクリバフ</p></th>
+                                    <th class="bg-light"><p class="small">Bカードデバフ</p></th>
                                     <td class="col_card_buff">
-                                        <input type="number" id="b_card_cri_buff_5" value="0" max="500" min="-100" step="10" class="b_card_cri_buff form-control">
+                                        <input type="number" id="b_card_debuff_5" value="0" max="9999" min="-100" step="10" class="b_card_debuff form-control">
                                     </td>
                                 </tr>
                                 <tr>
@@ -2061,9 +2257,9 @@
                                     <td class="col_card_buff">
                                         <input type="number" id="a_card_buff_5" value="0" max="400" min="-100" step="10" class="a_card_buff form-control">
                                     </td>
-                                    <th class="bg-light"><p class="small">Aクリバフ</p></th>
+                                    <th class="bg-light"><p class="small">Aカードデバフ</p></th>
                                     <td class="col_card_buff">
-                                        <input type="number" id="a_card_cri_buff_5" value="0" max="500" min="-100" step="10" class="a_card_cri_buff form-control">
+                                        <input type="number" id="a_card_debuff_5" value="0" max="9999" min="-100" step="10" class="a_card_debuff form-control">
                                     </td>
                                 </tr>
                                 <tr>
@@ -2071,21 +2267,33 @@
                                     <td class="col_card_buff">
                                         <input type="number" id="q_card_buff_5" value="0" max="400" min="-100" step="10" class="q_card_buff form-control">
                                     </td>
-                                    <th class="bg-light"><p class="small">Qクリバフ</p></th>
+                                    <th class="bg-light"><p class="small">Qカードデバフ</p></th>
                                     <td class="col_card_buff">
-                                        <input type="number" id="q_card_cri_buff_5" value="0" max="500" min="-100" step="10" class="q_card_cri_buff form-control">
+                                        <input type="number" id="q_card_debuff_5" value="0" max="9999" min="-100" step="10" class="q_card_debuff form-control">
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th class="bg-light"><p class="small">デバフ/B/A/Q</p></th>
+                                    <th class="bg-light"><p class="small">カード威力/B/A/Q</p></th>
                                     <td class="col_card_buff">
-                                        <input type="number" id="b_card_debuff_5" value="0" max="9999" min="-100" step="10" class="b_card_debuff form-control">
+                                        <input type="number" id="b_card_power_buff_5" value="0" max="400" min="-100" step="10" class="b_card_power_buff form-control">
                                     </td>
                                     <td class="col_card_buff">
-                                        <input type="number" id="a_card_debuff_5" value="0" max="9999" min="-100" step="10" class="a_card_debuff form-control">
+                                        <input type="number" id="a_card_power_buff_5" value="0" max="400" min="-100" step="10" class="a_card_power_buff form-control">
                                     </td>
                                     <td class="col_card_buff">
-                                        <input type="number" id="q_card_debuff_5" value="0" max="9999" min="-100" step="10" class="q_card_debuff form-control">
+                                        <input type="number" id="q_card_power_buff_5" value="0" max="400" min="-100" step="10" class="q_card_power_buff form-control">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="bg-light"><p class="small">クリバフ/B/A/Q</p></th>
+                                    <td class="col_card_buff">
+                                        <input type="number" id="b_card_cri_buff_5" value="0" max="500" min="-100" step="10" class="b_card_cri_buff form-control">
+                                    </td>
+                                    <td class="col_card_buff">
+                                        <input type="number" id="a_card_cri_buff_5" value="0" max="500" min="-100" step="10" class="a_card_cri_buff form-control">
+                                    </td>
+                                    <td class="col_card_buff">
+                                        <input type="number" id="q_card_cri_buff_5" value="0" max="500" min="-100" step="10" class="q_card_cri_buff form-control">
                                     </td>
                                 </tr>
                                 <tr>
@@ -2242,9 +2450,19 @@
                                     <td>
                                         <input type="number" id="advanced_atk_buff_1st_5" value="0" max="400" step="10" class="advanced_atk_buff_1st form-control bg-transparent">
                                     </td>
+                                    <th class="bg-light"><p class="small">防御デバフ1st</p></th>
+                                    <td>
+                                        <input type="number" id="advanced_def_debuff_1st_5" value="0" max="100" step="10" class="advanced_def_debuff_1st form-control bg-transparent">
+                                    </td>
+                                </tr>
+                                <tr class="advanced_setting d-none">
                                     <th class="bg-light"><p class="small">カードバフ1st</p></th>
                                     <td>
                                         <input type="number" id="advanced_card_buff_1st_5" value="0" max="400" step="10" class="advanced_card_buff_1st form-control bg-transparent">
+                                    </td>
+                                    <th class="bg-light"><p class="small">カードデバフ1st</p></th>
+                                    <td>
+                                        <input type="number" id="advanced_card_debuff_1st_5" value="0" step="10" class="advanced_card_debuff_1st form-control bg-transparent">
                                     </td>
                                 </tr>
                                 <tr class="advanced_setting d-none">
@@ -2272,9 +2490,19 @@
                                     <td>
                                         <input type="number" id="advanced_atk_buff_2nd_5" value="0" max="400" step="10" class="advanced_atk_buff_2nd form-control bg-transparent">
                                     </td>
+                                    <th class="bg-light"><p class="small">防御デバフ2nd</p></th>
+                                    <td>
+                                        <input type="number" id="advanced_def_debuff_2nd_5" value="0" max="100" step="10" class="advanced_def_debuff_2nd form-control bg-transparent">
+                                    </td>
+                                </tr>
+                                <tr class="advanced_setting d-none">
                                     <th class="bg-light"><p class="small">カードバフ2nd</p></th>
                                     <td>
                                         <input type="number" id="advanced_card_buff_2nd_5" value="0" max="400" step="10" class="advanced_card_buff_2nd form-control bg-transparent">
+                                    </td>
+                                    <th class="bg-light"><p class="small">カードデバフ2nd</p></th>
+                                    <td>
+                                        <input type="number" id="advanced_card_debuff_2nd_5" value="0" step="10" class="advanced_card_debuff_2nd form-control bg-transparent">
                                     </td>
                                 </tr>
                                 <tr class="advanced_setting d-none">
@@ -2302,9 +2530,19 @@
                                     <td>
                                         <input type="number" id="advanced_atk_buff_3rd_5" value="0" max="400" step="10" class="advanced_atk_buff_3rd form-control bg-transparent">
                                     </td>
+                                    <th class="bg-light"><p class="small">防御デバフ3rd</p></th>
+                                    <td>
+                                        <input type="number" id="advanced_def_debuff_3rd_5" value="0" max="100" step="10" class="advanced_def_debuff_3rd form-control bg-transparent">
+                                    </td>
+                                </tr>
+                                <tr class="advanced_setting d-none">
                                     <th class="bg-light"><p class="small">カードバフ3rd</p></th>
                                     <td>
                                         <input type="number" id="advanced_card_buff_3rd_5" value="0" max="400" step="10" class="advanced_card_buff_3rd form-control bg-transparent">
+                                    </td>
+                                    <th class="bg-light"><p class="small">カードデバフ3rd</p></th>
+                                    <td>
+                                        <input type="number" id="advanced_card_debuff_3rd_5" value="0" step="10" class="advanced_card_debuff_3rd form-control bg-transparent">
                                     </td>
                                 </tr>
                                 <tr class="advanced_setting d-none">
@@ -2332,26 +2570,32 @@
                                     <td>
                                         <input type="number" id="advanced_atk_buff_Ex_5" value="0" max="400" step="10" class="advanced_atk_buff_Ex form-control bg-transparent">
                                     </td>
+                                    <th class="bg-light"><p class="small">防御デバフEX</p></th>
+                                    <td>
+                                        <input type="number" id="advanced_def_debuff_Ex_5" value="0" max="100" step="10" class="advanced_def_debuff_Ex form-control bg-transparent">
+                                    </td>
+                                </tr>
+                                <tr class="advanced_setting d-none">
                                     <th class="bg-light"><p class="small">特攻バフEX</p></th>
                                     <td>
                                         <input type="number" id="advanced_supereffective_buff_Ex_5" value="0" max="1000" step="10" class="advanced_supereffective_buff_Ex form-control bg-transparent">
                                     </td>
-                                </tr>
-                                <tr class="advanced_setting d-none">
                                     <th class="bg-light"><p class="small">固定ダメージEX</th>
                                     <td>
                                         <input type="number" id="advanced_fixed_dmg_Ex_5" value="0" step="10" class="advanced_fixed_dmg_Ex form-control bg-transparent">
                                     </td>
+                                </tr>
+                                <tr class="advanced_setting d-none">
                                     <th class="bg-light"><p class="small">特殊耐性EX</p></th>
                                     <td>
                                         <input type="number" id="advanced_special_def_Ex_5" value="0" max="100" step="10" class="advanced_special_def_Ex form-control bg-transparent">
                                     </td>
+                                    <td colspan="2"></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
-
             </div>
             
             <!-- モーダルの設定 -->
