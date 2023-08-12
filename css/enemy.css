@@ -1,0 +1,200 @@
+@charset "UTF-8";
+
+.navbar-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+body {
+  font-family: 'Noto Sans JP', sans-serif !important;
+}
+
+*:focus {
+  box-shadow:none !important;
+ }
+
+table th {
+  padding: 1px 0;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.input-group-sm {
+  border: 1px solid #ced4da;
+}
+.input-group-text {
+  border: none !important;
+}
+.input-group-sm>.btn, .input-group-sm>.form-control, .input-group-sm>.form-select, .input-group-sm>.input-group-text {
+  font-size: .75rem !important;
+}
+
+table tr, table td {
+  height: 80px;
+}
+
+output {
+  height: 33%;
+  display:block;
+  text-align:right;
+  font-size: .75rem;
+  font-weight: 500;
+  padding: 0rem 0.25rem;
+}
+
+.wrap_dmg_result {
+  display:table;
+  text-align:right;
+  height: 33%;
+  width: 100%;
+  cursor: pointer;
+}
+.wrap_dmg_result output{
+  display:table-cell;
+  vertical-align:middle;
+}
+
+.wrap_link_icon {
+  display:table;
+  width: 100%;
+}
+
+#out_sel_total {
+  width: 80px;
+  min-width: 80px;
+  height: 23px;
+}
+
+.sel_total {
+  display: none;
+  float: right;
+}
+
+input[type="number"]:focus {
+  outline: solid 1px #afc0b8 !important;
+}
+select:focus {
+  outline: solid 1px #afc0b8 !important;
+}
+input[type="number"] { 
+  -moz-appearance:textfield !important; 
+} 
+
+/*列調整*/
+.col_menu, .col_atk_buff, .col_card_buff, .col_card_cri_buff, .col_np_buff, 
+.col_special_def, .col_prob {
+  min-width: 28px;
+  max-width: 28px;
+}
+.col_atk {
+  min-width: 42px;
+  max-width: 42px;
+}
+.col_np, .col_card_sel, .col_cri_buff, .col_supereffective_buff, .col_supereffective_np, .col_fixed_dmg {
+  min-width: 36px;
+  max-width: 36px;
+}
+
+.col_special_def {
+  min-width: 31px;
+  max-width: 31px;
+}
+.col_class_affinity, .col_class_servant, .col_attribute_affinity {
+  min-width: 50px;
+  max-width: 50px;
+}
+.col_dmg_result {
+  min-width: 75px;
+  max-width: 75px;
+}
+#brand_img {
+  margin-right: 8px;
+  width: 29px;
+  height: 29px;
+}
+
+/*罫線*/
+.boundary_line {
+  margin-top: 0.5px;
+  margin-bottom: 0.5px;
+  width: 100%;
+  height: 1px;
+  background-color: #dee2e6;
+  border: none;
+  color: #dee2e6;
+}
+
+/*テーブルラッパー*/
+.calc {
+  max-width: 1039px;
+  margin: .4rem;
+}
+
+/*INPUT,SELECT高さ*/
+.atk, .cri_buff, .np_buff, .ex_atk_buff, .supereffective_buff, .supereffective_np, .fixed_dmg, .special_def,
+.class_affinity, .class_servant, .attribute_affinity, .ex_cri {
+  height: 100% !important;
+}
+.np_dmg, .np_kind, .atk_buff, .def_debuff, .card_1st, .card_1st_cri, .card_2nd, .card_2nd_cri, .card_3rd, .card_3rd_cri {
+  height: 39px !important;
+}
+.b_card_buff, .b_card_debuff {
+  height: 39px !important;
+  background-color: #FFEEEE !important;
+}
+.b_card_cri_buff {
+  height: 25.3px !important;
+  background-color: #FFEEEE !important;
+}
+.a_card_buff, .a_card_debuff {
+  height: 39px !important;
+  background-color: #F0F8FF !important;
+}
+.a_card_cri_buff {
+  height: 25.3px !important;
+  background-color: #F0F8FF !important;
+}
+.q_card_buff, .q_card_debuff {
+  height: 39px !important;
+  background-color: #EEFFEE !important;
+}
+.q_card_cri_buff {
+  height: 25.3px !important;
+  background-color: #EEFFEE !important;
+}
+
+/*撃破率計算*/
+#probTable tr, #probTable td {
+  height: 35px !important;
+}
+#prob_result {
+  font-size: 1.1rem;
+  text-align: center;
+}
+.col_prob_inp{
+  width: 25%;
+}
+.col_prob_out{
+  width: 25%;
+}
+.wrap_col_prob_out {
+  display:table;
+  text-align:right;
+  height: 100%;
+  width: 100%;
+}
+.col_prob_result {
+  width: 100%;
+}
+.wrap_col_prob_out output{
+  display:table-cell;
+  vertical-align:middle;
+}
+.wrap_col_prob_result {
+  display:table;
+  height: 100%;
+  width: 100%;
+}
+.wrap_col_prob_result output{
+  display:table-cell;
+  vertical-align:middle;
+}
