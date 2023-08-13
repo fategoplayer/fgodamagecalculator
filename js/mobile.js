@@ -9,6 +9,7 @@ const localStorageKey_Setting = "fgodamagecalculator_tab_setting"
 const downloadSaveFileName = "fgo_damage_calc.sav"
 var tabCount = 0; // 現在タブ数
 var advancedSettingFlag = false;
+var memoSettingFlag = false;
 var servantList = null;
 
 $(function(){
@@ -27,6 +28,10 @@ $(function(){
      */
     $(".calcTable").on("blur", "input", function () {
         var tabNumber = getTabNumber();
+
+        if (this.classList[0] = "memo") {
+            return false;
+        }
 
         // ブランクなら0を入れる
         if (this.value == "") {
@@ -192,6 +197,7 @@ $(function(){
 
         // 保持したスイッチを適用
         $("#advanced_setting")[0].checked = advancedSettingFlag;
+        $("#memo_setting")[0].checked = memoSettingFlag;
 
     });
 
@@ -208,13 +214,23 @@ $(function(){
             $(".advanced_setting").addClass("d-none");
         }
 
+        // メモ行表示
+        if ($("#memo_setting")[0].checked){
+            $(".memo_setting").removeClass("d-none");
+        }
+        else {
+            $(".memo_setting").addClass("d-none");
+        }
+
         // スイッチを保持
         advancedSettingFlag = $("#advanced_setting")[0].checked;
+        memoSettingFlag = $("#memo_setting")[0].checked;
 
         // ローカルストレージに格納
         if (window.localStorage) {
             let json = {
                     "advanced_setting": $("#advanced_setting")[0].checked
+                    , "memo_setting": $("#memo_setting")[0].checked
                 };
             localStorage.setItem(localStorageKey_Setting, JSON.stringify(json));
         }
@@ -275,7 +291,7 @@ $(function(){
     $(document).on("click", "#file_save", function() {
 
         var recDataArray = [];
-        var row = defaultRow + rowNumber;
+        var row = defaultTab + tabCount;
         var now = new Date().toLocaleDateString("ja-JP", {year: "numeric",month: "2-digit",day: "2-digit",hour: "2-digit",minute: "2-digit",second: "2-digit"}).replaceAll("/", "").replaceAll(":", "").replaceAll(/\s+/g, "")
 
         // 入力値を取得
@@ -378,6 +394,16 @@ $(function(){
                 }
                 else {
                     $(".advanced_setting").addClass("d-none");
+                }
+
+                // メモ行表示
+                memoSettingFlag = settingData.memo_setting;
+                $("#memo_setting")[0].checked = memoSettingFlag
+                if ($("#memo_setting")[0].checked){
+                    $(".memo_setting").removeClass("d-none");
+                }
+                else {
+                    $(".memo_setting").addClass("d-none");
                 }
             }
         }
@@ -1011,6 +1037,7 @@ function remakeServantSelectBox() {
  */
 function clearParam(tab) {
 
+    $("#memo_" + tab).val("");
     $("#atk_" + tab).val("0");
     $("#np_dmg_" + tab).val("500");
     $("#np_kind_" + tab).val("B");
@@ -1131,6 +1158,7 @@ function clearParam(tab) {
  */
 function clearParamTable(tab) {
 
+    $("#memo_" + tab).val("");
     $("#atk_" + tab).val("0");
     $("#np_dmg_" + tab).val("500");
     $("#np_kind_" + tab).val("B");
@@ -1221,6 +1249,7 @@ function clearParamTable(tab) {
  * @param tabNext コピー先タブ
  */
 function copyParam(tabNumber, tabNext){
+    $("#memo_" + tabNext).val($("#memo_" + tabNumber).val());
     $("#atk_" + tabNext).val($("#atk_" + tabNumber).val());
     $("#np_dmg_" + tabNext).val($("#np_dmg_" + tabNumber).val());
     $("#np_kind_" + tabNext).val($("#np_kind_" + tabNumber).val());
@@ -1328,8 +1357,9 @@ function changeParam(tabNumber, tabNext){
     advanced_fixed_dmg_3rd,advanced_fixed_dmg_Ex,advanced_special_def_1st,advanced_special_def_2nd,advanced_special_def_3rd,
     advanced_special_def_Ex,class_affinity,attribute_affinity,class_servant,card_1st,card_1st_cri,card_2nd,card_2nd_cri,card_3rd,
     card_3rd_cri,ex_cri,search_servant_no,search_servant_class,search_servant_rare,search_servant_lvl,search_servant_nplvl,
-    search_servant_fou,search_servant_ce,prob_hp,na_buff,sr_buff,poison,poison_buff,burn,burn_buff,curse,curse_buff,other_slip;
+    search_servant_fou,search_servant_ce,prob_hp,na_buff,sr_buff,poison,poison_buff,burn,burn_buff,curse,curse_buff,other_slip,memo;
 
+    memo = $("#memo_" + tabNext).val();
     atk = $("#atk_" + tabNext).val();
     np_dmg = $("#np_dmg_" + tabNext).val();
     np_kind = $("#np_kind_" + tabNext).val();
@@ -1421,6 +1451,7 @@ function changeParam(tabNumber, tabNext){
     // コピー
     copyParam(tabNumber, tabNext);
     
+    $("#memo_" + tabNumber).val(memo);
     $("#atk_" + tabNumber).val(atk);
     $("#np_dmg_" + tabNumber).val(np_dmg);
     $("#np_kind_" + tabNumber).val(np_kind);
@@ -1597,7 +1628,8 @@ function getRecData(tabNumber){
             + "," + $("#burn_buff_" + tabNumber).val()
             + "," + $("#curse_" + tabNumber).val()
             + "," + $("#curse_buff_" + tabNumber).val()
-            + "," + $("#other_slip_" + tabNumber).val();
+            + "," + $("#other_slip_" + tabNumber).val()
+            + "," + $("#memo_" + tabNumber).val().replaceAll(",","\t");
 
 }
 
@@ -1692,6 +1724,7 @@ function setTabData(tabNumber, inputData){
         $("#curse_" + tabNumber).val(splitData[78]);
         $("#curse_buff_" + tabNumber).val(splitData[79]);
         $("#other_slip_" + tabNumber).val(splitData[80]);
+        $("#memo_" + tabNumber).val(splitData[81].replaceAll("\t",",").replaceAll("\n"," "));
     } catch (error) {
     }
 

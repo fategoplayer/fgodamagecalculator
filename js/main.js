@@ -4,8 +4,10 @@ const correctio_lv100 = { "0": 1.546, "1": 1.677, "2": 1.546, "3": 1.434, "4": 1
 const correctio_lv110 = { "0": 1.703, "1": 1.847, "2": 1.703, "3": 1.579, "4": 1.379, "5": 1.224 };
 const correctio_lv120 = { "0": 1.859, "1": 2.016, "2": 1.859, "3": 1.724, "4": 1.506, "5": 1.337 };
 const defaultRow = 15; // 初期行数
-const maxWidthOpen = "1466px";
-const maxWidthClose = "1234px";
+const maxLineNum = 4; // メモ改行数
+const maxWidthAdvanced = 232;
+const maxWidthMemo = 120;
+const maxWidthClose = 1234;
 const localStorageKey_InputData = "fgodamagecalculator_input"
 const localStorageKey_Setting = "fgodamagecalculator_setting"
 const downloadSaveFileName = "fgo_damage_calc.sav"
@@ -13,6 +15,7 @@ var rowNumber = 0; // 現在行数
 var selDamageTotal = 0;
 var selDamageNum = 0;
 var advancedSettingFlag = false;
+var memoSettingFlag = false;
 var servantList = null;
 
 $(function(){
@@ -20,6 +23,16 @@ $(function(){
      * フォーカスイベント
      */
     $(document).on("focus", "input", function () {
+        
+        // フォーカス時に選択する
+        this.select();
+
+    });
+
+    /**
+     * フォーカスイベント
+     */
+    $(document).on("focus", "textarea", function () {
         
         // フォーカス時に選択する
         this.select();
@@ -64,6 +77,23 @@ $(function(){
 
         // 選択トータル初期化
         clearSelTotal();
+
+    });
+
+    /**
+     * メモ改行制御
+     */
+    $(".memo").keypress(function(e) { 
+        var c = e.which ? e.which : e.keyCode; // クロスブラウザ対応
+        // 各行を配列の要素に分ける
+        var lines = this.value.split("\n");
+
+        // 改行制限を超えた場合キャンセル
+        if (c == 13) {
+            if (lines.length >= maxLineNum) {
+                return false;
+             }
+        }
 
     });
 
@@ -144,6 +174,7 @@ $(function(){
 
         // 保持したスイッチを適用
         $("#advanced_setting")[0].checked = advancedSettingFlag;
+        $("#memo_setting")[0].checked = memoSettingFlag;
 
     });
 
@@ -152,23 +183,37 @@ $(function(){
      */
     $(document).on("click", "#accept", function() {
 
+        var maxWidth = maxWidthClose;
+
         // 高度なバフ設定表示
         if ($("#advanced_setting")[0].checked){
             $(".col_advanced_setting").css({"display":"table-cell"});
-            $(".calc").css({"max-width":maxWidthOpen});
+            maxWidth += maxWidthAdvanced;
         }
         else {
             $(".col_advanced_setting").css({"display":"none"});
-            $(".calc").css({"max-width":maxWidthClose});
         }
+
+        // メモ列表示
+        if ($("#memo_setting")[0].checked){
+            $(".col_memo").css({"display":"table-cell"});
+            maxWidth += maxWidthMemo;
+        }
+        else {
+            $(".col_memo").css({"display":"none"});
+        }
+
+        $(".calc").css({"max-width":maxWidth + "px"});
 
         // スイッチを保持
         advancedSettingFlag = $("#advanced_setting")[0].checked;
+        memoSettingFlag = $("#memo_setting")[0].checked;
 
         // ローカルストレージに格納
         if (window.localStorage) {
             let json = {
                     "advanced_setting": $("#advanced_setting")[0].checked
+                    , "memo_setting" : $("#memo_setting")[0].checked
                 };
             localStorage.setItem(localStorageKey_Setting, JSON.stringify(json));
         }
@@ -350,6 +395,7 @@ $(function(){
         if (window.localStorage) {
             let json = localStorage.getItem(localStorageKey_Setting);
             let settingData = JSON.parse(json);
+            let maxWidth = maxWidthClose;
 
             if (json != null) {
                 // 高度なバフ設定表示
@@ -357,12 +403,25 @@ $(function(){
                 $("#advanced_setting")[0].checked = advancedSettingFlag
                 if ($("#advanced_setting")[0].checked){
                     $(".col_advanced_setting").css({"display":"table-cell"});
-                    $(".calc").css({"max-width":maxWidthOpen});
+                    maxWidth += maxWidthAdvanced;
                 }
                 else {
                     $(".col_advanced_setting").css({"display":"none"});
-                    $(".calc").css({"max-width":maxWidthClose});
                 }
+
+                // メモ列表示
+                memoSettingFlag = settingData.memo_setting;
+                $("#memo_setting")[0].checked = memoSettingFlag
+                if ($("#memo_setting")[0].checked){
+                    $(".col_memo").css({"display":"table-cell"});
+                    maxWidth += maxWidthMemo;
+                }
+                else {
+                    $(".col_memo").css({"display":"none"});
+                }
+
+                $(".calc").css({"max-width":maxWidth + "px"});
+
             }
         }
 
@@ -539,6 +598,8 @@ $(function(){
 
                  // 遷移先が別IDの場合の対応
                 switch (activeIdStr){
+                    case "memo_" :
+                        break;
                     case "def_debuff_" :
                         nextIdStr = "atk_buff_";
                         if (Number(splitStr[splitStr.length - 1]) == (rowNumber + defaultRow - 1)) {
@@ -783,6 +844,8 @@ $(function(){
                 
                 // 遷移先が別IDの場合の対応
                switch (activeIdStr){
+                    case "memo_" :
+                        break;
                     case "def_debuff_" :
                         nextIdStr = "atk_buff_";
                         recNumber++;
@@ -1497,6 +1560,7 @@ function remakeServantSelectBox() {
  */
 function clearParam(row) {
 
+    $("#memo_" + row).val("");
     $("#atk_" + row).val("0");
     $("#np_dmg_" + row).val("500");
     $("#np_kind_" + row).val("B");
@@ -1617,6 +1681,7 @@ function clearParam(row) {
  */
 function clearParamTable(row) {
 
+    $("#memo_" + row).val("");
     $("#atk_" + row).val("0");
     $("#np_dmg_" + row).val("500");
     $("#np_kind_" + row).val("B");
@@ -1701,7 +1766,6 @@ function clearParamTable(row) {
 
 }
 
-
 /**
  * 選択トータル初期化
  */
@@ -1720,6 +1784,7 @@ function clearParamTable(row) {
  * @param recNext コピー先行
  */
 function copyParam(recNumber, recNext){
+    $("#memo_" + recNext).val($("#memo_" + recNumber).val());
     $("#atk_" + recNext).val($("#atk_" + recNumber).val());
     $("#np_dmg_" + recNext).val($("#np_dmg_" + recNumber).val());
     $("#np_kind_" + recNext).val($("#np_kind_" + recNumber).val());
@@ -1827,8 +1892,9 @@ function changeParam(recNumber, recNext){
     advanced_fixed_dmg_3rd,advanced_fixed_dmg_Ex,advanced_special_def_1st,advanced_special_def_2nd,advanced_special_def_3rd,
     advanced_special_def_Ex,class_affinity,attribute_affinity,class_servant,card_1st,card_1st_cri,card_2nd,card_2nd_cri,card_3rd,
     card_3rd_cri,ex_cri,search_servant_no,search_servant_class,search_servant_rare,search_servant_lvl,search_servant_nplvl,
-    search_servant_fou,search_servant_ce,prob_hp,na_buff,sr_buff,poison,poison_buff,burn,burn_buff,curse,curse_buff,other_slip;
+    search_servant_fou,search_servant_ce,prob_hp,na_buff,sr_buff,poison,poison_buff,burn,burn_buff,curse,curse_buff,other_slip,memo;
 
+    memo = $("#memo_" + recNext).val();
     atk = $("#atk_" + recNext).val();
     np_dmg = $("#np_dmg_" + recNext).val();
     np_kind = $("#np_kind_" + recNext).val();
@@ -1920,6 +1986,7 @@ function changeParam(recNumber, recNext){
     // コピー
     copyParam(recNumber, recNext);
     
+    $("#memo_" + recNumber).val(memo);
     $("#atk_" + recNumber).val(atk);
     $("#np_dmg_" + recNumber).val(np_dmg);
     $("#np_kind_" + recNumber).val(np_kind);
@@ -2096,7 +2163,8 @@ function getRecData(recNumber){
             + "," + $("#burn_buff_" + recNumber).val()
             + "," + $("#curse_" + recNumber).val()
             + "," + $("#curse_buff_" + recNumber).val()
-            + "," + $("#other_slip_" + recNumber).val();
+            + "," + $("#other_slip_" + recNumber).val()
+            + "," + $("#memo_" + recNumber).val().replaceAll(",","\t");
 
 }
 
@@ -2191,6 +2259,7 @@ function setRecData(recNumber, inputData){
         $("#curse_" + recNumber).val(splitData[78]);
         $("#curse_buff_" + recNumber).val(splitData[79]);
         $("#other_slip_" + recNumber).val(splitData[80]);
+        $("#memo_" + recNumber).val(splitData[81].replaceAll("\t",","));
     } catch (error) {
     }
 

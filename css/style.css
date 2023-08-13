@@ -28,6 +28,14 @@ table th {
   font-size: .75rem !important;
 }
 
+textarea {
+  resize: none !important;
+  vertical-align: middle;
+  text-align: left !important;
+  overflow: hidden;
+  white-space: break-spaces;
+}
+
 table tr, table td {
   height: 80px;
 }
@@ -80,6 +88,10 @@ input[type="number"] {
 } 
 
 /*列調整*/
+.col_memo {
+  min-width: 120px;
+  max-width: 120px;
+}
 .col_menu, .col_atk_buff, .col_card_buff, .col_card_power_buff, .col_card_cri_buff, .col_np_buff, .col_ex_atk_buff, 
 .col_footprints, .col_advanced_setting, .col_special_def, .col_prob {
   min-width: 28px;
@@ -93,7 +105,7 @@ input[type="number"] {
   min-width: 36px;
   max-width: 36px;
 }
-.col_advanced_setting {
+.col_memo, .col_advanced_setting {
   display: none;
 }
 .col_special_def {

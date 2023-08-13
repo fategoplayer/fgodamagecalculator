@@ -29,6 +29,10 @@ table th {
   vertical-align: middle;
 }
 
+.memo {
+  text-align: left !important;
+}
+
 .input-group-sm {
   border: 1px solid #ced4da;
 }
@@ -154,7 +158,7 @@ footer a {
 
 /*INPUT,SELECT高さ*/
 .atk, .atk_buff, .cri_buff, .np_buff, .ex_atk_buff, .supereffective_buff, .supereffective_np, .fixed_dmg, .special_def,
-.class_affinity, .class_servant, .attribute_affinity, .ex_cri {
+.class_affinity, .class_servant, .attribute_affinity, .ex_cri, .memo {
   height: 100% !important;
 }
 .np_dmg, .np_kind, .card_1st, .card_1st_cri, .card_2nd, .card_2nd_cri, .card_3rd, .card_3rd_cri {
