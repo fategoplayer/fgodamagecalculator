@@ -1158,7 +1158,6 @@ function clearParam(tab) {
  */
 function clearParamTable(tab) {
 
-    $("#memo_" + tab).val("");
     $("#atk_" + tab).val("0");
     $("#np_dmg_" + tab).val("500");
     $("#np_kind_" + tab).val("B");

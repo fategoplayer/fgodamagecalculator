@@ -1681,7 +1681,6 @@ function clearParam(row) {
  */
 function clearParamTable(row) {
 
-    $("#memo_" + row).val("");
     $("#atk_" + row).val("0");
     $("#np_dmg_" + row).val("500");
     $("#np_kind_" + row).val("B");
