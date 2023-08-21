@@ -29,7 +29,7 @@ $(function(){
     $(".calcTable").on("blur", "input", function () {
         var tabNumber = getTabNumber();
 
-        if (this.classList[0] = "memo") {
+        if (this.classList[0] == "memo") {
             return false;
         }
 
