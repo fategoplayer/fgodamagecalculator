@@ -3,6 +3,7 @@ const correctio_lv90 = { "0": 1.390, "1": 1.508, "2": 1.390, "3": 1.289, "4": 1.
 const correctio_lv100 = { "0": 1.546, "1": 1.677, "2": 1.546, "3": 1.434, "4": 1.253, "5": 1.112 };
 const correctio_lv110 = { "0": 1.703, "1": 1.847, "2": 1.703, "3": 1.579, "4": 1.379, "5": 1.224 };
 const correctio_lv120 = { "0": 1.859, "1": 2.016, "2": 1.859, "3": 1.724, "4": 1.506, "5": 1.337 };
+const classScore_class = ["Saber","Archer","Lancer","Rider","Caster","Assasin","Berserker","Ruler","Avenger","MoonCancer","AlterEgo","Foreigner","Pretender","Beast"];
 const defaultRow = 15; // 初期行数
 const maxLineNum = 4; // メモ改行数
 const maxWidthAdvanced = 232;
@@ -10,6 +11,8 @@ const maxWidthMemo = 120;
 const maxWidthClose = 1234;
 const localStorageKey_InputData = "fgodamagecalculator_input"
 const localStorageKey_Setting = "fgodamagecalculator_setting"
+const localStorageKey_BuffPreset = "fgodamagecalculator_buffpreset"
+const localStorageKey_ClassScore = "fgodamagecalculator_classscore"
 const downloadSaveFileName = "fgo_damage_calc.sav"
 var rowNumber = 0; // 現在行数
 var selDamageTotal = 0;
@@ -17,6 +20,8 @@ var selDamageNum = 0;
 var advancedSettingFlag = false;
 var memoSettingFlag = false;
 var servantList = null;
+var buffPresetDataList = [];
+var classScoreDataList = [];
 
 $(function(){
     /**
@@ -423,6 +428,33 @@ $(function(){
                 $(".calc").css({"max-width":maxWidth + "px"});
 
             }
+
+            // バフプリセット
+            let buffpreset_jsonlist = localStorage.getItem(localStorageKey_BuffPreset);
+
+            if (buffpreset_jsonlist != null) {
+                // バフプリセットを保持 
+                buffPresetDataList = JSON.parse(buffpreset_jsonlist);
+
+                // プリセットセレクトボックス作成
+                remakePresetSelectBox();
+
+                // プリセットデータ設定
+                setPresetDataUpdDel($("#buffPreset_name").val());
+                setPresetDataSel($("#buffPreset_sel_name").val());
+
+            }
+
+            // クラススコア
+            let classScore_jsonlist = localStorage.getItem(localStorageKey_ClassScore);
+
+            if (classScore_jsonlist != null) {
+                // クラススコアを保持 
+                classScoreDataList = JSON.parse(classScore_jsonlist);
+                // クラススコアを設定
+                setClassScore()
+            }
+            
         }
 
     });
@@ -1101,6 +1133,9 @@ $(function(){
         // サーヴァントセレクトボックスを再作成
         remakeSearchServantSelectBox();
 
+        // サーヴァント情報表示
+        servantInfo();
+
     });
 
     /**
@@ -1110,6 +1145,56 @@ $(function(){
 
         // サーヴァントセレクトボックスを再作成
         remakeServantSelectBox();
+
+    });
+
+    /**
+     * サーヴァント検索―サーヴァント名変更イベント
+     */
+    $(document).on("change", "#search_servant_name", function () {
+
+        // サーヴァント情報表示
+        servantInfo();
+
+    });
+
+    /**
+     * サーヴァント検索―レベル変更イベント
+     */
+    $(document).on("change", "#search_servant_lvl", function () {
+
+        // サーヴァント情報表示
+        servantInfo();
+
+    });
+
+    /**
+     * サーヴァント検索―宝具レベル変更イベント
+     */
+    $(document).on("change", "#search_servant_nplvl", function () {
+
+        // サーヴァント情報表示
+        servantInfo();
+
+    });
+
+    /**
+     * サーヴァント検索―フォウ変更イベント
+     */
+    $(document).on("change", "#search_servant_fou", function () {
+
+        // サーヴァント情報表示
+        servantInfo();
+
+    });
+
+    /**
+     * サーヴァント検索―礼装ATK変更イベント
+     */
+    $(document).on("change", "#search_servant_ceatk", function () {
+
+        // サーヴァント情報表示
+        servantInfo();
 
     });
 
@@ -1163,6 +1248,9 @@ $(function(){
 
         // 行番号を保持
         $("#search_recNumber").val(recNumber);
+
+        // サーヴァント情報表示
+        servantInfo();
 
         return false;
 
@@ -1332,6 +1420,74 @@ $(function(){
                     $("#search_servant_ce_" + recNumber).val($("#search_servant_ceatk").val());
                     $("#search_servant_no_" + recNumber).val(this["No"]);
 
+                    var caseClass;
+                    switch (this["クラス"]) {
+                        case "剣" :
+                            caseClass = "Saber"
+                            break;
+                        case "弓" :
+                            caseClass = "Archer"
+                            break;
+                        case "槍" :
+                            caseClass = "Lancer"
+                            break;
+                        case "騎" :
+                            caseClass = "Rider"
+                            break;
+                        case "術" :
+                            caseClass = "Caster"
+                            break;
+                        case "殺" :
+                            caseClass = "Assasin"
+                            break;
+                        case "狂" :
+                            caseClass = "Berserker"
+                            break;
+                        case "裁" :
+                            caseClass = "Ruler"
+                            break;
+                        case "讐" :
+                            caseClass = "Avenger"
+                            break;
+                        case "月" :
+                            caseClass = "MoonCancer"
+                            break;
+                        case "分" :
+                            caseClass = "AlterEgo"
+                            break;
+                        case "降" :
+                            caseClass = "Foreigner"
+                            break;
+                        case "詐" :
+                            caseClass = "Pretender"
+                            break;
+                        case "獣" :
+                            caseClass = "Beast"
+                            break;
+                        default :
+                            break;
+                    }
+
+                    // クラススコア反映
+                    $(classScoreDataList).each(function() {
+
+                        if (this.class == caseClass) {
+                            $("#b_card_power_buff_" + recNumber).val(BigNumber(parseFloat($("#b_card_power_buff_" + recNumber).val())).plus(parseFloat(this.b_card_power_buff)));
+                            $("#a_card_power_buff_" + recNumber).val(BigNumber(parseFloat($("#a_card_power_buff_" + recNumber).val())).plus(parseFloat(this.a_card_power_buff)));
+                            $("#q_card_power_buff_" + recNumber).val(BigNumber(parseFloat($("#q_card_power_buff_" + recNumber).val())).plus(parseFloat(this.q_card_power_buff)));
+                            $("#cri_buff_" + recNumber).val(BigNumber(parseFloat($("#cri_buff_" + recNumber).val())).plus(parseFloat(this.cri_buff)));
+                            $("#b_card_cri_buff_" + recNumber).val(BigNumber(parseFloat($("#b_card_cri_buff_" + recNumber).val())).plus(parseFloat(this.b_card_cri_buff)));
+                            $("#a_card_cri_buff_" + recNumber).val(BigNumber(parseFloat($("#a_card_cri_buff_" + recNumber).val())).plus(parseFloat(this.a_card_cri_buff)));
+                            $("#q_card_cri_buff_" + recNumber).val(BigNumber(parseFloat($("#q_card_cri_buff_" + recNumber).val())).plus(parseFloat(this.q_card_cri_buff)));
+                            $("#np_buff_" + recNumber).val(BigNumber(parseFloat($("#np_buff_" + recNumber).val())).plus(parseFloat(this.np_buff)));
+                            $("#ex_atk_buff_" + recNumber).val(BigNumber(parseFloat($("#ex_atk_buff_" + recNumber).val())).plus(parseFloat(this.ex_atk_buff)));
+
+                            return;
+                        }
+
+                    });
+
+
                     return;
 
                 }
@@ -1344,12 +1500,370 @@ $(function(){
         calcMain(recNumber)
 
         // モーダルを閉じる
-        $("#searchModal").modal("hide");
+        //$("#searchModal").modal("hide");
         
         return true;
 
     });
 
+    //開くボタンをクリックしたらモーダルを表示する
+    $(document).on("click", ".buffPreset_link", function() {
+
+        var recNumber = this.id.split("_")[this.id.split("_").length - 1];
+
+        // 行番号を保持
+        $("#buffPreset_recNumber").val(recNumber);
+
+        return false;
+
+    });
+
+    /**
+     * バフプリセットフォーカス遷移イベント
+     */
+    $("#buffPresetSelTable").on("blur", "input", function () {
+
+        if (this.id == "name_buffPreset_sel") {
+            return;
+        }
+
+        // ブランクなら0を入れる
+        if (this.value == "") {
+            this.value = "0";
+        }
+
+        // 数値変換
+        this.value = parseFloat(this.value);
+
+    });
+
+    /**
+     * バフプリセットフォーカス遷移イベント
+     */
+    $("#buffPresetTable").on("blur", "input", function () {
+
+        if (this.id == "name_buffPreset_inp") {
+            return;
+        }
+
+        // ブランクなら0を入れる
+        if (this.value == "") {
+            this.value = "0";
+        }
+
+        // 数値変換
+        this.value = parseFloat(this.value);
+
+    });
+
+    /**
+     * バフプリセットフォーカス遷移イベント
+     */
+    $("#buffPresetUpdTable").on("blur", "input", function () {
+
+        if (this.id == "name_buffPreset_upd_del") {
+            return;
+        }
+
+        // ブランクなら0を入れる
+        if (this.value == "") {
+            this.value = "0";
+        }
+
+        // 数値変換
+        this.value = parseFloat(this.value);
+
+    });
+
+    /**
+     * バフプリセット―タブ遷移イベント(登録)
+     */
+    $("#nav-buffPreset-regist").on("shown.bs.tab", function () {
+        
+        $("#btnbuffPreset_regist").removeClass("d-none");
+        $("#btnbuffPreset_del").addClass("d-none");
+        $("#btnbuffPreset_upd").addClass("d-none");
+        
+    });
+
+    /**
+     * バフプリセット―タブ遷移イベント(更新・削除)
+     */
+    $("#nav-buffPreset-upd-del").on("shown.bs.tab", function () {
+        
+        $("#btnbuffPreset_regist").addClass("d-none");
+        $("#btnbuffPreset_del").removeClass("d-none");
+        $("#btnbuffPreset_upd").removeClass("d-none");
+        
+    });
+
+    /**
+     * バフプリセット―登録押下イベント
+     */
+    $(document).on("click", "#btnbuffPreset_regist", function() {
+
+        let date = new Date()
+        let now = date.toLocaleDateString("ja-JP", {year: "numeric",month: "2-digit",day: "2-digit",hour: "2-digit",minute: "2-digit",second: "2-digit"}).replaceAll("/", "").replaceAll(":", "").replaceAll(/\s+/g, "") + date.getMilliseconds();
+        let name = $("#name_buffPreset_inp").val();
+
+        if (name == "") { name = "プリセット名無し";}
+
+        let json = {
+            "id": now
+            , "name": name
+            , "atk_buff" : $("#atk_buff_buffPreset_inp").val()
+            , "def_debuff" : $("#def_debuff_buffPreset_inp").val()
+            , "b_card_buff" : $("#b_card_buff_buffPreset_inp").val()
+            , "a_card_buff" : $("#a_card_buff_buffPreset_inp").val()
+            , "q_card_buff" : $("#q_card_buff_buffPreset_inp").val()
+            , "b_card_debuff" : $("#b_card_debuff_buffPreset_inp").val()
+            , "a_card_debuff" : $("#a_card_debuff_buffPreset_inp").val()
+            , "q_card_debuff" : $("#q_card_debuff_buffPreset_inp").val()
+            , "b_card_power_buff" : $("#b_card_power_buff_buffPreset_inp").val()
+            , "a_card_power_buff" : $("#a_card_power_buff_buffPreset_inp").val()
+            , "q_card_power_buff" : $("#q_card_power_buff_buffPreset_inp").val()
+            , "cri_buff" : $("#cri_buff_buffPreset_inp").val()
+            , "b_card_cri_buff" : $("#b_card_cri_buff_buffPreset_inp").val()
+            , "a_card_cri_buff" : $("#a_card_cri_buff_buffPreset_inp").val()
+            , "q_card_cri_buff" : $("#q_card_cri_buff_buffPreset_inp").val()
+            , "np_buff" : $("#np_buff_buffPreset_inp").val()
+            , "ex_atk_buff" : $("#ex_atk_buff_buffPreset_inp").val()
+            , "supereffective_buff" : $("#supereffective_buff_buffPreset_inp").val()
+            , "fixed_dmg" : $("#fixed_dmg_buffPreset_inp").val()
+            , "dream_end" : $("#dream_end_buffPreset_inp")[0].checked
+        };
+
+        buffPresetDataList.push(json);
+
+        // ローカルストレージに格納
+        if (window.localStorage) {
+            localStorage.setItem(localStorageKey_BuffPreset, JSON.stringify(buffPresetDataList));
+        }
+
+        // プリセットセレクトボックス作成
+        remakePresetSelectBox();
+
+        // プリセットデータ設定
+        setPresetDataUpdDel($("#buffPreset_name").val());
+
+        // 初期値を設定
+        $("#name_buffPreset_inp").val("");
+        $("#atk_buff_buffPreset_inp").val("0");
+        $("#def_debuff_buffPreset_inp").val("0");
+        $("#b_card_buff_buffPreset_inp").val("0");
+        $("#a_card_buff_buffPreset_inp").val("0");
+        $("#q_card_buff_buffPreset_inp").val("0");
+        $("#b_card_debuff_buffPreset_inp").val("0");
+        $("#a_card_debuff_buffPreset_inp").val("0");
+        $("#q_card_debuff_buffPreset_inp").val("0");
+        $("#b_card_power_buff_buffPreset_inp").val("0");
+        $("#a_card_power_buff_buffPreset_inp").val("0");
+        $("#q_card_power_buff_buffPreset_inp").val("0");
+        $("#cri_buff_buffPreset_inp").val("0");
+        $("#b_card_cri_buff_buffPreset_inp").val("0");
+        $("#a_card_cri_buff_buffPreset_inp").val("0");
+        $("#q_card_cri_buff_buffPreset_inp").val("0");
+        $("#np_buff_buffPreset_inp").val("0");
+        $("#ex_atk_buff_buffPreset_inp").val("0");
+        $("#supereffective_buff_buffPreset_inp").val("0");
+        $("#fixed_dmg_buffPreset_inp").val("0");
+        $("#dream_end_buffPreset_inp")[0].checked = false;
+        
+        return true;
+
+    });
+
+    /**
+     * セレクトボックス変更イベント
+     */
+    $(document).on("change", "#buffPreset_name", function () {
+
+        // プリセットデータ設定
+        setPresetDataUpdDel($("#buffPreset_name").val());
+
+    });
+
+    /**
+     * セレクトボックス変更イベント
+     */
+    $(document).on("change", "#buffPreset_sel_name", function () {
+
+        // プリセットデータ設定
+        setPresetDataSel($("#buffPreset_sel_name").val());
+
+    });
+
+    /**
+     * バフプリセット―更新押下イベント
+     */
+    $(document).on("click", "#btnbuffPreset_upd", function() {
+
+        let id = $("#buffPreset_name").val();
+
+        $(buffPresetDataList).each(function() {
+
+            if (this.id == id) {
+                // リストを更新
+                this.name = $("#name_buffPreset_upd_del").val();
+                this.atk_buff = $("#atk_buff_buffPreset_upd_del").val();
+                this.def_debuff = $("#def_debuff_buffPreset_upd_del").val();
+                this.b_card_buff = $("#b_card_buff_buffPreset_upd_del").val();
+                this.a_card_buff = $("#a_card_buff_buffPreset_upd_del").val();
+                this.q_card_buff = $("#q_card_buff_buffPreset_upd_del").val();
+                this.b_card_debuff = $("#b_card_debuff_buffPreset_upd_del").val();
+                this.a_card_debuff = $("#a_card_debuff_buffPreset_upd_del").val();
+                this.q_card_debuff = $("#q_card_debuff_buffPreset_upd_del").val();
+                this.b_card_power_buff = $("#b_card_power_buff_buffPreset_upd_del").val();
+                this.a_card_power_buff = $("#a_card_power_buff_buffPreset_upd_del").val();
+                this.q_card_power_buff = $("#q_card_power_buff_buffPreset_upd_del").val();
+                this.cri_buff = $("#cri_buff_buffPreset_upd_del").val();
+                this.b_card_cri_buff = $("#b_card_cri_buff_buffPreset_upd_del").val();
+                this.a_card_cri_buff = $("#a_card_cri_buff_buffPreset_upd_del").val();
+                this.q_card_cri_buff = $("#q_card_cri_buff_buffPreset_upd_del").val();
+                this.np_buff = $("#np_buff_buffPreset_upd_del").val();
+                this.ex_atk_buff = $("#ex_atk_buff_buffPreset_upd_del").val();
+                this.supereffective_buff = $("#supereffective_buff_buffPreset_upd_del").val();
+                this.fixed_dmg = $("#fixed_dmg_buffPreset_upd_del").val();
+                this.dream_end = $("#dream_end_buffPreset_upd_del")[0].checked;
+
+                // プリセットセレクトボックス作成
+                remakePresetSelectBox();
+
+                // プリセットデータ設定
+                setPresetDataSel($("#buffPreset_sel_name").val());
+
+                // セレクトボックスのプリセット名を変更
+                $("#buffPreset_name").val(this.id);
+
+                // ローカルストレージに格納
+                if (window.localStorage) {
+                    localStorage.setItem(localStorageKey_BuffPreset, JSON.stringify(buffPresetDataList));
+                }
+    
+                return;
+            }
+    
+        });
+
+    });
+
+    /**
+     * バフプリセット―削除押下イベント
+     */
+    $(document).on("click", "#btnbuffPreset_del", function() {
+
+        let id = $("#buffPreset_name").val();
+
+        buffPresetDataList = buffPresetDataList.filter((preset) => {
+            return (preset.id != id);
+        });
+
+        // プリセットセレクトボックス作成
+        remakePresetSelectBox();
+
+        // プリセットデータ設定
+        setPresetDataUpdDel($("#buffPreset_name").val());
+        setPresetDataSel($("#buffPreset_sel_name").val());
+
+        // ローカルストレージに格納
+        if (window.localStorage) {
+            localStorage.setItem(localStorageKey_BuffPreset, JSON.stringify(buffPresetDataList));
+        }
+
+    });
+
+    /**
+     * バフプリセット―適用押下イベント
+     */
+    $(document).on("click", "#btnbuffPreset_apply", function() {
+
+        var recNumber = $("#buffPreset_recNumber").val();
+
+        if ($("#buffPreset_name").val() == null){
+            return;
+        }
+
+        $("#atk_buff_" + recNumber).val(BigNumber(parseFloat($("#atk_buff_" + recNumber).val())).plus(parseFloat($("#atk_buff_buffPreset_sel").val())));
+        $("#def_debuff_" + recNumber).val(BigNumber(parseFloat($("#def_debuff_" + recNumber).val())).plus(parseFloat($("#def_debuff_buffPreset_sel").val())));
+        $("#b_card_buff_" + recNumber).val(BigNumber(parseFloat($("#b_card_buff_" + recNumber).val())).plus(parseFloat($("#b_card_buff_buffPreset_sel").val())));
+        $("#b_card_debuff_" + recNumber).val(BigNumber(parseFloat($("#b_card_debuff_" + recNumber).val())).plus(parseFloat($("#b_card_debuff_buffPreset_sel").val())));
+        $("#b_card_power_buff_" + recNumber).val(BigNumber(parseFloat($("#b_card_power_buff_" + recNumber).val())).plus(parseFloat($("#b_card_power_buff_buffPreset_sel").val())));
+        $("#b_card_cri_buff_" + recNumber).val(BigNumber(parseFloat($("#b_card_cri_buff_" + recNumber).val())).plus(parseFloat($("#b_card_cri_buff_buffPreset_sel").val())));
+        $("#a_card_buff_" + recNumber).val(BigNumber(parseFloat($("#a_card_buff_" + recNumber).val())).plus(parseFloat($("#a_card_buff_buffPreset_sel").val())));
+        $("#a_card_debuff_" + recNumber).val(BigNumber(parseFloat($("#a_card_debuff_" + recNumber).val())).plus(parseFloat($("#a_card_debuff_buffPreset_sel").val())));
+        $("#a_card_power_buff_" + recNumber).val(BigNumber(parseFloat($("#a_card_power_buff_" + recNumber).val())).plus(parseFloat($("#a_card_power_buff_buffPreset_sel").val())));
+        $("#a_card_cri_buff_" + recNumber).val(BigNumber(parseFloat($("#a_card_cri_buff_" + recNumber).val())).plus(parseFloat($("#a_card_cri_buff_buffPreset_sel").val())));
+        $("#q_card_buff_" + recNumber).val(BigNumber(parseFloat($("#q_card_buff_" + recNumber).val())).plus(parseFloat($("#q_card_buff_buffPreset_sel").val())));
+        $("#q_card_debuff_" + recNumber).val(BigNumber(parseFloat($("#q_card_debuff_" + recNumber).val())).plus(parseFloat($("#q_card_debuff_buffPreset_sel").val())));
+        $("#q_card_power_buff_" + recNumber).val(BigNumber(parseFloat($("#q_card_power_buff_" + recNumber).val())).plus(parseFloat($("#q_card_power_buff_buffPreset_sel").val())));
+        $("#q_card_cri_buff_" + recNumber).val(BigNumber(parseFloat($("#q_card_cri_buff_" + recNumber).val())).plus(parseFloat($("#q_card_cri_buff_buffPreset_sel").val())));
+        $("#cri_buff_" + recNumber).val(BigNumber(parseFloat($("#cri_buff_" + recNumber).val())).plus(parseFloat($("#cri_buff_buffPreset_sel").val())));
+        $("#np_buff_" + recNumber).val(BigNumber(parseFloat($("#np_buff_" + recNumber).val())).plus(parseFloat($("#np_buff_buffPreset_sel").val())));
+        $("#ex_atk_buff_" + recNumber).val(BigNumber(parseFloat($("#ex_atk_buff_" + recNumber).val())).plus(parseFloat($("#ex_atk_buff_buffPreset_sel").val())));
+        $("#supereffective_buff_" + recNumber).val(BigNumber(parseFloat($("#supereffective_buff_" + recNumber).val())).plus(parseFloat($("#supereffective_buff_buffPreset_sel").val())));
+        $("#fixed_dmg_" + recNumber).val(BigNumber(parseFloat($("#fixed_dmg_" + recNumber).val())).plus(parseFloat($("#fixed_dmg_buffPreset_sel").val())));
+
+        if ($("#dream_end_buffPreset_sel")[0].checked) {
+            $("#np_buff_" + recNumber).val(parseFloat($("#np_buff_" + recNumber).val()) * 2);
+        }
+
+        // 再計算
+        calcMain(recNumber);
+
+    });              
+
+    /**
+     * クラススコアフォーカス遷移イベント
+     */
+    $(".classScoreTable").on("blur", "input", function () {
+
+        // ブランクなら0を入れる
+        if (this.value == "") {
+            this.value = "0";
+        }
+
+        // 数値変換
+        this.value = parseFloat(this.value);
+
+    });
+
+    /**
+     * クラススコア―登録押下イベント
+     */
+    $(document).on("click", "#btnClassScore_regist", function() {
+
+        classScoreDataList = [];
+
+        for (const className of classScore_class) {
+
+            let json = {
+                "class": className
+                , "b_card_power_buff" : $("#b_card_power_buff_classScore_" + className).val()
+                , "a_card_power_buff" : $("#a_card_power_buff_classScore_" + className).val()
+                , "q_card_power_buff" : $("#q_card_power_buff_classScore_" + className).val()
+                , "cri_buff" : $("#cri_buff_classScore_" + className).val()
+                , "b_card_cri_buff" : $("#b_card_cri_buff_classScore_" + className).val()
+                , "a_card_cri_buff" : $("#a_card_cri_buff_classScore_" + className).val()
+                , "q_card_cri_buff" : $("#q_card_cri_buff_classScore_" + className).val()
+                , "np_buff" : $("#np_buff_classScore_" + className).val()
+                , "ex_atk_buff" : $("#ex_atk_buff_classScore_" + className).val()
+                , "sr_buff" : $("#sr_buff_classScore_" + className).val()
+            };
+
+            classScoreDataList.push(json);
+
+        }        
+
+        // ローカルストレージに格納
+        if (window.localStorage) {
+            localStorage.setItem(localStorageKey_ClassScore, JSON.stringify(classScoreDataList));
+        }
+        
+        return true;
+
+    });
+
+    
     // CSVの読み込み
     $.get("https://fategoplayer.github.io/fgodamagecalculator/data/servant_data.csv", parseCsv, "text");
 
@@ -1379,8 +1893,8 @@ function parseCsv(data) {
         servant["BaseAtk"] = this[6];
         servant["MaxAtk"] = this[7];
         servant["天地人"] = this[8];
-        servant["A_N/A"] = this[9];
-        servant["B_N/A"] = this[10];
+        servant["B_N/A"] = this[9];
+        servant["A_N/A"] = this[10];
         servant["Q_N/A"] = this[11];
         servant["EX_N/A"] = this[12];
         servant["N_N/A"] = this[13];
@@ -1388,8 +1902,8 @@ function parseCsv(data) {
         servant["SR"] = this[15];
         servant["SW"] = this[16];
         servant["DR"] = this[17];
-        servant["AHIT"] = this[18];
-        servant["BHIT"] = this[19];
+        servant["BHIT"] = this[18];
+        servant["AHIT"] = this[19];
         servant["QHIT"] = this[20];
         servant["EXHIT"] = this[21];
         servant["宝具HIT"] = this[22];
@@ -1401,26 +1915,54 @@ function parseCsv(data) {
         servant["宝具Lv4"] = this[28];
         servant["宝具Lv5"] = this[29];
         servant["クラススキル_固定ダメージ"] = this[30];
-        servant["クラススキル_Aバフ"] = this[31];
-        servant["クラススキル_Bバフ"] = this[32];
+        servant["クラススキル_Bバフ"] = this[31];
+        servant["クラススキル_Aバフ"] = this[32];
         servant["クラススキル_Qバフ"] = this[33];
         servant["クラススキル_宝具バフ"] = this[34];
         servant["クラススキル_クリバフ"] = this[35];
-        servant["クラススキル_Aクリバフ"] = this[36];
-        servant["クラススキル_Bクリバフ"] = this[37];
+        servant["クラススキル_Bクリバフ"] = this[36];
+        servant["クラススキル_Aクリバフ"] = this[37];
         servant["クラススキル_Qクリバフ"] = this[38];
         servant["クラススキル_NP獲得バフ"] = this[39];
-        servant["クラススキル_NP獲得Aバフ"] = this[40];
-        servant["クラススキル_NP獲得Bバフ"] = this[41];
+        servant["クラススキル_NP獲得Bバフ"] = this[40];
+        servant["クラススキル_NP獲得Aバフ"] = this[41];
         servant["クラススキル_NP獲得Qバフ"] = this[42];
         servant["クラススキル_スター獲得バフ"] = this[43];
-        servant["クラススキル_スター獲得Aバフ"] = this[44];
-        servant["クラススキル_スター獲得Bバフ"] = this[45];
+        servant["クラススキル_スター獲得Bバフ"] = this[44];
+        servant["クラススキル_スター獲得Aバフ"] = this[45];
         servant["クラススキル_スター獲得Qバフ"] = this[46];
         servant["性別"] = this[47];
         servant["属性"] = this[48];
         servant["性格"] = this[49];
         servant["特性"] = this[50];
+        servant["宝具名"] = this[51];
+        servant["宝具効果"] = this[52].replaceAll("\\n","\n");
+        servant["スキル1名"] = this[53];
+        servant["スキル1CT"] = this[54];
+        servant["スキル1効果"] = this[55].replaceAll("\\n","\n");
+        servant["スキル2名"] = this[56];
+        servant["スキル2CT"] = this[57];
+        servant["スキル2効果"] = this[58].replaceAll("\\n","\n");
+        servant["スキル3名"] = this[59];
+        servant["スキル3CT"] = this[60];
+        servant["スキル3効果"] = this[61].replaceAll("\\n","\n");
+        servant["クラススキル1名"] = this[62];
+        servant["クラススキル1効果"] = this[63].replaceAll("\\n","\n");
+        servant["クラススキル2名"] = this[64];
+        servant["クラススキル2効果"] = this[65].replaceAll("\\n","\n");
+        servant["クラススキル3名"] = this[66];
+        servant["クラススキル3効果"] = this[67].replaceAll("\\n","\n");
+        servant["クラススキル4名"] = this[68];
+        servant["クラススキル4効果"] = this[69].replaceAll("\\n","\n");
+        servant["クラススキル5名"] = this[70];
+        servant["クラススキル5効果"] = this[71].replaceAll("\\n","\n");
+        servant["クラススキル6名"] = this[72];
+        servant["クラススキル6効果"] = this[73].replaceAll("\\n","\n");
+        servant["クラススキル7名"] = this[74];
+        servant["クラススキル7効果"] = this[75].replaceAll("\\n","\n");
+        servant["アペンド名"] = this[76];
+        servant["アペンド効果"] = this[77];
+        servant["絆礼装効果"] = this[78].replaceAll("\\n","\n");
 
         servantList.push(servant);
 
@@ -2271,6 +2813,7 @@ function setRecData(recNumber, inputData){
 function servantApply() {
 
     var result = false;
+    var caseClass;
 
     if ($("#servant-name").val() != null) {
 
@@ -2289,9 +2832,69 @@ function servantApply() {
                 $("#np_hit").val(this["宝具HIT"]);
                 $("#np_kind_np_star").val(this["宝具カード"]);
 
+                caseClass = this["クラス"];
+
+                return ;
+
             }
 
-            return;
+        });
+        
+        switch (caseClass) {
+            case "剣" :
+                caseClass = "Saber"
+                break;
+            case "弓" :
+                caseClass = "Archer"
+                break;
+            case "槍" :
+                caseClass = "Lancer"
+                break;
+            case "騎" :
+                caseClass = "Rider"
+                break;
+            case "術" :
+                caseClass = "Caster"
+                break;
+            case "殺" :
+                caseClass = "Assasin"
+                break;
+            case "狂" :
+                caseClass = "Berserker"
+                break;
+            case "裁" :
+                caseClass = "Ruler"
+                break;
+            case "讐" :
+                caseClass = "Avenger"
+                break;
+            case "月" :
+                caseClass = "MoonCancer"
+                break;
+            case "分" :
+                caseClass = "AlterEgo"
+                break;
+            case "降" :
+                caseClass = "Foreigner"
+                break;
+            case "詐" :
+                caseClass = "Pretender"
+                break;
+            case "獣" :
+                caseClass = "Beast"
+                break;
+            default :
+                break;
+        }
+
+        // クラススコア反映
+        $(classScoreDataList).each(function() {
+
+            if (this.class == caseClass) {
+                $("#SR_buff").val(BigNumber(parseFloat($("#SR_buff").val())).plus(parseFloat(this.sr_buff)));
+
+                return;
+            }
 
         });
 
@@ -2300,6 +2903,381 @@ function servantApply() {
     }
 
     return result;
+
+}
+
+/**
+ * サーヴァント情報表示
+ */
+function servantInfo() {
+    var servantNo = $("#search_servant_name").val();
+
+    if (servantNo == null){
+        // HP ATK
+        $("#servant_search_hp")[0].innerText = "";
+        $("#servant_search_atk")[0].innerText = "";
+        // 天地人
+        $("#servant_search_attribute")[0].innerText = "";
+        // 属性
+        $("#servant_search_alignment")[0].innerText = "";
+        // カード
+        $("#servant_search_deck")[0].innerText = "";
+        // ヒット数
+        $("#servant_search_nit")[0].innerText = "";
+        // NP獲得率 スター発生率
+        $("#servant_search_npGein")[0].innerText = "";
+        $("#servant_search_starGen")[0].innerText = "";
+        // 宝具
+        $("#servant_search_np")[0].innerText = "";
+        // スキル
+        $("#servant_search_skill1")[0].innerText = "";
+        $("#servant_search_skill2")[0].innerText = "";
+        $("#servant_search_skill3")[0].innerText = "";
+        // クラススキル
+        let classSkill = "";
+        $("#servant_search_classSkill")[0].innerText = "";
+        // アペンドスキル
+        $("#servant_search_appendSkill")[0].innerText = "";
+        // 絆
+        $("#servant_search_bondCE")[0].innerText = "";
+        // 特性
+        $("#servant_search_trait")[0].innerText = "";
+        return;
+    }
+
+    $(servantList).each(function() {
+
+        if (this["No"] == servantNo) {
+
+            var hp,atk;
+
+            switch ($("#search_servant_lvl").val()) {
+                case "MAX" :
+                    hp = Number(this["MaxHP"]);
+                    atk = Number(this["MaxAtk"]);
+                    break;
+                case "100" :
+                    hp = rounddown(Number(this["BaseHP"]) 
+                        + (Number(this["MaxHP"]) - Number(this["BaseHP"])) 
+                        * Number(correctio_lv100[Number(this["レアリティ"])]),0);
+                    atk = rounddown(Number(this["BaseAtk"]) 
+                        + (Number(this["MaxAtk"]) - Number(this["BaseAtk"])) 
+                        * Number(correctio_lv100[Number(this["レアリティ"])]),0);
+                    break;
+                case "110" :
+                    hp = rounddown(Number(this["BaseHP"]) 
+                        + (Number(this["MaxHP"]) - Number(this["BaseHP"])) 
+                        * Number(correctio_lv110[Number(this["レアリティ"])]),0);
+                    atk = rounddown(Number(this["BaseAtk"]) 
+                        + (Number(this["MaxAtk"]) - Number(this["BaseAtk"])) 
+                        * Number(correctio_lv110[Number(this["レアリティ"])]),0);
+                    break;
+                case "120" :
+                    hp = rounddown(Number(this["BaseHP"]) 
+                        + (Number(this["MaxHP"]) - Number(this["BaseHP"])) 
+                        * Number(correctio_lv120[Number(this["レアリティ"])]),0);
+                    atk = rounddown(Number(this["BaseAtk"]) 
+                        + (Number(this["MaxAtk"]) - Number(this["BaseAtk"])) 
+                        * Number(correctio_lv120[Number(this["レアリティ"])]),0);
+                    break;
+                default :
+                    break;
+            }
+
+            // HP ATK
+            $("#servant_search_hp")[0].innerText = Number(hp).toLocaleString();
+            $("#servant_search_atk")[0].innerText = Number(atk).toLocaleString() + "(" + Number(Number(atk) + Number($("#search_servant_fou").val()) + Number($("#search_servant_ceatk").val())).toLocaleString() + ")";
+            // 天地人
+            $("#servant_search_attribute")[0].innerText = this["天地人"];
+            // 属性
+            $("#servant_search_alignment")[0].innerText = this["属性"] + "/" + this["性格"];
+            // カード
+            $("#servant_search_deck")[0].innerText = "Q：" + (this["カード"].match( new RegExp("Q", "g") ) || []).length + "枚/A：" + (this["カード"].match( new RegExp("A", "g") ) || []).length + "枚/B：" + (this["カード"].match( new RegExp("B", "g") ) || []).length + "枚";
+            // ヒット数
+            $("#servant_search_nit")[0].innerText = "Q：" + this["QHIT"] + "HIT/A：" + this["AHIT"] + "HIT/B：" + this["BHIT"] + "HIT/EX：" + this["EXHIT"] + "HIT/宝具：" + this["宝具HIT"] + "HIT";
+            // NP獲得率 スター発生率
+            $("#servant_search_npGein")[0].innerText = this["N_N/A"];
+            $("#servant_search_starGen")[0].innerText = this["SR"];
+            // 宝具
+            let np_kind;
+            let np_lvl;
+            switch (this["宝具カード"]) {
+                case "B" :
+                    np_kind = "Buster"
+                    break;
+                case "A" :
+                    np_kind = "Arts"
+                    break;
+                case "Q" :
+                    np_kind = "Quick"
+                    break;
+                default :
+                    break;
+            }
+            switch ($("#search_servant_nplvl").val()) {
+                case "1" :
+                    np_lvl = this["宝具Lv1"];
+                    break;
+                case "2" :
+                    np_lvl = this["宝具Lv2"];
+                    break;
+                case "3" :
+                    np_lvl = this["宝具Lv3"];
+                    break;
+                case "4" :
+                    np_lvl = this["宝具Lv4"];
+                    break;
+                case "5" :
+                    np_lvl = this["宝具Lv5"];
+                    break;
+                default :
+                    break;
+            }
+            let np = "【" + this["宝具名"] + "】 種類：" + np_kind + "\n" + this["宝具効果"].replaceAll("$","LV" + $("#search_servant_nplvl").val() + ":" + np_lvl);
+            $("#servant_search_np")[0].innerText = np;
+            // スキル
+            let skill1 = "【" + this["スキル1名"] + "】 CT：" + this["スキル1CT"] + "→" + Number(Number(this["スキル1CT"]) - 2) + "\n" + this["スキル1効果"];
+            $("#servant_search_skill1")[0].innerText = skill1;
+            let skill2 = "【" + this["スキル2名"] + "】 CT：" + this["スキル2CT"] + "→" + Number(Number(this["スキル2CT"]) - 2) + "\n" + this["スキル2効果"];
+            $("#servant_search_skill2")[0].innerText = skill2;
+            let skill3 = "【" + this["スキル3名"] + "】 CT：" + this["スキル3CT"] + "→" + Number(Number(this["スキル3CT"]) - 2) + "\n" + this["スキル3効果"];
+            $("#servant_search_skill3")[0].innerText = skill3;
+            // クラススキル
+            let classSkill = "【" + this["クラススキル1名"] + "】" + "\n" + this["クラススキル1効果"];
+            if (this["クラススキル2名"] != "") {classSkill += "\n" + "【" + this["クラススキル2名"] + "】" + "\n" + this["クラススキル2効果"];}
+            if (this["クラススキル3名"] != "") {classSkill += "\n" + "【" + this["クラススキル3名"] + "】" + "\n" + this["クラススキル3効果"];}
+            if (this["クラススキル4名"] != "") {classSkill += "\n" + "【" + this["クラススキル4名"] + "】" + "\n" + this["クラススキル4効果"];}
+            if (this["クラススキル5名"] != "") {classSkill += "\n" + "【" + this["クラススキル5名"] + "】" + "\n" + this["クラススキル5効果"];}
+            if (this["クラススキル6名"] != "") {classSkill += "\n" + "【" + this["クラススキル6名"] + "】" + "\n" + this["クラススキル6効果"];}
+            if (this["クラススキル7名"] != "") {classSkill += "\n" + "【" + this["クラススキル7名"] + "】" + "\n" + this["クラススキル7効果"];}
+            $("#servant_search_classSkill")[0].innerText = classSkill;
+            // アペンドスキル
+            let appendSkill = "【" + this["アペンド名"] + "】" + "\n" + this["アペンド効果"];
+            $("#servant_search_appendSkill")[0].innerText = appendSkill;
+            // 絆
+            $("#servant_search_bondCE")[0].innerText = this["絆礼装効果"];
+            // 特性
+            $("#servant_search_trait")[0].innerText = this["特性"];
+
+            return;
+        }
+
+    });
+}
+
+/**
+ * プリセットセレクトボックス再作成
+ */
+function remakePresetSelectBox() {
+
+    // プリセットセレクトボックスを削除
+    while ($("#buffPreset_name")[0].lastChild) {
+        $("#buffPreset_name")[0].removeChild($("#buffPreset_name")[0].lastChild);
+        $("#buffPreset_sel_name")[0].removeChild($("#buffPreset_sel_name")[0].lastChild);
+    }
+
+    $(buffPresetDataList).each(function() {
+        var option = document.createElement("option");
+        var sel = document.createElement("option");
+        option.value = this.id;
+        option.textContent = this.name;
+        sel.value = this.id;
+        sel.textContent = this.name
+        $("#buffPreset_name")[0].appendChild(option);
+        $("#buffPreset_sel_name")[0].appendChild(sel);
+
+    });
+
+    // ソート
+    selectBoxSort("#buffPreset_name option");
+    selectBoxSort("#buffPreset_sel_name option");
+
+    // 最初のoptionを選択
+    if ($("#buffPreset_name")[0].firstChild != null) {
+        $("#buffPreset_name").val($("#buffPreset_name")[0].firstChild.value);
+        $("#buffPreset_sel_name").val($("#buffPreset_sel_name")[0].firstChild.value);
+    }
+
+}
+
+/**
+ * プリセットセレクトボックスソート
+ * @param optionId オプション
+ */
+function selectBoxSort(optionId) {
+    var options = $(optionId);  
+    var arr = options.map(function(i, o) {
+      return {
+        text: $(o).text(),
+        val: o.value,
+        sel: o.selected //true || false
+      };
+    }).get();
+
+    arr.sort(function(o1, o2) {
+      return o1.text > o2.text ? 1 : o1.text < o2.text ? -1 : 0;
+    });
+    options.each(function(i, o) {
+      o.value = arr[i].val;
+      $(o).text(arr[i].text);
+      o.selected = arr[i].sel;
+      if (o.selected) {
+          $(o).attr("selected",true);
+      } else {
+          $(o).attr("selected",false);
+      }
+    });
+}
+
+/**
+ * プリセットデータ設定(更新・削除)
+ * @param id プリセットID
+ */
+function setPresetDataUpdDel(id) {
+
+    if (buffPresetDataList.length == 0) {
+        // 初期値を設定
+        $("#name_buffPreset_upd_del").val("");
+        $("#atk_buff_buffPreset_upd_del").val("0");
+        $("#def_debuff_buffPreset_upd_del").val("0");
+        $("#b_card_buff_buffPreset_upd_del").val("0");
+        $("#a_card_buff_buffPreset_upd_del").val("0");
+        $("#q_card_buff_buffPreset_upd_del").val("0");
+        $("#b_card_debuff_buffPreset_upd_del").val("0");
+        $("#a_card_debuff_buffPreset_upd_del").val("0");
+        $("#q_card_debuff_buffPreset_upd_del").val("0");
+        $("#b_card_power_buff_buffPreset_upd_del").val("0");
+        $("#a_card_power_buff_buffPreset_upd_del").val("0");
+        $("#q_card_power_buff_buffPreset_upd_del").val("0");
+        $("#cri_buff_buffPreset_upd_del").val("0");
+        $("#b_card_cri_buff_buffPreset_upd_del").val("0");
+        $("#a_card_cri_buff_buffPreset_upd_del").val("0");
+        $("#q_card_cri_buff_buffPreset_upd_del").val("0");
+        $("#np_buff_buffPreset_upd_del").val("0");
+        $("#ex_atk_buff_buffPreset_upd_del").val("0");
+        $("#supereffective_buff_buffPreset_upd_del").val("0");
+        $("#fixed_dmg_buffPreset_upd_del").val("0");
+        $("#dream_end_buffPreset_upd_del")[0].checked = false;
+
+        return;
+    }
+
+    $(buffPresetDataList).each(function() {
+
+        if (this.id == id) {
+            $("#name_buffPreset_upd_del").val(this.name);
+            $("#atk_buff_buffPreset_upd_del").val(this.atk_buff);
+            $("#def_debuff_buffPreset_upd_del").val(this.def_debuff);
+            $("#b_card_buff_buffPreset_upd_del").val(this.b_card_buff);
+            $("#a_card_buff_buffPreset_upd_del").val(this.a_card_buff);
+            $("#q_card_buff_buffPreset_upd_del").val(this.q_card_buff);
+            $("#b_card_debuff_buffPreset_upd_del").val(this.b_card_debuff);
+            $("#a_card_debuff_buffPreset_upd_del").val(this.a_card_debuff);
+            $("#q_card_debuff_buffPreset_upd_del").val(this.q_card_debuff);
+            $("#b_card_power_buff_buffPreset_upd_del").val(this.b_card_power_buff);
+            $("#a_card_power_buff_buffPreset_upd_del").val(this.a_card_power_buff);
+            $("#q_card_power_buff_buffPreset_upd_del").val(this.q_card_power_buff);
+            $("#cri_buff_buffPreset_upd_del").val(this.cri_buff);
+            $("#b_card_cri_buff_buffPreset_upd_del").val(this.b_card_cri_buff);
+            $("#a_card_cri_buff_buffPreset_upd_del").val(this.a_card_cri_buff);
+            $("#q_card_cri_buff_buffPreset_upd_del").val(this.q_card_cri_buff);
+            $("#np_buff_buffPreset_upd_del").val(this.np_buff);
+            $("#ex_atk_buff_buffPreset_upd_del").val(this.ex_atk_buff);
+            $("#supereffective_buff_buffPreset_upd_del").val(this.supereffective_buff);
+            $("#fixed_dmg_buffPreset_upd_del").val(this.fixed_dmg);
+            $("#dream_end_buffPreset_upd_del")[0].checked = this.dream_end;
+
+            return;
+        }
+
+    });
+
+}
+
+/**
+ * プリセットデータ設定(選択)
+ * @param id プリセットID
+ */
+function setPresetDataSel(id) {
+
+    if (buffPresetDataList.length == 0) {
+        // 初期値を設定
+        $("#name_buffPreset_sel").val("");
+        $("#atk_buff_buffPreset_sel").val("0");
+        $("#def_debuff_buffPreset_sel").val("0");
+        $("#b_card_buff_buffPreset_sel").val("0");
+        $("#a_card_buff_buffPreset_sel").val("0");
+        $("#q_card_buff_buffPreset_sel").val("0");
+        $("#b_card_debuff_buffPreset_sel").val("0");
+        $("#a_card_debuff_buffPreset_sel").val("0");
+        $("#q_card_debuff_buffPreset_sel").val("0");
+        $("#b_card_power_buff_buffPreset_sel").val("0");
+        $("#a_card_power_buff_buffPreset_sel").val("0");
+        $("#q_card_power_buff_buffPreset_sel").val("0");
+        $("#cri_buff_buffPreset_sel").val("0");
+        $("#b_card_cri_buff_buffPreset_sel").val("0");
+        $("#a_card_cri_buff_buffPreset_sel").val("0");
+        $("#q_card_cri_buff_buffPreset_sel").val("0");
+        $("#np_buff_buffPreset_sel").val("0");
+        $("#ex_atk_buff_buffPreset_sel").val("0");
+        $("#supereffective_buff_buffPreset_sel").val("0");
+        $("#fixed_dmg_buffPreset_sel").val("0");
+        $("#dream_end_buffPreset_sel")[0].checked = false;
+
+        return;
+    }
+
+    $(buffPresetDataList).each(function() {
+
+        if (this.id == id) {
+            $("#name_buffPreset_sel").val(this.name);
+            $("#atk_buff_buffPreset_sel").val(this.atk_buff);
+            $("#def_debuff_buffPreset_sel").val(this.def_debuff);
+            $("#b_card_buff_buffPreset_sel").val(this.b_card_buff);
+            $("#a_card_buff_buffPreset_sel").val(this.a_card_buff);
+            $("#q_card_buff_buffPreset_sel").val(this.q_card_buff);
+            $("#b_card_debuff_buffPreset_sel").val(this.b_card_debuff);
+            $("#a_card_debuff_buffPreset_sel").val(this.a_card_debuff);
+            $("#q_card_debuff_buffPreset_sel").val(this.q_card_debuff);
+            $("#b_card_power_buff_buffPreset_sel").val(this.b_card_power_buff);
+            $("#a_card_power_buff_buffPreset_sel").val(this.a_card_power_buff);
+            $("#q_card_power_buff_buffPreset_sel").val(this.q_card_power_buff);
+            $("#cri_buff_buffPreset_sel").val(this.cri_buff);
+            $("#b_card_cri_buff_buffPreset_sel").val(this.b_card_cri_buff);
+            $("#a_card_cri_buff_buffPreset_sel").val(this.a_card_cri_buff);
+            $("#q_card_cri_buff_buffPreset_sel").val(this.q_card_cri_buff);
+            $("#np_buff_buffPreset_sel").val(this.np_buff);
+            $("#ex_atk_buff_buffPreset_sel").val(this.ex_atk_buff);
+            $("#supereffective_buff_buffPreset_sel").val(this.supereffective_buff);
+            $("#fixed_dmg_buffPreset_sel").val(this.fixed_dmg);
+            $("#dream_end_buffPreset_sel")[0].checked = this.dream_end;
+
+            return;
+        }
+
+    });
+
+}
+
+/**
+ * クラススコア設定
+ */
+function setClassScore() {
+
+    $(classScoreDataList).each(function() {
+
+            $("#b_card_power_buff_classScore_" + this.class).val(this.b_card_power_buff);
+            $("#a_card_power_buff_classScore_" + this.class).val(this.a_card_power_buff);
+            $("#q_card_power_buff_classScore_" + this.class).val(this.q_card_power_buff);
+            $("#cri_buff_classScore_" + this.class).val(this.cri_buff);
+            $("#b_card_cri_buff_classScore_" + this.class).val(this.b_card_cri_buff);
+            $("#a_card_cri_buff_classScore_" + this.class).val(this.a_card_cri_buff);
+            $("#q_card_cri_buff_classScore_" + this.class).val(this.q_card_cri_buff);
+            $("#np_buff_classScore_" + this.class).val(this.np_buff);
+            $("#ex_atk_buff_classScore_" + this.class).val(this.ex_atk_buff);
+            $("#sr_buff_classScore_" + this.class).val(this.sr_buff);
+
+    });
 
 }
 

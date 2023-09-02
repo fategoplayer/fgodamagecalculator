@@ -355,3 +355,105 @@ footer a {
   display:table-cell;
   vertical-align:middle;
 }
+
+/*バフプリセット*/
+#buffPresetTable tr, #buffPresetTable td,#buffPresetUpdTable tr, #buffPresetUpdTable td, #buffPresetSelTable tr, #buffPresetSelTable td {
+  height: 35px;
+}
+#buffPresetTable td, #buffPresetUpdTable td, #buffPresetSelTable td {
+  width: 25%;
+}
+#buffPreset_name, #buffPreset_sel_name {
+  padding: 0.375rem 2.25rem 0.375rem 0.75rem;
+}
+#buffPreset_name:focus, #buffPreset_sel_name:focus{  outline: solid 0.5px #afc0b8 !important;}
+.atk_buff_buffPreset, .cri_buff_buffPreset, .np_buff_buffPreset, .ex_atk_buff_buffPreset, .supereffective_buff_buffPreset, .fixed_dmg_buffPreset, .name_buffPreset {
+  height: 100% !important;
+}
+.b_card_buff_buffPreset, .b_card_debuff_buffPreset, .b_card_power_buff_buffPreset {
+  height: 100% !important;
+  background-color: #FFEEEE !important;
+}
+.b_card_cri_buff_buffPreset {
+  height: 100% !important;
+  background-color: #FFEEEE !important;
+}
+.a_card_buff_buffPreset, .a_card_debuff_buffPreset, .a_card_power_buff_buffPreset {
+  height: 100% !important;
+  background-color: #F0F8FF !important;
+}
+.a_card_cri_buff_buffPreset {
+  height: 100% !important;
+  background-color: #F0F8FF !important;
+}
+.q_card_buff_buffPreset, .q_card_debuff_buffPreset, .q_card_power_buff_buffPreset {
+  height: 100% !important;
+  background-color: #EEFFEE !important;
+}
+.q_card_cri_buff_buffPreset {
+  height: 100% !important;
+  background-color: #EEFFEE !important;
+}
+.name_buffPreset {
+  text-align: left !important;
+}
+.dream_end_buffPreset {
+  padding-left: 3em !important;
+}
+
+/*クラススコア*/
+.classScoreTable tr, .classScoreTable td {
+  height: 35px;
+}
+.classScoreTable td {
+  width: 25%;
+}
+.cri_buff_classScore, .np_buff_classScore, .ex_atk_buff_classScore, .sr_buff_classScore {
+  height: 100% !important;
+}
+.b_card_power_buff_classScore {
+  height: 100% !important;
+  background-color: #FFEEEE !important;
+}
+.b_card_cri_buff_classScore {
+  height: 100% !important;
+  background-color: #FFEEEE !important;
+}
+.a_card_power_buff_classScore {
+  height: 100% !important;
+  background-color: #F0F8FF !important;
+}
+.a_card_cri_buff_classScore {
+  height: 100% !important;
+  background-color: #F0F8FF !important;
+}
+.q_card_power_buff_classScore {
+  height: 100% !important;
+  background-color: #EEFFEE !important;
+}
+.q_card_cri_buff_classScore {
+  height: 100% !important;
+  background-color: #EEFFEE !important;
+}
+/*サーヴァント情報*/
+#servantInfoTable tr, #servantInfoTable td {
+  height: 25px;
+}
+#servantInfoTable th {
+  min-width: 25%;
+}
+#servantInfoTable td {
+  vertical-align: middle;
+  overflow-wrap : break-word;
+  width: auto;
+}
+#servantInfoTable td p {
+  padding: 5px;
+  display:table-cell;
+}
+#servantInfoAccordion .accordion-body {
+  padding: 0.5rem 0 0 0 !important;
+}
+#servantInfoAccordion .accordion-button {
+  padding: 5px !important;
+}
