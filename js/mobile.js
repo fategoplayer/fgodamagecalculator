@@ -3,7 +3,7 @@ const correctio_lv90 = { "0": 1.390, "1": 1.508, "2": 1.390, "3": 1.289, "4": 1.
 const correctio_lv100 = { "0": 1.546, "1": 1.677, "2": 1.546, "3": 1.434, "4": 1.253, "5": 1.112 };
 const correctio_lv110 = { "0": 1.703, "1": 1.847, "2": 1.703, "3": 1.579, "4": 1.379, "5": 1.224 };
 const correctio_lv120 = { "0": 1.859, "1": 2.016, "2": 1.859, "3": 1.724, "4": 1.506, "5": 1.337 };
-const classScore_class = ["Saber","Archer","Lancer","Rider","Caster","Assasin","Berserker","Ruler","Avenger","MoonCancer","AlterEgo","Foreigner","Pretender","Beast"];
+const classScore_class = ["Saber","Archer","Lancer","Rider","Caster","Assasin","Berserker","EX1","EX2"];
 const defaultTab = 6; // 初期タブ数
 const localStorageKey_InputData = "fgodamagecalculator_tab_input"
 const localStorageKey_Setting = "fgodamagecalculator_tab_setting"
@@ -911,25 +911,16 @@ $(function(){
                             caseClass = "Berserker"
                             break;
                         case "裁" :
-                            caseClass = "Ruler"
-                            break;
                         case "讐" :
-                            caseClass = "Avenger"
-                            break;
                         case "月" :
-                            caseClass = "MoonCancer"
+                        case "盾" :
+                            caseClass = "EX1"
                             break;
                         case "分" :
-                            caseClass = "AlterEgo"
-                            break;
                         case "降" :
-                            caseClass = "Foreigner"
-                            break;
                         case "詐" :
-                            caseClass = "Pretender"
-                            break;
                         case "獣" :
-                            caseClass = "Beast"
+                            caseClass = "EX2"
                             break;
                         default :
                             break;
@@ -2335,25 +2326,16 @@ function servantApply() {
                 caseClass = "Berserker"
                 break;
             case "裁" :
-                caseClass = "Ruler"
-                break;
             case "讐" :
-                caseClass = "Avenger"
-                break;
             case "月" :
-                caseClass = "MoonCancer"
+            case "盾" :
+                caseClass = "EX1"
                 break;
             case "分" :
-                caseClass = "AlterEgo"
-                break;
             case "降" :
-                caseClass = "Foreigner"
-                break;
             case "詐" :
-                caseClass = "Pretender"
-                break;
             case "獣" :
-                caseClass = "Beast"
+                caseClass = "EX2"
                 break;
             default :
                 break;
