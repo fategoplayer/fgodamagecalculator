@@ -457,6 +457,14 @@ $(function(){
             
         }
 
+        // 初期表示にATK0以外を再計算
+        for (let cnt = 0; cnt < defaultRow + rowNumber; cnt++){
+            if ($("#atk_" + cnt).val() != "0") {
+                // 再計算
+                calcMain(cnt);
+            }
+        }
+
     });
 
     //開くボタンをクリックしたらモーダルを表示する
@@ -3044,7 +3052,8 @@ function servantInfo() {
             let skill3 = "【" + this["スキル3名"] + "】 CT：" + this["スキル3CT"] + "→" + Number(Number(this["スキル3CT"]) - 2) + "\n" + this["スキル3効果"];
             $("#servant_search_skill3")[0].innerText = skill3;
             // クラススキル
-            let classSkill = "【" + this["クラススキル1名"] + "】" + "\n" + this["クラススキル1効果"];
+            let classSkill = "";
+            if (this["クラススキル1名"] != "") {classSkill += "\n" + "【" + this["クラススキル1名"] + "】" + "\n" + this["クラススキル1効果"];}
             if (this["クラススキル2名"] != "") {classSkill += "\n" + "【" + this["クラススキル2名"] + "】" + "\n" + this["クラススキル2効果"];}
             if (this["クラススキル3名"] != "") {classSkill += "\n" + "【" + this["クラススキル3名"] + "】" + "\n" + this["クラススキル3効果"];}
             if (this["クラススキル4名"] != "") {classSkill += "\n" + "【" + this["クラススキル4名"] + "】" + "\n" + this["クラススキル4効果"];}
