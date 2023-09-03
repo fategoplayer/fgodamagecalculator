@@ -3855,13 +3855,8 @@
                                     <button type="button" class="nav-link" id="nav-classScore-Caster" data-bs-toggle="tab" data-bs-target="#tab_classScore_Caster" role="tab" aria-controls="tab_classScore_Caster" aria-selected="false">キャスター</button>
                                     <button type="button" class="nav-link" id="nav-classScore-Assasin" data-bs-toggle="tab" data-bs-target="#tab_classScore_Assasin" role="tab" aria-controls="tab_classScore_Assasin" aria-selected="false">アサシン</button>
                                     <button type="button" class="nav-link" id="nav-classScore-Berserker" data-bs-toggle="tab" data-bs-target="#tab_classScore_Berserker" role="tab" aria-controls="tab_classScore_Berserker" aria-selected="false">バーサーカー</button>
-                                    <button type="button" class="nav-link" id="nav-classScore-Ruler" data-bs-toggle="tab" data-bs-target="#tab_classScore_Ruler" role="tab" aria-controls="tab_classScore_Ruler" aria-selected="false">ルーラー</button>
-                                    <button type="button" class="nav-link" id="nav-classScore-Avenger" data-bs-toggle="tab" data-bs-target="#tab_classScore_Avenger" role="tab" aria-controls="tab_classScore_Avenger" aria-selected="false">アヴェンジャー</button>
-                                    <button type="button" class="nav-link" id="nav-classScore-MoonCancer" data-bs-toggle="tab" data-bs-target="#tab_classScore_MoonCancer" role="tab" aria-controls="tab_classScore_MoonCancer" aria-selected="false">ムーンキャンサー</button>
-                                    <button type="button" class="nav-link" id="nav-classScore-AlterEgo" data-bs-toggle="tab" data-bs-target="#tab_classScore_AlterEgo" role="tab" aria-controls="tab_classScore_AlterEgo" aria-selected="false">アルターエゴ</button>
-                                    <button type="button" class="nav-link" id="nav-classScore-Foreigner" data-bs-toggle="tab" data-bs-target="#tab_classScore_Foreigner" role="tab" aria-controls="tab_classScore_Foreigner" aria-selected="false">フォーリナー</button>
-                                    <button type="button" class="nav-link" id="nav-classScore-Pretender" data-bs-toggle="tab" data-bs-target="#tab_classScore_Pretender" role="tab" aria-controls="tab_classScore_Pretender" aria-selected="false">プリテンダー</button>
-                                    <button type="button" class="nav-link" id="nav-classScore-Beast" data-bs-toggle="tab" data-bs-target="#tab_classScore_Beast" role="tab" aria-controls="tab_classScore_Beast" aria-selected="false">ビースト</button>
+                                    <button type="button" class="nav-link" id="nav-classScore-EX1" data-bs-toggle="tab" data-bs-target="#tab_classScore_EX1" role="tab" aria-controls="tab_classScore_EX1" aria-selected="false">エクストラⅠ</button>
+                                    <button type="button" class="nav-link" id="nav-classScore-EX2" data-bs-toggle="tab" data-bs-target="#tab_classScore_EX2" role="tab" aria-controls="tab_classScore_EX2" aria-selected="false">エクストラⅡ</button>
                                 </div>
                             </nav>
             
@@ -4251,385 +4246,110 @@
                                     </div>
                                 </div>
 
-                                <div class="tab-pane fade" id="tab_classScore_Ruler" role="tabpanel" aria-labelledby="nav-classScore_Ruler" tabindex="0">
+                                <div class="tab-pane fade" id="tab_classScore_EX1" role="tabpanel" aria-labelledby="nav-classScore_EX1" tabindex="0">
                                     <div class="table-responsive">
-                                        <table class="table table-bordered table-sm text-nowrap classScoreTable" id="classScoreTable_Ruler">
+                                        <table class="table table-bordered table-sm text-nowrap classScoreTable" id="classScoreTable_EX1">
                                             <tr>
                                                 <th class="bg-light"><p class="small">カード威力<br>/B/A/Q</p></th>
                                                 <td class="col_card_buff_classScore">
-                                                    <input type="number" id="b_card_power_buff_classScore_Ruler" maxlength="8" value="0" max="400" min="-100" step="10" class="b_card_power_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                                                    <input type="number" id="b_card_power_buff_classScore_EX1" maxlength="8" value="0" max="400" min="-100" step="10" class="b_card_power_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                                 </td>
                                                 <td class="col_card_buff_classScore">
-                                                    <input type="number" id="a_card_power_buff_classScore_Ruler" maxlength="8" value="0" max="400" min="-100" step="10" class="a_card_power_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                                                    <input type="number" id="a_card_power_buff_classScore_EX1" maxlength="8" value="0" max="400" min="-100" step="10" class="a_card_power_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                                 </td>
                                                 <td class="col_card_buff_classScore">
-                                                    <input type="number" id="q_card_power_buff_classScore_Ruler" maxlength="8" value="0" max="400" min="-100" step="10" class="q_card_power_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                                                    <input type="number" id="q_card_power_buff_classScore_EX1" maxlength="8" value="0" max="400" min="-100" step="10" class="q_card_power_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th class="bg-light"><p class="small">クリバフ</p></th>
                                                 <td class="col_cri_buff_classScore" colspan="3">
-                                                    <input type="number" id="cri_buff_classScore_Ruler" maxlength="8" value="0" max="500" min="0" step="1" class="cri_buff_classScore form-control bg-transparent" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                                                    <input type="number" id="cri_buff_classScore_EX1" maxlength="8" value="0" max="500" min="0" step="1" class="cri_buff_classScore form-control bg-transparent" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th class="bg-light"><p class="small">クリバフ<br>/B/A/Q</p></th>
                                                 <td class="col_card_buff_classScore">
-                                                    <input type="number" id="b_card_cri_buff_classScore_Ruler" maxlength="8" value="0" max="500" min="-100" step="10" class="b_card_cri_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                                                    <input type="number" id="b_card_cri_buff_classScore_EX1" maxlength="8" value="0" max="500" min="-100" step="10" class="b_card_cri_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                                 </td>
                                                 <td class="col_card_buff_classScore">
-                                                    <input type="number" id="a_card_cri_buff_classScore_Ruler" maxlength="8" value="0" max="500" min="-100" step="10" class="a_card_cri_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                                                    <input type="number" id="a_card_cri_buff_classScore_EX1" maxlength="8" value="0" max="500" min="-100" step="10" class="a_card_cri_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                                 </td>
                                                 <td class="col_card_buff_classScore">
-                                                    <input type="number" id="q_card_cri_buff_classScore_Ruler" maxlength="8" value="0" max="500" min="-100" step="10" class="q_card_cri_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                                                    <input type="number" id="q_card_cri_buff_classScore_EX1" maxlength="8" value="0" max="500" min="-100" step="10" class="q_card_cri_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th class="bg-light"><p class="small">宝具威力バフ</p></th>
                                                 <td class="col_np_buff_classScore" colspan="3">
-                                                    <input type="number" id="np_buff_classScore_Ruler" maxlength="8" value="0" max="500" min="-100" step="10" class="np_buff_classScore form-control bg-transparent" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                                                    <input type="number" id="np_buff_classScore_EX1" maxlength="8" value="0" max="500" min="-100" step="10" class="np_buff_classScore form-control bg-transparent" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th class="bg-light"><p class="small">EXバフ</p></th>
                                                 <td class="col_ex_atk_buff_classScore" colspan="3">
-                                                    <input type="number" id="ex_atk_buff_classScore_Ruler" maxlength="8" value="0" max="50" min="0" step="1" class="ex_atk_buff_classScore form-control bg-transparent" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                                                    <input type="number" id="ex_atk_buff_classScore_EX1" maxlength="8" value="0" max="50" min="0" step="1" class="ex_atk_buff_classScore form-control bg-transparent" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th class="bg-light"><p class="small">スター発生率</p></th>
                                                 <td class="col_sr_buff_classScore" colspan="3">
-                                                    <input type="number" id="sr_buff_classScore_Ruler" maxlength="8" value="0" max="1000" min="0" step="10" class="sr_buff_classScore form-control bg-transparent" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                                                    <input type="number" id="sr_buff_classScore_EX1" maxlength="8" value="0" max="1000" min="0" step="10" class="sr_buff_classScore form-control bg-transparent" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                                 </td>
                                             </tr>
                                         </table>
                                     </div>
                                 </div>
 
-                                <div class="tab-pane fade" id="tab_classScore_Avenger" role="tabpanel" aria-labelledby="nav-classScore_Avenger" tabindex="0">
+                                <div class="tab-pane fade" id="tab_classScore_EX2" role="tabpanel" aria-labelledby="nav-classScore_EX2" tabindex="0">
                                     <div class="table-responsive">
-                                        <table class="table table-bordered table-sm text-nowrap classScoreTable" id="classScoreTable_Avenger">
+                                        <table class="table table-bordered table-sm text-nowrap classScoreTable" id="classScoreTable_EX2">
                                             <tr>
                                                 <th class="bg-light"><p class="small">カード威力<br>/B/A/Q</p></th>
                                                 <td class="col_card_buff_classScore">
-                                                    <input type="number" id="b_card_power_buff_classScore_Avenger" maxlength="8" value="0" max="400" min="-100" step="10" class="b_card_power_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                                                    <input type="number" id="b_card_power_buff_classScore_EX2" maxlength="8" value="0" max="400" min="-100" step="10" class="b_card_power_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                                 </td>
                                                 <td class="col_card_buff_classScore">
-                                                    <input type="number" id="a_card_power_buff_classScore_Avenger" maxlength="8" value="0" max="400" min="-100" step="10" class="a_card_power_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                                                    <input type="number" id="a_card_power_buff_classScore_EX2" maxlength="8" value="0" max="400" min="-100" step="10" class="a_card_power_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                                 </td>
                                                 <td class="col_card_buff_classScore">
-                                                    <input type="number" id="q_card_power_buff_classScore_Avenger" maxlength="8" value="0" max="400" min="-100" step="10" class="q_card_power_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                                                    <input type="number" id="q_card_power_buff_classScore_EX2" maxlength="8" value="0" max="400" min="-100" step="10" class="q_card_power_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th class="bg-light"><p class="small">クリバフ</p></th>
                                                 <td class="col_cri_buff_classScore" colspan="3">
-                                                    <input type="number" id="cri_buff_classScore_Avenger" maxlength="8" value="0" max="500" min="0" step="1" class="cri_buff_classScore form-control bg-transparent" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                                                    <input type="number" id="cri_buff_classScore_EX2" maxlength="8" value="0" max="500" min="0" step="1" class="cri_buff_classScore form-control bg-transparent" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th class="bg-light"><p class="small">クリバフ<br>/B/A/Q</p></th>
                                                 <td class="col_card_buff_classScore">
-                                                    <input type="number" id="b_card_cri_buff_classScore_Avenger" maxlength="8" value="0" max="500" min="-100" step="10" class="b_card_cri_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                                                    <input type="number" id="b_card_cri_buff_classScore_EX2" maxlength="8" value="0" max="500" min="-100" step="10" class="b_card_cri_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                                 </td>
                                                 <td class="col_card_buff_classScore">
-                                                    <input type="number" id="a_card_cri_buff_classScore_Avenger" maxlength="8" value="0" max="500" min="-100" step="10" class="a_card_cri_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                                                    <input type="number" id="a_card_cri_buff_classScore_EX2" maxlength="8" value="0" max="500" min="-100" step="10" class="a_card_cri_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                                 </td>
                                                 <td class="col_card_buff_classScore">
-                                                    <input type="number" id="q_card_cri_buff_classScore_Avenger" maxlength="8" value="0" max="500" min="-100" step="10" class="q_card_cri_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                                                    <input type="number" id="q_card_cri_buff_classScore_EX2" maxlength="8" value="0" max="500" min="-100" step="10" class="q_card_cri_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th class="bg-light"><p class="small">宝具威力バフ</p></th>
                                                 <td class="col_np_buff_classScore" colspan="3">
-                                                    <input type="number" id="np_buff_classScore_Avenger" maxlength="8" value="0" max="500" min="-100" step="10" class="np_buff_classScore form-control bg-transparent" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                                                    <input type="number" id="np_buff_classScore_EX2" maxlength="8" value="0" max="500" min="-100" step="10" class="np_buff_classScore form-control bg-transparent" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th class="bg-light"><p class="small">EXバフ</p></th>
                                                 <td class="col_ex_atk_buff_classScore" colspan="3">
-                                                    <input type="number" id="ex_atk_buff_classScore_Avenger" maxlength="8" value="0" max="50" min="0" step="1" class="ex_atk_buff_classScore form-control bg-transparent" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                                                    <input type="number" id="ex_atk_buff_classScore_EX2" maxlength="8" value="0" max="50" min="0" step="1" class="ex_atk_buff_classScore form-control bg-transparent" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th class="bg-light"><p class="small">スター発生率</p></th>
                                                 <td class="col_sr_buff_classScore" colspan="3">
-                                                    <input type="number" id="sr_buff_classScore_Avenger" maxlength="8" value="0" max="1000" min="0" step="10" class="sr_buff_classScore form-control bg-transparent" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </div>
-
-                                <div class="tab-pane fade" id="tab_classScore_MoonCancer" role="tabpanel" aria-labelledby="nav-classScore_MoonCancer" tabindex="0">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered table-sm text-nowrap classScoreTable" id="classScoreTable_MoonCancer">
-                                            <tr>
-                                                <th class="bg-light"><p class="small">カード威力<br>/B/A/Q</p></th>
-                                                <td class="col_card_buff_classScore">
-                                                    <input type="number" id="b_card_power_buff_classScore_MoonCancer" maxlength="8" value="0" max="400" min="-100" step="10" class="b_card_power_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                                <td class="col_card_buff_classScore">
-                                                    <input type="number" id="a_card_power_buff_classScore_MoonCancer" maxlength="8" value="0" max="400" min="-100" step="10" class="a_card_power_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                                <td class="col_card_buff_classScore">
-                                                    <input type="number" id="q_card_power_buff_classScore_MoonCancer" maxlength="8" value="0" max="400" min="-100" step="10" class="q_card_power_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th class="bg-light"><p class="small">クリバフ</p></th>
-                                                <td class="col_cri_buff_classScore" colspan="3">
-                                                    <input type="number" id="cri_buff_classScore_MoonCancer" maxlength="8" value="0" max="500" min="0" step="1" class="cri_buff_classScore form-control bg-transparent" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th class="bg-light"><p class="small">クリバフ<br>/B/A/Q</p></th>
-                                                <td class="col_card_buff_classScore">
-                                                    <input type="number" id="b_card_cri_buff_classScore_MoonCancer" maxlength="8" value="0" max="500" min="-100" step="10" class="b_card_cri_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                                <td class="col_card_buff_classScore">
-                                                    <input type="number" id="a_card_cri_buff_classScore_MoonCancer" maxlength="8" value="0" max="500" min="-100" step="10" class="a_card_cri_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                                <td class="col_card_buff_classScore">
-                                                    <input type="number" id="q_card_cri_buff_classScore_MoonCancer" maxlength="8" value="0" max="500" min="-100" step="10" class="q_card_cri_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th class="bg-light"><p class="small">宝具威力バフ</p></th>
-                                                <td class="col_np_buff_classScore" colspan="3">
-                                                    <input type="number" id="np_buff_classScore_MoonCancer" maxlength="8" value="0" max="500" min="-100" step="10" class="np_buff_classScore form-control bg-transparent" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th class="bg-light"><p class="small">EXバフ</p></th>
-                                                <td class="col_ex_atk_buff_classScore" colspan="3">
-                                                    <input type="number" id="ex_atk_buff_classScore_MoonCancer" maxlength="8" value="0" max="50" min="0" step="1" class="ex_atk_buff_classScore form-control bg-transparent" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th class="bg-light"><p class="small">スター発生率</p></th>
-                                                <td class="col_sr_buff_classScore" colspan="3">
-                                                    <input type="number" id="sr_buff_classScore_MoonCancer" maxlength="8" value="0" max="1000" min="0" step="10" class="sr_buff_classScore form-control bg-transparent" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </div>
-
-                                <div class="tab-pane fade" id="tab_classScore_AlterEgo" role="tabpanel" aria-labelledby="nav-classScore_AlterEgo" tabindex="0">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered table-sm text-nowrap classScoreTable" id="classScoreTable_AlterEgo">
-                                            <tr>
-                                                <th class="bg-light"><p class="small">カード威力<br>/B/A/Q</p></th>
-                                                <td class="col_card_buff_classScore">
-                                                    <input type="number" id="b_card_power_buff_classScore_AlterEgo" maxlength="8" value="0" max="400" min="-100" step="10" class="b_card_power_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                                <td class="col_card_buff_classScore">
-                                                    <input type="number" id="a_card_power_buff_classScore_AlterEgo" maxlength="8" value="0" max="400" min="-100" step="10" class="a_card_power_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                                <td class="col_card_buff_classScore">
-                                                    <input type="number" id="q_card_power_buff_classScore_AlterEgo" maxlength="8" value="0" max="400" min="-100" step="10" class="q_card_power_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th class="bg-light"><p class="small">クリバフ</p></th>
-                                                <td class="col_cri_buff_classScore" colspan="3">
-                                                    <input type="number" id="cri_buff_classScore_AlterEgo" maxlength="8" value="0" max="500" min="0" step="1" class="cri_buff_classScore form-control bg-transparent" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th class="bg-light"><p class="small">クリバフ<br>/B/A/Q</p></th>
-                                                <td class="col_card_buff_classScore">
-                                                    <input type="number" id="b_card_cri_buff_classScore_AlterEgo" maxlength="8" value="0" max="500" min="-100" step="10" class="b_card_cri_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                                <td class="col_card_buff_classScore">
-                                                    <input type="number" id="a_card_cri_buff_classScore_AlterEgo" maxlength="8" value="0" max="500" min="-100" step="10" class="a_card_cri_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                                <td class="col_card_buff_classScore">
-                                                    <input type="number" id="q_card_cri_buff_classScore_AlterEgo" maxlength="8" value="0" max="500" min="-100" step="10" class="q_card_cri_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th class="bg-light"><p class="small">宝具威力バフ</p></th>
-                                                <td class="col_np_buff_classScore" colspan="3">
-                                                    <input type="number" id="np_buff_classScore_AlterEgo" maxlength="8" value="0" max="500" min="-100" step="10" class="np_buff_classScore form-control bg-transparent" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th class="bg-light"><p class="small">EXバフ</p></th>
-                                                <td class="col_ex_atk_buff_classScore" colspan="3">
-                                                    <input type="number" id="ex_atk_buff_classScore_AlterEgo" maxlength="8" value="0" max="50" min="0" step="1" class="ex_atk_buff_classScore form-control bg-transparent" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th class="bg-light"><p class="small">スター発生率</p></th>
-                                                <td class="col_sr_buff_classScore" colspan="3">
-                                                    <input type="number" id="sr_buff_classScore_AlterEgo" maxlength="8" value="0" max="1000" min="0" step="10" class="sr_buff_classScore form-control bg-transparent" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </div>
-
-                                <div class="tab-pane fade" id="tab_classScore_Foreigner" role="tabpanel" aria-labelledby="nav-classScore_Foreigner" tabindex="0">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered table-sm text-nowrap classScoreTable" id="classScoreTable_Foreigner">
-                                            <tr>
-                                                <th class="bg-light"><p class="small">カード威力<br>/B/A/Q</p></th>
-                                                <td class="col_card_buff_classScore">
-                                                    <input type="number" id="b_card_power_buff_classScore_Foreigner" maxlength="8" value="0" max="400" min="-100" step="10" class="b_card_power_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                                <td class="col_card_buff_classScore">
-                                                    <input type="number" id="a_card_power_buff_classScore_Foreigner" maxlength="8" value="0" max="400" min="-100" step="10" class="a_card_power_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                                <td class="col_card_buff_classScore">
-                                                    <input type="number" id="q_card_power_buff_classScore_Foreigner" maxlength="8" value="0" max="400" min="-100" step="10" class="q_card_power_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th class="bg-light"><p class="small">クリバフ</p></th>
-                                                <td class="col_cri_buff_classScore" colspan="3">
-                                                    <input type="number" id="cri_buff_classScore_Foreigner" maxlength="8" value="0" max="500" min="0" step="1" class="cri_buff_classScore form-control bg-transparent" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th class="bg-light"><p class="small">クリバフ<br>/B/A/Q</p></th>
-                                                <td class="col_card_buff_classScore">
-                                                    <input type="number" id="b_card_cri_buff_classScore_Foreigner" maxlength="8" value="0" max="500" min="-100" step="10" class="b_card_cri_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                                <td class="col_card_buff_classScore">
-                                                    <input type="number" id="a_card_cri_buff_classScore_Foreigner" maxlength="8" value="0" max="500" min="-100" step="10" class="a_card_cri_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                                <td class="col_card_buff_classScore">
-                                                    <input type="number" id="q_card_cri_buff_classScore_Foreigner" maxlength="8" value="0" max="500" min="-100" step="10" class="q_card_cri_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th class="bg-light"><p class="small">宝具威力バフ</p></th>
-                                                <td class="col_np_buff_classScore" colspan="3">
-                                                    <input type="number" id="np_buff_classScore_Foreigner" maxlength="8" value="0" max="500" min="-100" step="10" class="np_buff_classScore form-control bg-transparent" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th class="bg-light"><p class="small">EXバフ</p></th>
-                                                <td class="col_ex_atk_buff_classScore" colspan="3">
-                                                    <input type="number" id="ex_atk_buff_classScore_Foreigner" maxlength="8" value="0" max="50" min="0" step="1" class="ex_atk_buff_classScore form-control bg-transparent" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th class="bg-light"><p class="small">スター発生率</p></th>
-                                                <td class="col_sr_buff_classScore" colspan="3">
-                                                    <input type="number" id="sr_buff_classScore_Foreigner" maxlength="8" value="0" max="1000" min="0" step="10" class="sr_buff_classScore form-control bg-transparent" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </div>
-
-                                <div class="tab-pane fade" id="tab_classScore_Pretender" role="tabpanel" aria-labelledby="nav-classScore_Pretender" tabindex="0">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered table-sm text-nowrap classScoreTable" id="classScoreTable_Pretender">
-                                            <tr>
-                                                <th class="bg-light"><p class="small">カード威力<br>/B/A/Q</p></th>
-                                                <td class="col_card_buff_classScore">
-                                                    <input type="number" id="b_card_power_buff_classScore_Pretender" maxlength="8" value="0" max="400" min="-100" step="10" class="b_card_power_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                                <td class="col_card_buff_classScore">
-                                                    <input type="number" id="a_card_power_buff_classScore_Pretender" maxlength="8" value="0" max="400" min="-100" step="10" class="a_card_power_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                                <td class="col_card_buff_classScore">
-                                                    <input type="number" id="q_card_power_buff_classScore_Pretender" maxlength="8" value="0" max="400" min="-100" step="10" class="q_card_power_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th class="bg-light"><p class="small">クリバフ</p></th>
-                                                <td class="col_cri_buff_classScore" colspan="3">
-                                                    <input type="number" id="cri_buff_classScore_Pretender" maxlength="8" value="0" max="500" min="0" step="1" class="cri_buff_classScore form-control bg-transparent" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th class="bg-light"><p class="small">クリバフ<br>/B/A/Q</p></th>
-                                                <td class="col_card_buff_classScore">
-                                                    <input type="number" id="b_card_cri_buff_classScore_Pretender" maxlength="8" value="0" max="500" min="-100" step="10" class="b_card_cri_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                                <td class="col_card_buff_classScore">
-                                                    <input type="number" id="a_card_cri_buff_classScore_Pretender" maxlength="8" value="0" max="500" min="-100" step="10" class="a_card_cri_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                                <td class="col_card_buff_classScore">
-                                                    <input type="number" id="q_card_cri_buff_classScore_Pretender" maxlength="8" value="0" max="500" min="-100" step="10" class="q_card_cri_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th class="bg-light"><p class="small">宝具威力バフ</p></th>
-                                                <td class="col_np_buff_classScore" colspan="3">
-                                                    <input type="number" id="np_buff_classScore_Pretender" maxlength="8" value="0" max="500" min="-100" step="10" class="np_buff_classScore form-control bg-transparent" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th class="bg-light"><p class="small">EXバフ</p></th>
-                                                <td class="col_ex_atk_buff_classScore" colspan="3">
-                                                    <input type="number" id="ex_atk_buff_classScore_Pretender" maxlength="8" value="0" max="50" min="0" step="1" class="ex_atk_buff_classScore form-control bg-transparent" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th class="bg-light"><p class="small">スター発生率</p></th>
-                                                <td class="col_sr_buff_classScore" colspan="3">
-                                                    <input type="number" id="sr_buff_classScore_Pretender" maxlength="8" value="0" max="1000" min="0" step="10" class="sr_buff_classScore form-control bg-transparent" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </div>
-
-                                <div class="tab-pane fade" id="tab_classScore_Beast" role="tabpanel" aria-labelledby="nav-classScore_Beast" tabindex="0">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered table-sm text-nowrap classScoreTable" id="classScoreTable_Beast">
-                                            <tr>
-                                                <th class="bg-light"><p class="small">カード威力<br>/B/A/Q</p></th>
-                                                <td class="col_card_buff_classScore">
-                                                    <input type="number" id="b_card_power_buff_classScore_Beast" maxlength="8" value="0" max="400" min="-100" step="10" class="b_card_power_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                                <td class="col_card_buff_classScore">
-                                                    <input type="number" id="a_card_power_buff_classScore_Beast" maxlength="8" value="0" max="400" min="-100" step="10" class="a_card_power_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                                <td class="col_card_buff_classScore">
-                                                    <input type="number" id="q_card_power_buff_classScore_Beast" maxlength="8" value="0" max="400" min="-100" step="10" class="q_card_power_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th class="bg-light"><p class="small">クリバフ</p></th>
-                                                <td class="col_cri_buff_classScore" colspan="3">
-                                                    <input type="number" id="cri_buff_classScore_Beast" maxlength="8" value="0" max="500" min="0" step="1" class="cri_buff_classScore form-control bg-transparent" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th class="bg-light"><p class="small">クリバフ<br>/B/A/Q</p></th>
-                                                <td class="col_card_buff_classScore">
-                                                    <input type="number" id="b_card_cri_buff_classScore_Beast" maxlength="8" value="0" max="500" min="-100" step="10" class="b_card_cri_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                                <td class="col_card_buff_classScore">
-                                                    <input type="number" id="a_card_cri_buff_classScore_Beast" maxlength="8" value="0" max="500" min="-100" step="10" class="a_card_cri_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                                <td class="col_card_buff_classScore">
-                                                    <input type="number" id="q_card_cri_buff_classScore_Beast" maxlength="8" value="0" max="500" min="-100" step="10" class="q_card_cri_buff_classScore form-control" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th class="bg-light"><p class="small">宝具威力バフ</p></th>
-                                                <td class="col_np_buff_classScore" colspan="3">
-                                                    <input type="number" id="np_buff_classScore_Beast" maxlength="8" value="0" max="500" min="-100" step="10" class="np_buff_classScore form-control bg-transparent" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th class="bg-light"><p class="small">EXバフ</p></th>
-                                                <td class="col_ex_atk_buff_classScore" colspan="3">
-                                                    <input type="number" id="ex_atk_buff_classScore_Beast" maxlength="8" value="0" max="50" min="0" step="1" class="ex_atk_buff_classScore form-control bg-transparent" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th class="bg-light"><p class="small">スター発生率</p></th>
-                                                <td class="col_sr_buff_classScore" colspan="3">
-                                                    <input type="number" id="sr_buff_classScore_Beast" maxlength="8" value="0" max="1000" min="0" step="10" class="sr_buff_classScore form-control bg-transparent" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                                                    <input type="number" id="sr_buff_classScore_EX2" maxlength="8" value="0" max="1000" min="0" step="10" class="sr_buff_classScore form-control bg-transparent" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                                 </td>
                                             </tr>
                                         </table>
