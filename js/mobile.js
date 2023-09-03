@@ -3881,11 +3881,11 @@ function calcRate() {
     $("#np_result_EX_np").val(result_ex_np + "%");
     $("#np_result_total_np").val(BigNumber(result_1st_np).plus(result_2nd_np).plus(result_3rd_np).plus(result_ex_np) + "%");
 
-    $("#np_result_1st_star").val(result_1st_star[0] + "(+" + result_1st_star[1] + ")個");
-    $("#np_result_2nd_star").val(result_2nd_star[0] + "(+" + result_2nd_star[1] + ")個");
-    $("#np_result_3rd_star").val(result_3rd_star[0] + "(+" + result_3rd_star[1] + ")個");
-    $("#np_result_EX_star").val(result_ex_star[0] + "(+" + result_ex_star[1] + ")個");
-    $("#np_result_total_star").val((result_1st_star[0] + result_2nd_star[0] + result_3rd_star[0] + result_ex_star[0]) + "(+" + (result_1st_star[1] + result_2nd_star[1] + result_3rd_star[1] + result_ex_star[1]) + "個)");
+    $("#np_result_1st_star")[0].innerText = result_1st_star[0] + "(+" + result_1st_star[5] + ")個" + "\n" + result_1st_star[1] + result_1st_star[2] + "\n" + result_1st_star[3] + result_1st_star[4];
+    $("#np_result_2nd_star")[0].innerText = result_2nd_star[0] + "(+" + result_2nd_star[5] + ")個" + "\n" + result_2nd_star[1] + result_2nd_star[2] + "\n" + result_2nd_star[3] + result_2nd_star[4];
+    $("#np_result_3rd_star")[0].innerText = result_3rd_star[0] + "(+" + result_3rd_star[5] + ")個" + "\n" + result_3rd_star[1] + result_3rd_star[2] + "\n" + result_3rd_star[3] + result_3rd_star[4];
+    $("#np_result_EX_star")[0].innerText = result_ex_star[0] + "(+" + result_ex_star[5] + ")個" + "\n" + result_ex_star[1] + result_ex_star[2] + "\n" + result_ex_star[3] + result_ex_star[4];
+    $("#np_result_total_star").val((result_1st_star[0] + result_2nd_star[0] + result_3rd_star[0] + result_ex_star[0]) + "(+" + (result_1st_star[5] + result_2nd_star[5] + result_3rd_star[5] + result_ex_star[5]) + "個)");
 
     $("#np_result_1st_np_ovk").val(result_1st_np_ovk + "%");
     $("#np_result_2nd_np_ovk").val(result_2nd_np_ovk + "%");
@@ -3893,11 +3893,11 @@ function calcRate() {
     $("#np_result_EX_np_ovk").val(result_ex_np_ovk + "%");
     $("#np_result_total_np_ovk").val(BigNumber(result_1st_np_ovk).plus(result_2nd_np_ovk).plus(result_3rd_np_ovk).plus(result_ex_np_ovk) + "%");
 
-    $("#np_result_1st_star_ovk").val(result_1st_star_ovk[0] + "(+" + result_1st_star_ovk[1] + ")個");
-    $("#np_result_2nd_star_ovk").val(result_2nd_star_ovk[0] + "(+" + result_2nd_star_ovk[1] + ")個");
-    $("#np_result_3rd_star_ovk").val(result_3rd_star_ovk[0] + "(+" + result_3rd_star_ovk[1] + ")個");
-    $("#np_result_EX_star_ovk").val(result_ex_star_ovk[0] + "(+" + result_ex_star_ovk[1] + ")個");
-    $("#np_result_total_star_ovk").val((result_1st_star_ovk[0] + result_2nd_star_ovk[0] + result_3rd_star_ovk[0] + result_ex_star_ovk[0]) + "(+" + (result_1st_star_ovk[1] + result_2nd_star_ovk[1] + result_3rd_star_ovk[1] + result_ex_star_ovk[1]) + "個)");
+    $("#np_result_1st_star_ovk")[0].innerText = result_1st_star_ovk[0] + "(+" + result_1st_star_ovk[5] + ")個" + "\n" + result_1st_star_ovk[1] + result_1st_star_ovk[2] + "\n" + result_1st_star_ovk[3] + result_1st_star_ovk[4];
+    $("#np_result_2nd_star_ovk")[0].innerText = result_2nd_star_ovk[0] + "(+" + result_2nd_star_ovk[5] + ")個" + "\n" + result_2nd_star_ovk[1] + result_2nd_star_ovk[2] + "\n" + result_2nd_star_ovk[3] + result_2nd_star_ovk[4];
+    $("#np_result_3rd_star_ovk")[0].innerText = result_3rd_star_ovk[0] + "(+" + result_3rd_star_ovk[5] + ")個" + "\n" + result_3rd_star_ovk[1] + result_3rd_star_ovk[2] + "\n" + result_3rd_star_ovk[3] + result_3rd_star_ovk[4];
+    $("#np_result_EX_star_ovk")[0].innerText = result_ex_star_ovk[0] + "(+" + result_ex_star_ovk[5] + ")個" + "\n" + result_ex_star_ovk[1] + result_ex_star_ovk[2] + "\n" + result_ex_star_ovk[3] + result_ex_star_ovk[4];
+    $("#np_result_total_star_ovk").val((result_1st_star_ovk[0] + result_2nd_star_ovk[0] + result_3rd_star_ovk[0] + result_ex_star_ovk[0]) + "(+" + (result_1st_star_ovk[5] + result_2nd_star_ovk[5] + result_3rd_star_ovk[5] + result_ex_star_ovk[5]) + "個)");
 
 };
 
@@ -3953,8 +3953,6 @@ function calcStar(hit, sr, qBonus, card_buff, qBonus_all, card_NP, sr_buff, cri,
     star_ok_num = Math.floor(star_ok / 1000);
     star_num = Math.max(star_num, 0);
     star_ok_num = Math.max(star_ok_num, 0);
-    //star = star_num * hit + "個" + "+" + "(" + rounddown(Math.max((star - 1000 * star_num) / 10.0, 0.0), 1) + "%×" + (hit - ok) + ", " + rounddown(Math.max((star_ok - 1000 * star_num) / 10.0, 0.0), 1) + "%×" + ok + ")";
-    //star = star_num * hit + "個" + "+" + "(" + Number(parseFloat(hit - ok) + parseFloat(ok)) + ")";
     result.push(star_num * hit);
     if (rounddown(Math.max((star - 1000 * star_num) / 10.0, 0.0), 1) > 0) {
         star_tmp += parseFloat(hit - ok);
@@ -3962,6 +3960,10 @@ function calcStar(hit, sr, qBonus, card_buff, qBonus_all, card_NP, sr_buff, cri,
     if (rounddown(Math.max((star_ok - 1000 * star_num) / 10.0, 0.0), 1) > 0) {
         star_tmp += parseFloat(ok);
     }
+    result.push(rounddown(Math.max((star - 1000 * star_num) / 10.0, 0.0), 1) + "%*");
+    result.push(parseFloat(hit - ok));
+    result.push(rounddown(Math.max((star_ok - 1000 * star_num) / 10.0, 0.0), 1) + "%*");
+    result.push(parseFloat(ok));
     result.push(star_tmp);
 
     return result;
