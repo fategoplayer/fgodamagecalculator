@@ -1645,6 +1645,7 @@ $(function(){
 
         // プリセットデータ設定
         setPresetDataUpdDel($("#buffPreset_name").val());
+        setPresetDataSel($("#buffPreset_sel_name").val());
 
         // 初期値を設定
         $("#name_buffPreset_inp").val("");

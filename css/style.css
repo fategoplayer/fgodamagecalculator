@@ -429,13 +429,9 @@ input[type="number"] {
 #servantInfoTable tr, #servantInfoTable td {
   height: 25px;
 }
-#servantInfoTable th {
-  min-width: 25%;
-}
 #servantInfoTable td {
   vertical-align: middle;
   overflow-wrap : break-word;
-  width: auto;
 }
 #servantInfoTable td p {
   padding: 5px;

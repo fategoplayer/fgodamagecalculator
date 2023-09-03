@@ -437,15 +437,11 @@ footer a {
 }
 /*サーヴァント情報*/
 #servantInfoTable tr, #servantInfoTable td {
-  height: 25px;
-}
-#servantInfoTable th {
-  min-width: 25%;
+  height: 20px;
 }
 #servantInfoTable td {
   vertical-align: middle;
   overflow-wrap : break-word;
-  width: auto;
 }
 #servantInfoTable td p {
   padding: 5px;
