@@ -3053,7 +3053,7 @@ function servantInfo() {
             $("#servant_search_skill3")[0].innerText = skill3;
             // クラススキル
             let classSkill = "";
-            if (this["クラススキル1名"] != "") {classSkill += "\n" + "【" + this["クラススキル1名"] + "】" + "\n" + this["クラススキル1効果"];}
+            if (this["クラススキル1名"] != "") {classSkill += "【" + this["クラススキル1名"] + "】" + "\n" + this["クラススキル1効果"];}
             if (this["クラススキル2名"] != "") {classSkill += "\n" + "【" + this["クラススキル2名"] + "】" + "\n" + this["クラススキル2効果"];}
             if (this["クラススキル3名"] != "") {classSkill += "\n" + "【" + this["クラススキル3名"] + "】" + "\n" + this["クラススキル3効果"];}
             if (this["クラススキル4名"] != "") {classSkill += "\n" + "【" + this["クラススキル4名"] + "】" + "\n" + this["クラススキル4効果"];}
