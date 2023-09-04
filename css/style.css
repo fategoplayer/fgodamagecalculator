@@ -244,6 +244,10 @@ input[type="number"] {
   height: 35px !important;
 }
 
+.row_star, .row_star td {
+  height: 56px !important;
+}
+
 .row_npstar_cardselect {
   height: 70px;
 }

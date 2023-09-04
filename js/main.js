@@ -4402,7 +4402,7 @@ function calcRate() {
     $("#np_result_2nd_star")[0].innerText = result_2nd_star[0] + "(+" + result_2nd_star[5] + ")個" + "\n" + result_2nd_star[1] + result_2nd_star[2] + "\n" + result_2nd_star[3] + result_2nd_star[4];
     $("#np_result_3rd_star")[0].innerText = result_3rd_star[0] + "(+" + result_3rd_star[5] + ")個" + "\n" + result_3rd_star[1] + result_3rd_star[2] + "\n" + result_3rd_star[3] + result_3rd_star[4];
     $("#np_result_EX_star")[0].innerText = result_ex_star[0] + "(+" + result_ex_star[5] + ")個" + "\n" + result_ex_star[1] + result_ex_star[2] + "\n" + result_ex_star[3] + result_ex_star[4];
-    $("#np_result_total_star").val((result_1st_star[0] + result_2nd_star[0] + result_3rd_star[0] + result_ex_star[0]) + "(+" + (result_1st_star[5] + result_2nd_star[5] + result_3rd_star[5] + result_ex_star[5]) + "個)");
+    $("#np_result_total_star").val((result_1st_star[0] + result_2nd_star[0] + result_3rd_star[0] + result_ex_star[0]) + "(+" + (result_1st_star[5] + result_2nd_star[5] + result_3rd_star[5] + result_ex_star[5]) + ")個");
 
     $("#np_result_1st_np_ovk").val(result_1st_np_ovk + "%");
     $("#np_result_2nd_np_ovk").val(result_2nd_np_ovk + "%");
@@ -4414,7 +4414,7 @@ function calcRate() {
     $("#np_result_2nd_star_ovk")[0].innerText = result_2nd_star_ovk[0] + "(+" + result_2nd_star_ovk[5] + ")個" + "\n" + result_2nd_star_ovk[1] + result_2nd_star_ovk[2] + "\n" + result_2nd_star_ovk[3] + result_2nd_star_ovk[4];
     $("#np_result_3rd_star_ovk")[0].innerText = result_3rd_star_ovk[0] + "(+" + result_3rd_star_ovk[5] + ")個" + "\n" + result_3rd_star_ovk[1] + result_3rd_star_ovk[2] + "\n" + result_3rd_star_ovk[3] + result_3rd_star_ovk[4];
     $("#np_result_EX_star_ovk")[0].innerText = result_ex_star_ovk[0] + "(+" + result_ex_star_ovk[5] + ")個" + "\n" + result_ex_star_ovk[1] + result_ex_star_ovk[2] + "\n" + result_ex_star_ovk[3] + result_ex_star_ovk[4];
-    $("#np_result_total_star_ovk").val((result_1st_star_ovk[0] + result_2nd_star_ovk[0] + result_3rd_star_ovk[0] + result_ex_star_ovk[0]) + "(+" + (result_1st_star_ovk[5] + result_2nd_star_ovk[5] + result_3rd_star_ovk[5] + result_ex_star_ovk[5]) + "個)");
+    $("#np_result_total_star_ovk").val((result_1st_star_ovk[0] + result_2nd_star_ovk[0] + result_3rd_star_ovk[0] + result_ex_star_ovk[0]) + "(+" + (result_1st_star_ovk[5] + result_2nd_star_ovk[5] + result_3rd_star_ovk[5] + result_ex_star_ovk[5]) + ")個");
 
 };
 
