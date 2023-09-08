@@ -27,6 +27,9 @@ table th {
 .input-group-sm>.btn, .input-group-sm>.form-control, .input-group-sm>.form-select, .input-group-sm>.input-group-text {
   font-size: .75rem !important;
 }
+.toggle-sp::after {
+  vertical-align: 0.15em !important;
+}
 
 textarea {
   resize: none !important;
@@ -249,7 +252,7 @@ input[type="number"] {
 }
 
 .row_npstar_cardselect {
-  height: 70px;
+  height: 35px;
 }
 
 .col_npstar_head {
@@ -431,11 +434,14 @@ input[type="number"] {
 
 /*サーヴァント情報*/
 #servantInfoTable tr, #servantInfoTable td {
-  height: 25px;
+  height: 20px;
 }
 #servantInfoTable td {
   vertical-align: middle;
-  overflow-wrap : break-word;
+  width: 30%!important;
+}
+#servantInfoTable th {
+  width: 20%!important;
 }
 #servantInfoTable td p {
   padding: 5px;
@@ -446,4 +452,7 @@ input[type="number"] {
 }
 #servantInfoAccordion .accordion-button {
   padding: 5px !important;
+}
+#servantInfoTable td[colspan="3"] {
+  width: 80%!important;
 }

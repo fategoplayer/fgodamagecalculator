@@ -109,6 +109,9 @@ $(function(){
         var recNumber = this.id.split("_")[this.id.split("_").length - 1];
         var recNext = Number(recNumber) - 1;
 
+        // ドロップダウンメニューを閉じる
+        $(".dropdown-menu").removeClass("show");
+
         // 行入れ替え実行
         changeParam(recNumber, recNext);
 
@@ -126,6 +129,9 @@ $(function(){
     $(document).on("click", ".down_change_link", function() {
         var recNumber = this.id.split("_")[this.id.split("_").length - 1];
         var recNext = Number(recNumber) + 1;
+
+        // ドロップダウンメニューを閉じる
+        $(".dropdown-menu").removeClass("show");
 
         // 行入れ替え実行
         changeParam(recNumber, recNext);
@@ -145,6 +151,9 @@ $(function(){
         var recNumber = this.id.split("_")[this.id.split("_").length - 1];
         var recNext = Number(recNumber) - 1;
 
+        // ドロップダウンメニューを閉じる
+        $(".dropdown-menu").removeClass("show");
+
         // 行コピー実行
         copyParam(recNumber, recNext);
 
@@ -161,6 +170,9 @@ $(function(){
     $(document).on("click", ".down_copy_link", function() {
         var recNumber = this.id.split("_")[this.id.split("_").length - 1];
         var recNext = Number(recNumber) + 1;
+
+        // ドロップダウンメニューを閉じる
+        $(".dropdown-menu").removeClass("show");
 
         // 行コピー実行
         copyParam(recNumber, recNext);
@@ -354,6 +366,9 @@ $(function(){
 
         var recNumber = this.id.split("_")[this.id.split("_").length - 1];
 
+        // ドロップダウンメニューを閉じる
+        $(".dropdown-menu").removeClass("show");
+
         // 行のパラメーターを初期化
         clearParam(recNumber);
 
@@ -445,6 +460,9 @@ $(function(){
 
             }
 
+            // ピン留め作成
+            pinBuffCreate();
+
             // クラススコア
             let classScore_jsonlist = localStorage.getItem(localStorageKey_ClassScore);
 
@@ -474,38 +492,33 @@ $(function(){
 
         // 行の目標ダメージを復元
         $("#enemy_hp").val($("#prob_hp_" + recNumber).val());
+
         if ($("#search_servant_no_" + recNumber).val() != "") {
             $("#servant-class").val($("#search_servant_class_" + recNumber).val());
             $("#servant-rare").val($("#search_servant_rare_" + recNumber).val());
             // サーヴァントセレクトボックスを再作成
             remakeServantSelectBox();
             $("#servant-name").val($("#search_servant_no_" + recNumber).val());
-            // サーヴァント情報を反映
-            servantApply();
         }
-        if ($("#na_buff_" + recNumber).val() != "") {
-            $("#NA_buff").val($("#na_buff_" + recNumber).val());
-        }
-        if ($("#sr_buff_" + recNumber).val() != "") {
-            $("#SR_buff").val($("#sr_buff_" + recNumber).val());
-        }
-        /*
-        else if ($("#apply_servant_no").val() != "") {
-            $("#servant-class").val($("#apply_servant_class").val());
-            $("#servant-rare").val($("#apply_servant_rare").val());
+        else if ($("#np_star_servant_no_" + recNumber).val() != "") {
+            $("#servant-class").val($("#np_star_servant_class_" + recNumber).val());
+            $("#servant-rare").val($("#np_star_servant_rare_" + recNumber).val());
             // サーヴァントセレクトボックスを再作成
             remakeServantSelectBox();
-            $("#servant-name").val($("#apply_servant_no").val());
-            // サーヴァント情報を反映
-            servantApply();
-            if ($("#na_buff_" + recNumber).val() != "") {
-                $("#NA_buff").val($("#na_buff_" + recNumber).val());
-            }
-            if ($("#sr_buff_" + recNumber).val() != "") {
-                $("#SR_buff").val($("#sr_buff_" + recNumber).val());
-            }
+            $("#servant-name").val($("#np_star_servant_no_" + recNumber).val());
         }
-        */
+
+        $("#NA").val($("#na_" + recNumber).val());
+        $("#NA_buff").val($("#na_buff_" + recNumber).val());
+        $("#SR").val($("#sr_" + recNumber).val());
+        $("#SR_buff").val($("#sr_buff_" + recNumber).val());
+        $("#b_hit").val($("#b_hit_" + recNumber).val());
+        $("#a_hit").val($("#a_hit_" + recNumber).val());
+        $("#q_hit").val($("#q_hit_" + recNumber).val());
+        $("#ex_hit").val($("#ex_hit_" + recNumber).val());
+        $("#np_hit").val($("#np_hit_" + recNumber).val());
+        $("#NA_enemy").val($("#na_enemy_" + recNumber).val());
+        $("#SR_enemy").val($("#sr_enemy_" + recNumber).val());
 
         // スリップダメージを復元
         $("#poison").val($("#poison_" + recNumber).val());
@@ -568,8 +581,17 @@ $(function(){
         calcRate();
 
         // バフを保持
+        $("#na_" + $("#prob_recNumber").val()).val($("#NA").val());
         $("#na_buff_" + $("#prob_recNumber").val()).val($("#NA_buff").val());
+        $("#sr_" + $("#prob_recNumber").val()).val($("#SR").val());
         $("#sr_buff_" + $("#prob_recNumber").val()).val($("#SR_buff").val());
+        $("#b_hit_" + $("#prob_recNumber").val()).val($("#b_hit").val());
+        $("#a_hit_" + $("#prob_recNumber").val()).val($("#a_hit").val());
+        $("#q_hit_" + $("#prob_recNumber").val()).val($("#q_hit").val());
+        $("#ex_hit_" + $("#prob_recNumber").val()).val($("#ex_hit").val());
+        $("#np_hit_" + $("#prob_recNumber").val()).val($("#np_hit").val());
+        $("#na_enemy_" + $("#prob_recNumber").val()).val($("#NA_enemy").val());
+        $("#sr_enemy_" + $("#prob_recNumber").val()).val($("#SR_enemy").val());
 
     });
 
@@ -605,8 +627,17 @@ $(function(){
         calcRate();
 
         // バフを保持
+        $("#na_" + $("#prob_recNumber").val()).val($("#NA").val());
         $("#na_buff_" + $("#prob_recNumber").val()).val($("#NA_buff").val());
+        $("#sr_" + $("#prob_recNumber").val()).val($("#SR").val());
         $("#sr_buff_" + $("#prob_recNumber").val()).val($("#SR_buff").val());
+        $("#b_hit_" + $("#prob_recNumber").val()).val($("#b_hit").val());
+        $("#a_hit_" + $("#prob_recNumber").val()).val($("#a_hit").val());
+        $("#q_hit_" + $("#prob_recNumber").val()).val($("#q_hit").val());
+        $("#ex_hit_" + $("#prob_recNumber").val()).val($("#ex_hit").val());
+        $("#np_hit_" + $("#prob_recNumber").val()).val($("#np_hit").val());
+        $("#na_enemy_" + $("#prob_recNumber").val()).val($("#NA_enemy").val());
+        $("#sr_enemy_" + $("#prob_recNumber").val()).val($("#SR_enemy").val());
 
     });
 
@@ -1213,11 +1244,21 @@ $(function(){
             // NPスター計算
             calcRate();
             // サーヴァント情報を保持
-            $("#apply_servant_class").val($("#servant-class").val());
-            $("#apply_servant_rare").val($("#servant-rare").val());
-            $("#apply_servant_no").val($("#servant-name").val());
+            $("#np_star_servant_no_" + $("#prob_recNumber").val()).val($("#servant-name").val());
+            $("#np_star_servant_class_" + $("#prob_recNumber").val()).val($("#servant-class").val());
+            $("#np_star_servant_rare_" + $("#prob_recNumber").val()).val($("#servant-rare").val());
+            // バフを保持
+            $("#na_" + $("#prob_recNumber").val()).val($("#NA").val());
             $("#na_buff_" + $("#prob_recNumber").val()).val($("#NA_buff").val());
+            $("#sr_" + $("#prob_recNumber").val()).val($("#SR").val());
             $("#sr_buff_" + $("#prob_recNumber").val()).val($("#SR_buff").val());
+            $("#b_hit_" + $("#prob_recNumber").val()).val($("#b_hit").val());
+            $("#a_hit_" + $("#prob_recNumber").val()).val($("#a_hit").val());
+            $("#q_hit_" + $("#prob_recNumber").val()).val($("#q_hit").val());
+            $("#ex_hit_" + $("#prob_recNumber").val()).val($("#ex_hit").val());
+            $("#np_hit_" + $("#prob_recNumber").val()).val($("#np_hit").val());
+            $("#na_enemy_" + $("#prob_recNumber").val()).val($("#NA_enemy").val());
+            $("#sr_enemy_" + $("#prob_recNumber").val()).val($("#SR_enemy").val());
         }
 
         return false;
@@ -1229,28 +1270,19 @@ $(function(){
 
         var recNumber = this.id.split("_")[this.id.split("_").length - 1];
 
+        // ドロップダウンメニューを閉じる
+        $(".dropdown-menu").removeClass("show");
+
         // サーヴァント情報を復元
-        if ($("#search_servant_class_" + recNumber).val() != "") {
-            $("#search_servant_class").val($("#search_servant_class_" + recNumber).val());
-        }
-        if ($("#search_servant_rare_" + recNumber).val() != "") {
-            $("#search_servant_rare").val($("#search_servant_rare_" + recNumber).val());
-        }
-        // サーヴァントセレクトボックスを再作成
-        remakeSearchServantSelectBox();
         if ($("#search_servant_no_" + recNumber).val() != "") {
+            $("#search_servant_class").val($("#search_servant_class_" + recNumber).val());
+            $("#search_servant_rare").val($("#search_servant_rare_" + recNumber).val());
+            // サーヴァントセレクトボックスを再作成
+            remakeSearchServantSelectBox();
             $("#search_servant_name").val($("#search_servant_no_" + recNumber).val());
-        }
-        if ($("#search_servant_lvl_" + recNumber).val() != "") {
             $("#search_servant_lvl").val($("#search_servant_lvl_" + recNumber).val());
-        }
-        if ($("#search_servant_nplvl_" + recNumber).val() != "") {
             $("#search_servant_nplvl").val($("#search_servant_nplvl_" + recNumber).val());
-        }
-        if ($("#search_servant_fou_" + recNumber).val() != "") {
             $("#search_servant_fou").val($("#search_servant_fou_" + recNumber).val());
-        }
-        if ($("#search_servant_ce_" + recNumber).val() != "") {
             $("#search_servant_ceatk").val($("#search_servant_ce_" + recNumber).val());
         }
 
@@ -1414,10 +1446,15 @@ $(function(){
                             break;
                     }
 
-                    if ($("#search_servant_no_" + recNumber).val() != $("#search_servant_name").val()) {
-                        $("#na_buff_" + recNumber).val("");
-                        $("#sr_buff_" + recNumber).val("");
-                    }
+                    $("#na_" + recNumber).val(this["N_N/A"]);
+                    $("#na_buff_" + recNumber).val(this["クラススキル_NP獲得バフ"]);
+                    $("#sr_" + recNumber).val(this["SR"]);
+                    $("#sr_buff_" + recNumber).val(this["クラススキル_スター獲得バフ"]);
+                    $("#b_hit_" + recNumber).val(this["BHIT"]);
+                    $("#a_hit_" + recNumber).val(this["AHIT"]);
+                    $("#q_hit_" + recNumber).val(this["QHIT"]);
+                    $("#ex_hit_" + recNumber).val(this["EXHIT"]);
+                    $("#np_hit_" + recNumber).val(this["宝具HIT"]);
 
                     // hidden
                     $("#search_servant_class_" + recNumber).val($("#search_servant_class").val());
@@ -1480,6 +1517,7 @@ $(function(){
                             $("#q_card_cri_buff_" + recNumber).val(BigNumber(parseFloat($("#q_card_cri_buff_" + recNumber).val())).plus(parseFloat(this.q_card_cri_buff)));
                             $("#np_buff_" + recNumber).val(BigNumber(parseFloat($("#np_buff_" + recNumber).val())).plus(parseFloat(this.np_buff)));
                             $("#ex_atk_buff_" + recNumber).val(BigNumber(parseFloat($("#ex_atk_buff_" + recNumber).val())).plus(parseFloat(this.ex_atk_buff)));
+                            $("#sr_buff_" + recNumber).val(BigNumber(parseFloat($("#sr_buff_" + recNumber).val())).plus(parseFloat(this.sr_buff)));
 
                             return;
                         }
@@ -1506,6 +1544,9 @@ $(function(){
     $(document).on("click", ".buffPreset_link", function() {
 
         var recNumber = this.id.split("_")[this.id.split("_").length - 1];
+
+        // ドロップダウンメニューを閉じる
+        $(".dropdown-menu").removeClass("show");
 
         // 行番号を保持
         $("#buffPreset_recNumber").val(recNumber);
@@ -1626,7 +1667,10 @@ $(function(){
             , "ex_atk_buff" : $("#ex_atk_buff_buffPreset_inp").val()
             , "supereffective_buff" : $("#supereffective_buff_buffPreset_inp").val()
             , "fixed_dmg" : $("#fixed_dmg_buffPreset_inp").val()
+            , "na_buff" : $("#na_buff_buffPreset_inp").val()
+            , "sr_buff" : $("#sr_buff_buffPreset_inp").val()
             , "dream_end" : $("#dream_end_buffPreset_inp")[0].checked
+            , "pin_flag" : $("#pin_flag_inp")[0].checked
         };
 
         buffPresetDataList.push(json);
@@ -1642,6 +1686,9 @@ $(function(){
         // プリセットデータ設定
         setPresetDataUpdDel($("#buffPreset_name").val());
         setPresetDataSel($("#buffPreset_sel_name").val());
+
+        // ピン留め作成
+        pinBuffCreate();
 
         // 初期値を設定
         $("#name_buffPreset_inp").val("");
@@ -1664,7 +1711,10 @@ $(function(){
         $("#ex_atk_buff_buffPreset_inp").val("0");
         $("#supereffective_buff_buffPreset_inp").val("0");
         $("#fixed_dmg_buffPreset_inp").val("0");
+        $("#na_buff_buffPreset_inp").val("0");
+        $("#sr_buff_buffPreset_inp").val("0");
         $("#dream_end_buffPreset_inp")[0].checked = false;
+        $("#pin_flag_inp")[0].checked = false;
         
         return true;
 
@@ -1721,13 +1771,19 @@ $(function(){
                 this.ex_atk_buff = $("#ex_atk_buff_buffPreset_upd_del").val();
                 this.supereffective_buff = $("#supereffective_buff_buffPreset_upd_del").val();
                 this.fixed_dmg = $("#fixed_dmg_buffPreset_upd_del").val();
+                this.na_buff = $("#na_buff_buffPreset_upd_del").val();
+                this.sr_buff = $("#sr_buff_buffPreset_upd_del").val();
                 this.dream_end = $("#dream_end_buffPreset_upd_del")[0].checked;
+                this.pin_flag = $("#pin_flag_upd_del")[0].checked;
 
                 // プリセットセレクトボックス作成
                 remakePresetSelectBox();
 
                 // プリセットデータ設定
                 setPresetDataSel($("#buffPreset_sel_name").val());
+
+                // ピン留め作成
+                pinBuffCreate();
 
                 // セレクトボックスのプリセット名を変更
                 $("#buffPreset_name").val(this.id);
@@ -1761,6 +1817,9 @@ $(function(){
         // プリセットデータ設定
         setPresetDataUpdDel($("#buffPreset_name").val());
         setPresetDataSel($("#buffPreset_sel_name").val());
+
+        // ピン留め作成
+        pinBuffCreate();
 
         // ローカルストレージに格納
         if (window.localStorage) {
@@ -1799,6 +1858,8 @@ $(function(){
         $("#ex_atk_buff_" + recNumber).val(BigNumber(parseFloat($("#ex_atk_buff_" + recNumber).val())).plus(parseFloat($("#ex_atk_buff_buffPreset_sel").val())));
         $("#supereffective_buff_" + recNumber).val(BigNumber(parseFloat($("#supereffective_buff_" + recNumber).val())).plus(parseFloat($("#supereffective_buff_buffPreset_sel").val())));
         $("#fixed_dmg_" + recNumber).val(BigNumber(parseFloat($("#fixed_dmg_" + recNumber).val())).plus(parseFloat($("#fixed_dmg_buffPreset_sel").val())));
+        $("#na_buff_" + recNumber).val(BigNumber(parseFloat($("#na_buff_" + recNumber).val())).plus(parseFloat($("#na_buff_buffPreset_sel").val())));
+        $("#sr_buff_" + recNumber).val(BigNumber(parseFloat($("#sr_buff_" + recNumber).val())).plus(parseFloat($("#sr_buff_buffPreset_sel").val())));
 
         if ($("#dream_end_buffPreset_sel")[0].checked) {
             $("#np_buff_" + recNumber).val(parseFloat($("#np_buff_" + recNumber).val()) * 2);
@@ -1807,7 +1868,61 @@ $(function(){
         // 再計算
         calcMain(recNumber);
 
-    });              
+    }); 
+    
+    /**
+     * ピン留めバフ押下イベント
+     */
+    $(document).on("click", ".pin_buff_link", function() {
+
+        var recNumber = this.dataset.targetrec;
+        var presetId = this.dataset.presetid;
+
+        // ドロップダウンメニューを閉じる
+        $(".dropdown-menu").removeClass("show");
+
+        $(buffPresetDataList).each(function() {
+
+            if (this.id == presetId) {
+
+                $("#atk_buff_" + recNumber).val(BigNumber(parseFloat($("#atk_buff_" + recNumber).val())).plus(parseFloat(this.atk_buff)));
+                $("#def_debuff_" + recNumber).val(BigNumber(parseFloat($("#def_debuff_" + recNumber).val())).plus(parseFloat(this.def_debuff)));
+                $("#b_card_buff_" + recNumber).val(BigNumber(parseFloat($("#b_card_buff_" + recNumber).val())).plus(parseFloat(this.b_card_buff)));
+                $("#b_card_debuff_" + recNumber).val(BigNumber(parseFloat($("#b_card_debuff_" + recNumber).val())).plus(parseFloat(this.b_card_debuff)));
+                $("#b_card_power_buff_" + recNumber).val(BigNumber(parseFloat($("#b_card_power_buff_" + recNumber).val())).plus(parseFloat(this.b_card_power_buff)));
+                $("#b_card_cri_buff_" + recNumber).val(BigNumber(parseFloat($("#b_card_cri_buff_" + recNumber).val())).plus(parseFloat(this.b_card_cri_buff)));
+                $("#a_card_buff_" + recNumber).val(BigNumber(parseFloat($("#a_card_buff_" + recNumber).val())).plus(parseFloat(this.a_card_buff)));
+                $("#a_card_debuff_" + recNumber).val(BigNumber(parseFloat($("#a_card_debuff_" + recNumber).val())).plus(parseFloat(this.a_card_debuff)));
+                $("#a_card_power_buff_" + recNumber).val(BigNumber(parseFloat($("#a_card_power_buff_" + recNumber).val())).plus(parseFloat(this.a_card_power_buff)));
+                $("#a_card_cri_buff_" + recNumber).val(BigNumber(parseFloat($("#a_card_cri_buff_" + recNumber).val())).plus(parseFloat(this.a_card_cri_buff)));
+                $("#q_card_buff_" + recNumber).val(BigNumber(parseFloat($("#q_card_buff_" + recNumber).val())).plus(parseFloat(this.q_card_buff)));
+                $("#q_card_debuff_" + recNumber).val(BigNumber(parseFloat($("#q_card_debuff_" + recNumber).val())).plus(parseFloat(this.q_card_debuff)));
+                $("#q_card_power_buff_" + recNumber).val(BigNumber(parseFloat($("#q_card_power_buff_" + recNumber).val())).plus(parseFloat(this.q_card_power_buff)));
+                $("#q_card_cri_buff_" + recNumber).val(BigNumber(parseFloat($("#q_card_cri_buff_" + recNumber).val())).plus(parseFloat(this.q_card_cri_buff)));
+                $("#cri_buff_" + recNumber).val(BigNumber(parseFloat($("#cri_buff_" + recNumber).val())).plus(parseFloat(this.cri_buff)));
+                $("#np_buff_" + recNumber).val(BigNumber(parseFloat($("#np_buff_" + recNumber).val())).plus(parseFloat(this.np_buff)));
+                $("#ex_atk_buff_" + recNumber).val(BigNumber(parseFloat($("#ex_atk_buff_" + recNumber).val())).plus(parseFloat(this.ex_atk_buff)));
+                $("#supereffective_buff_" + recNumber).val(BigNumber(parseFloat($("#supereffective_buff_" + recNumber).val())).plus(parseFloat(this.supereffective_buff)));
+                $("#fixed_dmg_" + recNumber).val(BigNumber(parseFloat($("#fixed_dmg_" + recNumber).val())).plus(parseFloat(this.fixed_dmg)));
+                $("#na_buff_" + recNumber).val(BigNumber(parseFloat($("#na_buff_" + recNumber).val())).plus(parseFloat(this.na_buff)));
+                $("#sr_buff_" + recNumber).val(BigNumber(parseFloat($("#sr_buff_" + recNumber).val())).plus(parseFloat(this.sr_buff)));
+        
+                if (this.dream_end) {
+                    $("#np_buff_" + recNumber).val(parseFloat($("#np_buff_" + recNumber).val()) * 2);
+                }
+
+                return;
+
+            }
+    
+        });
+
+        // 再計算
+        calcMain(recNumber);
+
+        return false;
+
+    });
 
     /**
      * クラススコアフォーカス遷移イベント
@@ -1859,7 +1974,6 @@ $(function(){
         return true;
 
     });
-
     
     // CSVの読み込み
     $.get("https://fategoplayer.github.io/fgodamagecalculator/data/servant_data.csv", parseCsv, "text");
@@ -2194,8 +2308,20 @@ function clearParam(row) {
     $("#enemy_hp").val("0");
     $("#prob_recNumber").val("");
 
-    $("#na_buff_" + row).val("");
-    $("#sr_buff_" + row).val("");
+    $("#np_star_servant_no_" + row).val("");
+    $("#np_star_servant_class_" + row).val("");
+    $("#np_star_servant_rare_" + row).val("");
+    $("#na_" + row).val("0");
+    $("#na_buff_" + row).val("0");
+    $("#sr_" + row).val("0");
+    $("#sr_buff_" + row).val("0");
+    $("#b_hit_" + row).val("1");
+    $("#a_hit_" + row).val("1");
+    $("#q_hit_" + row).val("1");
+    $("#ex_hit_" + row).val("1");
+    $("#np_hit_" + row).val("1");
+    $("#na_enemy_" + row).val("100");
+    $("#sr_enemy_" + row).val("0");
 
     $("#poison_" + row).val("0");
     $("#poison_buff_" + row).val("0");
@@ -2302,6 +2428,18 @@ function clearParamTable(row) {
     $("#dmg_ave_total_" + row).val("0");
     $("#dmg_max_total_" + row).val("0");
 
+    $("#na_" + row).val("0");
+    $("#na_buff_" + row).val("0");
+    $("#sr_" + row).val("0");
+    $("#sr_buff_" + row).val("0");
+    $("#b_hit_" + row).val("1");
+    $("#a_hit_" + row).val("1");
+    $("#q_hit_" + row).val("1");
+    $("#ex_hit_" + row).val("1");
+    $("#np_hit_" + row).val("1");
+    $("#na_enemy_" + row).val("100");
+    $("#sr_enemy_" + row).val("0");
+
 }
 
 /**
@@ -2400,8 +2538,20 @@ function copyParam(recNumber, recNext){
 
     $("#prob_hp_" + recNext).val($("#prob_hp_" + recNumber).val());
 
+    $("#np_star_servant_no_" + recNext).val($("#np_star_servant_no_" + recNumber).val());
+    $("#np_star_servant_class_" + recNext).val($("#np_star_servant_class_" + recNumber).val());
+    $("#np_star_servant_rare_" + recNext).val($("#np_star_servant_rare_" + recNumber).val());
+    $("#na_" + recNext).val($("#na_" + recNumber).val());
     $("#na_buff_" + recNext).val($("#na_buff_" + recNumber).val());
+    $("#sr_" + recNext).val($("#sr_" + recNumber).val());
     $("#sr_buff_" + recNext).val($("#sr_buff_" + recNumber).val());
+    $("#b_hit_" + recNext).val($("#b_hit_" + recNumber).val());
+    $("#a_hit_" + recNext).val($("#a_hit_" + recNumber).val());
+    $("#q_hit_" + recNext).val($("#q_hit_" + recNumber).val());
+    $("#ex_hit_" + recNext).val($("#ex_hit_" + recNumber).val());
+    $("#np_hit_" + recNext).val($("#np_hit_" + recNumber).val());
+    $("#na_enemy_" + recNext).val($("#na_enemy_" + recNumber).val());
+    $("#sr_enemy_" + recNext).val($("#sr_enemy_" + recNumber).val());
     
     $("#poison_" + recNext).val($("#poison_" + recNumber).val());
     $("#poison_buff_" + recNext).val($("#poison_buff_" + recNumber).val());
@@ -2430,7 +2580,8 @@ function changeParam(recNumber, recNext){
     advanced_fixed_dmg_3rd,advanced_fixed_dmg_Ex,advanced_special_def_1st,advanced_special_def_2nd,advanced_special_def_3rd,
     advanced_special_def_Ex,class_affinity,attribute_affinity,class_servant,card_1st,card_1st_cri,card_2nd,card_2nd_cri,card_3rd,
     card_3rd_cri,ex_cri,search_servant_no,search_servant_class,search_servant_rare,search_servant_lvl,search_servant_nplvl,
-    search_servant_fou,search_servant_ce,prob_hp,na_buff,sr_buff,poison,poison_buff,burn,burn_buff,curse,curse_buff,other_slip,memo;
+    search_servant_fou,search_servant_ce,prob_hp,np_star_servant_no, np_star_servant_class, np_star_servant_rare, na, na_buff, sr, sr_buff, b_hit, a_hit, q_hit, ex_hit, np_hit, na_enemy, sr_enemy,
+    poison,poison_buff,burn,burn_buff,curse,curse_buff,other_slip,memo;
 
     memo = $("#memo_" + recNext).val();
     atk = $("#atk_" + recNext).val();
@@ -2510,8 +2661,20 @@ function changeParam(recNumber, recNext){
 
     prob_hp = $("#prob_hp_" + recNext).val();
 
+    np_star_servant_no = $("#np_star_servant_no_" + recNext).val();
+    np_star_servant_class = $("#np_star_servant_class_" + recNext).val();
+    np_star_servant_rare = $("#np_star_servant_rare_" + recNext).val();
+    na = $("#na_" + recNext).val();
     na_buff = $("#na_buff_" + recNext).val();
+    sr = $("#sr_" + recNext).val();
     sr_buff = $("#sr_buff_" + recNext).val();
+    b_hit = $("#b_hit_" + recNext).val();
+    a_hit = $("#a_hit_" + recNext).val();
+    q_hit = $("#q_hit_" + recNext).val();
+    ex_hit = $("#ex_hit_" + recNext).val();
+    np_hit = $("#np_hit_" + recNext).val();
+    na_enemy = $("#na_enemy_" + recNext).val();
+    sr_enemy = $("#sr_enemy_" + recNext).val();
 
     poison = $("#poison_" + recNext).val();
     poison_buff = $("#poison_buff_" + recNext).val();
@@ -2601,9 +2764,21 @@ function changeParam(recNumber, recNext){
     $("#search_servant_ce_" + recNumber).val(search_servant_ce);
     
     $("#prob_hp_" + recNumber).val(prob_hp);
-    
+
+    $("#np_star_servant_no_" + recNumber).val(np_star_servant_no);
+    $("#np_star_servant_class_" + recNumber).val(np_star_servant_class);
+    $("#np_star_servant_rare_" + recNumber).val(np_star_servant_rare);
+    $("#na_" + recNumber).val(na);
     $("#na_buff_" + recNumber).val(na_buff);
+    $("#sr_" + recNumber).val(sr);
     $("#sr_buff_" + recNumber).val(sr_buff);
+    $("#b_hit_" + recNumber).val(b_hit);
+    $("#a_hit_" + recNumber).val(a_hit);
+    $("#q_hit_" + recNumber).val(q_hit);
+    $("#ex_hit_" + recNumber).val(ex_hit);
+    $("#np_hit_" + recNumber).val(np_hit);
+    $("#na_enemy_" + recNumber).val(na_enemy);
+    $("#sr_enemy_" + recNumber).val(sr_enemy);
     
     $("#poison_" + recNumber).val(poison);
     $("#poison_buff_" + recNumber).val(poison_buff);
@@ -3070,6 +3245,7 @@ function remakePresetSelectBox() {
         var sel = document.createElement("option");
         option.value = this.id;
         option.textContent = this.name;
+        option.dataset.pin_flag = this.pin_flag;
         sel.value = this.id;
         sel.textContent = this.name
         $("#buffPreset_name")[0].appendChild(option);
@@ -3085,6 +3261,32 @@ function remakePresetSelectBox() {
     if ($("#buffPreset_name")[0].firstChild != null) {
         $("#buffPreset_name").val($("#buffPreset_name")[0].firstChild.value);
         $("#buffPreset_sel_name").val($("#buffPreset_sel_name")[0].firstChild.value);
+    }
+
+}
+
+/**
+ * ピン留め再作成
+ */
+function pinBuffCreate() {
+
+    var parent = document.getElementsByClassName("pin_buff_parent"); 
+    var li;
+
+    for (let rec = 0; rec < parent.length; ++rec) {
+        li = '';
+        for (const elem of $("#buffPreset_name option")) {
+            if (elem.dataset.pin_flag == "true"){
+                li += '<li><a class="dropdown-item pin_buff_link" href="#" data-presetid="' + elem.value + '" data-targetrec="' + rec + '" tabindex="-1">' + elem.text + '</a></li>';
+            }
+        }
+        if (li != ''){
+            parent[rec].getElementsByClassName("dropdown-menu")[0].innerHTML = li;
+        }
+        else {
+            parent[rec].getElementsByClassName("dropdown-menu")[0].innerHTML = '<li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#buffPresetModal" tabindex="-1">ピン留め設定</a></li>';
+        }  
+
     }
 
 }
@@ -3146,7 +3348,10 @@ function setPresetDataUpdDel(id) {
         $("#ex_atk_buff_buffPreset_upd_del").val("0");
         $("#supereffective_buff_buffPreset_upd_del").val("0");
         $("#fixed_dmg_buffPreset_upd_del").val("0");
+        $("#na_buff_buffPreset_upd_del").val("0");
+        $("#sr_buff_buffPreset_upd_del").val("0");
         $("#dream_end_buffPreset_upd_del")[0].checked = false;
+        $("#pin_flag_upd_del")[0].checked = false;
 
         return;
     }
@@ -3154,27 +3359,33 @@ function setPresetDataUpdDel(id) {
     $(buffPresetDataList).each(function() {
 
         if (this.id == id) {
-            $("#name_buffPreset_upd_del").val(this.name);
-            $("#atk_buff_buffPreset_upd_del").val(this.atk_buff);
-            $("#def_debuff_buffPreset_upd_del").val(this.def_debuff);
-            $("#b_card_buff_buffPreset_upd_del").val(this.b_card_buff);
-            $("#a_card_buff_buffPreset_upd_del").val(this.a_card_buff);
-            $("#q_card_buff_buffPreset_upd_del").val(this.q_card_buff);
-            $("#b_card_debuff_buffPreset_upd_del").val(this.b_card_debuff);
-            $("#a_card_debuff_buffPreset_upd_del").val(this.a_card_debuff);
-            $("#q_card_debuff_buffPreset_upd_del").val(this.q_card_debuff);
-            $("#b_card_power_buff_buffPreset_upd_del").val(this.b_card_power_buff);
-            $("#a_card_power_buff_buffPreset_upd_del").val(this.a_card_power_buff);
-            $("#q_card_power_buff_buffPreset_upd_del").val(this.q_card_power_buff);
-            $("#cri_buff_buffPreset_upd_del").val(this.cri_buff);
-            $("#b_card_cri_buff_buffPreset_upd_del").val(this.b_card_cri_buff);
-            $("#a_card_cri_buff_buffPreset_upd_del").val(this.a_card_cri_buff);
-            $("#q_card_cri_buff_buffPreset_upd_del").val(this.q_card_cri_buff);
-            $("#np_buff_buffPreset_upd_del").val(this.np_buff);
-            $("#ex_atk_buff_buffPreset_upd_del").val(this.ex_atk_buff);
-            $("#supereffective_buff_buffPreset_upd_del").val(this.supereffective_buff);
-            $("#fixed_dmg_buffPreset_upd_del").val(this.fixed_dmg);
-            $("#dream_end_buffPreset_upd_del")[0].checked = this.dream_end;
+            try{
+                $("#name_buffPreset_upd_del").val(this.name);
+                $("#atk_buff_buffPreset_upd_del").val(this.atk_buff);
+                $("#def_debuff_buffPreset_upd_del").val(this.def_debuff);
+                $("#b_card_buff_buffPreset_upd_del").val(this.b_card_buff);
+                $("#a_card_buff_buffPreset_upd_del").val(this.a_card_buff);
+                $("#q_card_buff_buffPreset_upd_del").val(this.q_card_buff);
+                $("#b_card_debuff_buffPreset_upd_del").val(this.b_card_debuff);
+                $("#a_card_debuff_buffPreset_upd_del").val(this.a_card_debuff);
+                $("#q_card_debuff_buffPreset_upd_del").val(this.q_card_debuff);
+                $("#b_card_power_buff_buffPreset_upd_del").val(this.b_card_power_buff);
+                $("#a_card_power_buff_buffPreset_upd_del").val(this.a_card_power_buff);
+                $("#q_card_power_buff_buffPreset_upd_del").val(this.q_card_power_buff);
+                $("#cri_buff_buffPreset_upd_del").val(this.cri_buff);
+                $("#b_card_cri_buff_buffPreset_upd_del").val(this.b_card_cri_buff);
+                $("#a_card_cri_buff_buffPreset_upd_del").val(this.a_card_cri_buff);
+                $("#q_card_cri_buff_buffPreset_upd_del").val(this.q_card_cri_buff);
+                $("#np_buff_buffPreset_upd_del").val(this.np_buff);
+                $("#ex_atk_buff_buffPreset_upd_del").val(this.ex_atk_buff);
+                $("#supereffective_buff_buffPreset_upd_del").val(this.supereffective_buff);
+                $("#fixed_dmg_buffPreset_upd_del").val(this.fixed_dmg);
+                $("#na_buff_buffPreset_upd_del").val(this.na_buff);
+                $("#sr_buff_buffPreset_upd_del").val(this.sr_buff);
+                $("#dream_end_buffPreset_upd_del")[0].checked = this.dream_end;
+                $("#pin_flag_upd_del")[0].checked = this.pin_flag;
+            }catch{
+            }
 
             return;
         }
@@ -3211,6 +3422,8 @@ function setPresetDataSel(id) {
         $("#ex_atk_buff_buffPreset_sel").val("0");
         $("#supereffective_buff_buffPreset_sel").val("0");
         $("#fixed_dmg_buffPreset_sel").val("0");
+        $("#na_buff_buffPreset_sel").val("0");
+        $("#sr_buff_buffPreset_sel").val("0");
         $("#dream_end_buffPreset_sel")[0].checked = false;
 
         return;
@@ -3219,27 +3432,32 @@ function setPresetDataSel(id) {
     $(buffPresetDataList).each(function() {
 
         if (this.id == id) {
-            $("#name_buffPreset_sel").val(this.name);
-            $("#atk_buff_buffPreset_sel").val(this.atk_buff);
-            $("#def_debuff_buffPreset_sel").val(this.def_debuff);
-            $("#b_card_buff_buffPreset_sel").val(this.b_card_buff);
-            $("#a_card_buff_buffPreset_sel").val(this.a_card_buff);
-            $("#q_card_buff_buffPreset_sel").val(this.q_card_buff);
-            $("#b_card_debuff_buffPreset_sel").val(this.b_card_debuff);
-            $("#a_card_debuff_buffPreset_sel").val(this.a_card_debuff);
-            $("#q_card_debuff_buffPreset_sel").val(this.q_card_debuff);
-            $("#b_card_power_buff_buffPreset_sel").val(this.b_card_power_buff);
-            $("#a_card_power_buff_buffPreset_sel").val(this.a_card_power_buff);
-            $("#q_card_power_buff_buffPreset_sel").val(this.q_card_power_buff);
-            $("#cri_buff_buffPreset_sel").val(this.cri_buff);
-            $("#b_card_cri_buff_buffPreset_sel").val(this.b_card_cri_buff);
-            $("#a_card_cri_buff_buffPreset_sel").val(this.a_card_cri_buff);
-            $("#q_card_cri_buff_buffPreset_sel").val(this.q_card_cri_buff);
-            $("#np_buff_buffPreset_sel").val(this.np_buff);
-            $("#ex_atk_buff_buffPreset_sel").val(this.ex_atk_buff);
-            $("#supereffective_buff_buffPreset_sel").val(this.supereffective_buff);
-            $("#fixed_dmg_buffPreset_sel").val(this.fixed_dmg);
-            $("#dream_end_buffPreset_sel")[0].checked = this.dream_end;
+            try{
+                $("#name_buffPreset_sel").val(this.name);
+                $("#atk_buff_buffPreset_sel").val(this.atk_buff);
+                $("#def_debuff_buffPreset_sel").val(this.def_debuff);
+                $("#b_card_buff_buffPreset_sel").val(this.b_card_buff);
+                $("#a_card_buff_buffPreset_sel").val(this.a_card_buff);
+                $("#q_card_buff_buffPreset_sel").val(this.q_card_buff);
+                $("#b_card_debuff_buffPreset_sel").val(this.b_card_debuff);
+                $("#a_card_debuff_buffPreset_sel").val(this.a_card_debuff);
+                $("#q_card_debuff_buffPreset_sel").val(this.q_card_debuff);
+                $("#b_card_power_buff_buffPreset_sel").val(this.b_card_power_buff);
+                $("#a_card_power_buff_buffPreset_sel").val(this.a_card_power_buff);
+                $("#q_card_power_buff_buffPreset_sel").val(this.q_card_power_buff);
+                $("#cri_buff_buffPreset_sel").val(this.cri_buff);
+                $("#b_card_cri_buff_buffPreset_sel").val(this.b_card_cri_buff);
+                $("#a_card_cri_buff_buffPreset_sel").val(this.a_card_cri_buff);
+                $("#q_card_cri_buff_buffPreset_sel").val(this.q_card_cri_buff);
+                $("#np_buff_buffPreset_sel").val(this.np_buff);
+                $("#ex_atk_buff_buffPreset_sel").val(this.ex_atk_buff);
+                $("#supereffective_buff_buffPreset_sel").val(this.supereffective_buff);
+                $("#fixed_dmg_buffPreset_sel").val(this.fixed_dmg);
+                $("#na_buff_buffPreset_sel").val(this.na_buff);
+                $("#sr_buff_buffPreset_sel").val(this.sr_buff);
+                $("#dream_end_buffPreset_sel")[0].checked = this.dream_end;
+            }catch{
+            }
 
             return;
         }

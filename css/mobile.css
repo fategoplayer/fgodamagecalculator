@@ -89,9 +89,9 @@ input[type="number"] {
 } 
 
 /*列調整*/
-.search_link, .tool_link {
-  margin-left: 30px;
-  margin-right: 30px;
+.search_link, .tool_link, .buffPreset_link, .pin_buff_parent {
+  margin-left: 20px;
+  margin-right: 20px;
 }
 /*
 .col_copy, .col_atk_buff, .col_card_buff, .col_np_buff, .col_ex_atk_buff, 
@@ -260,7 +260,7 @@ footer a {
 }
 
 .row_npstar_cardselect {
-  height: 70px;
+  height: 35px;
 }
 
 .col_npstar_head {
@@ -445,7 +445,10 @@ footer a {
 }
 #servantInfoTable td {
   vertical-align: middle;
-  overflow-wrap : break-word;
+  width: 30%!important;
+}
+#servantInfoTable th {
+  width: 20%!important;
 }
 #servantInfoTable td p {
   padding: 5px;
@@ -456,4 +459,7 @@ footer a {
 }
 #servantInfoAccordion .accordion-button {
   padding: 5px !important;
+}
+#servantInfoTable td[colspan="3"] {
+  width: 80%!important;
 }
