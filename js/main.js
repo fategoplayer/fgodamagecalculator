@@ -2887,7 +2887,21 @@ function getRecData(recNumber){
             + "," + $("#curse_" + recNumber).val()
             + "," + $("#curse_buff_" + recNumber).val()
             + "," + $("#other_slip_" + recNumber).val()
-            + "," + $("#memo_" + recNumber).val().replaceAll(",","\t");
+            + "," + $("#memo_" + recNumber).val().replaceAll(",","\t")
+            + "," + $("#np_star_servant_no_" + recNumber).val()
+            + "," + $("#np_star_servant_class_" + recNumber).val()
+            + "," + $("#np_star_servant_rare_" + recNumber).val()
+            + "," + $("#na_" + recNumber).val()
+            + "," + $("#na_buff_" + recNumber).val()
+            + "," + $("#sr_" + recNumber).val()
+            + "," + $("#sr_buff_" + recNumber).val()
+            + "," + $("#b_hit_" + recNumber).val()
+            + "," + $("#a_hit_" + recNumber).val()
+            + "," + $("#q_hit_" + recNumber).val()
+            + "," + $("#ex_hit_" + recNumber).val()
+            + "," + $("#np_hit_" + recNumber).val()
+            + "," + $("#na_enemy_" + recNumber).val()
+            + "," + $("#sr_enemy_" + recNumber).val();
 
 }
 
@@ -2983,6 +2997,20 @@ function setRecData(recNumber, inputData){
         $("#curse_buff_" + recNumber).val(splitData[79]);
         $("#other_slip_" + recNumber).val(splitData[80]);
         $("#memo_" + recNumber).val(splitData[81].replaceAll("\t",","));
+        $("#np_star_servant_no_" + recNumber).val(splitData[82]);
+        $("#np_star_servant_class_" + recNumber).val(splitData[83]);
+        $("#np_star_servant_rare_" + recNumber).val(splitData[84]);
+        $("#na_" + recNumber).val(splitData[85]);
+        $("#na_buff_" + recNumber).val(splitData[86]);
+        $("#sr_" + recNumber).val(splitData[87]);
+        $("#sr_buff_" + recNumber).val(splitData[88]);
+        $("#b_hit_" + recNumber).val(splitData[89]);
+        $("#a_hit_" + recNumber).val(splitData[90]);
+        $("#q_hit_" + recNumber).val(splitData[91]);
+        $("#ex_hit_" + recNumber).val(splitData[92]);
+        $("#np_hit_" + recNumber).val(splitData[93]);
+        $("#na_enemy_" + recNumber).val(splitData[94]);
+        $("#sr_enemy_" + recNumber).val(splitData[95]);
     } catch (error) {
     }
 

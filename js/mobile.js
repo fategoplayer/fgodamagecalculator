@@ -2333,7 +2333,21 @@ function getRecData(tabNumber){
             + "," + $("#curse_" + tabNumber).val()
             + "," + $("#curse_buff_" + tabNumber).val()
             + "," + $("#other_slip_" + tabNumber).val()
-            + "," + $("#memo_" + tabNumber).val().replaceAll(",","\t");
+            + "," + $("#memo_" + tabNumber).val().replaceAll(",","\t")
+            + "," + $("#np_star_servant_no_" + tabNumber).val()
+            + "," + $("#np_star_servant_class_" + tabNumber).val()
+            + "," + $("#np_star_servant_rare_" + tabNumber).val()
+            + "," + $("#na_" + tabNumber).val()
+            + "," + $("#na_buff_" + tabNumber).val()
+            + "," + $("#sr_" + tabNumber).val()
+            + "," + $("#sr_buff_" + tabNumber).val()
+            + "," + $("#b_hit_" + tabNumber).val()
+            + "," + $("#a_hit_" + tabNumber).val()
+            + "," + $("#q_hit_" + tabNumber).val()
+            + "," + $("#ex_hit_" + tabNumber).val()
+            + "," + $("#np_hit_" + tabNumber).val()
+            + "," + $("#na_enemy_" + tabNumber).val()
+            + "," + $("#sr_enemy_" + tabNumber).val();
 
 }
 
@@ -2429,6 +2443,20 @@ function setTabData(tabNumber, inputData){
         $("#curse_buff_" + tabNumber).val(splitData[79]);
         $("#other_slip_" + tabNumber).val(splitData[80]);
         $("#memo_" + tabNumber).val(splitData[81].replaceAll("\t",",").replaceAll("\n"," "));
+        $("#np_star_servant_no_" + tabNumber).val(splitData[82]);
+        $("#np_star_servant_class_" + tabNumber).val(splitData[83]);
+        $("#np_star_servant_rare_" + tabNumber).val(splitData[84]);
+        $("#na_" + tabNumber).val(splitData[85]);
+        $("#na_buff_" + tabNumber).val(splitData[86]);
+        $("#sr_" + tabNumber).val(splitData[87]);
+        $("#sr_buff_" + tabNumber).val(splitData[88]);
+        $("#b_hit_" + tabNumber).val(splitData[89]);
+        $("#a_hit_" + tabNumber).val(splitData[90]);
+        $("#q_hit_" + tabNumber).val(splitData[91]);
+        $("#ex_hit_" + tabNumber).val(splitData[92]);
+        $("#np_hit_" + tabNumber).val(splitData[93]);
+        $("#na_enemy_" + tabNumber).val(splitData[94]);
+        $("#sr_enemy_" + tabNumber).val(splitData[95]);
     } catch (error) {
     }
 
