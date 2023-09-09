@@ -1555,6 +1555,16 @@ $(function(){
 
     });
 
+    //開くボタンをクリックしたらモーダルを表示する
+    $(document).on("click", "#goBuffPreset", function() {
+
+        // ドロップダウンメニューを閉じる
+        $(".dropdown-menu").removeClass("show");
+
+        return false;
+
+    });
+
     /**
      * バフプリセットフォーカス遷移イベント
      */
@@ -3284,7 +3294,7 @@ function pinBuffCreate() {
             parent[rec].getElementsByClassName("dropdown-menu")[0].innerHTML = li;
         }
         else {
-            parent[rec].getElementsByClassName("dropdown-menu")[0].innerHTML = '<li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#buffPresetModal" tabindex="-1">ピン留め設定</a></li>';
+            parent[rec].getElementsByClassName("dropdown-menu")[0].innerHTML = '<li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#buffPresetModal" id="goBuffPreset" tabindex="-1">ピン留め設定</a></li>';
         }  
 
     }
