@@ -2785,6 +2785,7 @@ function selectBoxSort(optionId) {
       return {
         text: $(o).text(),
         val: o.value,
+        pin_flag: o.dataset.pin_flag,
         sel: o.selected //true || false
       };
     }).get();
@@ -2795,6 +2796,7 @@ function selectBoxSort(optionId) {
     options.each(function(i, o) {
       o.value = arr[i].val;
       $(o).text(arr[i].text);
+      o.dataset.pin_flag = arr[i].pin_flag;
       o.selected = arr[i].sel;
       if (o.selected) {
           $(o).attr("selected",true);
