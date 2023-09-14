@@ -1313,6 +1313,9 @@ $(function(){
 
                     var atk;
 
+                    // サーヴァント画像変更
+                    setServantImage(recNumber, this["No"]);
+
                     switch ($("#search_servant_lvl").val()) {
                         case "MAX" :
                             atk = Number(this["MaxAtk"]);
@@ -1513,9 +1516,6 @@ $(function(){
                         }
 
                     });
-
-                    // サーヴァント画像変更
-                    setServantImage(recNumber, this["No"]);
 
                     return;
 
