@@ -754,6 +754,9 @@ $(function(){
 
                     var atk;
 
+                    // サーヴァント画像変更
+                    setServantImage(tabNumber, this["No"]);
+
                     switch ($("#search_servant_lvl").val()) {
                         case "MAX" :
                             atk = Number(this["MaxAtk"]);
@@ -1797,6 +1800,9 @@ function clearParam(tab) {
     $("#curse_buff").val("0");
     $("#other_slip").val("0");
 
+    // サーヴァント画像変更
+    setServantImage(tab, "");
+
 }
 
 /**
@@ -1898,6 +1904,9 @@ function clearParamTable(tab) {
     $("#np_hit_" + tab).val("1");
     $("#na_enemy_" + tab).val("100");
     $("#sr_enemy_" + tab).val("0");
+
+    // サーヴァント画像変更
+    setServantImage(tab, "");
 
 }
 
@@ -2007,6 +2016,9 @@ function copyParam(tabNumber, tabNext){
     $("#curse_" + tabNext).val($("#curse_" + tabNumber).val());
     $("#curse_buff_" + tabNext).val($("#curse_buff_" + tabNumber).val());
     $("#other_slip_" + tabNext).val($("#other_slip_" + tabNumber).val());
+
+    // サーヴァント画像変更
+    setServantImage(tabNext, $("#search_servant_no_" + tabNumber).val());
 }
 
 /**
@@ -2234,6 +2246,9 @@ function changeParam(tabNumber, tabNext){
     $("#curse_" + tabNumber).val(curse);
     $("#curse_buff_" + tabNumber).val(curse_buff);
     $("#other_slip_" + tabNumber).val(other_slip);
+
+    // サーヴァント画像変更
+    setServantImage(tabNumber, search_servant_no);
     
 }
 
@@ -2344,7 +2359,27 @@ function getRecData(tabNumber){
 
 /**
  * 入力値を設定
- * @param tabNumber 行番号
+ * @param tabNumber タブ番号
+ * @param servantNo サーヴァントNo
+ */
+function setServantImage(tabNumber, servantNo){
+
+    if (servantNo == ""){
+        $("#servant_img_default_" + tabNumber).removeClass("d-none");
+        $("#sevant_face_img_" + tabNumber)[0].src = "";
+        $("#servant_img_select_" + tabNumber).addClass("d-none");
+    }
+    else {
+        $("#servant_img_select_" + tabNumber).removeClass("d-none");
+        $("#sevant_face_img_" + tabNumber)[0].src = "../img/servant_face/" + servantNo + ".png"
+        $("#servant_img_default_" + tabNumber).addClass("d-none");
+    }
+    
+}
+
+/**
+ * 入力値を設定
+ * @param tabNumber タブ番号
  * @param inputData 入力値
  */
 function setTabData(tabNumber, inputData){
@@ -3627,6 +3662,10 @@ function calcMain(recNumber) {
         dmg_ave_1st = dmg_cri_ave_1st;
         dmg_min_1st = dmg_cri_min_1st;
         dmg_max_1st = dmg_cri_max_1st;
+    } else if (card_1st == "NP" && np_dmg == "0") {
+        dmg_ave_1st = 0;
+        dmg_min_1st = 0;
+        dmg_max_1st = 0;
     } else if (card_1st_cri == "zero") {
         dmg_ave_1st = 0;
         dmg_min_1st = 0;
@@ -3638,17 +3677,25 @@ function calcMain(recNumber) {
         dmg_ave_2nd = dmg_cri_ave_2nd;
         dmg_min_2nd = dmg_cri_min_2nd;
         dmg_max_2nd = dmg_cri_max_2nd;
+    } else if (card_2nd == "NP" && np_dmg == "0") {
+        dmg_ave_2nd = 0;
+        dmg_min_2nd = 0;
+        dmg_max_2nd = 0;
     } else if (card_2nd_cri == "zero") {
         dmg_ave_2nd = 0;
         dmg_min_2nd = 0;
         dmg_max_2nd = 0;
-        };
+    };
 
     // 3rdダメージ有無・クリティカル有無を設定
     if (card_3rd != "NP" && card_3rd_cri == "Y") {
         dmg_ave_3rd = dmg_cri_ave_3rd;
         dmg_min_3rd = dmg_cri_min_3rd;
         dmg_max_3rd = dmg_cri_max_3rd;
+    } else if (card_3rd == "NP" && np_dmg == "0") {
+        dmg_ave_3rd = 0;
+        dmg_min_3rd = 0;
+        dmg_max_3rd = 0;
     } else if (card_3rd_cri == "zero") {
         dmg_ave_3rd = 0;
         dmg_min_3rd = 0;
@@ -3807,6 +3854,9 @@ function copyProbInput(tabNumber) {
     if ($("#card_1st_cri_" + tabNumber).val() == "zero") {
         $("#dmg_1st").val("0");
         $("#fixed_1st").val("0");
+    } else if (card_1st == "NP" && $("#np_dmg_" + tabNumber).val() == "0") {
+        $("#dmg_1st").val("0");
+        $("#fixed_1st").val("0");
     } else {
         $("#dmg_1st").val(Number($("#dmg_ave_1st").val().replace(/,/g, "")));
         if (card_1st != "NP") {
@@ -3819,6 +3869,9 @@ function copyProbInput(tabNumber) {
     if ($("#card_2nd_cri_" + tabNumber).val() == "zero") {
         $("#dmg_2nd").val("0");
         $("#fixed_2nd").val("0");
+    } else if (card_2nd == "NP" && $("#np_dmg_" + tabNumber).val() == "0") {
+        $("#dmg_2nd").val("0");
+        $("#fixed_2nd").val("0");
     } else {
         $("#dmg_2nd").val(Number($("#dmg_ave_2nd").val().replace(/,/g, "")));
         if (card_2nd != "NP") {
@@ -3829,6 +3882,10 @@ function copyProbInput(tabNumber) {
     };
 
     if ($("#card_3rd_cri_" + tabNumber).val() == "zero") {
+        $("#dmg_3rd").val("0");
+        $("#fixed_3rd").val("0");
+        $("#fixed_3rd").val("0");
+    } else if (card_3rd == "NP" && $("#np_dmg_" + tabNumber).val() == "0") {
         $("#dmg_3rd").val("0");
         $("#fixed_3rd").val("0");
     } else {

@@ -2446,6 +2446,9 @@ function clearParamTable(row) {
     $("#na_enemy_" + row).val("100");
     $("#sr_enemy_" + row).val("0");
 
+    // サーヴァント画像変更
+    setServantImage(row, "");
+
 }
 
 /**
@@ -4213,6 +4216,10 @@ function calcMain(recNumber) {
         dmg_ave_1st = dmg_cri_ave_1st;
         dmg_min_1st = dmg_cri_min_1st;
         dmg_max_1st = dmg_cri_max_1st;
+    } else if (card_1st == "NP" && np_dmg == "0") {
+        dmg_ave_1st = 0;
+        dmg_min_1st = 0;
+        dmg_max_1st = 0;
     } else if (card_1st_cri == "zero") {
         dmg_ave_1st = 0;
         dmg_min_1st = 0;
@@ -4224,17 +4231,25 @@ function calcMain(recNumber) {
         dmg_ave_2nd = dmg_cri_ave_2nd;
         dmg_min_2nd = dmg_cri_min_2nd;
         dmg_max_2nd = dmg_cri_max_2nd;
+    } else if (card_2nd == "NP" && np_dmg == "0") {
+        dmg_ave_2nd = 0;
+        dmg_min_2nd = 0;
+        dmg_max_2nd = 0;
     } else if (card_2nd_cri == "zero") {
         dmg_ave_2nd = 0;
         dmg_min_2nd = 0;
         dmg_max_2nd = 0;
-        };
+    };
 
     // 3rdダメージ有無・クリティカル有無を設定
     if (card_3rd != "NP" && card_3rd_cri == "Y") {
         dmg_ave_3rd = dmg_cri_ave_3rd;
         dmg_min_3rd = dmg_cri_min_3rd;
         dmg_max_3rd = dmg_cri_max_3rd;
+    } else if (card_3rd == "NP" && np_dmg == "0") {
+        dmg_ave_3rd = 0;
+        dmg_min_3rd = 0;
+        dmg_max_3rd = 0;
     } else if (card_3rd_cri == "zero") {
         dmg_ave_3rd = 0;
         dmg_min_3rd = 0;
@@ -4393,6 +4408,9 @@ function copyProbInput(recNumber) {
     if ($("#card_1st_cri_" + recNumber).val() == "zero") {
         $("#dmg_1st").val("0");
         $("#fixed_1st").val("0");
+    } else if (card_1st == "NP" && $("#np_dmg_" + recNumber).val() == "0") {
+        $("#dmg_1st").val("0");
+        $("#fixed_1st").val("0");
     } else {
         $("#dmg_1st").val(Number($("#dmg_ave_1st_" + recNumber).val().replace(/,/g, "")));
         if (card_1st != "NP") {
@@ -4405,6 +4423,9 @@ function copyProbInput(recNumber) {
     if ($("#card_2nd_cri_" + recNumber).val() == "zero") {
         $("#dmg_2nd").val("0");
         $("#fixed_2nd").val("0");
+    } else if (card_2nd == "NP" && $("#np_dmg_" + recNumber).val() == "0") {
+        $("#dmg_2nd").val("0");
+        $("#fixed_2nd").val("0");
     } else {
         $("#dmg_2nd").val(Number($("#dmg_ave_2nd_" + recNumber).val().replace(/,/g, "")));
         if (card_2nd != "NP") {
@@ -4415,6 +4436,9 @@ function copyProbInput(recNumber) {
     };
 
     if ($("#card_3rd_cri_" + recNumber).val() == "zero") {
+        $("#dmg_3rd").val("0");
+        $("#fixed_3rd").val("0");
+    } else if (card_3rd == "NP" && $("#np_dmg_" + recNumber).val() == "0") {
         $("#dmg_3rd").val("0");
         $("#fixed_3rd").val("0");
     } else {

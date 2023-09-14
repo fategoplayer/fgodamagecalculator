@@ -46,6 +46,9 @@ table th {
 table tr, table td {
   height: 35px;
 }
+.col_menu, .col_menu td {
+  height: 50px !important;
+}
 
 output {
   height: 100%;
@@ -90,8 +93,8 @@ input[type="number"] {
 
 /*列調整*/
 .search_link, .tool_link, .buffPreset_link, .pin_buff_parent {
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 17px;
+  margin-right: 17px;
 }
 /*
 .col_copy, .col_atk_buff, .col_card_buff, .col_np_buff, .col_ex_atk_buff, 
@@ -207,6 +210,10 @@ footer a {
 .advanced_card_buff_1st, .advanced_card_buff_2nd, .advanced_card_buff_3rd,
 .advanced_cri_buff_1st, .advanced_cri_buff_2nd, .advanced_cri_buff_3rd, .advanced_blank {
   height: 100% !important;
+}
+.servant_img_select img {
+  width: auto;
+  height: 95%;
 }
 
 /*撃破率計算*/
