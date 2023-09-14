@@ -8,7 +8,7 @@ const defaultRow = 15; // 初期行数
 const maxLineNum = 4; // メモ改行数
 const maxWidthAdvanced = 232;
 const maxWidthMemo = 120;
-const maxWidthClose = 1234;
+const maxWidthClose = 1270;
 const localStorageKey_InputData = "fgodamagecalculator_input"
 const localStorageKey_Setting = "fgodamagecalculator_setting"
 const localStorageKey_BuffPreset = "fgodamagecalculator_buffpreset"
@@ -1524,6 +1524,8 @@ $(function(){
 
                     });
 
+                    // サーヴァント画像変更
+                    setServantImage(recNumber, this["No"]);
 
                     return;
 
@@ -2349,6 +2351,9 @@ function clearParam(row) {
     $("#curse_buff").val("0");
     $("#other_slip").val("0");
 
+    // サーヴァント画像変更
+    setServantImage(row, "");
+
 }
 
 /**
@@ -2571,6 +2576,9 @@ function copyParam(recNumber, recNext){
     $("#curse_" + recNext).val($("#curse_" + recNumber).val());
     $("#curse_buff_" + recNext).val($("#curse_buff_" + recNumber).val());
     $("#other_slip_" + recNext).val($("#other_slip_" + recNumber).val());
+
+    // サーヴァント画像変更
+    setServantImage(recNext, $("#search_servant_no_" + recNumber).val());
 }
 
 /**
@@ -2798,6 +2806,9 @@ function changeParam(recNumber, recNext){
     $("#curse_" + recNumber).val(curse);
     $("#curse_buff_" + recNumber).val(curse_buff);
     $("#other_slip_" + recNumber).val(other_slip);
+
+    // サーヴァント画像変更
+    setServantImage(recNumber, search_servant_no);
     
 }
 
@@ -3015,6 +3026,26 @@ function setRecData(recNumber, inputData){
     } catch (error) {
     }
 
+}
+
+/**
+ * 入力値を設定
+ * @param recNumber 行番号
+ * @param servantNo サーヴァントNo
+ */
+function setServantImage(recNumber, servantNo){
+
+    if (servantNo == ""){
+        $("#servant_img_default_" + recNumber).removeClass("d-none");
+        $("#sevant_face_img_" + recNumber)[0].src = "";
+        $("#servant_img_select_" + recNumber).addClass("d-none");
+    }
+    else {
+        $("#servant_img_select_" + recNumber).removeClass("d-none");
+        $("#sevant_face_img_" + recNumber)[0].src = "img/servant_face/" + servantNo + ".png"
+        $("#servant_img_default_" + recNumber).addClass("d-none");
+    }
+    
 }
 
 /**
