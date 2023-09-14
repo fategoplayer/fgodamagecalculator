@@ -782,29 +782,19 @@ $(function(){
                     // 宝具倍率
                     switch ($("#search_servant_nplvl").val()) {
                         case "1" :
-                            if (this["宝具Lv1"] != "0") {
-                                $("#np_dmg_" + tabNumber).val(this["宝具Lv1"]);
-                            }
+                            $("#np_dmg_" + tabNumber).val(this["宝具Lv1"]);
                             break;
                         case "2" :
-                            if (this["宝具Lv2"] != "0") {
-                                $("#np_dmg_" + tabNumber).val(this["宝具Lv2"]);
-                            }
+                            $("#np_dmg_" + tabNumber).val(this["宝具Lv2"]);
                             break;
                         case "3" :
-                            if (this["宝具Lv3"] != "0") {
-                                $("#np_dmg_" + tabNumber).val(this["宝具Lv3"]);
-                            }
+                            $("#np_dmg_" + tabNumber).val(this["宝具Lv3"]);
                             break;
                         case "4" :
-                            if (this["宝具Lv4"] != "0") {
-                                $("#np_dmg_" + tabNumber).val(this["宝具Lv4"]);
-                            }
+                            $("#np_dmg_" + tabNumber).val(this["宝具Lv4"]);
                             break;
                         case "5" :
-                            if (this["宝具Lv5"] != "0") {
-                                $("#np_dmg_" + tabNumber).val(this["宝具Lv5"]);
-                            }
+                            $("#np_dmg_" + tabNumber).val(this["宝具Lv5"]);
                             break;
                         default :
                             break;
