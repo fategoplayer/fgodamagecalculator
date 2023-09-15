@@ -100,11 +100,11 @@ input[type="number"] {
   min-width: 28px;
   max-width: 28px;
 }
-.col_atk {
+.col_atk, .col_servant {
   min-width: 42px;
   max-width: 42px;
 }
-.col_np, .col_card_sel, .col_cri_buff, .col_supereffective_buff, .col_supereffective_np, .col_fixed_dmg, .col_servant {
+.col_np, .col_card_sel, .col_cri_buff, .col_supereffective_buff, .col_supereffective_np, .col_fixed_dmg {
   min-width: 36px;
   max-width: 36px;
 }
@@ -142,7 +142,7 @@ input[type="number"] {
 
 /*テーブルラッパー*/
 .calc {
-  max-width: 1270px;
+  max-width: 1276px;
   margin: .4rem;
 }
 

@@ -63,6 +63,7 @@
                     <thead class="table-danger">
                         <tr>
                             <th></th>
+                            <th><p class="small">対象</p></th>
                             <th><p class="small">ATK</p></th>
                             <th><p class="small">宝具<br>倍率<br>/種類</p></th>
                             <th><p class="small">攻撃<br>バフ<br>/<br>防御<br>ﾃﾞﾊﾞﾌ</p></th>
@@ -91,6 +92,13 @@
                     </thead>
                     <tbody id="calcItem">
                         <tr>
+                            <input type="hidden" id="search_servant_no_0" value="">
+                            <input type="hidden" id="search_servant_class_0" value="">
+                            <input type="hidden" id="search_servant_rare_0" value="">
+                            <input type="hidden" id="search_servant_lvl_0" value="">
+                            <input type="hidden" id="search_servant_nplvl_0" value="">
+                            <input type="hidden" id="search_servant_fou_0" value="">
+                            <input type="hidden" id="search_servant_ce_0" value="">
                             <input type="hidden" id="prob_hp_0" value="0">
                             <td class="col_menu align-middle text-center">
                                 <div class="dropdown wrap_link_icon">
@@ -131,6 +139,17 @@
                                         </li>
                                     </ul>
                                 </div>
+                            </td>
+                            <td class="col_servant align-middle text-center">
+                                <a href="#" class="servant_img_default text-secondary search_link" id="servant_img_default_0" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+                                        <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
+                                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="servant_img_select search_link d-none" id="servant_img_select_0" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                    <img src="" class="img-fluid" id="sevant_face_img_0">
+                                </a>
                             </td>
                             <td class="col_atk">
                                 <input type="number" id="atk_0" value="0" max="99999" min="0" step="500" class="atk form-control bg-transparent">
@@ -285,6 +304,13 @@
                             </td>
                         </tr>
                         <tr>
+                            <input type="hidden" id="search_servant_no_1" value="">
+                            <input type="hidden" id="search_servant_class_1" value="">
+                            <input type="hidden" id="search_servant_rare_1" value="">
+                            <input type="hidden" id="search_servant_lvl_1" value="">
+                            <input type="hidden" id="search_servant_nplvl_1" value="">
+                            <input type="hidden" id="search_servant_fou_1" value="">
+                            <input type="hidden" id="search_servant_ce_1" value="">
                             <input type="hidden" id="prob_hp_1" value="0">
                             <td class="col_menu align-middle text-center">
                                 <div class="dropdown wrap_link_icon">
@@ -343,6 +369,17 @@
                                         </li>
                                     </ul>
                                 </div>
+                            </td>
+                            <td class="col_servant align-middle text-center">
+                                <a href="#" class="servant_img_default text-secondary search_link" id="servant_img_default_1" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+                                        <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
+                                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="servant_img_select search_link d-none" id="servant_img_select_1" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                    <img src="" class="img-fluid" id="sevant_face_img_1">
+                                </a>
                             </td>
                             <td class="col_atk">
                                 <input type="number" id="atk_1" value="0" max="99999" min="0" step="500" class="atk form-control bg-transparent">
@@ -497,6 +534,13 @@
                             </td>
                         </tr>
                         <tr>
+                            <input type="hidden" id="search_servant_no_2" value="">
+                            <input type="hidden" id="search_servant_class_2" value="">
+                            <input type="hidden" id="search_servant_rare_2" value="">
+                            <input type="hidden" id="search_servant_lvl_2" value="">
+                            <input type="hidden" id="search_servant_nplvl_2" value="">
+                            <input type="hidden" id="search_servant_fou_2" value="">
+                            <input type="hidden" id="search_servant_ce_2" value="">
                             <input type="hidden" id="prob_hp_2" value="0">
                             <td class="col_menu align-middle text-center">
                                 <div class="dropdown wrap_link_icon">
@@ -555,6 +599,17 @@
                                         </li>
                                     </ul>
                                 </div>
+                            </td>
+                            <td class="col_servant align-middle text-center">
+                                <a href="#" class="servant_img_default text-secondary search_link" id="servant_img_default_2" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+                                        <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
+                                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="servant_img_select search_link d-none" id="servant_img_select_2" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                    <img src="" class="img-fluid" id="sevant_face_img_2">
+                                </a>
                             </td>
                             <td class="col_atk">
                                 <input type="number" id="atk_2" value="0" max="99999" min="0" step="500" class="atk form-control bg-transparent">
@@ -709,6 +764,13 @@
                             </td>
                         </tr>
                         <tr>
+                            <input type="hidden" id="search_servant_no_3" value="">
+                            <input type="hidden" id="search_servant_class_3" value="">
+                            <input type="hidden" id="search_servant_rare_3" value="">
+                            <input type="hidden" id="search_servant_lvl_3" value="">
+                            <input type="hidden" id="search_servant_nplvl_3" value="">
+                            <input type="hidden" id="search_servant_fou_3" value="">
+                            <input type="hidden" id="search_servant_ce_3" value="">
                             <input type="hidden" id="prob_hp_3" value="0">
                             <td class="col_menu align-middle text-center">
                                 <div class="dropdown wrap_link_icon">
@@ -767,6 +829,17 @@
                                         </li>
                                     </ul>
                                 </div>
+                            </td>
+                            <td class="col_servant align-middle text-center">
+                                <a href="#" class="servant_img_default text-secondary search_link" id="servant_img_default_3" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+                                        <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
+                                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="servant_img_select search_link d-none" id="servant_img_select_3" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                    <img src="" class="img-fluid" id="sevant_face_img_3">
+                                </a>
                             </td>
                             <td class="col_atk">
                                 <input type="number" id="atk_3" value="0" max="99999" min="0" step="500" class="atk form-control bg-transparent">
@@ -921,6 +994,13 @@
                             </td>
                         </tr>
                         <tr>
+                            <input type="hidden" id="search_servant_no_4" value="">
+                            <input type="hidden" id="search_servant_class_4" value="">
+                            <input type="hidden" id="search_servant_rare_4" value="">
+                            <input type="hidden" id="search_servant_lvl_4" value="">
+                            <input type="hidden" id="search_servant_nplvl_4" value="">
+                            <input type="hidden" id="search_servant_fou_4" value="">
+                            <input type="hidden" id="search_servant_ce_4" value="">
                             <input type="hidden" id="prob_hp_4" value="0">
                             <td class="col_menu align-middle text-center">
                                 <div class="dropdown wrap_link_icon">
@@ -979,6 +1059,17 @@
                                         </li>
                                     </ul>
                                 </div>
+                            </td>
+                            <td class="col_servant align-middle text-center">
+                                <a href="#" class="servant_img_default text-secondary search_link" id="servant_img_default_4" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+                                        <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
+                                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="servant_img_select search_link d-none" id="servant_img_select_4" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                    <img src="" class="img-fluid" id="sevant_face_img_4">
+                                </a>
                             </td>
                             <td class="col_atk">
                                 <input type="number" id="atk_4" value="0" max="99999" min="0" step="500" class="atk form-control bg-transparent">
@@ -1133,6 +1224,13 @@
                             </td>
                         </tr>
                         <tr>
+                            <input type="hidden" id="search_servant_no_5" value="">
+                            <input type="hidden" id="search_servant_class_5" value="">
+                            <input type="hidden" id="search_servant_rare_5" value="">
+                            <input type="hidden" id="search_servant_lvl_5" value="">
+                            <input type="hidden" id="search_servant_nplvl_5" value="">
+                            <input type="hidden" id="search_servant_fou_5" value="">
+                            <input type="hidden" id="search_servant_ce_5" value="">
                             <input type="hidden" id="prob_hp_5" value="0">
                             <td class="col_menu align-middle text-center">
                                 <div class="dropdown wrap_link_icon">
@@ -1191,6 +1289,17 @@
                                         </li>
                                     </ul>
                                 </div>
+                            </td>
+                            <td class="col_servant align-middle text-center">
+                                <a href="#" class="servant_img_default text-secondary search_link" id="servant_img_default_5" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+                                        <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
+                                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="servant_img_select search_link d-none" id="servant_img_select_5" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                    <img src="" class="img-fluid" id="sevant_face_img_5">
+                                </a>
                             </td>
                             <td class="col_atk">
                                 <input type="number" id="atk_5" value="0" max="99999" min="0" step="500" class="atk form-control bg-transparent">
@@ -1345,6 +1454,13 @@
                             </td>
                         </tr>
                         <tr>
+                            <input type="hidden" id="search_servant_no_6" value="">
+                            <input type="hidden" id="search_servant_class_6" value="">
+                            <input type="hidden" id="search_servant_rare_6" value="">
+                            <input type="hidden" id="search_servant_lvl_6" value="">
+                            <input type="hidden" id="search_servant_nplvl_6" value="">
+                            <input type="hidden" id="search_servant_fou_6" value="">
+                            <input type="hidden" id="search_servant_ce_6" value="">
                             <input type="hidden" id="prob_hp_6" value="0">
                             <td class="col_menu align-middle text-center">
                                 <div class="dropdown wrap_link_icon">
@@ -1403,6 +1519,17 @@
                                         </li>
                                     </ul>
                                 </div>
+                            </td>
+                            <td class="col_servant align-middle text-center">
+                                <a href="#" class="servant_img_default text-secondary search_link" id="servant_img_default_6" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+                                        <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
+                                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="servant_img_select search_link d-none" id="servant_img_select_6" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                    <img src="" class="img-fluid" id="sevant_face_img_6">
+                                </a>
                             </td>
                             <td class="col_atk">
                                 <input type="number" id="atk_6" value="0" max="99999" min="0" step="500" class="atk form-control bg-transparent">
@@ -1557,6 +1684,13 @@
                             </td>
                         </tr>
                         <tr>
+                            <input type="hidden" id="search_servant_no_7" value="">
+                            <input type="hidden" id="search_servant_class_7" value="">
+                            <input type="hidden" id="search_servant_rare_7" value="">
+                            <input type="hidden" id="search_servant_lvl_7" value="">
+                            <input type="hidden" id="search_servant_nplvl_7" value="">
+                            <input type="hidden" id="search_servant_fou_7" value="">
+                            <input type="hidden" id="search_servant_ce_7" value="">
                             <input type="hidden" id="prob_hp_7" value="0">
                             <td class="col_menu align-middle text-center">
                                 <div class="dropdown wrap_link_icon">
@@ -1615,6 +1749,17 @@
                                         </li>
                                     </ul>
                                 </div>
+                            </td>
+                            <td class="col_servant align-middle text-center">
+                                <a href="#" class="servant_img_default text-secondary search_link" id="servant_img_default_7" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+                                        <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
+                                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="servant_img_select search_link d-none" id="servant_img_select_7" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                    <img src="" class="img-fluid" id="sevant_face_img_7">
+                                </a>
                             </td>
                             <td class="col_atk">
                                 <input type="number" id="atk_7" value="0" max="99999" min="0" step="500" class="atk form-control bg-transparent">
@@ -1769,6 +1914,13 @@
                             </td>
                         </tr>
                         <tr>
+                            <input type="hidden" id="search_servant_no_8" value="">
+                            <input type="hidden" id="search_servant_class_8" value="">
+                            <input type="hidden" id="search_servant_rare_8" value="">
+                            <input type="hidden" id="search_servant_lvl_8" value="">
+                            <input type="hidden" id="search_servant_nplvl_8" value="">
+                            <input type="hidden" id="search_servant_fou_8" value="">
+                            <input type="hidden" id="search_servant_ce_8" value="">
                             <input type="hidden" id="prob_hp_8" value="0">
                             <td class="col_menu align-middle text-center">
                                 <div class="dropdown wrap_link_icon">
@@ -1827,6 +1979,17 @@
                                         </li>
                                     </ul>
                                 </div>
+                            </td>
+                            <td class="col_servant align-middle text-center">
+                                <a href="#" class="servant_img_default text-secondary search_link" id="servant_img_default_8" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+                                        <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
+                                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="servant_img_select search_link d-none" id="servant_img_select_8" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                    <img src="" class="img-fluid" id="sevant_face_img_8">
+                                </a>
                             </td>
                             <td class="col_atk">
                                 <input type="number" id="atk_8" value="0" max="99999" min="0" step="500" class="atk form-control bg-transparent">
@@ -1981,6 +2144,13 @@
                             </td>
                         </tr>
                         <tr>
+                            <input type="hidden" id="search_servant_no_9" value="">
+                            <input type="hidden" id="search_servant_class_9" value="">
+                            <input type="hidden" id="search_servant_rare_9" value="">
+                            <input type="hidden" id="search_servant_lvl_9" value="">
+                            <input type="hidden" id="search_servant_nplvl_9" value="">
+                            <input type="hidden" id="search_servant_fou_9" value="">
+                            <input type="hidden" id="search_servant_ce_9" value="">
                             <input type="hidden" id="prob_hp_9" value="0">
                             <td class="col_menu align-middle text-center">
                                 <div class="dropdown wrap_link_icon">
@@ -2039,6 +2209,17 @@
                                         </li>
                                     </ul>
                                 </div>
+                            </td>
+                            <td class="col_servant align-middle text-center">
+                                <a href="#" class="servant_img_default text-secondary search_link" id="servant_img_default_9" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+                                        <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
+                                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="servant_img_select search_link d-none" id="servant_img_select_9" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                    <img src="" class="img-fluid" id="sevant_face_img_9">
+                                </a>
                             </td>
                             <td class="col_atk">
                                 <input type="number" id="atk_9" value="0" max="99999" min="0" step="500" class="atk form-control bg-transparent">
@@ -2193,6 +2374,13 @@
                             </td>
                         </tr>
                         <tr>
+                            <input type="hidden" id="search_servant_no_10" value="">
+                            <input type="hidden" id="search_servant_class_10" value="">
+                            <input type="hidden" id="search_servant_rare_10" value="">
+                            <input type="hidden" id="search_servant_lvl_10" value="">
+                            <input type="hidden" id="search_servant_nplvl_10" value="">
+                            <input type="hidden" id="search_servant_fou_10" value="">
+                            <input type="hidden" id="search_servant_ce_10" value="">
                             <input type="hidden" id="prob_hp_10" value="0">
                             <td class="col_menu align-middle text-center">
                                 <div class="dropdown wrap_link_icon">
@@ -2251,6 +2439,17 @@
                                         </li>
                                     </ul>
                                 </div>
+                            </td>
+                            <td class="col_servant align-middle text-center">
+                                <a href="#" class="servant_img_default text-secondary search_link" id="servant_img_default_10" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+                                        <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
+                                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="servant_img_select search_link d-none" id="servant_img_select_10" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                    <img src="" class="img-fluid" id="sevant_face_img_10">
+                                </a>
                             </td>
                             <td class="col_atk">
                                 <input type="number" id="atk_10" value="0" max="99999" min="0" step="500" class="atk form-control bg-transparent">
@@ -2405,6 +2604,13 @@
                             </td>
                         </tr>
                         <tr>
+                            <input type="hidden" id="search_servant_no_11" value="">
+                            <input type="hidden" id="search_servant_class_11" value="">
+                            <input type="hidden" id="search_servant_rare_11" value="">
+                            <input type="hidden" id="search_servant_lvl_11" value="">
+                            <input type="hidden" id="search_servant_nplvl_11" value="">
+                            <input type="hidden" id="search_servant_fou_11" value="">
+                            <input type="hidden" id="search_servant_ce_11" value="">
                             <input type="hidden" id="prob_hp_11" value="0">
                             <td class="col_menu align-middle text-center">
                                 <div class="dropdown wrap_link_icon">
@@ -2463,6 +2669,17 @@
                                         </li>
                                     </ul>
                                 </div>
+                            </td>
+                            <td class="col_servant align-middle text-center">
+                                <a href="#" class="servant_img_default text-secondary search_link" id="servant_img_default_11" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+                                        <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
+                                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="servant_img_select search_link d-none" id="servant_img_select_11" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                    <img src="" class="img-fluid" id="sevant_face_img_11">
+                                </a>
                             </td>
                             <td class="col_atk">
                                 <input type="number" id="atk_11" value="0" max="99999" min="0" step="500" class="atk form-control bg-transparent">
@@ -2617,6 +2834,13 @@
                             </td>
                         </tr>
                         <tr>
+                            <input type="hidden" id="search_servant_no_12" value="">
+                            <input type="hidden" id="search_servant_class_12" value="">
+                            <input type="hidden" id="search_servant_rare_12" value="">
+                            <input type="hidden" id="search_servant_lvl_12" value="">
+                            <input type="hidden" id="search_servant_nplvl_12" value="">
+                            <input type="hidden" id="search_servant_fou_12" value="">
+                            <input type="hidden" id="search_servant_ce_12" value="">
                             <input type="hidden" id="prob_hp_12" value="0">
                             <td class="col_menu align-middle text-center">
                                 <div class="dropdown wrap_link_icon">
@@ -2675,6 +2899,17 @@
                                         </li>
                                     </ul>
                                 </div>
+                            </td>
+                            <td class="col_servant align-middle text-center">
+                                <a href="#" class="servant_img_default text-secondary search_link" id="servant_img_default_12" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+                                        <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
+                                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="servant_img_select search_link d-none" id="servant_img_select_12" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                    <img src="" class="img-fluid" id="sevant_face_img_12">
+                                </a>
                             </td>
                             <td class="col_atk">
                                 <input type="number" id="atk_12" value="0" max="99999" min="0" step="500" class="atk form-control bg-transparent">
@@ -2829,6 +3064,13 @@
                             </td>
                         </tr>
                         <tr>
+                            <input type="hidden" id="search_servant_no_13" value="">
+                            <input type="hidden" id="search_servant_class_13" value="">
+                            <input type="hidden" id="search_servant_rare_13" value="">
+                            <input type="hidden" id="search_servant_lvl_13" value="">
+                            <input type="hidden" id="search_servant_nplvl_13" value="">
+                            <input type="hidden" id="search_servant_fou_13" value="">
+                            <input type="hidden" id="search_servant_ce_13" value="">
                             <input type="hidden" id="prob_hp_13" value="0">
                             <td class="col_menu align-middle text-center">
                                 <div class="dropdown wrap_link_icon">
@@ -2887,6 +3129,17 @@
                                         </li>
                                     </ul>
                                 </div>
+                            </td>
+                            <td class="col_servant align-middle text-center">
+                                <a href="#" class="servant_img_default text-secondary search_link" id="servant_img_default_13" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+                                        <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
+                                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="servant_img_select search_link d-none" id="servant_img_select_13" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                    <img src="" class="img-fluid" id="sevant_face_img_13">
+                                </a>
                             </td>
                             <td class="col_atk">
                                 <input type="number" id="atk_13" value="0" max="99999" min="0" step="500" class="atk form-control bg-transparent">
@@ -3041,6 +3294,13 @@
                             </td>
                         </tr>
                         <tr>
+                            <input type="hidden" id="search_servant_no_14" value="">
+                            <input type="hidden" id="search_servant_class_14" value="">
+                            <input type="hidden" id="search_servant_rare_14" value="">
+                            <input type="hidden" id="search_servant_lvl_14" value="">
+                            <input type="hidden" id="search_servant_nplvl_14" value="">
+                            <input type="hidden" id="search_servant_fou_14" value="">
+                            <input type="hidden" id="search_servant_ce_14" value="">
                             <input type="hidden" id="prob_hp_14" value="0">
                             <td class="col_menu align-middle text-center">
                                 <div class="dropdown wrap_link_icon">
@@ -3081,6 +3341,17 @@
                                         </li>
                                     </ul>
                                 </div>
+                            </td>
+                            <td class="col_servant align-middle text-center">
+                                <a href="#" class="servant_img_default text-secondary search_link" id="servant_img_default_14" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+                                        <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
+                                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="servant_img_select search_link d-none" id="servant_img_select_14" tabindex="-1" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                    <img src="" class="img-fluid" id="sevant_face_img_14">
+                                </a>
                             </td>
                             <td class="col_atk">
                                 <input type="number" id="atk_14" value="0" max="99999" min="0" step="500" class="atk form-control bg-transparent">
@@ -3313,6 +3584,183 @@
                     </div>
                 </div>
             </div>
+
+            <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="searchLabel">サーヴァント検索</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" id="search_recNumber" value="">
+                            <div class="input-group input-group-sm mb-3">
+                                <span class="input-group-text bg-light">クラス</span>
+                                <select class="form-select search_sarvant_select bg-transparent" tabindex="-1" id="search_servant_class">
+                                    <option value="剣" selected>セイバー</option>
+                                    <option value="弓">アーチャー</option>
+                                    <option value="槍">ランサー</option>
+                                    <option value="騎">ライダー</option>
+                                    <option value="術">キャスター</option>
+                                    <option value="殺">アサシン</option>
+                                    <option value="狂">バーサーカー</option>
+                                    <option value="盾">シールダー</option>
+                                    <option value="裁">ルーラー</option>
+                                    <option value="讐">アヴェンジャー</option>
+                                    <option value="月">ムーンキャンサー</option>
+                                    <option value="分">アルターエゴ</option>
+                                    <option value="降">フォーリナー</option>
+                                    <option value="詐">プリテンダー</option>
+                                    <option value="獣">ビースト</option>
+                                </select>
+                                <span class="input-group-text bg-light">星</span>
+                                <select class="form-select search_sarvant_select bg-transparent" tabindex="-1" id="search_servant_rare">
+                                    <option value="5" selected>5</option>
+                                    <option value="4">4</option>
+                                    <option value="3">3</option>
+                                    <option value="2">2</option>
+                                    <option value="1">1</option>
+                                    <option value="0">0</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm mb-3">
+                                <span class="input-group-text bg-light">サーヴァント</span>
+                                <select class="form-select bg-transparent" tabindex="-1" id="search_servant_name"></select>
+                            </div>
+                            <div class="input-group input-group-sm mb-3">
+                                <span class="input-group-text bg-light">レベル</span>
+                                <select class="form-select bg-transparent" tabindex="-1" id="search_servant_lvl">
+                                    <option value="MAX" selected>最大</option>
+                                    <option value="100">100</option>
+                                    <option value="110">110</option>
+                                    <option value="120">120</option>
+                                </select>
+                                <span class="input-group-text bg-light">宝具レベル</span>
+                                <select class="form-select bg-transparent" tabindex="-1" id="search_servant_nplvl">
+                                    <option value="5" selected>5</option>
+                                    <option value="4">4</option>
+                                    <option value="3">3</option>
+                                    <option value="2">2</option>
+                                    <option value="1">1</option>
+                                </select>
+                            </div>
+
+                            <div class="accordion accordion-flush" id="servantInfoAccordion">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                    <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                        サーヴァント性能
+                                    </button>
+                                    </h2>
+                                    <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body">
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered table-sm" id="servantInfoTable">
+                                                    <tr>
+                                                        <th class="col_servant_search_data bg-light w-25"><p class="small">HP</p></th>
+                                                        <td colspan="1" class="col_servant_search_data w-25">
+                                                            <p class="small" id="servant_search_hp"></p>
+                                                        </td>
+                                                        <th class="col_servant_search_data bg-light w-25"><p class="small">ATK</p></th>
+                                                        <td colspan="1" class="col_servant_search_data w-25">
+                                                            <p class="small" id="servant_search_atk"></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th class="col_servant_search_data bg-light w-25"><p class="small">天地人</p></th>
+                                                        <td colspan="1" class="col_servant_search_data w-25">
+                                                            <p class="small" id="servant_search_attribute"></p>
+                                                        </td>
+                                                        <th class="col_servant_search_data bg-light w-25"><p class="small">属性</p></th>
+                                                        <td colspan="1" class="col_servant_search_data w-25">
+                                                            <p class="small" id="servant_search_alignment"></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th class="col_servant_search_data bg-light w-25"><p class="small">カード</p></th>
+                                                        <td colspan="3" class="col_servant_search_data w-75">
+                                                            <p class="small" id="servant_search_deck"></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th class="col_servant_search_data bg-light w-25"><p class="small">ヒット数</p></th>
+                                                        <td colspan="3" class="col_servant_search_data w-75">
+                                                            <p class="small" id="servant_search_nit"></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th class="col_servant_search_data bg-light w-25"><p class="small">NP獲得率</p></th>
+                                                        <td colspan="1" class="col_servant_search_data w-25">
+                                                            <p class="small" id="servant_search_npGein"></p>
+                                                        </td>
+                                                        <th class="col_servant_search_data bg-light w-25"><p class="small">スター発生率</p></th>
+                                                        <td colspan="1" class="col_servant_search_data w-25">
+                                                            <p class="small" id="servant_search_starGen"></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th class="col_servant_search_data bg-light w-25"><p class="small">宝具</p></th>
+                                                        <td colspan="3" class="col_servant_search_data w-75">
+                                                            <p class="small" id="servant_search_np"></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th class="col_servant_search_data bg-light w-25"><p class="small">スキル1</p></th>
+                                                        <td colspan="3" class="col_servant_search_data w-75">
+                                                            <p class="small" id="servant_search_skill1"></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th class="col_servant_search_data bg-light w-25"><p class="small">スキル2</p></th>
+                                                        <td colspan="3" class="col_servant_search_data w-75">
+                                                            <p class="small" id="servant_search_skill2"></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th class="col_servant_search_data bg-light w-25"><p class="small">スキル3</p></th>
+                                                        <td colspan="3" class="col_servant_search_data w-75">
+                                                            <p class="small" id="servant_search_skill3"></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th class="col_servant_search_data bg-light w-25"><p class="small">クラススキル</p></th>
+                                                        <td colspan="3" class="col_servant_search_data w-75">
+                                                            <p class="small" id="servant_search_classSkill"></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th class="col_servant_search_data bg-light w-25"><p class="small">アペンドスキル</p></th>
+                                                        <td colspan="3" class="col_servant_search_data w-75">
+                                                            <p class="small" id="servant_search_appendSkill"></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th class="col_servant_search_data bg-light w-25"><p class="small">絆礼装効果</p></th>
+                                                        <td colspan="3" class="col_servant_search_data w-75">
+                                                            <p class="small" id="servant_search_bondCE"></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th class="col_servant_search_data bg-light w-25"><p class="small">特性</p></th>
+                                                        <td colspan="3" class="col_servant_search_data w-75">
+                                                            <p class="small" id="servant_search_trait"></p>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="btnSelected">選択</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </main>
         <footer>
             <div class="navbar-expand-lg bg-body-tertiary navbar-light bg-dark fixed-bottom">

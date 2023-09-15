@@ -92,9 +92,9 @@ input[type="number"] {
 } 
 
 /*列調整*/
-.search_link, .tool_link, .buffPreset_link, .pin_buff_parent {
-  margin-left: 17px;
-  margin-right: 17px;
+.tool_link, .buffPreset_link, .pin_buff_parent {
+  margin-left: 20px;
+  margin-right: 20px;
 }
 /*
 .col_copy, .col_atk_buff, .col_card_buff, .col_np_buff, .col_ex_atk_buff, 

@@ -2360,26 +2360,6 @@ function getRecData(tabNumber){
 /**
  * 入力値を設定
  * @param tabNumber タブ番号
- * @param servantNo サーヴァントNo
- */
-function setServantImage(tabNumber, servantNo){
-
-    if (servantNo == ""){
-        $("#servant_img_default_" + tabNumber).removeClass("d-none");
-        $("#sevant_face_img_" + tabNumber)[0].src = "";
-        $("#servant_img_select_" + tabNumber).addClass("d-none");
-    }
-    else {
-        $("#servant_img_select_" + tabNumber).removeClass("d-none");
-        $("#sevant_face_img_" + tabNumber)[0].src = "../img/servant_face/" + servantNo + ".png"
-        $("#servant_img_default_" + tabNumber).addClass("d-none");
-    }
-    
-}
-
-/**
- * 入力値を設定
- * @param tabNumber タブ番号
  * @param inputData 入力値
  */
 function setTabData(tabNumber, inputData){
@@ -2483,9 +2463,31 @@ function setTabData(tabNumber, inputData){
         $("#np_hit_" + tabNumber).val(splitData[93]);
         $("#na_enemy_" + tabNumber).val(splitData[94]);
         $("#sr_enemy_" + tabNumber).val(splitData[95]);
+        // サーヴァント画像変更
+        setServantImage(tabNumber, $("#search_servant_no_" + tabNumber).val());
     } catch (error) {
     }
 
+}
+
+/**
+ * サーヴァント画像変更
+ * @param tabNumber タブ番号
+ * @param servantNo サーヴァントNo
+ */
+function setServantImage(tabNumber, servantNo){
+
+    if (servantNo == ""){
+        $("#servant_img_default_" + tabNumber).removeClass("d-none");
+        $("#sevant_face_img_" + tabNumber)[0].src = "";
+        $("#servant_img_select_" + tabNumber).addClass("d-none");
+    }
+    else {
+        $("#servant_img_select_" + tabNumber).removeClass("d-none");
+        $("#sevant_face_img_" + tabNumber)[0].src = "../img/servant_face/" + servantNo + ".png"
+        $("#servant_img_default_" + tabNumber).addClass("d-none");
+    }
+    
 }
 
 /**

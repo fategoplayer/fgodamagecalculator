@@ -8,7 +8,7 @@ const defaultRow = 15; // 初期行数
 const maxLineNum = 4; // メモ改行数
 const maxWidthAdvanced = 232;
 const maxWidthMemo = 120;
-const maxWidthClose = 1270;
+const maxWidthClose = 1276;
 const localStorageKey_InputData = "fgodamagecalculator_input"
 const localStorageKey_Setting = "fgodamagecalculator_setting"
 const localStorageKey_BuffPreset = "fgodamagecalculator_buffpreset"
@@ -3016,13 +3016,15 @@ function setRecData(recNumber, inputData){
         $("#np_hit_" + recNumber).val(splitData[93]);
         $("#na_enemy_" + recNumber).val(splitData[94]);
         $("#sr_enemy_" + recNumber).val(splitData[95]);
+        // サーヴァント画像変更
+        setServantImage(recNumber, $("#search_servant_no_" + recNumber).val());
     } catch (error) {
     }
 
 }
 
 /**
- * 入力値を設定
+ * サーヴァント画像変更
  * @param recNumber 行番号
  * @param servantNo サーヴァントNo
  */

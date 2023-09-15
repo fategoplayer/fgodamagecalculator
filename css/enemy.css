@@ -85,7 +85,7 @@ input[type="number"] {
   min-width: 28px;
   max-width: 28px;
 }
-.col_atk {
+.col_atk, .col_servant {
   min-width: 42px;
   max-width: 42px;
 }
@@ -125,7 +125,7 @@ input[type="number"] {
 
 /*テーブルラッパー*/
 .calc {
-  max-width: 1039px;
+  max-width: 1081px;
   margin: .4rem;
 }
 
@@ -161,6 +161,11 @@ input[type="number"] {
   height: 25.3px !important;
   background-color: #EEFFEE !important;
 }
+.servant_img_select img {
+  width: 95%;
+  height: auto;
+}
+
 
 /*撃破率計算*/
 #probTable tr, #probTable td {
@@ -197,4 +202,29 @@ input[type="number"] {
 .wrap_col_prob_result output{
   display:table-cell;
   vertical-align:middle;
+}
+
+/*サーヴァント情報*/
+#servantInfoTable tr, #servantInfoTable td {
+  height: 20px;
+}
+#servantInfoTable td {
+  vertical-align: middle;
+  width: 30%!important;
+}
+#servantInfoTable th {
+  width: 20%!important;
+}
+#servantInfoTable td p {
+  padding: 5px;
+  display:table-cell;
+}
+#servantInfoAccordion .accordion-body {
+  padding: 0.5rem 0 0 0 !important;
+}
+#servantInfoAccordion .accordion-button {
+  padding: 5px !important;
+}
+#servantInfoTable td[colspan="3"] {
+  width: 80%!important;
 }
