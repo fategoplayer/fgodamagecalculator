@@ -242,16 +242,6 @@ $(function(){
    });
 
     /**
-     * サーヴァント検索―クラス・レアリティ変更イベント
-     */
-    $(document).on("change", ".servarnt-search-select", function () {
-
-        // サーヴァントセレクトボックスを再作成
-        remakeServantSelectBox();
-
-    });
-
-    /**
      * サーヴァント検索―サーヴァント名変更イベント
      */
     $(document).on("change", "#search_servant_name", function () {
@@ -1005,8 +995,7 @@ function parseCsv(data) {
     servantList = new Array();
 
     $(csv).each(function() {
-        
-        var option = document.createElement("option");  
+
         var servant = {};
 
         servant["No"] = this[0];
