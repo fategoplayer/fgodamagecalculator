@@ -588,6 +588,20 @@ $(function(){
     /**
      * セレクトボックス変更イベント
      */
+    $(document).on("change", "#NA_enemy", function () {
+
+        var selectedIndex = $("#NA_enemy")[0].selectedIndex;
+        var na_enemyClass = $("#NA_enemy")[0][selectedIndex].text;
+
+        if (na_enemyClass.indexOf("特殊") < 0){
+            $("#SR_enemy")[0][selectedIndex].selected = true;
+        }
+
+    });
+
+    /**
+     * セレクトボックス変更イベント
+     */
     $(document).on("change", ".select_np_star", function () {
 
         // NPスター計算
@@ -1500,42 +1514,43 @@ function parseCsv(data) {
         servant["クラススキル_NP獲得Bバフ"] = this[41];
         servant["クラススキル_NP獲得Aバフ"] = this[42];
         servant["クラススキル_NP獲得Qバフ"] = this[43];
-        servant["クラススキル_スター獲得バフ"] = this[44];
-        servant["クラススキル_スター獲得Bバフ"] = this[45];
-        servant["クラススキル_スター獲得Aバフ"] = this[46];
-        servant["クラススキル_スター獲得Qバフ"] = this[47];
-        servant["性別"] = this[48];
-        servant["属性"] = this[49];
-        servant["性格"] = this[50];
-        servant["特性"] = this[51];
-        servant["宝具名"] = this[52];
-        servant["宝具効果"] = this[53].replaceAll("\\n","\n");
-        servant["スキル1名"] = this[54];
-        servant["スキル1CT"] = this[55];
-        servant["スキル1効果"] = this[56].replaceAll("\\n","\n");
-        servant["スキル2名"] = this[57];
-        servant["スキル2CT"] = this[58];
-        servant["スキル2効果"] = this[59].replaceAll("\\n","\n");
-        servant["スキル3名"] = this[60];
-        servant["スキル3CT"] = this[61];
-        servant["スキル3効果"] = this[62].replaceAll("\\n","\n");
-        servant["クラススキル1名"] = this[63];
-        servant["クラススキル1効果"] = this[64].replaceAll("\\n","\n");
-        servant["クラススキル2名"] = this[65];
-        servant["クラススキル2効果"] = this[66].replaceAll("\\n","\n");
-        servant["クラススキル3名"] = this[67];
-        servant["クラススキル3効果"] = this[68].replaceAll("\\n","\n");
-        servant["クラススキル4名"] = this[69];
-        servant["クラススキル4効果"] = this[70].replaceAll("\\n","\n");
-        servant["クラススキル5名"] = this[71];
-        servant["クラススキル5効果"] = this[72].replaceAll("\\n","\n");
-        servant["クラススキル6名"] = this[73];
-        servant["クラススキル6効果"] = this[74].replaceAll("\\n","\n");
-        servant["クラススキル7名"] = this[75];
-        servant["クラススキル7効果"] = this[76].replaceAll("\\n","\n");
-        servant["アペンド名"] = this[77];
-        servant["アペンド効果"] = this[78];
-        servant["絆礼装効果"] = this[79].replaceAll("\\n","\n");
+        servant["クラススキル_NP獲得被ダメ"] = this[44];
+        servant["クラススキル_スター獲得バフ"] = this[45];
+        servant["クラススキル_スター獲得Bバフ"] = this[46];
+        servant["クラススキル_スター獲得Aバフ"] = this[47];
+        servant["クラススキル_スター獲得Qバフ"] = this[48];
+        servant["性別"] = this[49];
+        servant["属性"] = this[50];
+        servant["性格"] = this[51];
+        servant["特性"] = this[52];
+        servant["宝具名"] = this[53];
+        servant["宝具効果"] = this[54].replaceAll("\\n","\n");
+        servant["スキル1名"] = this[55];
+        servant["スキル1CT"] = this[56];
+        servant["スキル1効果"] = this[57].replaceAll("\\n","\n");
+        servant["スキル2名"] = this[58];
+        servant["スキル2CT"] = this[59];
+        servant["スキル2効果"] = this[60].replaceAll("\\n","\n");
+        servant["スキル3名"] = this[61];
+        servant["スキル3CT"] = this[62];
+        servant["スキル3効果"] = this[63].replaceAll("\\n","\n");
+        servant["クラススキル1名"] = this[64];
+        servant["クラススキル1効果"] = this[65].replaceAll("\\n","\n");
+        servant["クラススキル2名"] = this[66];
+        servant["クラススキル2効果"] = this[67].replaceAll("\\n","\n");
+        servant["クラススキル3名"] = this[68];
+        servant["クラススキル3効果"] = this[69].replaceAll("\\n","\n");
+        servant["クラススキル4名"] = this[70];
+        servant["クラススキル4効果"] = this[71].replaceAll("\\n","\n");
+        servant["クラススキル5名"] = this[72];
+        servant["クラススキル5効果"] = this[73].replaceAll("\\n","\n");
+        servant["クラススキル6名"] = this[74];
+        servant["クラススキル6効果"] = this[75].replaceAll("\\n","\n");
+        servant["クラススキル7名"] = this[76];
+        servant["クラススキル7効果"] = this[77].replaceAll("\\n","\n");
+        servant["アペンド名"] = this[78];
+        servant["アペンド効果"] = this[79];
+        servant["絆礼装効果"] = this[80].replaceAll("\\n","\n");
 
         servantList.push(servant);
 
@@ -1782,8 +1797,8 @@ function clearParam(tab) {
     $("#q_hit_" + tab).val("1");
     $("#ex_hit_" + tab).val("1");
     $("#np_hit_" + tab).val("1");
-    $("#na_enemy_" + tab).val("100");
-    $("#sr_enemy_" + tab).val("0");
+    $("#na_enemy_" + tab).val("剣");
+    $("#sr_enemy_" + tab).val("剣");
 
     $("#poison_" + tab).val("0");
     $("#poison_buff_" + tab).val("0");
@@ -1902,8 +1917,8 @@ function clearParamTable(tab) {
     $("#q_hit_" + tab).val("1");
     $("#ex_hit_" + tab).val("1");
     $("#np_hit_" + tab).val("1");
-    $("#na_enemy_" + tab).val("100");
-    $("#sr_enemy_" + tab).val("0");
+    $("#na_enemy_" + tab).val("剣");
+    $("#sr_enemy_" + tab).val("剣");
 
     // サーヴァント画像変更
     setServantImage(tab, "");
@@ -2477,15 +2492,19 @@ function setTabData(tabNumber, inputData){
  */
 function setServantImage(tabNumber, servantNo){
 
-    if (servantNo == ""){
-        $("#servant_img_default_" + tabNumber).removeClass("d-none");
-        $("#sevant_face_img_" + tabNumber)[0].src = "";
-        $("#servant_img_select_" + tabNumber).addClass("d-none");
+    try {
+        if (servantNo == ""){
+            $("#servant_img_default_" + tabNumber).removeClass("d-none");
+            $("#sevant_face_img_" + tabNumber)[0].src = "";
+            $("#servant_img_select_" + tabNumber).addClass("d-none");
+        }
+        else {
+            $("#servant_img_select_" + tabNumber).removeClass("d-none");
+            $("#sevant_face_img_" + tabNumber)[0].src = "../img/servant_face/" + servantNo + ".png"
+            $("#servant_img_default_" + tabNumber).addClass("d-none");
+        }
     }
-    else {
-        $("#servant_img_select_" + tabNumber).removeClass("d-none");
-        $("#sevant_face_img_" + tabNumber)[0].src = "../img/servant_face/" + servantNo + ".png"
-        $("#servant_img_default_" + tabNumber).addClass("d-none");
+    catch {
     }
     
 }
@@ -4071,8 +4090,8 @@ function calcRate() {
     np_card = $("#np_kind_np_star").val();
     sr = parseFloat($("#SR").val());
     sr_buff = parseFloat($("#SR_buff").val());
-    np_enemy = parseFloat($("#NA_enemy").val());
-    sr_enemy = parseFloat($("#SR_enemy").val());
+    np_enemy = parseFloat($("#NA_enemy")[0][$("#NA_enemy")[0].selectedIndex].dataset.na_enemy);
+    sr_enemy = parseFloat($("#SR_enemy")[0][$("#SR_enemy")[0].selectedIndex].dataset.sr_enemy);
     card_1st_np = 1;
     card_2nd_np = 1;
     card_3rd_np = 1;

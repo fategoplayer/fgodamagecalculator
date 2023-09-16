@@ -228,3 +228,80 @@ input[type="number"] {
 #servantInfoTable td[colspan="3"] {
   width: 80%!important;
 }
+
+/*NPスター計算*/
+#servant-class, #servant-rare, #servant-name, #servant-class-enemy, #servant-rare-enemy, #servant-name-enemy {
+  padding: 0.375rem 2.25rem 0.375rem 0.75rem;
+}
+#servant-class:focus, #servant-rare:focus, #servant-name:focus, #servant-class-enemy:focus, #servant-rare-enemy:focus, #servant-name-enemy:focus{  outline: solid 0.5px #afc0b8 !important;}
+.row_npstar, .row_npstar td {
+  height: 35px !important;
+}
+
+.row_star, .row_star td {
+  height: 56px !important;
+}
+
+.row_npstar_cardselect {
+  height: 35px;
+}
+
+.col_npstar_head {
+  width: 25%;
+}
+
+.col_npstar_inp {
+  width: 25%;
+}
+
+.col_npstar_cardselect {
+  width: 25%;
+}
+
+.col_npstar_head_result {
+  width: 20%;
+}
+
+.col_npstar_result {
+  width: 20%;
+}
+
+.row_npstar_tr_top {
+  border-top-width: 0 !important;
+}
+
+.row_npstar_tr_bottom {
+  border-bottom-width: 0 !important;
+}
+
+.col_npstar_cardselect_left {
+  border-left-width: 0 !important;
+}
+
+.col_npstar_cardselect_right {
+  border-right-width: 0 !important;
+}
+
+.wrap_col_npstar_result {
+  display:table;
+  height: 100%;
+  width: 100%;
+}
+
+.wrap_col_npstar_result output{
+  display:table-cell;
+  vertical-align:middle;
+  text-align: center;
+}
+
+#b_hit, #b_card_buff_np_star, #b_card_debuff_np_star {
+  background-color: #FFEEEE !important;
+}
+
+#a_hit, #a_card_buff_np_star, #a_card_debuff_np_star {
+  background-color: #F0F8FF !important;
+}
+
+#q_hit, #q_card_buff_np_star, #q_card_debuff_np_star {
+  background-color: #EEFFEE !important;
+}
