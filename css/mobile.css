@@ -213,7 +213,7 @@ footer a {
 }
 .servant_img_select img {
   width: auto;
-  height: 95%;
+  /*height: 95%;*/
 }
 
 /*撃破率計算*/
