@@ -1992,7 +1992,7 @@ $(function(){
     });
     
     // CSVの読み込み
-    $.get("https://fategoplayer.github.io/fgodamagecalculator/data/servant_data.csv", parseCsv, "text");
+    $.get("https://fategoplayer2.github.io/fgodamagecalculator/data/servant_data.csv", parseCsv, "text");
 
 });
 
@@ -4157,11 +4157,11 @@ function calcMain(recNumber) {
 
     // 1st計算
     if (card_1st == "NP") {
-        dmg_ave_1st = calcNpDmg(atk, np_dmg, np_kind, np_card_buff, class_affinity, class_servant, attribute_affinity, atk_buff_1st,
+        dmg_ave_1st = calcNpDmg(atk, np_dmg, np_kind, card_buff_1st, class_affinity, class_servant, attribute_affinity, atk_buff_1st,
             supereffective_buff_1st, np_buff, supereffective_np, fixed_dmg_1st, special_def_1st, 1);
-        dmg_min_1st = calcNpDmg(atk, np_dmg, np_kind, np_card_buff, class_affinity, class_servant, attribute_affinity, atk_buff_1st,
+        dmg_min_1st = calcNpDmg(atk, np_dmg, np_kind, card_buff_1st, class_affinity, class_servant, attribute_affinity, atk_buff_1st,
             supereffective_buff_1st, np_buff, supereffective_np, fixed_dmg_1st, special_def_1st, 0.9);
-        dmg_max_1st = calcNpDmg(atk, np_dmg, np_kind, np_card_buff, class_affinity, class_servant, attribute_affinity, atk_buff_1st,
+        dmg_max_1st = calcNpDmg(atk, np_dmg, np_kind, card_buff_1st, class_affinity, class_servant, attribute_affinity, atk_buff_1st,
             supereffective_buff_1st, np_buff, supereffective_np, fixed_dmg_1st, special_def_1st, 1.099);
     } else {
         dmg_ave_1st = calcDmg(atk_1st, atk_buff_1st, card_buff_1st, cri_buff_1st, bbonus_1st, bbonus_all, bchain_bonus, 100,
@@ -4180,11 +4180,11 @@ function calcMain(recNumber) {
 
     // 2nd計算
     if (card_2nd == "NP") {
-        dmg_ave_2nd = calcNpDmg(atk, np_dmg, np_kind, np_card_buff, class_affinity, class_servant, attribute_affinity, atk_buff_2nd,
+        dmg_ave_2nd = calcNpDmg(atk, np_dmg, np_kind, card_buff_2nd, class_affinity, class_servant, attribute_affinity, atk_buff_2nd,
             supereffective_buff_2nd, np_buff, supereffective_np, fixed_dmg_2nd, special_def_2nd, 1);
-        dmg_min_2nd = calcNpDmg(atk, np_dmg, np_kind, np_card_buff, class_affinity, class_servant, attribute_affinity, atk_buff_2nd,
+        dmg_min_2nd = calcNpDmg(atk, np_dmg, np_kind, card_buff_2nd, class_affinity, class_servant, attribute_affinity, atk_buff_2nd,
             supereffective_buff_2nd, np_buff, supereffective_np, fixed_dmg_2nd, special_def_2nd, 0.9);
-        dmg_max_2nd = calcNpDmg(atk, np_dmg, np_kind, np_card_buff, class_affinity, class_servant, attribute_affinity, atk_buff_2nd,
+        dmg_max_2nd = calcNpDmg(atk, np_dmg, np_kind, card_buff_2nd, class_affinity, class_servant, attribute_affinity, atk_buff_2nd,
             supereffective_buff_2nd, np_buff, supereffective_np, fixed_dmg_2nd, special_def_2nd, 1.099);
     } else {
         dmg_ave_2nd = calcDmg(atk_2nd, atk_buff_2nd, card_buff_2nd, cri_buff_2nd, bbonus_2nd, bbonus_all, bchain_bonus, 100,
@@ -4203,11 +4203,11 @@ function calcMain(recNumber) {
 
     // 3rd計算
     if (card_3rd == "NP") {
-        dmg_ave_3rd = calcNpDmg(atk, np_dmg, np_kind, np_card_buff, class_affinity, class_servant, attribute_affinity, atk_buff_3rd,
+        dmg_ave_3rd = calcNpDmg(atk, np_dmg, np_kind, card_buff_3rd, class_affinity, class_servant, attribute_affinity, atk_buff_3rd,
             supereffective_buff_3rd, np_buff, supereffective_np, fixed_dmg_3rd, special_def_3rd, 1);
-        dmg_min_3rd = calcNpDmg(atk, np_dmg, np_kind, np_card_buff, class_affinity, class_servant, attribute_affinity, atk_buff_3rd,
+        dmg_min_3rd = calcNpDmg(atk, np_dmg, np_kind, card_buff_3rd, class_affinity, class_servant, attribute_affinity, atk_buff_3rd,
             supereffective_buff_3rd, np_buff, supereffective_np, fixed_dmg_3rd, special_def_3rd, 0.9);
-        dmg_max_3rd = calcNpDmg(atk, np_dmg, np_kind, np_card_buff, class_affinity, class_servant, attribute_affinity, atk_buff_3rd,
+        dmg_max_3rd = calcNpDmg(atk, np_dmg, np_kind, card_buff_3rd, class_affinity, class_servant, attribute_affinity, atk_buff_3rd,
             supereffective_buff_3rd, np_buff, supereffective_np, fixed_dmg_3rd, special_def_3rd, 1.099);
     } else {
         dmg_ave_3rd = calcDmg(atk_3rd, atk_buff_3rd, card_buff_3rd, cri_buff_3rd, bbonus_3rd, bbonus_all, bchain_bonus, 100,
